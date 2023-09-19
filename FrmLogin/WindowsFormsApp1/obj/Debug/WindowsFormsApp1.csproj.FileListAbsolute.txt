@@ -8,3 +8,13 @@ C:\Users\Tenzin\Desktop\extensao\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsForm
 C:\Users\Tenzin\Desktop\extensao\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 C:\Users\Tenzin\Desktop\extensao\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\Tenzin\Desktop\extensao\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FrmLogin.resources
+C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
