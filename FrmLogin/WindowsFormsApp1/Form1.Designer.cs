@@ -52,7 +52,7 @@
             this.pnlLogin.Name = "pnlLogin";
             this.pnlLogin.Size = new System.Drawing.Size(202, 325);
             this.pnlLogin.TabIndex = 0;
-            this.pnlLogin.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+//            this.pnlLogin.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel1
             // 
