@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.pnlLogin = new System.Windows.Forms.Panel();
+            this.lbLogin = new System.Windows.Forms.Label();
+            this.btnContinuar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbSenha = new System.Windows.Forms.Label();
             this.lbEmail = new System.Windows.Forms.Label();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.btnContinuar = new System.Windows.Forms.Button();
-            this.lbLogin = new System.Windows.Forms.Label();
             this.pnlLogin.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +52,27 @@
             this.pnlLogin.Name = "pnlLogin";
             this.pnlLogin.Size = new System.Drawing.Size(202, 325);
             this.pnlLogin.TabIndex = 0;
-//            this.pnlLogin.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // lbLogin
+            // 
+            this.lbLogin.AutoSize = true;
+            this.lbLogin.Location = new System.Drawing.Point(117, 40);
+            this.lbLogin.Name = "lbLogin";
+            this.lbLogin.Size = new System.Drawing.Size(40, 13);
+            this.lbLogin.TabIndex = 6;
+            this.lbLogin.Text = "LOGIN";
+            // 
+            // btnContinuar
+            // 
+            this.btnContinuar.BackColor = System.Drawing.Color.Red;
+            this.btnContinuar.ForeColor = System.Drawing.Color.White;
+            this.btnContinuar.Location = new System.Drawing.Point(28, 206);
+            this.btnContinuar.Name = "btnContinuar";
+            this.btnContinuar.Size = new System.Drawing.Size(129, 23);
+            this.btnContinuar.TabIndex = 5;
+            this.btnContinuar.Text = "Continuar";
+            this.btnContinuar.UseVisualStyleBackColor = false;
+            this.btnContinuar.Click += new System.EventHandler(this.btnContinuar_Click);
             // 
             // panel1
             // 
@@ -94,26 +114,6 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(144, 20);
             this.txtEmail.TabIndex = 0;
-            // 
-            // btnContinuar
-            // 
-            this.btnContinuar.BackColor = System.Drawing.Color.Red;
-            this.btnContinuar.ForeColor = System.Drawing.Color.White;
-            this.btnContinuar.Location = new System.Drawing.Point(28, 206);
-            this.btnContinuar.Name = "btnContinuar";
-            this.btnContinuar.Size = new System.Drawing.Size(129, 23);
-            this.btnContinuar.TabIndex = 5;
-            this.btnContinuar.Text = "Continuar";
-            this.btnContinuar.UseVisualStyleBackColor = false;
-            // 
-            // lbLogin
-            // 
-            this.lbLogin.AutoSize = true;
-            this.lbLogin.Location = new System.Drawing.Point(116, 33);
-            this.lbLogin.Name = "lbLogin";
-            this.lbLogin.Size = new System.Drawing.Size(40, 13);
-            this.lbLogin.TabIndex = 6;
-            this.lbLogin.Text = "LOGIN";
             // 
             // FrmLogin
             // 
