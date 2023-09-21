@@ -23,6 +23,14 @@ namespace WindowsFormsApp1
         {
 
             User firstAdm = new User("Administrador Padrão", "admin@americanas.com.br", "admin12345");
+            if (!firstAdm.CheckUser(txtEmail.Text, firstAdm.GetUserData(4))) 
+            {
+                label1.Visible = true;
+            }
+            else 
+            { 
+                label1.Visible = false; 
+            }
         }
     }
 }

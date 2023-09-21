@@ -8,7 +8,8 @@ namespace WindowsFormsApp1
 {
     internal class User
     {
-        public string name, password, email, phoneNumber;
+        private string name, password, email, phoneNumber;
+
         public User(string inputName , string inputEmail, string inputPassword) 
         {
             name = inputName;
@@ -27,12 +28,25 @@ namespace WindowsFormsApp1
 
         public bool CheckUser (string inputEmail, string inputPassword)
         {
-            if (inputEmail == "@americanas") 
-            { 
-                return true;
+            if (inputEmail.Contains("@americanas.com.br")) 
+            {
+                if (inputPassword.Length >= 6 && inputPassword.Length <= 32)
+                {
+                    return true;
+                }
             }
-            
-            return false;
+            return false;            
+        }
+
+        public string GetUserData (int data)
+        {
+            switch (data) {
+                case 1: return name;
+                case 2: return email;
+                case 3: return phoneNumber;
+                case 4: return password;
+            }
+            return "undefined";
         }
     }
 }
