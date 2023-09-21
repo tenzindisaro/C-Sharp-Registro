@@ -36,11 +36,13 @@
             this.lbEmail = new System.Windows.Forms.Label();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlLogin.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlLogin
             // 
+            this.pnlLogin.Controls.Add(this.label1);
             this.pnlLogin.Controls.Add(this.lbLogin);
             this.pnlLogin.Controls.Add(this.btnContinuar);
             this.pnlLogin.Controls.Add(this.panel1);
@@ -68,7 +70,7 @@
             this.btnContinuar.ForeColor = System.Drawing.Color.White;
             this.btnContinuar.Location = new System.Drawing.Point(28, 206);
             this.btnContinuar.Name = "btnContinuar";
-            this.btnContinuar.Size = new System.Drawing.Size(129, 23);
+            this.btnContinuar.Size = new System.Drawing.Size(144, 23);
             this.btnContinuar.TabIndex = 5;
             this.btnContinuar.Text = "Continuar";
             this.btnContinuar.UseVisualStyleBackColor = false;
@@ -115,6 +117,17 @@
             this.txtEmail.Size = new System.Drawing.Size(144, 20);
             this.txtEmail.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(28, 232);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(144, 18);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Email ou senha inválidos";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Visible = false;
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -142,6 +155,7 @@
         private System.Windows.Forms.Label lbEmail;
         private System.Windows.Forms.Label lbLogin;
         private System.Windows.Forms.Button btnContinuar;
+        private System.Windows.Forms.Label label1;
     }
 }
 

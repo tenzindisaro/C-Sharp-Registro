@@ -18,3 +18,4 @@ C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\Wi
 C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources
