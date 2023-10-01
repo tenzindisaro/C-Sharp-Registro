@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class Form11_T_Reclamações
+    partial class Form11_T_Reclamacoes
     {
         /// <summary>
         /// Required designer variable.
@@ -134,7 +134,7 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Caixa TXT pra OBS";
             // 
-            // Form11_T_Reclamações
+            // Form11_T_Reclamacoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -150,7 +150,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
-            this.Name = "Form11_T_Reclamações";
+            this.Name = "Form11_T_Reclamacoes";
             this.Text = "Form11_T_Reclamações";
             this.ResumeLayout(false);
             this.PerformLayout();

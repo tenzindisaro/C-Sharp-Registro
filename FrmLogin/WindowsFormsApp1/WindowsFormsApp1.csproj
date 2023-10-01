@@ -60,11 +60,11 @@
     <Compile Include="Form10_T_RelaEntrega.Designer.cs">
       <DependentUpon>Form10_T_RelaEntrega.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form11_T_Reclamações.cs">
+    <Compile Include="Form11_OBS.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form11_T_Reclamações.Designer.cs">
-      <DependentUpon>Form11_T_Reclamações.cs</DependentUpon>
+    <Compile Include="Form11_OBS.Designer.cs">
+      <DependentUpon>Form11_OBS.cs</DependentUpon>
     </Compile>
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
@@ -123,8 +123,8 @@
     <EmbeddedResource Include="Form10_T_RelaEntrega.resx">
       <DependentUpon>Form10_T_RelaEntrega.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form11_T_Reclamações.resx">
-      <DependentUpon>Form11_T_Reclamações.cs</DependentUpon>
+    <EmbeddedResource Include="Form11_OBS.resx">
+      <DependentUpon>Form11_OBS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1_Tela_Login.resx">
       <DependentUpon>Form1_Tela_Login.cs</DependentUpon>

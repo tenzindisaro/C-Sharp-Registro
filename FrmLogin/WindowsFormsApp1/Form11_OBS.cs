@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form11_T_Reclamacoes : Form
+    public partial class Form11_OBS : Form
     {
-        public Form11_T_Reclamacoes()
+        public Form11_OBS()
         {
             InitializeComponent();
         }
