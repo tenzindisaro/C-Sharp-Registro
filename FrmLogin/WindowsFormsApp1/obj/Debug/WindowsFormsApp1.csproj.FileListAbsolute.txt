@@ -19,3 +19,16 @@ C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\Wi
 C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources
+C:\Users\Tenzin\Desktop\novo pull\FrmLogin\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\Tenzin\Desktop\novo pull\FrmLogin\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\Tenzin\Desktop\novo pull\FrmLogin\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\Tenzin\Desktop\novo pull\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+C:\Users\Tenzin\Desktop\novo pull\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FrmLogin.resources
+C:\Users\Tenzin\Desktop\novo pull\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources
+C:\Users\Tenzin\Desktop\novo pull\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\Tenzin\Desktop\novo pull\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\Tenzin\Desktop\novo pull\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\Tenzin\Desktop\novo pull\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\Tenzin\Desktop\novo pull\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\Tenzin\Desktop\novo pull\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form3_Tela_Menu.resources
+C:\Users\Tenzin\Desktop\novo pull\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Cadastros.Form4_Tela_Cadastros.resources
