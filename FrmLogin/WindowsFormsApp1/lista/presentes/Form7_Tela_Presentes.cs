@@ -17,9 +17,6 @@ namespace WindowsFormsApp1.lista.presentes
             InitializeComponent();
         }
 
-        private void Form7_Tela_Presentes_Load(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

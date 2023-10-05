@@ -171,7 +171,7 @@
             this.Controls.Add(this.label2);
             this.Name = "Form7_Tela_Presentes";
             this.Text = "Form7_Tela_Presentes";
-            this.Load += new System.EventHandler(this.Form7_Tela_Presentes_Load);
+//            this.Load += new System.EventHandler(this.Form7_Tela_Presentes_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

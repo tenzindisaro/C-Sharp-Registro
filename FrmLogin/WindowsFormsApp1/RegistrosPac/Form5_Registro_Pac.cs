@@ -17,9 +17,6 @@ namespace WindowsFormsApp1.RegistrosPac
             InitializeComponent();
         }
 
-        private void Form5_Registro_Pac_Load(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

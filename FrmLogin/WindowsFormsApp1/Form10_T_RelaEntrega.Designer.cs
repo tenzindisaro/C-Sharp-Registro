@@ -62,7 +62,7 @@
             this.label2.Size = new System.Drawing.Size(73, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Período Final:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+//            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // dateTimePicker1
             // 
@@ -122,7 +122,7 @@
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Campos de Impressão(infosPac)";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+//            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // checkedListBox2
             // 

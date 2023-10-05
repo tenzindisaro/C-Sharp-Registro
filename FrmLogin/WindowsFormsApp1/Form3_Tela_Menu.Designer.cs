@@ -109,7 +109,7 @@
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
-            this.cadastrosToolStripMenuItem.Click += new System.EventHandler(this.cadastrosToolStripMenuItem_Click);
+//            this.cadastrosToolStripMenuItem.Click += new System.EventHandler(this.cadastrosToolStripMenuItem_Click);
             // 
             // funcionáriosToolStripMenuItem
             // 
@@ -303,7 +303,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 423);
             this.panel2.TabIndex = 2;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+//            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // label11
             // 
@@ -332,7 +332,7 @@
             this.label9.Size = new System.Drawing.Size(95, 13);
             this.label9.TabIndex = 8;
             this.label9.Text = "Registros recebido";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
+//            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label8
             // 
@@ -361,7 +361,7 @@
             this.label6.Size = new System.Drawing.Size(235, 13);
             this.label6.TabIndex = 5;
             this.label6.Text = "______________________________________";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+//            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label5
             // 
