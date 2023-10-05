@@ -17,6 +17,9 @@ namespace WindowsFormsApp1.Cadastros
             InitializeComponent();
         }
 
-       
+        private void btn_add_user_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -8,9 +8,11 @@ namespace WindowsFormsApp1
 {
     internal class User
     {
-        private string name, password, email, phoneNumber;
-
-        public User(string inputName , string inputEmail, string inputPassword) 
+        private string name, password, email, phoneNumber, cargo, address ;
+       // private int id_codigo, lvl_acess;        
+        
+        public User(string inputName , string inputEmail, string inputPassword, string inputCargo, 
+            int inputId_codigo, string inputAddress, int inputLvl_acess ) 
         {
             name = inputName;
 
@@ -24,7 +26,24 @@ namespace WindowsFormsApp1
                 email = inputEmail;
             }
             phoneNumber = "undefined";
+
+            address = inputAddress;
+            cargo = inputCargo;
+            //id_codigo = inputId_codigo;            
+            //lvl_acess = inputLvl_acess;
         }
+
+        /*public User()
+        {
+            name = "";
+            password = "";
+            email = ""; 
+            phoneNumber = "";
+            cargo = "";
+            address = "";
+            id_codigo = 0;
+            lvl_acess = 0;
+        }*/
 
         public bool CheckUser (string inputEmail, string inputPassword)
         {
@@ -48,5 +67,7 @@ namespace WindowsFormsApp1
             }
             return "undefined";
         }
+
+        
     }
 }
