@@ -29,34 +29,35 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.rdb_Titular = new System.Windows.Forms.RadioButton();
+            this.rdb_NotaFiscal = new System.Windows.Forms.RadioButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox_Titular = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox_NotaFiscal = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox_Data = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox_Funcionario = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox_CPF = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.button_Cadastrar = new System.Windows.Forms.Button();
+            this.button_Editar = new System.Windows.Forms.Button();
+            this.button_sair = new System.Windows.Forms.Button();
+            this.button_deletar = new System.Windows.Forms.Button();
+            this.comboBox_Situacao = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.rdb_Deletados_dia = new System.Windows.Forms.RadioButton();
+            this.rdb_Editados_Dia = new System.Windows.Forms.RadioButton();
+            this.rdb_Registro_Dia = new System.Windows.Forms.RadioButton();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox_Email = new System.Windows.Forms.TextBox();
+            this.textBox_Telefone = new System.Windows.Forms.TextBox();
+            this.button_Buscar = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,27 +70,27 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Buscar:";
             // 
-            // radioButton1
+            // rdb_Titular
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(491, 23);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(54, 17);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Titular";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rdb_Titular.AutoSize = true;
+            this.rdb_Titular.Location = new System.Drawing.Point(491, 23);
+            this.rdb_Titular.Name = "rdb_Titular";
+            this.rdb_Titular.Size = new System.Drawing.Size(54, 17);
+            this.rdb_Titular.TabIndex = 1;
+            this.rdb_Titular.TabStop = true;
+            this.rdb_Titular.Text = "Titular";
+            this.rdb_Titular.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rdb_NotaFiscal
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(551, 23);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(78, 17);
-            this.radioButton2.TabIndex = 2;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Nota Fiscal";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rdb_NotaFiscal.AutoSize = true;
+            this.rdb_NotaFiscal.Location = new System.Drawing.Point(551, 23);
+            this.rdb_NotaFiscal.Name = "rdb_NotaFiscal";
+            this.rdb_NotaFiscal.Size = new System.Drawing.Size(78, 17);
+            this.rdb_NotaFiscal.TabIndex = 2;
+            this.rdb_NotaFiscal.TabStop = true;
+            this.rdb_NotaFiscal.Text = "Nota Fiscal";
+            this.rdb_NotaFiscal.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
@@ -116,12 +117,12 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pacotes Registrados no Dia";
             // 
-            // textBox2
+            // textBox_Titular
             // 
-            this.textBox2.Location = new System.Drawing.Point(84, 101);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 6;
+            this.textBox_Titular.Location = new System.Drawing.Point(84, 101);
+            this.textBox_Titular.Name = "textBox_Titular";
+            this.textBox_Titular.Size = new System.Drawing.Size(100, 20);
+            this.textBox_Titular.TabIndex = 6;
             // 
             // label3
             // 
@@ -132,12 +133,12 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Nota Fiscal";
             // 
-            // textBox3
+            // textBox_NotaFiscal
             // 
-            this.textBox3.Location = new System.Drawing.Point(271, 54);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 8;
+            this.textBox_NotaFiscal.Location = new System.Drawing.Point(271, 54);
+            this.textBox_NotaFiscal.Name = "textBox_NotaFiscal";
+            this.textBox_NotaFiscal.Size = new System.Drawing.Size(100, 20);
+            this.textBox_NotaFiscal.TabIndex = 8;
             // 
             // label4
             // 
@@ -148,12 +149,12 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Data:";
             // 
-            // textBox4
+            // textBox_Data
             // 
-            this.textBox4.Location = new System.Drawing.Point(459, 54);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 10;
+            this.textBox_Data.Location = new System.Drawing.Point(459, 54);
+            this.textBox_Data.Name = "textBox_Data";
+            this.textBox_Data.Size = new System.Drawing.Size(100, 20);
+            this.textBox_Data.TabIndex = 10;
             // 
             // label5
             // 
@@ -164,12 +165,12 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Funcionário:";
             // 
-            // textBox5
+            // textBox_Funcionario
             // 
-            this.textBox5.Location = new System.Drawing.Point(84, 54);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 12;
+            this.textBox_Funcionario.Location = new System.Drawing.Point(84, 54);
+            this.textBox_Funcionario.Name = "textBox_Funcionario";
+            this.textBox_Funcionario.Size = new System.Drawing.Size(100, 20);
+            this.textBox_Funcionario.TabIndex = 12;
             // 
             // label6
             // 
@@ -180,12 +181,12 @@
             this.label6.TabIndex = 13;
             this.label6.Text = "CPF:";
             // 
-            // textBox6
+            // textBox_CPF
             // 
-            this.textBox6.Location = new System.Drawing.Point(271, 100);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 14;
+            this.textBox_CPF.Location = new System.Drawing.Point(271, 100);
+            this.textBox_CPF.Name = "textBox_CPF";
+            this.textBox_CPF.Size = new System.Drawing.Size(100, 20);
+            this.textBox_CPF.TabIndex = 14;
             // 
             // label7
             // 
@@ -196,59 +197,60 @@
             this.label7.TabIndex = 15;
             this.label7.Text = "Situação:";
             // 
-            // button1
+            // button_Cadastrar
             // 
-            this.button1.Location = new System.Drawing.Point(190, 372);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 66);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Cadastrar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_Cadastrar.Location = new System.Drawing.Point(190, 372);
+            this.button_Cadastrar.Name = "button_Cadastrar";
+            this.button_Cadastrar.Size = new System.Drawing.Size(75, 66);
+            this.button_Cadastrar.TabIndex = 17;
+            this.button_Cadastrar.Text = "Cadastrar";
+            this.button_Cadastrar.UseVisualStyleBackColor = true;
+            this.button_Cadastrar.Click += new System.EventHandler(this.button_Cadastrar_Click);
             // 
-            // button2
+            // button_Editar
             // 
-            this.button2.Location = new System.Drawing.Point(296, 372);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 66);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "Editar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button_Editar.Location = new System.Drawing.Point(296, 372);
+            this.button_Editar.Name = "button_Editar";
+            this.button_Editar.Size = new System.Drawing.Size(75, 66);
+            this.button_Editar.TabIndex = 18;
+            this.button_Editar.Text = "Editar";
+            this.button_Editar.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // button_sair
             // 
-            this.button3.Location = new System.Drawing.Point(698, 388);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 35);
-            this.button3.TabIndex = 19;
-            this.button3.Text = "Menu//SAir";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button_sair.Location = new System.Drawing.Point(698, 388);
+            this.button_sair.Name = "button_sair";
+            this.button_sair.Size = new System.Drawing.Size(75, 35);
+            this.button_sair.TabIndex = 19;
+            this.button_sair.Text = "Menu//SAir";
+            this.button_sair.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // button_deletar
             // 
-            this.button4.Location = new System.Drawing.Point(410, 372);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 66);
-            this.button4.TabIndex = 20;
-            this.button4.Text = "Deletar";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button_deletar.Location = new System.Drawing.Point(410, 372);
+            this.button_deletar.Name = "button_deletar";
+            this.button_deletar.Size = new System.Drawing.Size(75, 66);
+            this.button_deletar.TabIndex = 20;
+            this.button_deletar.Text = "Deletar";
+            this.button_deletar.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // comboBox_Situacao
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBox_Situacao.FormattingEnabled = true;
+            this.comboBox_Situacao.Items.AddRange(new object[] {
             "Entrada",
             "Saída"});
-            this.comboBox1.Location = new System.Drawing.Point(459, 100);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 21;
-            this.comboBox1.Text = "Entrada // Saida";
+            this.comboBox_Situacao.Location = new System.Drawing.Point(459, 100);
+            this.comboBox_Situacao.Name = "comboBox_Situacao";
+            this.comboBox_Situacao.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_Situacao.TabIndex = 21;
+            this.comboBox_Situacao.Text = "Entrada // Saida";
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.radioButton5);
-            this.groupBox2.Controls.Add(this.radioButton4);
-            this.groupBox2.Controls.Add(this.radioButton3);
+            this.groupBox2.Controls.Add(this.rdb_Deletados_dia);
+            this.groupBox2.Controls.Add(this.rdb_Editados_Dia);
+            this.groupBox2.Controls.Add(this.rdb_Registro_Dia);
             this.groupBox2.Location = new System.Drawing.Point(588, 57);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(200, 100);
@@ -256,38 +258,38 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtrar Lista:";
             // 
-            // radioButton5
+            // rdb_Deletados_dia
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(7, 70);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(92, 17);
-            this.radioButton5.TabIndex = 2;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Deletados Dia";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.rdb_Deletados_dia.AutoSize = true;
+            this.rdb_Deletados_dia.Location = new System.Drawing.Point(7, 70);
+            this.rdb_Deletados_dia.Name = "rdb_Deletados_dia";
+            this.rdb_Deletados_dia.Size = new System.Drawing.Size(92, 17);
+            this.rdb_Deletados_dia.TabIndex = 2;
+            this.rdb_Deletados_dia.TabStop = true;
+            this.rdb_Deletados_dia.Text = "Deletados Dia";
+            this.rdb_Deletados_dia.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // rdb_Editados_Dia
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(7, 46);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(85, 17);
-            this.radioButton4.TabIndex = 1;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Editados Dia";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.rdb_Editados_Dia.AutoSize = true;
+            this.rdb_Editados_Dia.Location = new System.Drawing.Point(7, 46);
+            this.rdb_Editados_Dia.Name = "rdb_Editados_Dia";
+            this.rdb_Editados_Dia.Size = new System.Drawing.Size(85, 17);
+            this.rdb_Editados_Dia.TabIndex = 1;
+            this.rdb_Editados_Dia.TabStop = true;
+            this.rdb_Editados_Dia.Text = "Editados Dia";
+            this.rdb_Editados_Dia.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // rdb_Registro_Dia
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(7, 20);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(83, 17);
-            this.radioButton3.TabIndex = 0;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Registro Dia";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rdb_Registro_Dia.AutoSize = true;
+            this.rdb_Registro_Dia.Location = new System.Drawing.Point(7, 20);
+            this.rdb_Registro_Dia.Name = "rdb_Registro_Dia";
+            this.rdb_Registro_Dia.Size = new System.Drawing.Size(83, 17);
+            this.rdb_Registro_Dia.TabIndex = 0;
+            this.rdb_Registro_Dia.TabStop = true;
+            this.rdb_Registro_Dia.Text = "Registro Dia";
+            this.rdb_Registro_Dia.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -307,54 +309,63 @@
             this.label9.TabIndex = 24;
             this.label9.Text = "Telefone:";
             // 
-            // textBox7
+            // textBox_Email
             // 
-            this.textBox7.Location = new System.Drawing.Point(84, 141);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 25;
+            this.textBox_Email.Location = new System.Drawing.Point(84, 141);
+            this.textBox_Email.Name = "textBox_Email";
+            this.textBox_Email.Size = new System.Drawing.Size(100, 20);
+            this.textBox_Email.TabIndex = 25;
             // 
-            // textBox8
+            // textBox_Telefone
             // 
-            this.textBox8.Location = new System.Drawing.Point(271, 141);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 20);
-            this.textBox8.TabIndex = 26;
+            this.textBox_Telefone.Location = new System.Drawing.Point(271, 141);
+            this.textBox_Telefone.Name = "textBox_Telefone";
+            this.textBox_Telefone.Size = new System.Drawing.Size(100, 20);
+            this.textBox_Telefone.TabIndex = 26;
+            // 
+            // button_Buscar
+            // 
+            this.button_Buscar.Location = new System.Drawing.Point(521, 372);
+            this.button_Buscar.Name = "button_Buscar";
+            this.button_Buscar.Size = new System.Drawing.Size(75, 66);
+            this.button_Buscar.TabIndex = 27;
+            this.button_Buscar.Text = "Buscar";
+            this.button_Buscar.UseVisualStyleBackColor = true;
             // 
             // Form5_Registro_Pac
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.button_Buscar);
+            this.Controls.Add(this.textBox_Telefone);
+            this.Controls.Add(this.textBox_Email);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.comboBox_Situacao);
+            this.Controls.Add(this.button_deletar);
+            this.Controls.Add(this.button_sair);
+            this.Controls.Add(this.button_Editar);
+            this.Controls.Add(this.button_Cadastrar);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.textBox_CPF);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.textBox_Funcionario);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBox_Data);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox_NotaFiscal);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox_Titular);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.rdb_NotaFiscal);
+            this.Controls.Add(this.rdb_Titular);
             this.Controls.Add(this.label1);
             this.Name = "Form5_Registro_Pac";
             this.Text = "Registro de Pacaotes";
-//            this.Load += new System.EventHandler(this.Form5_Registro_Pac_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -365,33 +376,34 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton rdb_Titular;
+        private System.Windows.Forms.RadioButton rdb_NotaFiscal;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox_Titular;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox_NotaFiscal;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox_Data;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox_Funcionario;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox_CPF;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button_Cadastrar;
+        private System.Windows.Forms.Button button_Editar;
+        private System.Windows.Forms.Button button_sair;
+        private System.Windows.Forms.Button button_deletar;
+        private System.Windows.Forms.ComboBox comboBox_Situacao;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton rdb_Deletados_dia;
+        private System.Windows.Forms.RadioButton rdb_Editados_Dia;
+        private System.Windows.Forms.RadioButton rdb_Registro_Dia;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBox_Email;
+        private System.Windows.Forms.TextBox textBox_Telefone;
+        private System.Windows.Forms.Button button_Buscar;
     }
 }

@@ -54,6 +54,8 @@
     <Compile Include="Cadastros\Form4_Tela_Cadastros.Designer.cs">
       <DependentUpon>Form4_Tela_Cadastros.cs</DependentUpon>
     </Compile>
+    <Compile Include="Class_CadastroPac.cs" />
+    <Compile Include="Class_Pacote.cs" />
     <Compile Include="Form10_T_RelaEntrega.cs">
       <SubType>Form</SubType>
     </Compile>
