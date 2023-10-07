@@ -119,6 +119,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CadastroUser\Form4TelaCadastrosUsers.resx">
+      <DependentUpon>Form4TelaCadastrosUsers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form10_T_RelaEntrega.resx">
       <DependentUpon>Form10_T_RelaEntrega.cs</DependentUpon>
     </EmbeddedResource>

@@ -56,5 +56,17 @@ namespace WindowsFormsApp1
         {
             Application.Run(new RegistrosPac.Form5_Registro_Pac());
         }
+
+        private void geralToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            t2 = new Thread(abrirLista);
+            t2.SetApartmentState(ApartmentState.MTA);
+            t2.Start();
+        }
+
+        private void abrirLista (object obj)
+        {
+            Application.Run(new lista.Geral.Form6_Lista_Geral());
+        }
     }
 }
