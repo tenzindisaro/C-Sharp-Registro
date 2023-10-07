@@ -16,14 +16,8 @@ namespace WindowsFormsApp1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-<<<<<<< Updated upstream
             Application.Run(new FrmLogin());
-=======
-            FrmLogin loginForm = new FrmLogin();
-            Application.Run(new Form3_Tela_Menu());
->>>>>>> Stashed changes
-            
-        
+
         }
 
         

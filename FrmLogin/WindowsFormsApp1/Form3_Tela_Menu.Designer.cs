@@ -31,8 +31,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cadastrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.funcionáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.adicionarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adicionarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.adicionarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registroToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,10 +57,6 @@
             this.listaGeralToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reclamaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-<<<<<<< Updated upstream
-=======
-            this.deslogarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
->>>>>>> Stashed changes
             this.trocarUsuárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -110,60 +106,32 @@
             this.adicionarToolStripMenuItem,
             this.removerToolStripMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
-<<<<<<< Updated upstream
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.cadastrosToolStripMenuItem.Text = "Funcionários";
-=======
-            this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.cadastrosToolStripMenuItem.Text = "Cadastros";
->>>>>>> Stashed changes
             // 
             // funcionáriosToolStripMenuItem
             // 
             this.funcionáriosToolStripMenuItem.Name = "funcionáriosToolStripMenuItem";
-<<<<<<< Updated upstream
-            this.funcionáriosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.funcionáriosToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.funcionáriosToolStripMenuItem.Text = "Cadastrados";
-            // 
-            // adicionarToolStripMenuItem
-            // 
-            this.adicionarToolStripMenuItem.Name = "adicionarToolStripMenuItem";
-            this.adicionarToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            this.adicionarToolStripMenuItem.Text = "Editar";
             // 
             // adicionarToolStripMenuItem1
             // 
             this.adicionarToolStripMenuItem1.Name = "adicionarToolStripMenuItem1";
-            this.adicionarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.adicionarToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
             this.adicionarToolStripMenuItem1.Text = "Adicionar";
             this.adicionarToolStripMenuItem1.Click += new System.EventHandler(this.adicionarToolStripMenuItem1_Click);
             // 
-            // removerToolStripMenuItem
-            // 
-            this.removerToolStripMenuItem.Name = "removerToolStripMenuItem";
-            this.removerToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            this.removerToolStripMenuItem.Text = "Remover";
-=======
-            this.funcionáriosToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            this.funcionáriosToolStripMenuItem.Text = "Funcionários";
->>>>>>> Stashed changes
-            // 
             // adicionarToolStripMenuItem
             // 
             this.adicionarToolStripMenuItem.Name = "adicionarToolStripMenuItem";
-            this.adicionarToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.adicionarToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.adicionarToolStripMenuItem.Text = "Editar";
-            // 
-            // adicionarToolStripMenuItem1
-            // 
-            this.adicionarToolStripMenuItem1.Name = "adicionarToolStripMenuItem1";
-            this.adicionarToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
-            this.adicionarToolStripMenuItem1.Text = "Adicionar";
             // 
             // removerToolStripMenuItem
             // 
             this.removerToolStripMenuItem.Name = "removerToolStripMenuItem";
-            this.removerToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.removerToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.removerToolStripMenuItem.Text = "Remover";
             // 
             // registroToolStripMenuItem
@@ -179,19 +147,20 @@
             // registroToolStripMenuItem1
             // 
             this.registroToolStripMenuItem1.Name = "registroToolStripMenuItem1";
-            this.registroToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
+            this.registroToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.registroToolStripMenuItem1.Text = "Registrar";
+            this.registroToolStripMenuItem1.Click += new System.EventHandler(this.registroToolStripMenuItem1_Click);
             // 
             // editarToolStripMenuItem
             // 
             this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            this.editarToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.editarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editarToolStripMenuItem.Text = "Editar";
             // 
             // deletToolStripMenuItem
             // 
             this.deletToolStripMenuItem.Name = "deletToolStripMenuItem";
-            this.deletToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.deletToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deletToolStripMenuItem.Text = "Remover";
             // 
             // listaToolStripMenuItem
@@ -329,35 +298,17 @@
             this.sairToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
             this.sairToolStripMenuItem.Text = "Sair";
             // 
-<<<<<<< Updated upstream
-            // trocarUsuárioToolStripMenuItem
-            // 
-            this.trocarUsuárioToolStripMenuItem.Name = "trocarUsuárioToolStripMenuItem";
-            this.trocarUsuárioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.trocarUsuárioToolStripMenuItem.Text = "Trocar Usuário";
-            this.trocarUsuárioToolStripMenuItem.Click += new System.EventHandler(this.trocarUsuárioToolStripMenuItem_Click);
-=======
-            // deslogarToolStripMenuItem
-            // 
-            this.deslogarToolStripMenuItem.Name = "deslogarToolStripMenuItem";
-            this.deslogarToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.deslogarToolStripMenuItem.Text = "Deslogar";
-            // 
             // trocarUsuárioToolStripMenuItem
             // 
             this.trocarUsuárioToolStripMenuItem.Name = "trocarUsuárioToolStripMenuItem";
             this.trocarUsuárioToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.trocarUsuárioToolStripMenuItem.Text = "Trocar Usuário";
->>>>>>> Stashed changes
+            this.trocarUsuárioToolStripMenuItem.Click += new System.EventHandler(this.trocarUsuárioToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem1
             // 
             this.sairToolStripMenuItem1.Name = "sairToolStripMenuItem1";
-<<<<<<< Updated upstream
-            this.sairToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-=======
             this.sairToolStripMenuItem1.Size = new System.Drawing.Size(149, 22);
->>>>>>> Stashed changes
             this.sairToolStripMenuItem1.Text = "Sair";
             // 
             // panel1

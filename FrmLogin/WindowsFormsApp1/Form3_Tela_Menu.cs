@@ -9,9 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Threading;
-using WindowsFormsApp1.Cadastros;
-using System.Threading;
-using System.Diagnostics;
 
 
 namespace WindowsFormsApp1
@@ -31,21 +28,33 @@ namespace WindowsFormsApp1
             t2.Start();
         }
 
+        private void abrirLogin(object obj)
+        {
+            Application.Run(new FrmLogin());
+        }
+
         private void adicionarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             t2 = new Thread(abrirCadastrarUsuario);
             t2.SetApartmentState(ApartmentState.MTA);
             t2.Start();
         }
-        private void abrirLogin (object obj)
-        {
-            Application.Run(new FrmLogin());
-        }
 
         private void abrirCadastrarUsuario (object obj)
         {
             Application.Run(new Cadastros.Form4TelaCadastrosUsers());
-        }  
+        }
 
+        private void registroToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            t2 = new Thread(abrirRegistroPac);
+            t2.SetApartmentState(ApartmentState.MTA);
+            t2.Start();
+        }
+
+        private void abrirRegistroPac(object obj)
+        {
+            Application.Run(new RegistrosPac.Form5_Registro_Pac());
+        }
     }
 }
