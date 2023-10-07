@@ -48,11 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cadastros\Form4_Tela_Cadastros.cs">
+    <Compile Include="CadastroUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cadastros\Form4_Tela_Cadastros.Designer.cs">
-      <DependentUpon>Form4_Tela_Cadastros.cs</DependentUpon>
+    <Compile Include="CadastroUser.Designer.cs">
+      <DependentUpon>CadastroUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Class_CadastroPac.cs" />
     <Compile Include="Class_Pacote.cs" />
@@ -119,8 +119,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Cadastros\Form4_Tela_Cadastros.resx">
-      <DependentUpon>Form4_Tela_Cadastros.cs</DependentUpon>
+    <EmbeddedResource Include="CadastroUser.resx">
+      <DependentUpon>CadastroUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form10_T_RelaEntrega.resx">
       <DependentUpon>Form10_T_RelaEntrega.cs</DependentUpon>
