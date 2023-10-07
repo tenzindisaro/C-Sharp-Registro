@@ -365,7 +365,7 @@
             this.Controls.Add(this.rdb_Titular);
             this.Controls.Add(this.label1);
             this.Name = "Form5_Registro_Pac";
-            this.Text = "Registro de Pacaotes";
+            this.Text = "Registro de Pacotes";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
