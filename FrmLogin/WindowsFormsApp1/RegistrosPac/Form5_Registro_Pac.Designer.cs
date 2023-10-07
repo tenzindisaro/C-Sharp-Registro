@@ -53,13 +53,13 @@
             this.rdb_Registro_Dia = new System.Windows.Forms.RadioButton();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox_Email = new System.Windows.Forms.TextBox();
             this.button_Buscar = new System.Windows.Forms.Button();
             this.maskedTextBox_CPF = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox_telefone = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox_Data = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox_Hora = new System.Windows.Forms.MaskedTextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.maskedTextBox_email = new System.Windows.Forms.MaskedTextBox();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -296,13 +296,6 @@
             this.label9.TabIndex = 24;
             this.label9.Text = "Telefone:";
             // 
-            // textBox_Email
-            // 
-            this.textBox_Email.Location = new System.Drawing.Point(84, 141);
-            this.textBox_Email.Name = "textBox_Email";
-            this.textBox_Email.Size = new System.Drawing.Size(100, 20);
-            this.textBox_Email.TabIndex = 25;
-            // 
             // button_Buscar
             // 
             this.button_Buscar.Location = new System.Drawing.Point(521, 372);
@@ -355,18 +348,26 @@
             this.label10.TabIndex = 29;
             this.label10.Text = "Hora:";
             // 
+            // maskedTextBox_email
+            // 
+            this.maskedTextBox_email.Location = new System.Drawing.Point(84, 141);
+            this.maskedTextBox_email.Mask = "000000000000@\\americ\\an\\as,com";
+            this.maskedTextBox_email.Name = "maskedTextBox_email";
+            this.maskedTextBox_email.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox_email.TabIndex = 0;
+            // 
             // Form5_Registro_Pac
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.maskedTextBox_email);
             this.Controls.Add(this.maskedTextBox_Hora);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.maskedTextBox_Data);
             this.Controls.Add(this.maskedTextBox_telefone);
             this.Controls.Add(this.maskedTextBox_CPF);
             this.Controls.Add(this.button_Buscar);
-            this.Controls.Add(this.textBox_Email);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.groupBox2);
@@ -425,12 +426,12 @@
         private System.Windows.Forms.RadioButton rdb_Registro_Dia;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox_Email;
         private System.Windows.Forms.Button button_Buscar;
         private System.Windows.Forms.MaskedTextBox maskedTextBox_CPF;
         private System.Windows.Forms.MaskedTextBox maskedTextBox_telefone;
         private System.Windows.Forms.MaskedTextBox maskedTextBox_Data;
         private System.Windows.Forms.MaskedTextBox maskedTextBox_Hora;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox_email;
     }
 }
