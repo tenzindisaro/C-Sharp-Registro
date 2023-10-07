@@ -9,10 +9,10 @@ namespace WindowsFormsApp1
     internal class Class_CadastroPac
     {
         private string funcionario_txt, titular_txt, situacao_txt, email_txt;
-        private int notaFiscal_txt, data_txt, telefone_txt, cpf_txt;
+        private int notaFiscal_txt, data_txt, telefone_txt, cpf_txt, hora_txt;
 
         public Class_CadastroPac(string funcionario_txt, string titular_txt, string situacao_txt, string email_txt,
-            int notaFiscal_txt, int data_txt, int telefone_txt, int cpf_txt)
+            int notaFiscal_txt, int data_txt, int telefone_txt, int cpf_txt, int hora_txt)
         {
             // a validação dos items ira ser feita nesse campo..
             this.funcionario_txt = funcionario_txt;
@@ -23,7 +23,10 @@ namespace WindowsFormsApp1
             this.data_txt = data_txt;   
             this.telefone_txt = telefone_txt;
             this.cpf_txt = cpf_txt;
+            this.hora_txt = hora_txt;
         }
+
+        
 
 
     }    

@@ -9,7 +9,7 @@ namespace WindowsFormsApp1
     internal class Class_Pacote
     {
         private string funcionario_nome, titular_nome, situacao, email;
-        private int nota_fiscal, data, telefone, cpf;
+        private int nota_fiscal, data, telefone, cpf, hora;
 
         public Class_Pacote() 
         {
@@ -21,10 +21,11 @@ namespace WindowsFormsApp1
             telefone = 0;
             data = 0;
             cpf = 0;
+            hora = 0;
         }
 
         public void SetCadastro(string funcionario_nome, string titular_nome, string situacao, string email, 
-            int nota_fiscal, int data, int telefone, int cpf)
+            int nota_fiscal, int data, int telefone, int cpf, int hora)
         {
             
             
@@ -35,14 +36,15 @@ namespace WindowsFormsApp1
             this.nota_fiscal= nota_fiscal;
             this.data= data;
             this.cpf= cpf;
+            this.hora= hora;
 
         }
 
         //opção de obter dados via tupla (Complica no caso da edição, mas é mais simples, pode ser usada)
          public (string funcionario_nome, string titular_nome, string situacao, string email, 
-            int nota_fiscal, int data, int telefone, int cpf) GetCadString()
+            int nota_fiscal, int data, int telefone, int cpf, int hora) GetCadString()
          {
-            return (funcionario_nome, titular_nome, situacao, email, nota_fiscal, data, telefone,cpf);
+            return (funcionario_nome, titular_nome, situacao, email, nota_fiscal, data, telefone, cpf, hora);
          }
 
         public string Funcionario() { return funcionario_nome; }
@@ -53,6 +55,6 @@ namespace WindowsFormsApp1
         public int Telefone() { return telefone; }
         public int Data() { return data; }
         public int Cpf() { return cpf;}
-
+        public int Hora() { return hora; }
     }
 }

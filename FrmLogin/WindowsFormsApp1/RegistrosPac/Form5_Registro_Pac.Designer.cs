@@ -38,11 +38,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox_NotaFiscal = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox_Data = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox_Funcionario = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox_CPF = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.button_Cadastrar = new System.Windows.Forms.Button();
             this.button_Editar = new System.Windows.Forms.Button();
@@ -56,8 +54,12 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox_Email = new System.Windows.Forms.TextBox();
-            this.textBox_Telefone = new System.Windows.Forms.TextBox();
             this.button_Buscar = new System.Windows.Forms.Button();
+            this.maskedTextBox_CPF = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox_telefone = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox_Data = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox_Hora = new System.Windows.Forms.MaskedTextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -149,13 +151,6 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Data:";
             // 
-            // textBox_Data
-            // 
-            this.textBox_Data.Location = new System.Drawing.Point(459, 54);
-            this.textBox_Data.Name = "textBox_Data";
-            this.textBox_Data.Size = new System.Drawing.Size(100, 20);
-            this.textBox_Data.TabIndex = 10;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -181,17 +176,10 @@
             this.label6.TabIndex = 13;
             this.label6.Text = "CPF:";
             // 
-            // textBox_CPF
-            // 
-            this.textBox_CPF.Location = new System.Drawing.Point(271, 100);
-            this.textBox_CPF.Name = "textBox_CPF";
-            this.textBox_CPF.Size = new System.Drawing.Size(100, 20);
-            this.textBox_CPF.TabIndex = 14;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(401, 103);
+            this.label7.Location = new System.Drawing.Point(387, 144);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(52, 13);
             this.label7.TabIndex = 15;
@@ -238,13 +226,12 @@
             // 
             this.comboBox_Situacao.FormattingEnabled = true;
             this.comboBox_Situacao.Items.AddRange(new object[] {
-            "Entrada",
-            "Saída"});
-            this.comboBox_Situacao.Location = new System.Drawing.Point(459, 100);
+            "Recebido",
+            "Entregue"});
+            this.comboBox_Situacao.Location = new System.Drawing.Point(445, 141);
             this.comboBox_Situacao.Name = "comboBox_Situacao";
             this.comboBox_Situacao.Size = new System.Drawing.Size(121, 21);
             this.comboBox_Situacao.TabIndex = 21;
-            this.comboBox_Situacao.Text = "Entrada // Saida";
             // 
             // groupBox2
             // 
@@ -316,13 +303,6 @@
             this.textBox_Email.Size = new System.Drawing.Size(100, 20);
             this.textBox_Email.TabIndex = 25;
             // 
-            // textBox_Telefone
-            // 
-            this.textBox_Telefone.Location = new System.Drawing.Point(271, 141);
-            this.textBox_Telefone.Name = "textBox_Telefone";
-            this.textBox_Telefone.Size = new System.Drawing.Size(100, 20);
-            this.textBox_Telefone.TabIndex = 26;
-            // 
             // button_Buscar
             // 
             this.button_Buscar.Location = new System.Drawing.Point(521, 372);
@@ -332,13 +312,60 @@
             this.button_Buscar.Text = "Buscar";
             this.button_Buscar.UseVisualStyleBackColor = true;
             // 
+            // maskedTextBox_CPF
+            // 
+            this.maskedTextBox_CPF.Location = new System.Drawing.Point(271, 100);
+            this.maskedTextBox_CPF.Mask = "000,000,000-00";
+            this.maskedTextBox_CPF.Name = "maskedTextBox_CPF";
+            this.maskedTextBox_CPF.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox_CPF.TabIndex = 0;
+            // 
+            // maskedTextBox_telefone
+            // 
+            this.maskedTextBox_telefone.Location = new System.Drawing.Point(271, 141);
+            this.maskedTextBox_telefone.Mask = "(00)0 0000-0000";
+            this.maskedTextBox_telefone.Name = "maskedTextBox_telefone";
+            this.maskedTextBox_telefone.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox_telefone.TabIndex = 0;
+            // 
+            // maskedTextBox_Data
+            // 
+            this.maskedTextBox_Data.Location = new System.Drawing.Point(459, 54);
+            this.maskedTextBox_Data.Mask = "00/00/0000";
+            this.maskedTextBox_Data.Name = "maskedTextBox_Data";
+            this.maskedTextBox_Data.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox_Data.TabIndex = 0;
+            this.maskedTextBox_Data.ValidatingType = typeof(System.DateTime);
+            // 
+            // maskedTextBox_Hora
+            // 
+            this.maskedTextBox_Hora.Location = new System.Drawing.Point(459, 101);
+            this.maskedTextBox_Hora.Mask = "90:00";
+            this.maskedTextBox_Hora.Name = "maskedTextBox_Hora";
+            this.maskedTextBox_Hora.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox_Hora.TabIndex = 28;
+            this.maskedTextBox_Hora.ValidatingType = typeof(System.DateTime);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(401, 104);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(33, 13);
+            this.label10.TabIndex = 29;
+            this.label10.Text = "Hora:";
+            // 
             // Form5_Registro_Pac
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.maskedTextBox_Hora);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.maskedTextBox_Data);
+            this.Controls.Add(this.maskedTextBox_telefone);
+            this.Controls.Add(this.maskedTextBox_CPF);
             this.Controls.Add(this.button_Buscar);
-            this.Controls.Add(this.textBox_Telefone);
             this.Controls.Add(this.textBox_Email);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -349,11 +376,9 @@
             this.Controls.Add(this.button_Editar);
             this.Controls.Add(this.button_Cadastrar);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox_CPF);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox_Funcionario);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox_Data);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox_NotaFiscal);
             this.Controls.Add(this.label3);
@@ -385,11 +410,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox_NotaFiscal;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox_Data;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox_Funcionario;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox_CPF;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button_Cadastrar;
         private System.Windows.Forms.Button button_Editar;
@@ -403,7 +426,11 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox_Email;
-        private System.Windows.Forms.TextBox textBox_Telefone;
         private System.Windows.Forms.Button button_Buscar;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox_CPF;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox_telefone;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox_Data;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox_Hora;
+        private System.Windows.Forms.Label label10;
     }
 }

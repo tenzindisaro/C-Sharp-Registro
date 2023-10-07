@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -23,21 +25,50 @@ namespace WindowsFormsApp1.RegistrosPac
         {
             
             
-            if (textBox_Funcionario.Text != null && textBox_NotaFiscal.Text != null && textBox_Data.Text != null && textBox_Titular.Text != null
-                && textBox_CPF.Text != null && comboBox_Situacao.Text != null && textBox_Email.Text != null && textBox_Telefone.Text != null)
+            if (textBox_Funcionario.Text != null && textBox_NotaFiscal.Text != null && maskedTextBox_Data.Text != null && textBox_Titular.Text != null
+                && maskedTextBox_CPF.Text != null && comboBox_Situacao.Text != null && textBox_Email.Text != null && maskedTextBox_telefone.Text != null)
             {
                 string funcionario = textBox_Funcionario.Text;
-                int notaFiscal = int.Parse(textBox_NotaFiscal.Text);
-                int data = int.Parse(textBox_Data.Text);
+
+                if (Regex.IsMatch(funcionario, "^[a-zA-Z ]+$"))
+                {
+                    funcionario = textBox_Funcionario.Text;
+                }
+                else
+                {
+                    Console.WriteLine("erro campo funcionario");
+                }
+
+                string entradaNotaFiscal = textBox_NotaFiscal.Text;
+                int notaFiscal;
+                int.TryParse(entradaNotaFiscal, out notaFiscal);
+
+                if (int.TryParse(entradaNotaFiscal, out notaFiscal) == false)
+                {
+                    Console.WriteLine("nota fiscal errada");
+                }
+
+
+                
+
+
+
+
+
+                
+                int data = int.Parse(maskedTextBox_Data.Text);
                 string titular = textBox_Titular.Text;
-                int cpf = int.Parse(textBox_CPF.Text);
+                int cpf = int.Parse(maskedTextBox_CPF.Text);
                 string situacao = comboBox_Situacao.Text;
                 string email = textBox_Email.Text;
-                int telefone = int.Parse(textBox_Telefone.Text);
+                int telefone = int.Parse(maskedTextBox_telefone.Text);
+                int hora = int.Parse(maskedTextBox_Hora.Text);
+
+               
 
 
 
-                cadastro = new Class_CadastroPac( funcionario, titular, situacao, email, notaFiscal, data, telefone, cpf);
+                cadastro = new Class_CadastroPac( funcionario, titular, situacao, email, notaFiscal, data, telefone, cpf, hora);
 
             }
             else
