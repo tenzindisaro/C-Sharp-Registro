@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Threading;
 using WindowsFormsApp1.Cadastros;
+using System.Threading;
+using System.Diagnostics;
+
 
 namespace WindowsFormsApp1
 {
@@ -20,7 +23,6 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
-
         private void trocarUsuárioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -43,6 +45,7 @@ namespace WindowsFormsApp1
         private void abrirCadastrarUsuario (object obj)
         {
             Application.Run(new Cadastros.Form4TelaCadastrosUsers());
-        }
+        }  
+
     }
 }

@@ -24,6 +24,7 @@ namespace WindowsFormsApp1
 
         private void btnContinuar_Click(object sender, EventArgs e)
         {
+<<<<<<< Updated upstream
             User actualyUser = new User("Administrador Padrão", "admin@americanas.com.br", "admin12345");   //deve se ignorar este objeto e seus dados por enquanto
 
             //este if é para validar se o formato dos dados de entrada são condizentes
@@ -37,6 +38,12 @@ namespace WindowsFormsApp1
                     t1.SetApartmentState(ApartmentState.MTA);
                     t1.Start();
                 }
+=======
+            User firstAdm = new User("Administrador Padrão", "admin@americanas.com.br", "admin12345");
+            if (firstAdm.CheckUser(txtEmail.Text, firstAdm.GetUserData(4))) 
+            {
+                label1.Visible = false;
+>>>>>>> Stashed changes
             }
             else 
             { 

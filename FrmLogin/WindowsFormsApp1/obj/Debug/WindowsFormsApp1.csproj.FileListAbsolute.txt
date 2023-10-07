@@ -32,6 +32,10 @@ C:\Users\Tenzin\Desktop\novo pull\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFor
 C:\Users\Tenzin\Desktop\novo pull\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 C:\Users\Tenzin\Desktop\novo pull\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form3_Tela_Menu.resources
 C:\Users\Tenzin\Desktop\novo pull\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Cadastros.Form4_Tela_Cadastros.resources
+<<<<<<< Updated upstream
+=======
+C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Cadastros.Form4_Tela_Cadastros.resources
+>>>>>>> Stashed changes
 C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form10_T_RelaEntrega.resources
 C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form11_OBS.resources
 C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form3_Tela_Menu.resources
