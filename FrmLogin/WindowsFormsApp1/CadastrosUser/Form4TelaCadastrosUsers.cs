@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Cadastros
 {
-    public partial class Form4_Tela_Cadastros : Form
+    public partial class Form4TelaCadastrosUsers : Form
     {
-        public Form4_Tela_Cadastros()
+        public Form4TelaCadastrosUsers()
         {
             InitializeComponent();
         }

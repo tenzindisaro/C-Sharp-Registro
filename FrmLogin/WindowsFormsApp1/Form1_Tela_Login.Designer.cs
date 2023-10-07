@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlLogin = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.lbLogin = new System.Windows.Forms.Label();
             this.btnContinuar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -36,7 +37,6 @@
             this.lbEmail = new System.Windows.Forms.Label();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.pnlLogin.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,6 +54,17 @@
             this.pnlLogin.Name = "pnlLogin";
             this.pnlLogin.Size = new System.Drawing.Size(202, 325);
             this.pnlLogin.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(28, 232);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(144, 18);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Email ou senha inválidos";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Visible = false;
             // 
             // lbLogin
             // 
@@ -117,17 +128,6 @@
             this.txtEmail.Size = new System.Drawing.Size(144, 20);
             this.txtEmail.TabIndex = 0;
             // 
-            // label1
-            // 
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(28, 232);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(144, 18);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Email ou senha inválidos";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Visible = false;
-            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -137,8 +137,8 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.pnlLogin);
             this.Name = "FrmLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.pnlLogin.ResumeLayout(false);
             this.pnlLogin.PerformLayout();
             this.ResumeLayout(false);

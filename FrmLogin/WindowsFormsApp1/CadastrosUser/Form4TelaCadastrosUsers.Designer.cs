@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1.Cadastros
 {
-    partial class Form4_Tela_Cadastros
+    partial class Form4TelaCadastrosUsers
     {
         /// <summary>
         /// Required designer variable.
