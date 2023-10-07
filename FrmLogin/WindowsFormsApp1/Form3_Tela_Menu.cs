@@ -35,7 +35,6 @@ namespace WindowsFormsApp1
             t2.SetApartmentState(ApartmentState.MTA);
             t2.Start();
         }
-
         private void abrirLogin (object obj)
         {
             Application.Run(new FrmLogin());

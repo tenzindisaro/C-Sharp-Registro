@@ -48,10 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CadastrosUser\Form4TelaCadastrosUsers.cs">
+    <Compile Include="CadastroUser\Form4TelaCadastrosUsers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CadastrosUser\Form4TelaCadastrosUsers.Designer.cs">
+    <Compile Include="CadastroUser\Form4TelaCadastrosUsers.Designer.cs">
       <DependentUpon>Form4TelaCadastrosUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="Class_CadastroPac.cs" />
