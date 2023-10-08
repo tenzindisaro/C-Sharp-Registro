@@ -120,7 +120,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(245, 388);
+            this.button4.Location = new System.Drawing.Point(326, 388);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 48);
             this.button4.TabIndex = 95;
@@ -147,12 +147,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(326, 388);
+            this.button1.Location = new System.Drawing.Point(245, 388);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 48);
             this.button1.TabIndex = 92;
             this.button1.Text = "ADD Usuário";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // radioButton3
             // 

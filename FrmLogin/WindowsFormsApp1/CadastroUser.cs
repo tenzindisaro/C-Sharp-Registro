@@ -23,9 +23,13 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text == "" || textBox3.Text == "" || textBox5.Text == "" || textBox6.Text == "") ;
+            if (textBox2.Text == "" || textBox3.Text == "" || textBox5.Text == "" || textBox6.Text == "")
             {
                 MessageBox.Show("Existem campos não preenchidos!\nPor favor, complete todas as caixas de texto.", "Dados incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                MessageBox.Show("Novo usuário cadastrado com sucesso!", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

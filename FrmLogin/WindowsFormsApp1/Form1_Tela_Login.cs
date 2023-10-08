@@ -37,6 +37,10 @@ namespace WindowsFormsApp1
                     t1.SetApartmentState(ApartmentState.MTA);
                     t1.Start();
                 }
+                else
+                {
+                    label1.Visible = true;
+                }
             }
         }
         private void abrirMenu(object obj)
