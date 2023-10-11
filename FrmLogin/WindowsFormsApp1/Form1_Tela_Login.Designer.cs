@@ -65,7 +65,6 @@
             this.label1.Text = "Email ou senha inválidos";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Visible = false;
-            //this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // lbLogin
             // 

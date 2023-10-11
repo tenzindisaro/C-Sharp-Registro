@@ -48,12 +48,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CadastroUser.cs">
+    <Compile Include="FormCadastroUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CadastroUser.Designer.cs">
-      <DependentUpon>CadastroUser.cs</DependentUpon>
+    <Compile Include="FormCadastroUser.Designer.cs">
+      <DependentUpon>FormCadastroUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="CadastroUsuarios.cs" />
     <Compile Include="Class_CadastroPac.cs" />
     <Compile Include="Class_Pacote.cs" />
     <Compile Include="Form10_T_RelaEntrega.cs">
@@ -119,8 +120,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CadastroUser.resx">
-      <DependentUpon>CadastroUser.cs</DependentUpon>
+    <EmbeddedResource Include="FormCadastroUser.resx">
+      <DependentUpon>FormCadastroUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form10_T_RelaEntrega.resx">
       <DependentUpon>Form10_T_RelaEntrega.cs</DependentUpon>

@@ -43,7 +43,7 @@ namespace WindowsFormsApp1
 
         private void abrirCadastrarUsuario(object obj)
         {
-            Application.Run(new CadastroUser());
+            Application.Run(new FormCadastroUser());
         }
 
         private void registroToolStripMenuItem1_Click_1(object sender, EventArgs e)

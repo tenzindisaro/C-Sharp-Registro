@@ -22,25 +22,25 @@ namespace WindowsFormsApp1
             txtEmail.Focus();
         }
 
+        private string inputEmail, inputPassword;
         private void btnContinuar_Click(object sender, EventArgs e)
         {
-            User actualyUser = new User("Administrador Padrão", "admin@americanas.com.br", "admin12345");   //deve se ignorar este objeto e seus dados por enquanto
+            inputEmail = txtEmail.Text;
+            inputPassword = txtSenha.Text;
 
-            //este if é para validar se o formato dos dados de entrada são condizentes
-            if (actualyUser.CheckUser(txtEmail.Text, actualyUser.GetUserData(4)))
+            User actualyUser = new User("Administrador Padrão", "admin@americanas.com.br", "admin12345", "undefined", "undefined", "undefined");   //deve se ignorar este objeto e seus dados por enquanto
+
+            if (/*nome-Sugestivo_funcaoValidar(inputEmail, inputPassword) == */true)   //aqui, deve-se avaliar se os dados do usuário estão no banco de dados. 
             {
-                if (/*nome-Sugestivo_funcaoValidar() == */true)   //aqui, deve-se avaliar se os dados do usuário estão no banco de dados. 
-                {
-                    label1.Visible = false;
-                    this.Close();
-                    t1 = new Thread(abrirMenu);
-                    t1.SetApartmentState(ApartmentState.MTA);
-                    t1.Start();
-                }
-                else
-                {
-                    label1.Visible = true;
-                }
+                label1.Visible = false;
+                this.Close();
+                t1 = new Thread(abrirMenu);
+                t1.SetApartmentState(ApartmentState.MTA);
+                t1.Start();
+            }
+            else
+            {
+                label1.Visible = true;
             }
         }
         private void abrirMenu(object obj)

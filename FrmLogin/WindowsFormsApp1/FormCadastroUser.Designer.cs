@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class CadastroUser
+    partial class FormCadastroUser
     {
         /// <summary>
         /// Required designer variable.
@@ -54,6 +54,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label9
@@ -76,7 +78,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(404, 102);
+            this.label8.Location = new System.Drawing.Point(386, 102);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 13);
             this.label8.TabIndex = 100;
@@ -114,9 +116,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(577, 101);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(86, 13);
+            this.label7.Size = new System.Drawing.Size(89, 13);
             this.label7.TabIndex = 96;
-            this.label7.Text = "Nível de Acesso";
+            this.label7.Text = "Nível de Acesso:";
             // 
             // button4
             // 
@@ -191,7 +193,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(458, 53);
+            this.comboBox1.Location = new System.Drawing.Point(669, 53);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 88;
@@ -199,7 +201,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(404, 56);
+            this.label6.Location = new System.Drawing.Point(577, 56);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(38, 13);
             this.label6.TabIndex = 87;
@@ -207,7 +209,7 @@
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(66, 99);
+            this.textBox5.Location = new System.Drawing.Point(252, 103);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 20);
             this.textBox5.TabIndex = 86;
@@ -223,7 +225,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(280, 99);
+            this.textBox4.Location = new System.Drawing.Point(66, 103);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 20);
             this.textBox4.TabIndex = 84;
@@ -239,7 +241,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(280, 53);
+            this.textBox3.Location = new System.Drawing.Point(252, 53);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 82;
@@ -285,11 +287,29 @@
             this.label1.TabIndex = 77;
             this.label1.Text = "Buscar:";
             // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(458, 53);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(100, 20);
+            this.textBox7.TabIndex = 104;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(386, 56);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(94, 13);
+            this.label10.TabIndex = 103;
+            this.label10.Text = "Confirme a Senha:";
+            // 
             // CadastroUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label8);
@@ -351,5 +371,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label label10;
     }
 }

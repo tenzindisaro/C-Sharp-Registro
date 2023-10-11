@@ -8,43 +8,52 @@ namespace WindowsFormsApp1
 {
     internal class User
     {
-        private string name, password, email, phoneNumber;
+        private string name, password, email, phoneNumber, address;
 
-        public User(string inputName , string inputEmail, string inputPassword) 
+        public User(string inputName , string inputEmail, string inputPassword, string inputPhone, string inputAddress) 
         {
             name = inputName;
-
-            if (inputPassword.Length >= 6 && inputPassword.Length <= 32)
-            {
-                password = inputPassword;
-            }
-
-            if (inputEmail != "")
+            if (checkEmail(email))
             {
                 email = inputEmail;
             }
-            phoneNumber = "undefined";
+            phoneNumber = inputPhone;
+            address = inputAddress;
+
+            if (checkPassword(inputPassword))
+            {
+                password = inputPassword;
+            }
         }
 
-        public bool CheckUser (string inputEmail, string inputPassword)
+        public bool checkEmail (string inputEmail)
         {
             if (inputEmail.Contains("@americanas.com.br")) 
             {
-                if (inputPassword.Length >= 6 && inputPassword.Length <= 32)
-                {
-                    return true;
-                }
+                return true;
+            }
+            return false;            
+        }
+        
+        public bool checkPassword (string inputPassword)
+        {
+            if (inputPassword.Length >= 6 && inputPassword.Length <= 32) 
+            {
+                return true;
             }
             return false;            
         }
 
-        public string GetUserData (int data)
+        public string GetUserData (int numData)
         {
-            switch (data) {
+            switch (numData) 
+            {
                 case 1: return name;
                 case 2: return email;
                 case 3: return phoneNumber;
                 case 4: return password;
+                case 5: return jobTitle;
+                case 6: return address;
             }
             return "undefined";
         }
