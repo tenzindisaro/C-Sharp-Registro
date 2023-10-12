@@ -14,7 +14,8 @@ namespace WindowsFormsApp1.RegistrosPac
 {
     public partial class Form5_Registro_Pac : Form
     {
-        Class_CadastroPac cadastroPacote; 
+        Class_CadastroPac cadastroPacote = new Class_CadastroPac();
+        Class_Pacote envio_dadosValidados = new Class_Pacote();
 
         public Form5_Registro_Pac()
         {
@@ -36,12 +37,22 @@ namespace WindowsFormsApp1.RegistrosPac
 
             if (funcionario != null && notaFiscal != null && data != null && titular != null & CPF != null && situacao != null 
                 && email != null && telefone != null && hora != null)
-            {
-                
+            {          
+                              
+                cadastroPacote.setValid_dados(funcionario, titular, situacao, email, notaFiscal, data, telefone, CPF, hora );
 
+                string dadosValidos_funcionario = cadastroPacote.getCad_Funcionario();
+                string dadosValidos_titular = cadastroPacote.getCad_Titular();
+                string dadosValidos_situacao = cadastroPacote.getCad_Situacao();
+                string dadosValidos_email = cadastroPacote.getCad_Email();
+                int dadosValidos_notaFiscal = cadastroPacote.getCad_NotaFiscal();
+                int dadosValidos_data = cadastroPacote.getCad_Data();
+                int dadosValidos_telefone = cadastroPacote.getCad_Telefone();
+                int dadosValidos_CPF = cadastroPacote.getCad_Cpf();
+                int dadosValidos_hora = cadastroPacote.getCad_Hora();
 
-               
-                cadastroPacote = new Class_CadastroPac(funcionario, notaFiscal, data, titular, CPF, situacao, email, telefone, hora );                 
+                envio_dadosValidados.SetCadastro(dadosValidos_funcionario, dadosValidos_titular, dadosValidos_situacao, dadosValidos_email, dadosValidos_notaFiscal, dadosValidos_data, dadosValidos_telefone, dadosValidos_CPF,
+                    dadosValidos_hora);
 
             }
             else
