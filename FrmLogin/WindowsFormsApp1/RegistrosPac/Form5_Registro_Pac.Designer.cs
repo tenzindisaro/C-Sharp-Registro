@@ -60,6 +60,7 @@
             this.maskedTextBox_Hora = new System.Windows.Forms.MaskedTextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.maskedTextBox_email = new System.Windows.Forms.MaskedTextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -356,11 +357,22 @@
             this.maskedTextBox_email.Size = new System.Drawing.Size(100, 20);
             this.maskedTextBox_email.TabIndex = 0;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.Red;
+            this.label11.Location = new System.Drawing.Point(12, 20);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(298, 13);
+            this.label11.TabIndex = 103;
+            this.label11.Text = "Todos os campos com asterisco (\"*\") devem ser preenchidos.";
+            // 
             // Form5_Registro_Pac
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.maskedTextBox_email);
             this.Controls.Add(this.maskedTextBox_Hora);
             this.Controls.Add(this.label10);
@@ -433,5 +445,6 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox_Hora;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.MaskedTextBox maskedTextBox_email;
+        private System.Windows.Forms.Label label11;
     }
 }

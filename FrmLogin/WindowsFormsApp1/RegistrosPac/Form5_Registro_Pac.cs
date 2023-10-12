@@ -14,7 +14,7 @@ namespace WindowsFormsApp1.RegistrosPac
 {
     public partial class Form5_Registro_Pac : Form
     {
-        Class_Pacote cadastroPacote; 
+        Class_CadastroPac cadastroPacote; 
 
         public Form5_Registro_Pac()
         {
@@ -23,80 +23,25 @@ namespace WindowsFormsApp1.RegistrosPac
 
         private void button_Cadastrar_Click(object sender, EventArgs e)
         {
-            
-            
-            if (textBox_Funcionario.Text != null && textBox_NotaFiscal.Text != null && maskedTextBox_Data.Text != null && textBox_Titular.Text != null
-                && maskedTextBox_CPF.Text != null && comboBox_Situacao.Text != null && maskedTextBox_email.Text != null && maskedTextBox_telefone.Text != null)
+            string funcionario = textBox_Funcionario.Text;
+            string notaFiscal = textBox_NotaFiscal.Text;
+            string data = maskedTextBox_Data.Text;
+            string titular = textBox_Titular.Text;
+            string CPF = maskedTextBox_CPF.Text;
+            string situacao = comboBox_Situacao.Text;
+            string email = maskedTextBox_email.Text;
+            string telefone = maskedTextBox_telefone.Text;
+            string hora = maskedTextBox_Hora.Text;
+
+
+            if (funcionario != null && notaFiscal != null && data != null && titular != null & CPF != null && situacao != null 
+                && email != null && telefone != null && hora != null)
             {
-                string funcionario = textBox_Funcionario.Text;
-
-                if (Regex.IsMatch(funcionario, "^[a-zA-Z ]+$"))
-                {
-                    funcionario = textBox_Funcionario.Text;
-                }
-                else
-                {
-                    MessageBox.Show("Insira apenas letras no campo Funcionário.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-                string entradaNotaFiscal = textBox_NotaFiscal.Text;
-                int notaFiscal;
-                int.TryParse(entradaNotaFiscal, out notaFiscal);
-
-                if (int.TryParse(entradaNotaFiscal, out notaFiscal) == false)
-                {
-                    MessageBox.Show("Insira apenas numeros no campo Nota Fiscal.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-                string entradaData = maskedTextBox_Data.Text;
-                int data;
-                int.TryParse(entradaData, out data);
-                if (int.TryParse(entradaData, out data) == false)
-                {
-                    Console.WriteLine("data errada");
-                }
                 
-                string titular = textBox_Titular.Text;
 
-                if (Regex.IsMatch(titular, "^[a-zA-Z ]+$"))
-                {
-                    titular = textBox_Funcionario.Text;
-                }
-                else
-                {
-                    MessageBox.Show("Insira apenas letras no campo Titular.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
 
-                string entradaCPF = maskedTextBox_CPF.Text;
-                int cpf;
-                int.TryParse(entradaCPF, out cpf);
-
-                if(int.TryParse(entradaCPF, out cpf) == false)
-                {
-                    MessageBox.Show("Insira apenas numeros no campo CPF.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
                
-                string situacao = comboBox_Situacao.Text;           
-                string email = maskedTextBox_email.Text;
-                
-                string entradaTelefone = maskedTextBox_telefone.Text;
-                int telefone;                
-                int.TryParse(entradaTelefone, out telefone);
-
-                if(int.TryParse(entradaTelefone, out telefone) == false)
-                {
-                    MessageBox.Show("Insira apenas numeros no campo Telefone.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-                string entradaHora = maskedTextBox_Hora.Text;
-                int hora;
-                int.TryParse(maskedTextBox_Hora.Text, out hora);
-                if(int.TryParse(maskedTextBox_Hora.Text, out hora) == false)
-                {
-                    MessageBox.Show("Insira apenas numeros no campo Hora.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }            
-
-                cadastroPacote = new Class_Pacote( funcionario, titular, situacao, email, notaFiscal, data, telefone, cpf, hora);
+                cadastroPacote = new Class_CadastroPac(funcionario, notaFiscal, data, titular, CPF, situacao, email, telefone, hora );                 
 
             }
             else
@@ -104,5 +49,7 @@ namespace WindowsFormsApp1.RegistrosPac
                 MessageBox.Show("Todos os campos de cadastro precisam ser preenchidos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
+
+        
     }
 }

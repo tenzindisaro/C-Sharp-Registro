@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
             hora = 0;
         }
 
-        public Class_Pacote(string funcionario_txt, string titular_txt, string situacao_txt, string email_txt,
+        /*public Class_Pacote(string funcionario_txt, string titular_txt, string situacao_txt, string email_txt,
             int notaFiscal_txt, int data_txt, int telefone_txt, int cpf_txt, int hora_txt)
         {
             // a validação dos items ira ser feita nesse campo..
@@ -37,7 +37,7 @@ namespace WindowsFormsApp1
             this.telefone = telefone_txt;
             this.cpf = cpf_txt;
             this.hora = hora_txt;
-        }
+        }*/
 
         public void SetCadastro(string funcionario_nome, string titular_nome, string situacao, string email, 
             int nota_fiscal, int data, int telefone, int cpf, int hora)
