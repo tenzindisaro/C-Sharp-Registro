@@ -35,14 +35,7 @@ namespace WindowsFormsApp1
             inputAddress = textBox5.Text;
             inputEmail = textBox6.Text;
 
-            if ( inputName != "")
-            {
-                
-            }
-            else
-            {
-                MessageBox.Show("Campo \"Nome\" não preenchido!\nPor favor, complete todas as caixas de texto.", "Dados incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            cadastrados.checkInput(inputEmail, inputPassword, inputConfirmPassword, inputName, inputAddress, inputPhoneNumber);
         }
     }
 }

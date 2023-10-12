@@ -57,7 +57,6 @@ C:\Linguagens e Programação\C#\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\
 C:\Linguagens e Programação\C#\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
 C:\Linguagens e Programação\C#\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
 C:\Linguagens e Programação\C#\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
-C:\Linguagens e Programação\C#\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.CadastroUser.resources
 C:\Linguagens e Programação\C#\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form10_T_RelaEntrega.resources
 C:\Linguagens e Programação\C#\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form11_OBS.resources
 C:\Linguagens e Programação\C#\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FrmLogin.resources
@@ -73,3 +72,4 @@ C:\Linguagens e Programação\C#\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\
 C:\Linguagens e Programação\C#\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 C:\Linguagens e Programação\C#\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Linguagens e Programação\C#\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Linguagens e Programação\C#\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormCadastroUser.resources

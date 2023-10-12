@@ -25,30 +25,34 @@ namespace WindowsFormsApp1
                 {
                     if (inputConfirmPassword != "")
                     {
-                        if (inputPhoneNumber != "")
+                        if (inputPassword == inputConfirmPassword)
                         {
-                            if (inputAddress != "")
+                            if (inputPhoneNumber != "")
                             {
-                                if (inputEmail != "")
+                                if (inputAddress != "")
                                 {
-                                    MessageBox.Show("Novo usuário cadastrado com sucesso!", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    novoUser = new User(inputName, inputEmail, inputPassword, inputPhoneNumber, inputAddress);
-                                    adicionarUsuario(novoUser);
+                                    if (inputEmail != "")
+                                    {
+                                        MessageBox.Show("Novo usuário cadastrado com sucesso!", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        novoUser = new User(inputName, inputEmail, inputPassword, inputPhoneNumber, inputAddress);
+                                        adicionarUsuario(novoUser);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Campo \"Email\" não preenchido!\nPor favor, complete todas as caixas de texto.", "Dados incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Campo \"Email\" não preenchido!\nPor favor, complete todas as caixas de texto.", "Dados incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("Campo \"Endereço\" não preenchido!\nPor favor, complete todas as caixas de texto.", "Dados incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("Campo \"Endereço\" não preenchido!\nPor favor, complete todas as caixas de texto.", "Dados incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                MessageBox.Show("As senhas inseridas não coincidem!", "Senha inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                         }
-                        else
-                        {
-                            MessageBox.Show("Campo \"Telefone\" não preenchido!\nPor favor, complete todas as caixas de texto.", "Dados incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
+                                MessageBox.Show("Campo \"Telefone\" não preenchido!\nPor favor, complete todas as caixas de texto.", "Dados incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {

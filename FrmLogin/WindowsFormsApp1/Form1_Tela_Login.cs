@@ -28,7 +28,7 @@ namespace WindowsFormsApp1
             inputEmail = txtEmail.Text;
             inputPassword = txtSenha.Text;
 
-            User actualyUser = new User("Administrador Padrão", "admin@americanas.com.br", "admin12345", "undefined", "undefined", "undefined");   //deve se ignorar este objeto e seus dados por enquanto
+            User actualyUser = new User("Administrador Padrão", "admin@americanas.com.br", "admin12345", "undefined", "undefined");   //deve se ignorar este objeto e seus dados por enquanto
 
             if (/*nome-Sugestivo_funcaoValidar(inputEmail, inputPassword) == */true)   //aqui, deve-se avaliar se os dados do usuário estão no banco de dados. 
             {

@@ -13,7 +13,7 @@ namespace WindowsFormsApp1
         public User(string inputName , string inputEmail, string inputPassword, string inputPhone, string inputAddress) 
         {
             name = inputName;
-            if (checkEmail(email))
+            if (checkEmail(inputEmail))
             {
                 email = inputEmail;
             }
@@ -52,8 +52,7 @@ namespace WindowsFormsApp1
                 case 2: return email;
                 case 3: return phoneNumber;
                 case 4: return password;
-                case 5: return jobTitle;
-                case 6: return address;
+                case 5: return address;
             }
             return "undefined";
         }
