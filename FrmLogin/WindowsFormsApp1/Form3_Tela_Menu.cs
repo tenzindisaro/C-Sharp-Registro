@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Threading;
+using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApp1
 {
@@ -70,5 +71,19 @@ namespace WindowsFormsApp1
             Application.Run(new lista.Geral.Form6_Lista_Geral());
         }
 
+        private void Form3_Tela_Menu_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                var strConnection = "server=localhost;uid=root;password='Tenzin2023#';database=projeto_registro_sql";
+                var conn = new MySqlConnection(strConnection);
+                conn.Open();
+            }
+            catch 
+            {
+                MessageBox.Show("erro conectar banco de dados.");                
+            }           
+
+        }
     }
 }

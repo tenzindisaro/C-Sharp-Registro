@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\FrmLogin"
   ],
-  "SelectedNode": "\\FrmLogin.sln",
-  "PreviewInSolutionExplorer": false
+  "SelectedNode": "\\FrmLogin\\FrmLogin.sln",
+  "PreviewInSolutionExplorer": true
 }
