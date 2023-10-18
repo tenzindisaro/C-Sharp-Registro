@@ -75,9 +75,15 @@ namespace WindowsFormsApp1
         {
             try
             {
-                var strConnection = "server=localhost;uid=root;password='Tenzin2023#';database=projeto_registro_sql";
-                var conn = new MySqlConnection(strConnection);
+                // string de conexão BD
+                var strConnection = "server=localhost;port=3307;User Id=root;database=projeto_registro_sql;password=usbw";
+                MySqlConnection conn = new MySqlConnection(strConnection);
+                //abre o BD
                 conn.Open();
+                MessageBox.Show("conectado BD.");
+                //fecha o BD
+                conn.Close();
+                
             }
             catch 
             {

@@ -8,8 +8,8 @@ namespace WindowsFormsApp1
 {
     internal class Class_Pacote
     {
-        private string funcionario_nome, titular_nome, situacao, email;
-        private int nota_fiscal, data, telefone, cpf, hora;
+        private string funcionario_nome, titular_nome, situacao, email, nota_fiscal, data, telefone, cpf, hora;
+
 
         public Class_Pacote() 
         {
@@ -17,11 +17,11 @@ namespace WindowsFormsApp1
             titular_nome = null;
             situacao = null;
             email = null;
-            nota_fiscal = 0;
-            telefone = 0;
-            data = 0;
-            cpf = 0;
-            hora = 0;
+            nota_fiscal = null;
+            telefone = null;
+            data = null;
+            cpf = null;
+            hora = null;
         }
 
         /*public Class_Pacote(string funcionario_txt, string titular_txt, string situacao_txt, string email_txt,
@@ -39,7 +39,7 @@ namespace WindowsFormsApp1
             this.hora = hora_txt;
         }*/
 
-        public void SetCadastro(string funcionario_nome, string titular_nome, string situacao, string email, int nota_fiscal, int data, int telefone, int cpf, int hora)
+        public void SetCadastro(string funcionario_nome, string titular_nome, string situacao, string email, string nota_fiscal, string data, string telefone, string cpf, string hora)
         {
             
             
@@ -63,13 +63,13 @@ namespace WindowsFormsApp1
          }*/
 
         public string getFuncionarioPac() { return funcionario_nome; }
-        public string getTitularPac() { return titular_nome; }
+        public string getNomeTitularPac() { return titular_nome; }
         public string getSituacaoPac() { return situacao; }
         public string getEmailPac() { return email; }
-        public int getNotaFiscalPac() { return nota_fiscal; }
-        public int getTelefonePac() { return telefone; }
-        public int getDataPac() { return data; }
-        public int getCpfPac() { return cpf;}
-        public int getHoraPac() { return hora; }
+        public string getNotaFiscalPac() { return nota_fiscal; }
+        public string getTelefonePac() { return telefone; }
+        public string getDataPac() { return data; }
+        public string getCpfPac() { return cpf;}
+        public string getHoraPac() { return hora; }
     }
 }
