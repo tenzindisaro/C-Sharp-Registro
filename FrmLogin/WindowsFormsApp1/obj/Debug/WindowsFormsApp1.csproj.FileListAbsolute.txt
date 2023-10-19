@@ -32,6 +32,7 @@ C:\Users\Tenzin\Desktop\novo pull\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFor
 C:\Users\Tenzin\Desktop\novo pull\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 C:\Users\Tenzin\Desktop\novo pull\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form3_Tela_Menu.resources
 C:\Users\Tenzin\Desktop\novo pull\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Cadastros.Form4_Tela_Cadastros.resources
+<<<<<<< HEAD
 C:\Users\drjap\Source\Repos\tenzindisaro\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
 C:\Users\drjap\Source\Repos\tenzindisaro\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Cadastros.Form4TelaCadastrosUsers.resources
 C:\Users\drjap\Source\Repos\tenzindisaro\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form10_T_RelaEntrega.resources
@@ -176,3 +177,18 @@ C:\Users\Tenzin\Desktop\C#16-10\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsForms
 C:\Users\Tenzin\Desktop\C#16-10\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
 C:\Users\Tenzin\Desktop\C#16-10\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\Tenzin\Desktop\C#16-10\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+=======
+<<<<<<< Updated upstream
+=======
+C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Cadastros.Form4_Tela_Cadastros.resources
+>>>>>>> Stashed changes
+C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form10_T_RelaEntrega.resources
+C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form11_OBS.resources
+C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form3_Tela_Menu.resources
+C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.lista.Geral.Form6_Lista_Geral.resources
+C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.lista.presentes.Form7_Tela_Presentes.resources
+C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.lista.Recebidos_Retirados_nodia.Form9_recebidos_retirados_nodia.resources
+C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.lista.retirados.Form8_Tela_Retirados.resources
+C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.RegistrosPac.Form5_Registro_Pac.resources
+C:\Linguagens e Programação\C#\Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Cadastros.Form4TelaCadastrosUsers.resources
+>>>>>>> Angelo_Branch

@@ -106,14 +106,43 @@
             this.adicionarToolStripMenuItem,
             this.removerToolStripMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
+<<<<<<< HEAD
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
+=======
+            this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
+            this.cadastrosToolStripMenuItem.Text = "Funcionários";
+>>>>>>> Angelo_Branch
             // 
             // funcionáriosToolStripMenuItem
             // 
             this.funcionáriosToolStripMenuItem.Name = "funcionáriosToolStripMenuItem";
+<<<<<<< HEAD
             this.funcionáriosToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.funcionáriosToolStripMenuItem.Text = "Funcionários";
+=======
+            this.funcionáriosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.funcionáriosToolStripMenuItem.Text = "Cadastrados";
+            // 
+            // adicionarToolStripMenuItem1
+            // 
+            this.adicionarToolStripMenuItem1.Name = "adicionarToolStripMenuItem1";
+            this.adicionarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.adicionarToolStripMenuItem1.Text = "Adicionar";
+            this.adicionarToolStripMenuItem1.Click += new System.EventHandler(this.adicionarToolStripMenuItem1_Click);
+            // 
+            // adicionarToolStripMenuItem
+            // 
+            this.adicionarToolStripMenuItem.Name = "adicionarToolStripMenuItem";
+            this.adicionarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.adicionarToolStripMenuItem.Text = "Editar";
+            // 
+            // removerToolStripMenuItem
+            // 
+            this.removerToolStripMenuItem.Name = "removerToolStripMenuItem";
+            this.removerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removerToolStripMenuItem.Text = "Remover";
+>>>>>>> Angelo_Branch
             // 
             // adicionarToolStripMenuItem1
             // 
@@ -149,7 +178,11 @@
             this.registroToolStripMenuItem1.Name = "registroToolStripMenuItem1";
             this.registroToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
             this.registroToolStripMenuItem1.Text = "Registrar";
+<<<<<<< HEAD
             this.registroToolStripMenuItem1.Click += new System.EventHandler(this.registroToolStripMenuItem1_Click_1);
+=======
+            this.registroToolStripMenuItem1.Click += new System.EventHandler(this.registroToolStripMenuItem1_Click);
+>>>>>>> Angelo_Branch
             // 
             // editarToolStripMenuItem
             // 
@@ -160,7 +193,11 @@
             // deletToolStripMenuItem
             // 
             this.deletToolStripMenuItem.Name = "deletToolStripMenuItem";
+<<<<<<< HEAD
             this.deletToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+=======
+            this.deletToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+>>>>>>> Angelo_Branch
             this.deletToolStripMenuItem.Text = "Remover";
             // 
             // listaToolStripMenuItem
@@ -180,7 +217,11 @@
             this.geralToolStripMenuItem.Name = "geralToolStripMenuItem";
             this.geralToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.geralToolStripMenuItem.Text = "Geral";
+<<<<<<< HEAD
             this.geralToolStripMenuItem.Click += new System.EventHandler(this.geralToolStripMenuItem_Click_1);
+=======
+            this.geralToolStripMenuItem.Click += new System.EventHandler(this.geralToolStripMenuItem_Click);
+>>>>>>> Angelo_Branch
             // 
             // recebidosNoDiaToolStripMenuItem
             // 
@@ -304,7 +345,11 @@
             this.trocarUsuárioToolStripMenuItem.Name = "trocarUsuárioToolStripMenuItem";
             this.trocarUsuárioToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.trocarUsuárioToolStripMenuItem.Text = "Trocar Usuário";
+<<<<<<< HEAD
             this.trocarUsuárioToolStripMenuItem.Click += new System.EventHandler(this.trocarUsuárioToolStripMenuItem_Click_1);
+=======
+            this.trocarUsuárioToolStripMenuItem.Click += new System.EventHandler(this.trocarUsuárioToolStripMenuItem_Click);
+>>>>>>> Angelo_Branch
             // 
             // sairToolStripMenuItem1
             // 
@@ -512,7 +557,9 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "Form3_Tela_Menu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Americanas Rastreio";
             this.Load += new System.EventHandler(this.Form3_Tela_Menu_Load);
             this.menuStrip1.ResumeLayout(false);

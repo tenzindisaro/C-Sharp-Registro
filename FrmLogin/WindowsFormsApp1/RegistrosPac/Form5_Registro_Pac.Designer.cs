@@ -105,7 +105,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
+<<<<<<< HEAD
             this.label2.Location = new System.Drawing.Point(13, 105);
+=======
+            this.label2.Location = new System.Drawing.Point(35, 103);
+>>>>>>> Angelo_Branch
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 13);
             this.label2.TabIndex = 4;
@@ -130,11 +134,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(205, 57);
+            this.label3.Location = new System.Drawing.Point(197, 57);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 13);
+            this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Nota Fiscal";
+            this.label3.Text = "Nota Fiscal:";
             // 
             // textBox_NotaFiscal
             // 
@@ -146,7 +150,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(401, 57);
+            this.label4.Location = new System.Drawing.Point(420, 57);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 13);
             this.label4.TabIndex = 9;
@@ -155,7 +159,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
+<<<<<<< HEAD
             this.label5.Location = new System.Drawing.Point(12, 57);
+=======
+            this.label5.Location = new System.Drawing.Point(9, 57);
+>>>>>>> Angelo_Branch
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 13);
             this.label5.TabIndex = 11;
@@ -171,7 +179,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(205, 103);
+            this.label6.Location = new System.Drawing.Point(227, 104);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(30, 13);
             this.label6.TabIndex = 13;
@@ -282,7 +290,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(13, 144);
+            this.label8.Location = new System.Drawing.Point(39, 144);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 13);
             this.label8.TabIndex = 23;
@@ -403,7 +411,7 @@
             this.Controls.Add(this.rdb_Titular);
             this.Controls.Add(this.label1);
             this.Name = "Form5_Registro_Pac";
-            this.Text = "Registro de Pacaotes";
+            this.Text = "Registro de Pacotes";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);

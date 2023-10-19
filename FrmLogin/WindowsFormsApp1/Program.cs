@@ -16,7 +16,14 @@ namespace WindowsFormsApp1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< HEAD
             Application.Run(new Form3_Tela_Menu()); 
+=======
+            Application.Run(new FrmLogin());
+
+>>>>>>> Angelo_Branch
         }
+
+        
     }
 }

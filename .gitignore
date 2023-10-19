@@ -434,6 +434,10 @@ FodyWeavers.xsd
 >>>>>>> tenzin_branch
 /FrmLogin/.vs/FrmLogin/v17/.suo
 /.vs/project_c#_newpull/v17/.wsuo
+<<<<<<< HEAD
 /FrmLogin/WindowsFormsApp1/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 /.vs/slnx.sqlite
 /FrmLogin/WindowsFormsApp1/obj/Debug/WindowsFormsApp1.csproj.AssemblyReference.cache
+=======
+/.vs/slnx.sqlite
+>>>>>>> Angelo_Branch

@@ -101,11 +101,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="FormCadastroUser.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormCadastroUser.Designer.cs">
       <DependentUpon>FormCadastroUser.cs</DependentUpon>
+=======
+    <Compile Include="CadastroUser\Form4TelaCadastrosUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastroUser\Form4TelaCadastrosUsers.Designer.cs">
+      <DependentUpon>Form4TelaCadastrosUsers.cs</DependentUpon>
+>>>>>>> Angelo_Branch
     </Compile>
     <Compile Include="CadastroUsuarios.cs" />
     <Compile Include="Class_CadastroPac.cs" />
@@ -173,8 +181,13 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
     <EmbeddedResource Include="FormCadastroUser.resx">
       <DependentUpon>FormCadastroUser.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="CadastroUser\Form4TelaCadastrosUsers.resx">
+      <DependentUpon>Form4TelaCadastrosUsers.cs</DependentUpon>
+>>>>>>> Angelo_Branch
     </EmbeddedResource>
     <EmbeddedResource Include="Form10_T_RelaEntrega.resx">
       <DependentUpon>Form10_T_RelaEntrega.cs</DependentUpon>

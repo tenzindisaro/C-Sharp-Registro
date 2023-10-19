@@ -9,7 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Threading;
+<<<<<<< HEAD
 using MySql.Data.MySqlClient;
+=======
+
+>>>>>>> Angelo_Branch
 
 namespace WindowsFormsApp1
 {
@@ -20,8 +24,12 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+<<<<<<< HEAD
         
         private void trocarUsuárioToolStripMenuItem_Click_1(object sender, EventArgs e)
+=======
+        private void trocarUsuárioToolStripMenuItem_Click(object sender, EventArgs e)
+>>>>>>> Angelo_Branch
         {
             this.Close();
             t2 = new Thread(abrirLogin);
@@ -34,13 +42,18 @@ namespace WindowsFormsApp1
             Application.Run(new FrmLogin());
         }
 
+<<<<<<< HEAD
         private void adicionarToolStripMenuItem1_Click_1(object sender, EventArgs e)
+=======
+        private void adicionarToolStripMenuItem1_Click(object sender, EventArgs e)
+>>>>>>> Angelo_Branch
         {
             t2 = new Thread(abrirCadastrarUsuario);
             t2.SetApartmentState(ApartmentState.MTA);
             t2.Start();
         }
 
+<<<<<<< HEAD
 
         private void abrirCadastrarUsuario(object obj)
         {
@@ -48,23 +61,41 @@ namespace WindowsFormsApp1
         }
 
         private void registroToolStripMenuItem1_Click_1(object sender, EventArgs e)
+=======
+        private void abrirCadastrarUsuario (object obj)
+        {
+            Application.Run(new Cadastros.Form4TelaCadastrosUsers());
+        }
+
+        private void registroToolStripMenuItem1_Click(object sender, EventArgs e)
+>>>>>>> Angelo_Branch
         {
             t2 = new Thread(abrirRegistroPac);
             t2.SetApartmentState(ApartmentState.MTA);
             t2.Start();
         }
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> Angelo_Branch
         private void abrirRegistroPac(object obj)
         {
             Application.Run(new RegistrosPac.Form5_Registro_Pac());
         }
+<<<<<<< HEAD
         
         private void geralToolStripMenuItem_Click_1(object sender, EventArgs e)
+=======
+
+        private void geralToolStripMenuItem_Click(object sender, EventArgs e)
+>>>>>>> Angelo_Branch
         {
             t2 = new Thread(abrirLista);
             t2.SetApartmentState(ApartmentState.MTA);
             t2.Start();
         }
+<<<<<<< HEAD
                
         private void abrirLista(object obj)
         {
@@ -91,5 +122,12 @@ namespace WindowsFormsApp1
             }           
 
         }
+=======
+
+        private void abrirLista (object obj)
+        {
+            Application.Run(new lista.Geral.Form6_Lista_Geral());
+        }
+>>>>>>> Angelo_Branch
     }
 }
