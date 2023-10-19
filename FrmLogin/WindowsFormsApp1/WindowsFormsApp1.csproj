@@ -101,6 +101,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class_BD_CRUD.cs" />
     <Compile Include="FormCadastroUser.cs">
       <SubType>Form</SubType>
     </Compile>
