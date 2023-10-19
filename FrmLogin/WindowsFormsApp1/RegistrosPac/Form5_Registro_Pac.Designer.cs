@@ -404,6 +404,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Form5_Registro_Pac";
             this.Text = "Registro de Pacaotes";
+//            this.Load += new System.EventHandler(this.Form5_Registro_Pac_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
