@@ -21,21 +21,12 @@ namespace WindowsFormsApp1
             radioButton1.Checked = true;
         }
 
-        private string inputEmail , inputPassword, inputConfirmPassword, inputName, inputAddress, inputPhoneNumber;
-        CadastroUsuarios cadastrados = new CadastroUsuarios();
-
-
-
         private void button1_Click(object sender, EventArgs e)
         {
-            inputName = textBox2.Text;
-            inputPassword = textBox3.Text;
-            inputConfirmPassword = textBox7.Text;
-            inputPhoneNumber = textBox4.Text;
-            inputAddress = textBox5.Text;
-            inputEmail = textBox6.Text;
-
-            cadastrados.checkInput(inputEmail, inputPassword, inputConfirmPassword, inputName, inputAddress, inputPhoneNumber);
+            if (textBox2.Text == "" || textBox3.Text == "" || textBox5.Text == "" || textBox6.Text == "");
+            {
+                MessageBox.Show("Existem campos não preenchidos!\nPor favor, complete todas as caixas de texto.", "Dados incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }
