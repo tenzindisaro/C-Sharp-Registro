@@ -36,8 +36,8 @@ namespace WindowsFormsApp1.RegistrosPac
             string hora = maskedTextBox_Hora.Text;
             
 
-            if (funcionario != null && notaFiscal != null && data != null && titular != null & CPF != null && situacao != null 
-                && email != null && telefone != null && hora != null)
+            if (funcionario != "" && notaFiscal != "" && data != "" && titular != "" & CPF != "" && situacao != "" 
+                && email != "" && telefone != "" && hora != "")
             {          
                               
                 bool dadosOk = cadastroPacote.setValid_dados(funcionario, titular, situacao, email, notaFiscal, data, telefone, CPF, hora );
@@ -63,6 +63,8 @@ namespace WindowsFormsApp1.RegistrosPac
                         Bd.setInputBd_hora(dadosValidos_hora, dadosValidos_hora);
                         Bd.setInputBd_pacote(dadosValidos_notaFiscal, dadosValidos_situacao);
                         Bd.setBD_Close();
+
+                        
 
                     }
                     catch (Exception erro)
