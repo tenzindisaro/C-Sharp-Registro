@@ -14,7 +14,7 @@ namespace WindowsFormsApp1
 
         public Class_BD_CRUD() 
         {
-            var strConnection = "server=localhost;port=3307;User Id=root;database=projeto_registro_sql;password=usbw";
+            var strConnection = "server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ";
             MySqlConnection conn = new MySqlConnection(strConnection);
             //abre o BD
             conn.Open();
@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
         }
         public void setBD_Open()
         {
-            var strConnection = "server=localhost;port=3307;User Id=root;database=projeto_registro_sql;password=usbw";
+            var strConnection = "server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ";
             MySqlConnection conn = new MySqlConnection(strConnection);
             //abre o BD
             conn.Open();
@@ -31,7 +31,7 @@ namespace WindowsFormsApp1
         }
         public void setBD_Close() 
         {
-            var strConnection = "server=localhost;port=3307;User Id=root;database=projeto_registro_sql;password=usbw";
+            var strConnection = "server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ";
             MySqlConnection conn = new MySqlConnection(strConnection);
             //fecha o BD
             conn.Close();
@@ -39,7 +39,7 @@ namespace WindowsFormsApp1
         }
         public void setInputBd_funcionario(string nome_funcionario)
         {
-            var strConnection = "server=localhost;port=3307;User Id=root;database=projeto_registro_sql;password=usbw";
+            var strConnection = "server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ";
             MySqlConnection conn = new MySqlConnection(strConnection);
 
             //?????? como referenciar fazer ainda...
@@ -47,7 +47,7 @@ namespace WindowsFormsApp1
 
         public void setInputBd_titular (string cpf_titular, string nome, string email, string telefone)
         {
-            var strConnection = "server=localhost;port=3307;User Id=root;database=projeto_registro_sql;password=usbw";
+            var strConnection = "server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ";
             MySqlConnection conn = new MySqlConnection(strConnection);
 
             MySqlCommand objcmd_titular = new MySqlCommand("insert into titular (cpf_titular, nome, email, telefone) values (?, ?, ?, ?)", conn);
@@ -63,7 +63,7 @@ namespace WindowsFormsApp1
 
         public void setInputBd_data(string chegada_data, string retirada_data)
         {
-            var strConnection = "server=localhost;port=3307;User Id=root;database=projeto_registro_sql;password=usbw";
+            var strConnection = "   uoNk5WCFgcxKJ1AjalxJ";
             MySqlConnection conn = new MySqlConnection(strConnection);
 
             MySqlCommand objcmd_data = new MySqlCommand("insert into tbl_data (id_data, chegada_data, retirada_data) values (NULL, ?, ?)", conn);
@@ -78,7 +78,7 @@ namespace WindowsFormsApp1
         
         public void setInputBd_hora(string chegada_hora, string retirada_hora)
         {
-            var strConnection = "server=localhost;port=3307;User Id=root;database=projeto_registro_sql;password=usbw";
+            var strConnection = "server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ";
             MySqlConnection conn = new MySqlConnection(strConnection);
 
             MySqlCommand objcmd_hora = new MySqlCommand("insert into hora (id_hora, chegada_hora, retirada_hora) values (NULL, ?, ?)", conn);
@@ -93,7 +93,7 @@ namespace WindowsFormsApp1
         public void setInputBd_pacote(string nota_fiscal, string situacao_pacote)
         {
             // string de conexão BD
-            var strConnection = "server=localhost;port=3307;User Id=root;database=projeto_registro_sql;password=usbw";
+            var strConnection = "server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ";
             MySqlConnection conn = new MySqlConnection(strConnection);
 
             MySqlCommand objcmd_pacote = new MySqlCommand("insert into pacote (nota_fiscal_pacote, situacao_pacote) values (?, ?)", conn);

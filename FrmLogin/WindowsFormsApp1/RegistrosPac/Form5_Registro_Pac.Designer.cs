@@ -213,6 +213,7 @@
             this.button_sair.TabIndex = 19;
             this.button_sair.Text = "Menu//SAir";
             this.button_sair.UseVisualStyleBackColor = true;
+            this.button_sair.Click += new System.EventHandler(this.button_sair_Click);
             // 
             // button_deletar
             // 
@@ -403,8 +404,7 @@
             this.Controls.Add(this.rdb_Titular);
             this.Controls.Add(this.label1);
             this.Name = "Form5_Registro_Pac";
-            this.Text = "Registro de Pacaotes";
-//            this.Load += new System.EventHandler(this.Form5_Registro_Pac_Load);
+            this.Text = "Registro de Pacotes";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);

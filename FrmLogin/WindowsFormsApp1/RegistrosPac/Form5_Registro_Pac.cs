@@ -8,6 +8,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,6 +16,7 @@ namespace WindowsFormsApp1.RegistrosPac
 {
     public partial class Form5_Registro_Pac : Form
     {
+        Thread t1;
         Class_CadastroPac cadastroPacote = new Class_CadastroPac();
         Class_BD_CRUD Bd = new Class_BD_CRUD();
 
@@ -81,6 +83,16 @@ namespace WindowsFormsApp1.RegistrosPac
            
         }
 
-       
+        private void button_sair_Click(object sender, EventArgs e)
+        {
+            t1 = new Thread(abrirMenu);
+            t1.SetApartmentState(ApartmentState.STA);
+            t1.Start();
+        }
+
+        private void abrirMenu(object obj)
+        {
+            Application.Run(new Form3_Tela_Menu());
+        }
     }
 }
