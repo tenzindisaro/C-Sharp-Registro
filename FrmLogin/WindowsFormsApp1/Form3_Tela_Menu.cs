@@ -37,7 +37,7 @@ namespace WindowsFormsApp1
         private void adicionarToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
             t2 = new Thread(abrirCadastrarUsuario);
-            t2.SetApartmentState(ApartmentState.MTA);
+            t2.SetApartmentState(ApartmentState.STA);
             t2.Start();
         }
 
@@ -50,7 +50,7 @@ namespace WindowsFormsApp1
         private void registroToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
             t2 = new Thread(abrirRegistroPac);
-            t2.SetApartmentState(ApartmentState.MTA);
+            t2.SetApartmentState(ApartmentState.STA);
             t2.Start();
         }
         
@@ -76,7 +76,7 @@ namespace WindowsFormsApp1
             try
             {
                 // string de conexão BD
-                var strConnection = "server=localhost;port=3307;User Id=root;database=projeto_registro_sql;password=usbw";
+                var strConnection = "server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ";
                 MySqlConnection conn = new MySqlConnection(strConnection);
                 //abre o BD
                 conn.Open();

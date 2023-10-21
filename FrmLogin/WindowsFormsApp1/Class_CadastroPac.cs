@@ -28,20 +28,20 @@ namespace WindowsFormsApp1
         }
         // set para validação de dados.
         public bool setValid_dados(string funcionario_txt, string titular_txt, string situacao_txt, string email_txt, string notaFiscal_txt, string data_txt, string telefone_txt, string cpf_txt, string hora_txt)
-        {
-            bool EntradaFuncionario = true; //Regex.IsMatch(funcionario_txt, "^[a-zA-Z ]+$");
+        {            
+            bool EntradaFuncionario = Regex.IsMatch(funcionario_txt, "^[a-zA-Z ]+$");
 
-            bool EntradaNotaFiscal = true; //int.TryParse(notaFiscal_txt, out int valid_notaFiscal);
+            bool EntradaNotaFiscal = int.TryParse(notaFiscal_txt, out int valid_notaFiscal);
 
-            bool EntradaData = true; //int.TryParse(data_txt, out int valid_data);
+            bool EntradaData = int.TryParse(data_txt, out int valid_data);
 
-            bool EntradaTitular = true; //Regex.IsMatch(titular_txt, "^[a-zA-Z ]+$");
+            bool EntradaTitular = Regex.IsMatch(titular_txt, "^[a-zA-Z ]+$");
 
-            bool EntradaCpf = true;// int.TryParse(cpf_txt, out int valid_cpf);
+            bool EntradaCpf = int.TryParse(cpf_txt, out int valid_cpf);
 
-            bool EntradaHora = true;//int.TryParse(hora_txt, out int valid_hora);
+            bool EntradaHora = int.TryParse(hora_txt, out int valid_hora);
 
-            bool EntradaTelefone = true;// int.TryParse(telefone_txt, out int valid_telefone);
+            bool EntradaTelefone = int.TryParse(telefone_txt, out int valid_telefone);
 
 
 
@@ -89,11 +89,11 @@ namespace WindowsFormsApp1
             titular = titular_txt;
             situacao = situacao_txt;
             email = email_txt;
-            notaFiscal = notaFiscal_txt; //valid_notaFiscal.ToString();
-            data = data_txt;//valid_data.ToString();
-            telefone = telefone_txt;//valid_telefone.ToString();
-            CPF = cpf_txt;//valid_cpf.ToString();
-            hora = hora_txt;//valid_hora.ToString();
+            notaFiscal = valid_notaFiscal.ToString();
+            data = valid_data.ToString();
+            telefone = valid_telefone.ToString();
+            CPF = valid_cpf.ToString();
+            hora = valid_hora.ToString();
 
             return true;
         }
