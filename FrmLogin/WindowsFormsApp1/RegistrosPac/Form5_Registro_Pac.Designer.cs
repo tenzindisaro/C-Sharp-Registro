@@ -34,6 +34,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBox_Titular = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox_NotaFiscal = new System.Windows.Forms.TextBox();
@@ -44,7 +45,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.button_Cadastrar = new System.Windows.Forms.Button();
             this.button_Editar = new System.Windows.Forms.Button();
-            this.button_sair = new System.Windows.Forms.Button();
             this.button_deletar = new System.Windows.Forms.Button();
             this.comboBox_Situacao = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -61,6 +61,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.maskedTextBox_email = new System.Windows.Forms.MaskedTextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,12 +115,21 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Location = new System.Drawing.Point(16, 171);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(776, 195);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pacotes Registrados no Dia";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(9, 19);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(761, 170);
+            this.dataGridView1.TabIndex = 0;
             // 
             // textBox_Titular
             // 
@@ -204,16 +215,6 @@
             this.button_Editar.TabIndex = 18;
             this.button_Editar.Text = "Editar";
             this.button_Editar.UseVisualStyleBackColor = true;
-            // 
-            // button_sair
-            // 
-            this.button_sair.Location = new System.Drawing.Point(698, 388);
-            this.button_sair.Name = "button_sair";
-            this.button_sair.Size = new System.Drawing.Size(75, 35);
-            this.button_sair.TabIndex = 19;
-            this.button_sair.Text = "Menu//SAir";
-            this.button_sair.UseVisualStyleBackColor = true;
-            this.button_sair.Click += new System.EventHandler(this.button_sair_Click);
             // 
             // button_deletar
             // 
@@ -353,7 +354,6 @@
             // maskedTextBox_email
             // 
             this.maskedTextBox_email.Location = new System.Drawing.Point(84, 141);
-            this.maskedTextBox_email.Mask = "000000000000@\\americ\\an\\as,com";
             this.maskedTextBox_email.Name = "maskedTextBox_email";
             this.maskedTextBox_email.Size = new System.Drawing.Size(100, 20);
             this.maskedTextBox_email.TabIndex = 0;
@@ -386,7 +386,6 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.comboBox_Situacao);
             this.Controls.Add(this.button_deletar);
-            this.Controls.Add(this.button_sair);
             this.Controls.Add(this.button_Editar);
             this.Controls.Add(this.button_Cadastrar);
             this.Controls.Add(this.label7);
@@ -405,6 +404,8 @@
             this.Controls.Add(this.label1);
             this.Name = "Form5_Registro_Pac";
             this.Text = "Registro de Pacotes";
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -430,7 +431,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button_Cadastrar;
         private System.Windows.Forms.Button button_Editar;
-        private System.Windows.Forms.Button button_sair;
         private System.Windows.Forms.Button button_deletar;
         private System.Windows.Forms.ComboBox comboBox_Situacao;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -447,5 +447,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.MaskedTextBox maskedTextBox_email;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

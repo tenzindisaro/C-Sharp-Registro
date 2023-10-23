@@ -17,7 +17,8 @@ namespace WindowsFormsApp1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmLogin()); 
+            //Application.Run(new FrmLogin()); 
+            Application.Run(new Form5_Registro_Pac()); 
         }
     }
 }
