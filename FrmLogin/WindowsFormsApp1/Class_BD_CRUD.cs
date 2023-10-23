@@ -58,6 +58,7 @@ namespace WindowsFormsApp1
             // executando query                       
             objcmd_data.ExecuteNonQuery();
             MessageBox.Show("envio de dados data ok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            //comentario
 
         }
         
