@@ -52,10 +52,12 @@ namespace WindowsFormsApp1.RegistrosPac
                     string dadosValidos_situacao = cadastroPacote.getCad_Situacao();
                     string dadosValidos_email = cadastroPacote.getCad_Email();
                     string dadosValidos_notaFiscal = cadastroPacote.getCad_NotaFiscal();
-                    string dadosValidos_data = cadastroPacote.getCad_Data(); //precisa criar uma validação para data de eentrada e saida
+                    string dadosValidos_data = cadastroPacote.getCad_Data(); //precisa criar uma validação para data de entrada e saida
                     string dadosValidos_telefone = cadastroPacote.getCad_Telefone();
                     string dadosValidos_CPF = cadastroPacote.getCad_Cpf();
-                    string dadosValidos_hora = cadastroPacote.getCad_Hora(); //precisa criar uma validação para hora de eentrada e saida                  
+                    string dadosValidos_hora = cadastroPacote.getCad_Hora(); //precisa criar uma validação para hora de entrada e saida                  
+                    string funcionario_atual = "funcionario@americanas.com.br";
+                    string cpf_entregador = "15";
 
                     try
                     {
@@ -63,7 +65,7 @@ namespace WindowsFormsApp1.RegistrosPac
                         Bd.setInputBd_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
                         Bd.setInputBd_data(dadosValidos_data, dadosValidos_data);
                         Bd.setInputBd_hora(dadosValidos_hora, dadosValidos_hora);
-                        Bd.setInputBd_pacote(dadosValidos_notaFiscal, dadosValidos_situacao);
+                        Bd.setInputBd_pacote(dadosValidos_notaFiscal, dadosValidos_situacao, funcionario_atual, dadosValidos_CPF, cpf_entregador);
                         Bd.setBD_Close();
 
                     }

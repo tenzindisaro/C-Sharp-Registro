@@ -16,6 +16,7 @@ namespace WindowsFormsApp1
     public partial class FrmLogin : Form
     {
         Thread t1;
+        Class_BD_CRUD Bd = new Class_BD_CRUD();
         public FrmLogin()
         {
             InitializeComponent();
@@ -23,14 +24,34 @@ namespace WindowsFormsApp1
         }
 
         private string inputEmail, inputPassword;
+        private bool tentativa_login;
         private void btnContinuar_Click(object sender, EventArgs e)
         {
             inputEmail = txtEmail.Text;
             inputPassword = txtSenha.Text;
 
             User actualyUser = new User("Administrador Padrão", "admin@americanas.com.br", "admin12345", "undefined", "undefined");   //deve se ignorar este objeto e seus dados por enquanto
-
-            if (/*nome-Sugestivo_funcaoValidar(inputEmail, inputPassword) == */true)   //aqui, deve-se avaliar se os dados do usuário estão no banco de dados. 
+            
+            if (inputEmail != "" && inputPassword != "")
+            {
+                try
+                {
+                    Bd.setBD_Open();
+                    tentativa_login = Bd.setReadBd_login(inputEmail , inputPassword);
+                    Bd.setBD_Close();
+                }
+                catch (Exception ex)
+                {
+                    tentativa_login = false;
+                    MessageBox.Show("Erro ao conectar dados no banco de dados.\n\n" + ex, "Erro de conexão");
+                }
+            }
+            else
+            {
+                tentativa_login = false;
+            }
+            
+            if (tentativa_login)   
             {
                 label1.Visible = false;
                 this.Close();
