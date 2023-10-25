@@ -15,6 +15,9 @@ namespace WindowsFormsApp1
 {
     public partial class FormCadastroUser : Form
     {
+        Class_BD_CRUD Bd = new Class_BD_CRUD();
+        CadastroUsuarios user = new CadastroUsuarios();
+
         public FormCadastroUser()
         {
             InitializeComponent();
@@ -23,9 +26,23 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text == "" || textBox3.Text == "" || textBox5.Text == "" || textBox6.Text == "");
+            string cargo = comboBox1.Text, nome = textBox2.Text, senha = textBox3.Text, telefone = textBox4.Text, cpf = textBox5.Text, email = textBox6.Text, senha_confirmacao = textBox7.Text, rua = textBox9.Text, bairro = textBox10.Text;
+            int cep = int.Parse(textBox12.Text), numero = int.Parse(textBox11.Text);
+
+            if (user.checkInput(email, senha, senha_confirmacao, nome, telefone))
             {
-                MessageBox.Show("Existem campos não preenchidos!\nPor favor, complete todas as caixas de texto.", "Dados incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                try
+                {
+                    Bd.setBD_Open();
+                    Bd.setInputBd_americanas(cep, rua, bairro, numero);
+                    Bd.setInputBd_funcionario(email, cpf, nome, telefone, cargo, senha);
+                    Bd.setBD_Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao conectar dados no banco de dados.\n\n" + ex, "Erro de conexão");
+
+                }
             }
         }
     }

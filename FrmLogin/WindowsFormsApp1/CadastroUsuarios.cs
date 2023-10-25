@@ -13,11 +13,11 @@ namespace WindowsFormsApp1
         private User novoUser;
         public CadastroUsuarios ()
         {
-            listaUsuarios = new List<User> ();
+            //listaUsuarios = new List<User> ();        não removi pois pode ser útil!
         }
 
 
-        public void checkInput(string inputEmail, string inputPassword, string inputConfirmPassword, string inputName, string inputAddress, string inputPhoneNumber)
+        public bool checkInput(string inputEmail, string inputPassword, string inputConfirmPassword, string inputName, string inputPhoneNumber)
         {
             if (inputName != "")
             {
@@ -29,44 +29,44 @@ namespace WindowsFormsApp1
                         {
                             if (inputPhoneNumber != "")
                             {
-                                if (inputAddress != "")
+                                if (inputEmail != "")
                                 {
-                                    if (inputEmail != "")
-                                    {
-                                        MessageBox.Show("Novo usuário cadastrado com sucesso!", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        novoUser = new User(inputName, inputEmail, inputPassword, inputPhoneNumber, inputAddress);
-                                        adicionarUsuario(novoUser);
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Campo \"Email\" não preenchido!\nPor favor, complete todas as caixas de texto.", "Dados incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                    }
+                                    return true;
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Campo \"Endereço\" não preenchido!\nPor favor, complete todas as caixas de texto.", "Dados incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("Campo \"Email\" não preenchido!\nPor favor, complete todas as caixas de texto.", "Dados incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return false;
                                 }
                             }
                             else
                             {
                                 MessageBox.Show("As senhas inseridas não coincidem!", "Senha inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return false;
                             }
                         }
-                                MessageBox.Show("Campo \"Telefone\" não preenchido!\nPor favor, complete todas as caixas de texto.", "Dados incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        else
+                        {
+                            MessageBox.Show("Campo \"Telefone\" não preenchido!\nPor favor, complete todas as caixas de texto.", "Dados incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return false;
+                        }
                     }
                     else
                     {
                         MessageBox.Show("Campo \"Confirme a Senha\" não preenchido!\nPor favor, complete todas as caixas de texto.", "Dados incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
                     }
                 }
                 else
                 {
                     MessageBox.Show("Campo \"Senha\" não preenchido!\nPor favor, complete todas as caixas de texto.", "Dados incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
                 }
             }
             else
             {
                 MessageBox.Show("Campo \"Nome\" não preenchido!\nPor favor, complete todas as caixas de texto.", "Dados incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
         }  
         

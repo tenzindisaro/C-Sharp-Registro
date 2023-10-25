@@ -8,17 +8,15 @@ namespace WindowsFormsApp1
 {
     internal class User
     {
-        private string name, password, email, phoneNumber, address;
+        private string name, password, email, phoneNumber;
 
-        public User(string inputName , string inputEmail, string inputPassword, string inputPhone, string inputAddress) 
+        public User(string inputName , string inputEmail, string inputPassword) 
         {
             name = inputName;
             if (checkEmail(inputEmail))
             {
                 email = inputEmail;
             }
-            phoneNumber = inputPhone;
-            address = inputAddress;
 
             if (checkPassword(inputPassword))
             {
@@ -52,7 +50,6 @@ namespace WindowsFormsApp1
                 case 2: return email;
                 case 3: return phoneNumber;
                 case 4: return password;
-                case 5: return address;
             }
             return "undefined";
         }

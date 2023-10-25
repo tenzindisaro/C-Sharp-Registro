@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace WindowsFormsApp1
 {
@@ -16,7 +17,7 @@ namespace WindowsFormsApp1
     {   //"server=localhost;port=3307;User Id=root;database=projeto_registro_sql;password=usbw"
         //"server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ"
         private MySqlConnection conn = new MySqlConnection("server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ");
-        private int id_hora, id_data, cod_endereco, id_americanas, id_pacote;
+        private int id_hora, id_data, id_americanas;
         public Class_BD_CRUD() 
         {
             /* campo vazio, abertura do BD sera manual
@@ -74,19 +75,6 @@ namespace WindowsFormsApp1
             id_hora = Convert.ToInt32(objcmd_hora.ExecuteScalar());
         }
 
-        public void setInputBd_endereco (int cep_endereco, string rua_endereco, string bairro_endereco, int numero_endereco)
-        {
-            MySqlCommand objcmd_endereco = new MySqlCommand("INSERT INTO endereco (cod_endereco, cep_endereco, rua_endereco, bairro_endereco, numero_endereco) VALUES (NULL, ?, ?, ?, ?)", conn);
-            // parametros para o sql pacote
-            objcmd_endereco.Parameters.Add("@cep_endereco", MySqlDbType.VarChar, 15).Value = cep_endereco;
-            objcmd_endereco.Parameters.Add("@rua_endereco", MySqlDbType.VarChar, 45).Value = rua_endereco;
-            objcmd_endereco.Parameters.Add("@bairro_endereco", MySqlDbType.VarChar, 15).Value = bairro_endereco;
-            objcmd_endereco.Parameters.Add("@numero_endereco", MySqlDbType.Int32).Value = numero_endereco;
-            // executando query                       
-            objcmd_endereco.ExecuteNonQuery();
-            MessageBox.Show("envio de dados endereco ok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-        }
-
         public void setInputBd_americanas (int cep_americanas, string rua_americanas, string bairro_americanas, int numero_americanas)
         {
             MySqlCommand objcmd_americanas = new MySqlCommand("INSERT INTO americanas (id_americanas, cep_americanas, rua_americanas, bairro_americanas, numero_americanas) VALUES (NULL, ?, ?, ?, ?)", conn);
@@ -98,11 +86,13 @@ namespace WindowsFormsApp1
             // executando query                       
             objcmd_americanas.ExecuteNonQuery();
             MessageBox.Show("envio de dados americanas ok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+            id_americanas = Convert.ToInt32(objcmd_americanas.ExecuteScalar());
         }
 
-        public void setInputBd_funcionario (string email_funcionario, string cpf_funcionario, string nome_funcionario, int telefone_funcionario, string cargo_funcionario, string senha_funcionario)
+        public void setInputBd_funcionario (string email_funcionario, string cpf_funcionario, string nome_funcionario, string telefone_funcionario, string cargo_funcionario, string senha_funcionario)
         {
-            MySqlCommand objcmd_funcionario = new MySqlCommand("INSERT INTO funcionario (email_americanas_funcionario, cpf_funcionario, nome_funcionario, telefone_funcionario, cargo_funcionario, senha_funcionario, cod_endereco, id_americanas) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", conn);
+            MySqlCommand objcmd_funcionario = new MySqlCommand("INSERT INTO funcionario (email_americanas_funcionario, cpf_funcionario, nome_funcionario, telefone_funcionario, cargo_funcionario, senha_funcionario, id_americanas) VALUES (?, ?, ?, ?, ?, ?, ?)", conn);
             // parametros para o sql pacote
 
             objcmd_funcionario.Parameters.Add("@email_americanas_funcionario", MySqlDbType.VarChar, 255).Value = email_funcionario;
@@ -111,7 +101,6 @@ namespace WindowsFormsApp1
             objcmd_funcionario.Parameters.Add("@telefone_funcionario", MySqlDbType.VarChar, 15).Value = telefone_funcionario;
             objcmd_funcionario.Parameters.Add("@cargo_funcionario", MySqlDbType.Int32).Value = cargo_funcionario;
             objcmd_funcionario.Parameters.Add("@senha_funcionario", MySqlDbType.Int32).Value = senha_funcionario;
-            objcmd_funcionario.Parameters.Add("@cod_endereco", MySqlDbType.Int32).Value = cod_endereco;
             objcmd_funcionario.Parameters.Add("@id_americanas", MySqlDbType.Int32).Value = id_americanas;
             // executando query                       
             objcmd_funcionario.ExecuteNonQuery();
@@ -120,13 +109,15 @@ namespace WindowsFormsApp1
 
         public void setInputBd_pacote(string nota_fiscal, string situacao_pacote, string email_americanas_funcionario, string cpf_titular, string cpf_entregador)
         {
-            MySqlCommand objcmd_pacote = new MySqlCommand("INSERT INTO pacote (nota_fiscal_pacote, situacao_pacote, email_americanas_funcionario, cpf_titular, cpf_entregador) VALUES (?, ?, ?, ?, ?); SELECT LAST_INSERT_ID();", conn);
+            MySqlCommand objcmd_pacote = new MySqlCommand("INSERT INTO pacote (nota_fiscal_pacote, situacao_pacote, email_americanas_funcionario, cpf_titular, cpf_entregador, id_data, id_hora) VALUES (?, ?, ?, ?, ?, ?, ?); SELECT LAST_INSERT_ID();", conn);
 
             objcmd_pacote.Parameters.Add("@nota_fiscal_pacote", MySqlDbType.VarChar, 45).Value = nota_fiscal;
             objcmd_pacote.Parameters.Add("@situacao_pacote", MySqlDbType.VarChar, 20).Value = situacao_pacote;
             objcmd_pacote.Parameters.Add("@email_americanas_funcionario", MySqlDbType.VarChar, 255).Value = email_americanas_funcionario;
             objcmd_pacote.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = cpf_titular;
             objcmd_pacote.Parameters.Add("@cpf_entregador", MySqlDbType.VarChar, 15).Value = cpf_entregador;
+            objcmd_pacote.Parameters.Add("@id_data", MySqlDbType.VarChar, 15).Value = id_data;
+            objcmd_pacote.Parameters.Add("@id_hora", MySqlDbType.VarChar, 15).Value = id_hora;
 
             // Executar a consulta de inserção e recuperar o ID gerado automaticamente
             objcmd_pacote.ExecuteNonQuery();
@@ -155,6 +146,38 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Credenciais inválidas. Tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false; // As credenciais são inválidas
             }
+        }
+
+        public User setReadBd_user(string usuario, string senha)
+        {
+            string query = "SELECT * FROM funcionario WHERE email_americanas_funcionario = @usuario AND senha_funcionario = @senha";
+
+            MySqlCommand objcmd_user = new MySqlCommand(query, conn);
+            objcmd_user.Parameters.Add("@usuario", MySqlDbType.VarChar, 255).Value = usuario;
+            objcmd_user.Parameters.Add("@senha", MySqlDbType.VarChar, 32).Value = senha;
+
+            using (MySqlDataReader reader = objcmd_user.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    string email, cpf, nome, telefone, cargo;
+                    int id_americanas;
+
+                    email = reader["email_americanas_funcionario"].ToString();
+                    cpf = reader["cpf_funcionario"].ToString();
+                    nome = reader["nome_funcionario"].ToString();
+                    telefone = reader["telefone_funcionario"].ToString();
+                    cargo = reader["cargo_funcionario"].ToString();
+                    id_americanas = Convert.ToInt32(reader["id_americanas"]);
+
+                    User funcionario = new User(nome, email, senha);
+                    
+                    return funcionario;
+                }
+            }
+
+            // Se não encontrou um funcionário com as credenciais fornecidas, retorne null
+            return null;
         }
     }
 }
