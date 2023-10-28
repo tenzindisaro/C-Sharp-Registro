@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.rdb_Titular = new System.Windows.Forms.RadioButton();
             this.rdb_NotaFiscal = new System.Windows.Forms.RadioButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBox_buscar = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -61,6 +61,10 @@
             this.label10 = new System.Windows.Forms.Label();
             this.maskedTextBox_email = new System.Windows.Forms.MaskedTextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtbox_nome_entregador = new System.Windows.Forms.TextBox();
+            this.txtbox_cpf_entregador = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -97,12 +101,12 @@
             this.rdb_NotaFiscal.Text = "Nota Fiscal";
             this.rdb_NotaFiscal.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtBox_buscar
             // 
-            this.textBox1.Location = new System.Drawing.Point(635, 20);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(138, 20);
-            this.textBox1.TabIndex = 3;
+            this.txtBox_buscar.Location = new System.Drawing.Point(635, 20);
+            this.txtBox_buscar.Name = "txtBox_buscar";
+            this.txtBox_buscar.Size = new System.Drawing.Size(138, 20);
+            this.txtBox_buscar.TabIndex = 3;
             // 
             // label2
             // 
@@ -116,6 +120,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Location = new System.Drawing.Point(16, 171);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(776, 195);
@@ -126,9 +131,9 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 19);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 109);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(761, 170);
+            this.dataGridView1.Size = new System.Drawing.Size(761, 80);
             this.dataGridView1.TabIndex = 0;
             // 
             // textBox_Titular
@@ -157,7 +162,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(401, 57);
+            this.label4.Location = new System.Drawing.Point(387, 57);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 13);
             this.label4.TabIndex = 9;
@@ -209,21 +214,23 @@
             // 
             // button_Editar
             // 
-            this.button_Editar.Location = new System.Drawing.Point(296, 372);
+            this.button_Editar.Location = new System.Drawing.Point(390, 372);
             this.button_Editar.Name = "button_Editar";
             this.button_Editar.Size = new System.Drawing.Size(75, 66);
             this.button_Editar.TabIndex = 18;
             this.button_Editar.Text = "Editar";
             this.button_Editar.UseVisualStyleBackColor = true;
+            this.button_Editar.Click += new System.EventHandler(this.button_Editar_Click);
             // 
             // button_deletar
             // 
-            this.button_deletar.Location = new System.Drawing.Point(410, 372);
+            this.button_deletar.Location = new System.Drawing.Point(296, 372);
             this.button_deletar.Name = "button_deletar";
             this.button_deletar.Size = new System.Drawing.Size(75, 66);
             this.button_deletar.TabIndex = 20;
             this.button_deletar.Text = "Deletar";
             this.button_deletar.UseVisualStyleBackColor = true;
+            this.button_deletar.Click += new System.EventHandler(this.button_deletar_Click);
             // 
             // comboBox_Situacao
             // 
@@ -241,9 +248,9 @@
             this.groupBox2.Controls.Add(this.rdb_Deletados_dia);
             this.groupBox2.Controls.Add(this.rdb_Editados_Dia);
             this.groupBox2.Controls.Add(this.rdb_Registro_Dia);
-            this.groupBox2.Location = new System.Drawing.Point(588, 57);
+            this.groupBox2.Location = new System.Drawing.Point(670, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 100);
+            this.groupBox2.Size = new System.Drawing.Size(100, 100);
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtrar Lista:";
@@ -301,12 +308,13 @@
             // 
             // button_Buscar
             // 
-            this.button_Buscar.Location = new System.Drawing.Point(521, 372);
+            this.button_Buscar.Location = new System.Drawing.Point(484, 372);
             this.button_Buscar.Name = "button_Buscar";
             this.button_Buscar.Size = new System.Drawing.Size(75, 66);
             this.button_Buscar.TabIndex = 27;
             this.button_Buscar.Text = "Buscar";
             this.button_Buscar.UseVisualStyleBackColor = true;
+            this.button_Buscar.Click += new System.EventHandler(this.button_Buscar_Click);
             // 
             // maskedTextBox_CPF
             // 
@@ -326,7 +334,7 @@
             // 
             // maskedTextBox_Data
             // 
-            this.maskedTextBox_Data.Location = new System.Drawing.Point(459, 54);
+            this.maskedTextBox_Data.Location = new System.Drawing.Point(445, 57);
             this.maskedTextBox_Data.Mask = "00/00/0000";
             this.maskedTextBox_Data.Name = "maskedTextBox_Data";
             this.maskedTextBox_Data.Size = new System.Drawing.Size(100, 20);
@@ -335,7 +343,7 @@
             // 
             // maskedTextBox_Hora
             // 
-            this.maskedTextBox_Hora.Location = new System.Drawing.Point(459, 101);
+            this.maskedTextBox_Hora.Location = new System.Drawing.Point(445, 102);
             this.maskedTextBox_Hora.Mask = "90:00";
             this.maskedTextBox_Hora.Name = "maskedTextBox_Hora";
             this.maskedTextBox_Hora.Size = new System.Drawing.Size(100, 20);
@@ -345,7 +353,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(401, 104);
+            this.label10.Location = new System.Drawing.Point(387, 105);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(33, 13);
             this.label10.TabIndex = 29;
@@ -368,11 +376,49 @@
             this.label11.TabIndex = 103;
             this.label11.Text = "Todos os campos com asterisco (\"*\") devem ser preenchidos.";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(551, 60);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(58, 13);
+            this.label12.TabIndex = 104;
+            this.label12.Text = "entregador";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(553, 104);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(76, 13);
+            this.label13.TabIndex = 105;
+            this.label13.Text = "cpf entregador";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
+            // 
+            // txtbox_nome_entregador
+            // 
+            this.txtbox_nome_entregador.Location = new System.Drawing.Point(615, 53);
+            this.txtbox_nome_entregador.Name = "txtbox_nome_entregador";
+            this.txtbox_nome_entregador.Size = new System.Drawing.Size(100, 20);
+            this.txtbox_nome_entregador.TabIndex = 106;
+            // 
+            // txtbox_cpf_entregador
+            // 
+            this.txtbox_cpf_entregador.Location = new System.Drawing.Point(635, 101);
+            this.txtbox_cpf_entregador.Name = "txtbox_cpf_entregador";
+            this.txtbox_cpf_entregador.Size = new System.Drawing.Size(100, 20);
+            this.txtbox_cpf_entregador.TabIndex = 23;
+            // 
             // Form5_Registro_Pac
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtbox_cpf_entregador);
+            this.Controls.Add(this.txtbox_nome_entregador);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.maskedTextBox_email);
             this.Controls.Add(this.maskedTextBox_Hora);
@@ -383,7 +429,6 @@
             this.Controls.Add(this.button_Buscar);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.comboBox_Situacao);
             this.Controls.Add(this.button_deletar);
             this.Controls.Add(this.button_Editar);
@@ -398,12 +443,13 @@
             this.Controls.Add(this.textBox_Titular);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBox_buscar);
             this.Controls.Add(this.rdb_NotaFiscal);
             this.Controls.Add(this.rdb_Titular);
             this.Controls.Add(this.label1);
             this.Name = "Form5_Registro_Pac";
             this.Text = "Registro de Pacotes";
+            this.Load += new System.EventHandler(this.Form5_Registro_Pac_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
@@ -418,7 +464,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton rdb_Titular;
         private System.Windows.Forms.RadioButton rdb_NotaFiscal;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBox_buscar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBox_Titular;
@@ -448,5 +494,9 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox_email;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtbox_nome_entregador;
+        private System.Windows.Forms.TextBox txtbox_cpf_entregador;
     }
 }

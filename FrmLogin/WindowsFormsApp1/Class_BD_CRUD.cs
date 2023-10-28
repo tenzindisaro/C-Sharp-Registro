@@ -58,8 +58,10 @@ namespace WindowsFormsApp1
             // executando query                       
             objcmd_data.ExecuteNonQuery();
             MessageBox.Show("envio de dados data ok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            
-            id_data = Convert.ToInt32(objcmd_data.ExecuteScalar());
+            MySqlCommand last_id = new MySqlCommand("SELECT LAST_INSERT_ID();",conn);
+
+            id_data = Convert.ToInt32(last_id.ExecuteScalar());
+            MessageBox.Show("valor id data = " + id_data.ToString(), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
         
         public void setInputBd_hora(string chegada_hora, string retirada_hora)
@@ -71,8 +73,11 @@ namespace WindowsFormsApp1
             // executando query                       
             objcmd_hora.ExecuteNonQuery();
             MessageBox.Show("envio de dados hora ok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            MySqlCommand last_id_hora = new MySqlCommand("SELECT LAST_INSERT_ID();", conn);
 
-            id_hora = Convert.ToInt32(objcmd_hora.ExecuteScalar());
+
+            id_hora = Convert.ToInt32(last_id_hora.ExecuteScalar());
+            MessageBox.Show("valor id hora = " + id_hora.ToString(), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
         public void setInputBd_americanas (int cep_americanas, string rua_americanas, string bairro_americanas, int numero_americanas)
@@ -179,5 +184,7 @@ namespace WindowsFormsApp1
             // Se não encontrou um funcionário com as credenciais fornecidas, retorne null
             return null;
         }
+
+        
     }
 }

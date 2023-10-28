@@ -84,5 +84,88 @@ namespace WindowsFormsApp1.RegistrosPac
 
 
         }
+
+        private void button_deletar_Click(object sender, EventArgs e)
+        {
+            string funcionario = textBox_Funcionario.Text;
+            string notaFiscal = textBox_NotaFiscal.Text;
+            string data = maskedTextBox_Data.Text;
+            string titular = textBox_Titular.Text;
+            string CPF = (maskedTextBox_CPF.Text).Replace("-", "").Replace(".", "");
+            string situacao = comboBox_Situacao.Text;
+            string email = maskedTextBox_email.Text;
+            string telefone = maskedTextBox_telefone.Text.Replace("-", "").Replace("(", "").Replace(")", "").Replace(" ", "");
+            string hora = maskedTextBox_Hora.Text;
+
+
+            MySqlConnection conn = new MySqlConnection("server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ");
+                conn.Open();
+            MySqlCommand cmd = new MySqlCommand("DELET FROM pacote WHERE nota_fiscal_pacote = ?", conn);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@nota_fiscal_pacote", MySqlDbType.VarChar, 45).Value = notaFiscal;
+
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        private void button_Buscar_Click(object sender, EventArgs e)
+        {
+            string buscar = txtBox_buscar.Text;
+
+            MySqlConnection conn = new MySqlConnection("server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ");
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("SELECT cpf_titular, nome, email, telefone  FROM titular WHERE cpf_titular = ?", conn);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = buscar;
+            
+            cmd.CommandType = CommandType.Text;
+
+            //recebe conteudo do banco
+            MySqlDataReader dr = cmd.ExecuteReader();
+            dr.Read();
+
+            textBox_Funcionario.Text = dr.GetString(1);
+
+            conn.Close();
+        }
+
+        private void button_Editar_Click(object sender, EventArgs e)
+        {
+            string funcionario = textBox_Funcionario.Text;
+            string notaFiscal = textBox_NotaFiscal.Text;
+            string data = maskedTextBox_Data.Text;
+            string titular = textBox_Titular.Text;
+            string CPF = (maskedTextBox_CPF.Text).Replace("-", "").Replace(".", "");
+            string situacao = comboBox_Situacao.Text;
+            string email = maskedTextBox_email.Text;
+            string telefone = maskedTextBox_telefone.Text.Replace("-", "").Replace("(", "").Replace(")", "").Replace(" ", "");
+            string hora = maskedTextBox_Hora.Text;
+
+            MySqlConnection conn = new MySqlConnection("server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ");
+            conn.Open();
+            MySqlCommand objEdit = new MySqlCommand("UPDATE *tabela SET *coluna=? WHERE *indice = ?", conn);
+            objEdit.Parameters.Clear();
+            objEdit.Parameters.Add("@nota_fiscal_pacote", MySqlDbType.VarChar, 45).Value = notaFiscal;
+
+            objEdit.CommandType = CommandType.Text;
+            objEdit.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        private void Form5_Registro_Pac_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
