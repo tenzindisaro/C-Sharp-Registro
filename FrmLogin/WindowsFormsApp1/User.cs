@@ -22,6 +22,7 @@ namespace WindowsFormsApp1
             {
                 password = inputPassword;
             }
+            phoneNumber = "";
         }
 
         public bool checkEmail (string inputEmail)

@@ -26,10 +26,10 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string cargo = comboBox1.Text, nome = textBox2.Text, senha = textBox3.Text, telefone = textBox4.Text, cpf = textBox5.Text, email = textBox6.Text, senha_confirmacao = textBox7.Text, rua = textBox9.Text, bairro = textBox10.Text;
-            int cep = int.Parse(textBox12.Text), numero = int.Parse(textBox11.Text);
+            string cargo = comboBox1.Text, nome = textBox2.Text, senha = textBox3.Text, telefone = textBox4.Text, cpf = textBox5.Text, email = textBox6.Text, senha_confirmacao = textBox7.Text, rua = textBox9.Text, bairro = textBox10.Text, cep = textBox12.Text, numero = textBox11.Text;
+            bool dadosValidos = user.checkInput(email, senha, senha_confirmacao, nome, telefone);
 
-            if (user.checkInput(email, senha, senha_confirmacao, nome, telefone))
+            if (dadosValidos)
             {
                 try
                 {
@@ -41,7 +41,7 @@ namespace WindowsFormsApp1
                 catch (Exception ex)
                 {
                     MessageBox.Show("Erro ao conectar dados no banco de dados.\n\n" + ex, "Erro de conexão");
-
+                    Bd.setBD_Close();
                 }
             }
         }
