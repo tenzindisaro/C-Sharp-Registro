@@ -178,33 +178,37 @@
             // geralToolStripMenuItem
             // 
             this.geralToolStripMenuItem.Name = "geralToolStripMenuItem";
-            this.geralToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.geralToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.geralToolStripMenuItem.Text = "Geral";
             this.geralToolStripMenuItem.Click += new System.EventHandler(this.geralToolStripMenuItem_Click_1);
             // 
             // recebidosNoDiaToolStripMenuItem
             // 
             this.recebidosNoDiaToolStripMenuItem.Name = "recebidosNoDiaToolStripMenuItem";
-            this.recebidosNoDiaToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.recebidosNoDiaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.recebidosNoDiaToolStripMenuItem.Text = "Presentes";
+            this.recebidosNoDiaToolStripMenuItem.Click += new System.EventHandler(this.recebidosNoDiaToolStripMenuItem_Click);
             // 
             // retiradosToolStripMenuItem
             // 
             this.retiradosToolStripMenuItem.Name = "retiradosToolStripMenuItem";
-            this.retiradosToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.retiradosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.retiradosToolStripMenuItem.Text = "Retirados";
+            this.retiradosToolStripMenuItem.Click += new System.EventHandler(this.retiradosToolStripMenuItem_Click);
             // 
             // recebidosNoDiaToolStripMenuItem1
             // 
             this.recebidosNoDiaToolStripMenuItem1.Name = "recebidosNoDiaToolStripMenuItem1";
-            this.recebidosNoDiaToolStripMenuItem1.Size = new System.Drawing.Size(164, 22);
+            this.recebidosNoDiaToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.recebidosNoDiaToolStripMenuItem1.Text = "Recebidos no dia";
+            this.recebidosNoDiaToolStripMenuItem1.Click += new System.EventHandler(this.recebidosNoDiaToolStripMenuItem1_Click);
             // 
             // retiradosNoDiaToolStripMenuItem
             // 
             this.retiradosNoDiaToolStripMenuItem.Name = "retiradosNoDiaToolStripMenuItem";
-            this.retiradosNoDiaToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.retiradosNoDiaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.retiradosNoDiaToolStripMenuItem.Text = "Retirados no dia";
+            this.retiradosNoDiaToolStripMenuItem.Click += new System.EventHandler(this.retiradosNoDiaToolStripMenuItem_Click);
             // 
             // filtrarToolStripMenuItem
             // 

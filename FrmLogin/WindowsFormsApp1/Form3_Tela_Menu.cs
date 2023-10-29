@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Threading;
 using MySql.Data.MySqlClient;
+using WindowsFormsApp1.lista.presentes;
+using WindowsFormsApp1.lista.retirados;
+using WindowsFormsApp1.lista.Recebidos_Retirados_nodia;
 
 namespace WindowsFormsApp1
 {
@@ -94,5 +97,49 @@ namespace WindowsFormsApp1
             }           
 
         }
+
+        private void recebidosNoDiaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            t2 = new Thread(Presentes);
+            t2.SetApartmentState(ApartmentState.STA);
+            t2.Start();
+        }
+        private void Presentes(object obj)
+        {
+            Application.Run(new Form7_Tela_Presentes());
+        }
+
+        private void retiradosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            t2 = new Thread(Retirados);
+            t2.SetApartmentState(ApartmentState.STA);
+            t2.Start();
+        }
+        private void Retirados(object obj)
+        {
+            Application.Run(new Form8_Tela_Retirados());
+        }
+
+        private void recebidosNoDiaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            t2 = new Thread(RecebidosDoDia);
+            t2.SetApartmentState(ApartmentState.STA);
+            t2.Start();
+        }
+        private void RecebidosDoDia(object obj)
+        {
+            Application.Run(new Form9_recebidos_retirados_nodia());
+        }
+        private void retiradosNoDiaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            t2 = new Thread(RetiradosDoDia);
+            t2.SetApartmentState(ApartmentState.STA);
+            t2.Start();
+        }
+        private void RetiradosDoDia(Object obj)
+        {
+            Application.Run(new Form9_recebidos_retirados_nodia());
+        }
+
     }
 }
