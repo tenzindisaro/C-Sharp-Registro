@@ -75,6 +75,7 @@ namespace WindowsFormsApp1
         {
             try
             {
+                /*
                 // string de conexão BD
                 var strConnection = "server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ";
                 MySqlConnection conn = new MySqlConnection(strConnection);
@@ -83,11 +84,13 @@ namespace WindowsFormsApp1
                 MessageBox.Show("conectado BD.");
                 //fecha o BD
                 conn.Close();
+                */
+                Class_BD_CRUD server = new Class_BD_CRUD();
                 
             }
             catch 
             {
-                MessageBox.Show("erro conectar banco de dados.");                
+                MessageBox.Show("Erro ao conectar com o banco de dados.", "Data Base");                
             }           
 
         }
