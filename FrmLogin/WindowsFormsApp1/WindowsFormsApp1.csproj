@@ -237,6 +237,35 @@
   <ItemGroup>
     <None Include="Resources\ilustração-do-desenho-vetor-ícone-caminhão-logo-serviço-de-entrega-217093051.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\OIP.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OIP1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Caixa varada.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Caixas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Caixas1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Caixas2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\caixas4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\americanas-logo-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\esfera.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
