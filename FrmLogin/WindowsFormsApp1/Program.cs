@@ -29,9 +29,9 @@ namespace WindowsFormsApp1
             }
             else
             {
-                //Application.Run(new FrmLogin());
+                Application.Run(new FrmLogin());
                 //Application.Run(new Form5_Registro_Pac()); 
-                Application.Run(new FormCadastroUser());
+                //Application.Run(new FormCadastroUser());
             }
         }
 
