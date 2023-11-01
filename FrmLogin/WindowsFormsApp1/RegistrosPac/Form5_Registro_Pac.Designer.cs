@@ -384,7 +384,7 @@
             this.label12.Size = new System.Drawing.Size(58, 13);
             this.label12.TabIndex = 104;
             this.label12.Text = "entregador";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
+//            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // label13
             // 
@@ -394,7 +394,7 @@
             this.label13.Size = new System.Drawing.Size(76, 13);
             this.label13.TabIndex = 105;
             this.label13.Text = "cpf entregador";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
+//            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // txtbox_nome_entregador
             // 
@@ -449,7 +449,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Form5_Registro_Pac";
             this.Text = "Registro de Pacotes";
-            this.Load += new System.EventHandler(this.Form5_Registro_Pac_Load);
+//            this.Load += new System.EventHandler(this.Form5_Registro_Pac_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
