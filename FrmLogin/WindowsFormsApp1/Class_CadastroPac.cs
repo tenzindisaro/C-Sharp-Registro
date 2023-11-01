@@ -12,7 +12,7 @@ namespace WindowsFormsApp1
 {
     internal class Class_CadastroPac
     {
-        string funcionario, titular, situacao, email, notaFiscal, data, telefone, CPF, hora;
+        string funcionario, titular, situacao, email, notaFiscal, data, telefone, CPF, hora, cpf_entregador, nome_entregador;
 
         public Class_CadastroPac()
         {
@@ -25,9 +25,12 @@ namespace WindowsFormsApp1
             telefone = null;
             CPF = null;
             hora = null;
+            cpf_entregador = null;
+            nome_entregador = null;
+
         }
         // set para validação de dados.
-        public bool setValid_dados(string funcionario_txt, string titular_txt, string situacao_txt, string email_txt, string notaFiscal_txt, string data_txt, string telefone_txt, string cpf_txt, string hora_txt)
+        public bool setValid_dados(string funcionario_txt, string titular_txt, string situacao_txt, string email_txt, string notaFiscal_txt, string data_txt, string telefone_txt, string cpf_txt, string hora_txt, string cpf_entregador_txt, string nome_entregador_txt)
         {
             bool EntradaFuncionario = true; //Regex.IsMatch(funcionario_txt, "^[a-zA-ZÀ-ú ]+$");
             
@@ -43,6 +46,9 @@ namespace WindowsFormsApp1
 
             bool EntradaTelefone = true; //long.TryParse(telefone_txt, out long valid_telefone);
 
+            bool EntredaCpfEntregador = true;
+
+            bool EntradaNomeEntregador = true;
 
 
             if (EntradaFuncionario == false)
@@ -84,6 +90,8 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Insira apenas numeros no campo Telefone.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+
+
             // email e situação precisa pensar em validação
             funcionario = funcionario_txt;
             titular = titular_txt;
@@ -94,6 +102,8 @@ namespace WindowsFormsApp1
             telefone = telefone_txt; //valid_telefone.ToString();
             CPF = cpf_txt; //valid_cpf.ToString();
             hora = hora_txt;
+            nome_entregador = nome_entregador_txt;
+            cpf_entregador = cpf_entregador_txt;
 
             return true;
         }
@@ -111,6 +121,10 @@ namespace WindowsFormsApp1
         public string getCad_Data() { return data; }
         public string getCad_Cpf() { return CPF; }
         public string getCad_Hora() { return hora; }
+        public string getCpf_entregador() { return cpf_entregador; }
+        public string getNome_entregador() { return nome_entregador; }
+
+
 
     }    
 }

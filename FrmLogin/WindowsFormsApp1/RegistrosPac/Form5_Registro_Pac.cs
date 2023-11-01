@@ -27,7 +27,7 @@ namespace WindowsFormsApp1.RegistrosPac
 
         private void button_Cadastrar_Click(object sender, EventArgs e)
         {
-            string funcionario = textBox_Funcionario.Text;
+            string funcionario = "1";//textBox_Funcionario.Text;
             string notaFiscal = textBox_NotaFiscal.Text;
             string data = maskedTextBox_Data.Text;
             string titular = textBox_Titular.Text;
@@ -36,18 +36,20 @@ namespace WindowsFormsApp1.RegistrosPac
             string email = maskedTextBox_email.Text;
             string telefone = maskedTextBox_telefone.Text.Replace("-", "").Replace("(", "").Replace(")", "").Replace(" ", "");
             string hora = maskedTextBox_Hora.Text;
+            string cpf_entregador = txtbox_cpf_entregador.Text;
+            string nome_entregador = txtbox_nome_entregador.Text;
 
 
             if (funcionario != "" && notaFiscal != "" && data != "" && titular != "" & CPF != "" && situacao != ""
-                && email != "" && telefone != "" && hora != "")
+                && email != "" && telefone != "" && hora != "" && cpf_entregador != "" && nome_entregador != "")
             {
 
-                bool dadosOk = cadastroPacote.setValid_dados(funcionario, titular, situacao, email, notaFiscal, data, telefone, CPF, hora);
+                bool dadosOk = cadastroPacote.setValid_dados(funcionario, titular, situacao, email, notaFiscal, data, telefone, CPF, hora, cpf_entregador, nome_entregador);
 
                 if (dadosOk == true)
                 {
                     //DÚVIDA EM QUESTÃO DE BOAS PRÁTICAS?
-                    string dadosValidos_funcionario = cadastroPacote.getCad_Funcionario();
+                    string dadosValidos_funcionario = cadastroPacote.getCad_Funcionario();//avaliar se vai integrar realmente no cadastro do pacote
                     string dadosValidos_nomeTitular = cadastroPacote.getCad_Titular();
                     string dadosValidos_situacao = cadastroPacote.getCad_Situacao();
                     string dadosValidos_email = cadastroPacote.getCad_Email();
@@ -55,9 +57,9 @@ namespace WindowsFormsApp1.RegistrosPac
                     string dadosValidos_data = cadastroPacote.getCad_Data(); //precisa criar uma validação para data de entrada e saida
                     string dadosValidos_telefone = cadastroPacote.getCad_Telefone();
                     string dadosValidos_CPF = cadastroPacote.getCad_Cpf();
-                    string dadosValidos_hora = cadastroPacote.getCad_Hora(); //precisa criar uma validação para hora de entrada e saida                  
-                    string funcionario_atual = "funcionario@americanas.com.br";
-                    string cpf_entregador = "15";
+                    string dadosValidos_hora = cadastroPacote.getCad_Hora(); //precisa criar uma validação para hora de entrada e saida
+                    string dadosValidos_cpf_entregador = cadastroPacote.getCpf_entregador();
+                    string dadosValidos_nome_entregador = cadastroPacote.getNome_entregador();
 
                     try
                     {
@@ -65,7 +67,8 @@ namespace WindowsFormsApp1.RegistrosPac
                         Bd.setInputBd_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
                         Bd.setInputBd_data(dadosValidos_data, dadosValidos_data);
                         Bd.setInputBd_hora(dadosValidos_hora, dadosValidos_hora);
-                        Bd.setInputBd_pacote(dadosValidos_notaFiscal, dadosValidos_situacao, funcionario_atual, dadosValidos_CPF, cpf_entregador);
+                        Bd.setInputBd_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
+                        Bd.setInputBd_pacote(dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_CPF, dadosValidos_cpf_entregador);
                         Bd.setBD_Close();
 
                     }
@@ -153,19 +156,6 @@ namespace WindowsFormsApp1.RegistrosPac
             conn.Close();
         }
 
-        private void Form5_Registro_Pac_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }
