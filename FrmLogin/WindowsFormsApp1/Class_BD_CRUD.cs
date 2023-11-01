@@ -217,5 +217,97 @@ namespace WindowsFormsApp1
             // Se não encontrou um funcionário com as credenciais fornecidas, retorne null
             return null;
         }
+
+        // A BAIXO ESTÃO OS MÉTODOS PARA BUSCAR OS DADOS DO BD
+        public void setRead_pacote_cpf(string cpf)
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT nota_fiscal_pacote, situacao_pacote, cpf_titular, cpf_entregador, id_data, id_hora FROM pacote WHERE cpf_titular = ?", conn);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = cpf;
+
+            cmd.CommandType = CommandType.Text;
+
+            //recebe conteudo do banco
+            MySqlDataReader dr = cmd.ExecuteReader();
+            dr.Read();
+
+            retorna_dados = dr.GetString(1); //variavel global que recebe dados do titular
+        }
+        public void setRead_pacote_nf(string nota_fiscal)
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT nota_fiscal_pacote, situacao_pacote, cpf_titular, cpf_entregador, id_data, id_hora FROM pacote WHERE nota_fiscal_pacote = ?", conn);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@nota_fiscal_pacote", MySqlDbType.VarChar, 15).Value = nota_fiscal;
+
+            cmd.CommandType = CommandType.Text;
+
+            //recebe conteudo do banco
+            MySqlDataReader dr = cmd.ExecuteReader();
+            dr.Read();
+
+            retorna_dados = dr.GetString(1); //variavel global que recebe dados do titular
+        }
+
+        public void setRead_titular_cpf(string cpf)
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT nome, email, telefone  FROM titular WHERE cpf_titular = ?", conn);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = cpf;
+
+            cmd.CommandType = CommandType.Text;
+
+            //recebe conteudo do banco
+            MySqlDataReader dr = cmd.ExecuteReader();
+            dr.Read();
+
+            retorna_dados = dr.GetString(1); //variavel global que recebe dados do titular
+        }
+
+        public void setRead_entregador(string cpf)
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT nome_entregador FROM entregador WHERE cpf_entregador = ?", conn);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@cpf_entregador", MySqlDbType.VarChar, 15).Value = cpf;
+
+            cmd.CommandType = CommandType.Text;
+
+            //recebe conteudo do banco
+            MySqlDataReader dr = cmd.ExecuteReader();
+            dr.Read();
+
+            retorna_dados = dr.GetString(1); //variavel global que recebe dados do titular
+        }
+
+        public void setRead_data(string id)
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT chegada_data, retirada_data  FROM tbl_data WHERE id_data = ?", conn);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@id_data", MySqlDbType.VarChar, 15).Value = id;
+
+            cmd.CommandType = CommandType.Text;
+
+            //recebe conteudo do banco
+            MySqlDataReader dr = cmd.ExecuteReader();
+            dr.Read();
+
+            retorna_dados = dr.GetString(1); //variavel global que recebe dados do titular
+        }
+
+        public void setRead_hora(string id)
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT chegada_hora, retirada_hora  FROM hora WHERE id_hora = ?", conn);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@id_hora", MySqlDbType.VarChar, 15).Value = id;
+
+            cmd.CommandType = CommandType.Text;
+
+            //recebe conteudo do banco
+            MySqlDataReader dr = cmd.ExecuteReader();
+            dr.Read();
+
+            retorna_dados = dr.GetString(1); //variavel global que recebe dados do titular
+        }
+
+        public string getRead_dados() { return retorna_dados; }
     }
 }
