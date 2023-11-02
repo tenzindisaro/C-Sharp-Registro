@@ -56,8 +56,8 @@
             this.button_Buscar = new System.Windows.Forms.Button();
             this.maskedTextBox_CPF = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox_telefone = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox_Data = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox_Hora = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox_Data_entrada = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox_Hora_entrada = new System.Windows.Forms.MaskedTextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.maskedTextBox_email = new System.Windows.Forms.MaskedTextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -65,6 +65,10 @@
             this.label13 = new System.Windows.Forms.Label();
             this.txtbox_nome_entregador = new System.Windows.Forms.TextBox();
             this.txtbox_cpf_entregador = new System.Windows.Forms.TextBox();
+            this.maskedTextBox_Data_saida = new System.Windows.Forms.MaskedTextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.maskedTextBox_Hora_saida = new System.Windows.Forms.MaskedTextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -121,9 +125,9 @@
             // 
             this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Location = new System.Drawing.Point(16, 171);
+            this.groupBox1.Location = new System.Drawing.Point(16, 187);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(776, 195);
+            this.groupBox1.Size = new System.Drawing.Size(776, 179);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pacotes Registrados no Dia";
@@ -199,7 +203,7 @@
             // 
             // textBox_NotaFiscal
             // 
-            this.textBox_NotaFiscal.Location = new System.Drawing.Point(271, 54);
+            this.textBox_NotaFiscal.Location = new System.Drawing.Point(262, 53);
             this.textBox_NotaFiscal.Name = "textBox_NotaFiscal";
             this.textBox_NotaFiscal.Size = new System.Drawing.Size(100, 20);
             this.textBox_NotaFiscal.TabIndex = 8;
@@ -207,11 +211,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(387, 57);
+            this.label4.Location = new System.Drawing.Point(368, 61);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(33, 13);
+            this.label4.Size = new System.Drawing.Size(74, 13);
             this.label4.TabIndex = 9;
-            this.label4.Text = "Data:";
+            this.label4.Text = "Data/entrada:";
             // 
             // label5
             // 
@@ -241,7 +245,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(387, 144);
+            this.label7.Location = new System.Drawing.Point(577, 140);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(52, 13);
             this.label7.TabIndex = 15;
@@ -283,7 +287,7 @@
             this.comboBox_Situacao.Items.AddRange(new object[] {
             "Recebido",
             "Entregue"});
-            this.comboBox_Situacao.Location = new System.Drawing.Point(445, 141);
+            this.comboBox_Situacao.Location = new System.Drawing.Point(635, 137);
             this.comboBox_Situacao.Name = "comboBox_Situacao";
             this.comboBox_Situacao.Size = new System.Drawing.Size(121, 21);
             this.comboBox_Situacao.TabIndex = 21;
@@ -332,32 +336,32 @@
             this.maskedTextBox_telefone.Size = new System.Drawing.Size(100, 20);
             this.maskedTextBox_telefone.TabIndex = 0;
             // 
-            // maskedTextBox_Data
+            // maskedTextBox_Data_entrada
             // 
-            this.maskedTextBox_Data.Location = new System.Drawing.Point(445, 57);
-            this.maskedTextBox_Data.Mask = "00/00/0000";
-            this.maskedTextBox_Data.Name = "maskedTextBox_Data";
-            this.maskedTextBox_Data.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox_Data.TabIndex = 0;
-            this.maskedTextBox_Data.ValidatingType = typeof(System.DateTime);
+            this.maskedTextBox_Data_entrada.Location = new System.Drawing.Point(445, 57);
+            this.maskedTextBox_Data_entrada.Mask = "00/00/0000";
+            this.maskedTextBox_Data_entrada.Name = "maskedTextBox_Data_entrada";
+            this.maskedTextBox_Data_entrada.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox_Data_entrada.TabIndex = 0;
+            this.maskedTextBox_Data_entrada.ValidatingType = typeof(System.DateTime);
             // 
-            // maskedTextBox_Hora
+            // maskedTextBox_Hora_entrada
             // 
-            this.maskedTextBox_Hora.Location = new System.Drawing.Point(445, 102);
-            this.maskedTextBox_Hora.Mask = "90:00";
-            this.maskedTextBox_Hora.Name = "maskedTextBox_Hora";
-            this.maskedTextBox_Hora.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox_Hora.TabIndex = 28;
-            this.maskedTextBox_Hora.ValidatingType = typeof(System.DateTime);
+            this.maskedTextBox_Hora_entrada.Location = new System.Drawing.Point(459, 137);
+            this.maskedTextBox_Hora_entrada.Mask = "90:00";
+            this.maskedTextBox_Hora_entrada.Name = "maskedTextBox_Hora_entrada";
+            this.maskedTextBox_Hora_entrada.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox_Hora_entrada.TabIndex = 28;
+            this.maskedTextBox_Hora_entrada.ValidatingType = typeof(System.DateTime);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(387, 105);
+            this.label10.Location = new System.Drawing.Point(377, 141);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(33, 13);
+            this.label10.Size = new System.Drawing.Size(72, 13);
             this.label10.TabIndex = 29;
-            this.label10.Text = "Hora:";
+            this.label10.Text = "Hora entrada:";
             // 
             // maskedTextBox_email
             // 
@@ -388,7 +392,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(553, 104);
+            this.label13.Location = new System.Drawing.Point(553, 92);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(76, 13);
             this.label13.TabIndex = 105;
@@ -403,25 +407,65 @@
             // 
             // txtbox_cpf_entregador
             // 
-            this.txtbox_cpf_entregador.Location = new System.Drawing.Point(635, 101);
+            this.txtbox_cpf_entregador.Location = new System.Drawing.Point(635, 89);
             this.txtbox_cpf_entregador.Name = "txtbox_cpf_entregador";
             this.txtbox_cpf_entregador.Size = new System.Drawing.Size(100, 20);
             this.txtbox_cpf_entregador.TabIndex = 23;
+            // 
+            // maskedTextBox_Data_saida
+            // 
+            this.maskedTextBox_Data_saida.Location = new System.Drawing.Point(445, 96);
+            this.maskedTextBox_Data_saida.Mask = "00/00/0000";
+            this.maskedTextBox_Data_saida.Name = "maskedTextBox_Data_saida";
+            this.maskedTextBox_Data_saida.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox_Data_saida.TabIndex = 107;
+            this.maskedTextBox_Data_saida.ValidatingType = typeof(System.DateTime);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(379, 96);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(63, 13);
+            this.label14.TabIndex = 108;
+            this.label14.Text = "Data/saida:";
+            // 
+            // maskedTextBox_Hora_saida
+            // 
+            this.maskedTextBox_Hora_saida.Location = new System.Drawing.Point(459, 163);
+            this.maskedTextBox_Hora_saida.Mask = "90:00";
+            this.maskedTextBox_Hora_saida.Name = "maskedTextBox_Hora_saida";
+            this.maskedTextBox_Hora_saida.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox_Hora_saida.TabIndex = 30;
+            this.maskedTextBox_Hora_saida.ValidatingType = typeof(System.DateTime);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(381, 166);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(61, 13);
+            this.label15.TabIndex = 31;
+            this.label15.Text = "Hora saida:";
             // 
             // Form5_Registro_Pac
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.maskedTextBox_Hora_saida);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.maskedTextBox_Data_saida);
             this.Controls.Add(this.txtbox_cpf_entregador);
             this.Controls.Add(this.txtbox_nome_entregador);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.maskedTextBox_email);
-            this.Controls.Add(this.maskedTextBox_Hora);
+            this.Controls.Add(this.maskedTextBox_Hora_entrada);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.maskedTextBox_Data);
+            this.Controls.Add(this.maskedTextBox_Data_entrada);
             this.Controls.Add(this.maskedTextBox_telefone);
             this.Controls.Add(this.maskedTextBox_CPF);
             this.Controls.Add(this.button_Buscar);
@@ -485,8 +529,8 @@
         private System.Windows.Forms.Button button_Buscar;
         private System.Windows.Forms.MaskedTextBox maskedTextBox_CPF;
         private System.Windows.Forms.MaskedTextBox maskedTextBox_telefone;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox_Data;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox_Hora;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox_Data_entrada;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox_Hora_entrada;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.MaskedTextBox maskedTextBox_email;
         private System.Windows.Forms.Label label11;
@@ -495,5 +539,9 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtbox_nome_entregador;
         private System.Windows.Forms.TextBox txtbox_cpf_entregador;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox_Data_saida;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox_Hora_saida;
+        private System.Windows.Forms.Label label15;
     }
 }

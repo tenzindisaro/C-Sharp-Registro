@@ -152,6 +152,8 @@ namespace WindowsFormsApp1
         public string getCad_Hora() { return hora; }
         public string getCpf_entregador() { return cpf_entregador; }
         public string getNome_entregador() { return nome_entregador; }
+        public string getNota_fiscal_buscar() { return nota_fiscal_buscar; }
+        public string getCpf_titular_buscar() { return cpf_titular_buscar; }
 
 
 

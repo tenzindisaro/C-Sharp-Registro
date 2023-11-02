@@ -332,7 +332,7 @@ namespace WindowsFormsApp1
             retorna_retirada_data = dr.GetString(1);
         }
 
-        public void setRead_hora(string id)
+        public void setRead_hora()
         {
             MySqlCommand cmd = new MySqlCommand("SELECT chegada_hora, retirada_hora  FROM hora WHERE id_hora = ?", conn);
             cmd.Parameters.Clear();
