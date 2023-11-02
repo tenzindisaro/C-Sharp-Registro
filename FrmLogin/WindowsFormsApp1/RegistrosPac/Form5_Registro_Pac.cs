@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace WindowsFormsApp1.RegistrosPac
 {
@@ -114,23 +115,35 @@ namespace WindowsFormsApp1.RegistrosPac
 
         private void button_Buscar_Click(object sender, EventArgs e)
         {
-            string buscar = txtBox_buscar.Text;
+            string CPF ="", nota_fiscal = "";
+            bool dadosOk = false;
+            if (rdb_Titular_cpf.Checked == true)
+            {
+                CPF = rdb_Titular_cpf.Text;
+                if (CPF != "")
+                {
+                    dadosOk = cadastroPacote.setValid_cpf_buscar(CPF);
+                }
+                else
+                { MessageBox.Show("CPF Titular vazio em opções do buscar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
+            }
+            else if (rdb_NotaFiscal.Checked == true)
+            {
+                nota_fiscal = rdb_NotaFiscal.Text;
+                if (nota_fiscal != "")
+                {
+                    dadosOk = cadastroPacote.setValid_nf_buscar(nota_fiscal);
+                }
+                else
+                { MessageBox.Show("Nota Fiscal vazio em opções do buscar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
+            }
+            else { MessageBox.Show("Selecione uma das opções do buscar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); return; }
 
-            MySqlConnection conn = new MySqlConnection("server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ");
-            conn.Open();
-            MySqlCommand cmd = new MySqlCommand("SELECT cpf_titular, nome, email, telefone  FROM titular WHERE cpf_titular = ?", conn);
-            cmd.Parameters.Clear();
-            cmd.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = buscar;
-            
-            cmd.CommandType = CommandType.Text;
+            if(dadosOk == true)
+            {
 
-            //recebe conteudo do banco
-            MySqlDataReader dr = cmd.ExecuteReader();
-            dr.Read();
+            }
 
-            textBox_Funcionario.Text = dr.GetString(1);
-
-            conn.Close();
         }
 
         private void button_Editar_Click(object sender, EventArgs e)

@@ -19,7 +19,10 @@ namespace WindowsFormsApp1
         //"server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ"
         private MySqlConnection conn = new MySqlConnection("server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ");
         private int id_hora, id_data, id_americanas;
-        string retorna_dados;
+        // váriaveis a baixo para busca dados
+        string retorna_nf, retorna_situacao, retorna_cpf_titular, retorna_cpf_entregador, nome_titular, email_titular, telefone_titular, retorna_nome_entregador, retorna_chegada_data, retorna_retirada_data, retorna_chegada_hora, retorna_retirada_hora; 
+        int retorna_id_data, retorna_id_hora;
+
         public Class_BD_CRUD() 
         {
             /* campo vazio, abertura do BD sera manual
@@ -230,8 +233,14 @@ namespace WindowsFormsApp1
             //recebe conteudo do banco
             MySqlDataReader dr = cmd.ExecuteReader();
             dr.Read();
-
-            retorna_dados = dr.GetString(1); //variavel global que recebe dados do titular
+            
+            //variaveis globais que recebem dados e as chaves estrangeiras da tabela pacote
+            retorna_nf = dr.GetString(0);
+            retorna_situacao = dr.GetString(1);
+            retorna_cpf_titular = dr.GetString(2);
+            retorna_cpf_entregador = dr.GetString(3);
+            retorna_id_data = dr.GetInt32(4);
+            retorna_id_hora = dr.GetInt32(5);
         }
         public void setRead_pacote_nf(string nota_fiscal)
         {
@@ -245,29 +254,39 @@ namespace WindowsFormsApp1
             MySqlDataReader dr = cmd.ExecuteReader();
             dr.Read();
 
-            retorna_dados = dr.GetString(1); //variavel global que recebe dados do titular
+            //variaveis globais que recebem dados e as chaves estrangeiras da tabela pacote
+            retorna_nf = dr.GetString(0);
+            retorna_situacao = dr.GetString(1);
+            retorna_cpf_titular = dr.GetString(2);
+            retorna_cpf_entregador = dr.GetString(3);
+            retorna_id_data = dr.GetInt32(4);
+            retorna_id_hora = dr.GetInt32(5);
         }
+    
 
-        public void setRead_titular_cpf(string cpf)
+        public void setRead_titular_cpf()
         {
             MySqlCommand cmd = new MySqlCommand("SELECT nome, email, telefone  FROM titular WHERE cpf_titular = ?", conn);
             cmd.Parameters.Clear();
-            cmd.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = cpf;
+            cmd.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = retorna_cpf_titular;
 
             cmd.CommandType = CommandType.Text;
 
             //recebe conteudo do banco
             MySqlDataReader dr = cmd.ExecuteReader();
             dr.Read();
+            //nome_titular, email_titular, telefone_titular;
 
-            retorna_dados = dr.GetString(1); //variavel global que recebe dados do titular
+            nome_titular = dr.GetString(0); 
+            email_titular = dr.GetString(1);
+            telefone_titular = dr.GetString(2);
         }
 
-        public void setRead_entregador(string cpf)
+        public void setRead_entregador()
         {
             MySqlCommand cmd = new MySqlCommand("SELECT nome_entregador FROM entregador WHERE cpf_entregador = ?", conn);
             cmd.Parameters.Clear();
-            cmd.Parameters.Add("@cpf_entregador", MySqlDbType.VarChar, 15).Value = cpf;
+            cmd.Parameters.Add("@cpf_entregador", MySqlDbType.VarChar, 15).Value = retorna_cpf_entregador;
 
             cmd.CommandType = CommandType.Text;
 
@@ -275,14 +294,14 @@ namespace WindowsFormsApp1
             MySqlDataReader dr = cmd.ExecuteReader();
             dr.Read();
 
-            retorna_dados = dr.GetString(1); //variavel global que recebe dados do titular
+            retorna_nome_entregador = dr.GetString(0); 
         }
 
-        public void setRead_data(string id)
+        public void setRead_data()
         {
             MySqlCommand cmd = new MySqlCommand("SELECT chegada_data, retirada_data  FROM tbl_data WHERE id_data = ?", conn);
             cmd.Parameters.Clear();
-            cmd.Parameters.Add("@id_data", MySqlDbType.VarChar, 15).Value = id;
+            cmd.Parameters.Add("@id_data", MySqlDbType.VarChar, 15).Value = retorna_id_data;
 
             cmd.CommandType = CommandType.Text;
 
@@ -290,14 +309,15 @@ namespace WindowsFormsApp1
             MySqlDataReader dr = cmd.ExecuteReader();
             dr.Read();
 
-            retorna_dados = dr.GetString(1); //variavel global que recebe dados do titular
+            retorna_chegada_data = dr.GetString(0);
+            retorna_retirada_data = dr.GetString(1);
         }
 
         public void setRead_hora(string id)
         {
             MySqlCommand cmd = new MySqlCommand("SELECT chegada_hora, retirada_hora  FROM hora WHERE id_hora = ?", conn);
             cmd.Parameters.Clear();
-            cmd.Parameters.Add("@id_hora", MySqlDbType.VarChar, 15).Value = id;
+            cmd.Parameters.Add("@id_hora", MySqlDbType.VarChar, 15).Value = retorna_id_hora;
 
             cmd.CommandType = CommandType.Text;
 
@@ -305,9 +325,26 @@ namespace WindowsFormsApp1
             MySqlDataReader dr = cmd.ExecuteReader();
             dr.Read();
 
-            retorna_dados = dr.GetString(1); //variavel global que recebe dados do titular
+            retorna_chegada_hora = dr.GetString(0);
+            retorna_retirada_hora = dr.GetString(1);
         }
+        //GET PARA RECUPERAR TODOS OS DADOS SEPARADAMENTE DO BANCO DE DADOS MENOS FUNCIONARIO
+        public string getRetorna_nf() { return retorna_nf; }
+        public string getRetorna_situacao() { return retorna_situacao; }
+        public string getRetorna_cpf_titular() { return retorna_cpf_titular; }
+        public string getRetorna_cpf_entregador() { return retorna_cpf_entregador; }
+        public string getNome_titular() { return nome_titular; }
+        public string getEmail_titular() { return email_titular; }
+        public string getTelefone_titular() { return telefone_titular; }
+        public string getRetorna_nome_entregador() { return retorna_nome_entregador; }
+        public string getRetorna_chegada_data() { return retorna_chegada_data; }
+        public string getRetorna_retirada_data() { return retorna_retirada_data; }
+        public string getRetorna_chegada_hora() { return retorna_chegada_hora; }
+        public string getRetorna_retirada_hora() { return retorna_retirada_hora; }
+        public int getRetorna_id_data() { return retorna_id_data; }
+        public int getRetorna_id_hora() { return retorna_id_hora; }
 
-        public string getRead_dados() { return retorna_dados; }
+
+
     }
 }

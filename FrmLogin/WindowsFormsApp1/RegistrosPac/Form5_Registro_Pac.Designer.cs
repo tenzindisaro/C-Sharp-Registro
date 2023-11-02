@@ -29,12 +29,16 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.rdb_Titular = new System.Windows.Forms.RadioButton();
+            this.rdb_Titular_cpf = new System.Windows.Forms.RadioButton();
             this.rdb_NotaFiscal = new System.Windows.Forms.RadioButton();
             this.txtBox_buscar = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rdb_Deletados_dia = new System.Windows.Forms.RadioButton();
+            this.rdb_Editados_Dia = new System.Windows.Forms.RadioButton();
+            this.rdb_Registro_Dia = new System.Windows.Forms.RadioButton();
             this.textBox_Titular = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox_NotaFiscal = new System.Windows.Forms.TextBox();
@@ -47,10 +51,6 @@
             this.button_Editar = new System.Windows.Forms.Button();
             this.button_deletar = new System.Windows.Forms.Button();
             this.comboBox_Situacao = new System.Windows.Forms.ComboBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rdb_Deletados_dia = new System.Windows.Forms.RadioButton();
-            this.rdb_Editados_Dia = new System.Windows.Forms.RadioButton();
-            this.rdb_Registro_Dia = new System.Windows.Forms.RadioButton();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.button_Buscar = new System.Windows.Forms.Button();
@@ -73,22 +73,22 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(442, 23);
+            this.label1.Location = new System.Drawing.Point(411, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Buscar:";
             // 
-            // rdb_Titular
+            // rdb_Titular_cpf
             // 
-            this.rdb_Titular.AutoSize = true;
-            this.rdb_Titular.Location = new System.Drawing.Point(491, 23);
-            this.rdb_Titular.Name = "rdb_Titular";
-            this.rdb_Titular.Size = new System.Drawing.Size(54, 17);
-            this.rdb_Titular.TabIndex = 1;
-            this.rdb_Titular.TabStop = true;
-            this.rdb_Titular.Text = "Titular";
-            this.rdb_Titular.UseVisualStyleBackColor = true;
+            this.rdb_Titular_cpf.AutoSize = true;
+            this.rdb_Titular_cpf.Location = new System.Drawing.Point(468, 23);
+            this.rdb_Titular_cpf.Name = "rdb_Titular_cpf";
+            this.rdb_Titular_cpf.Size = new System.Drawing.Size(77, 17);
+            this.rdb_Titular_cpf.TabIndex = 1;
+            this.rdb_Titular_cpf.TabStop = true;
+            this.rdb_Titular_cpf.Text = "CPF Titular";
+            this.rdb_Titular_cpf.UseVisualStyleBackColor = true;
             // 
             // rdb_NotaFiscal
             // 
@@ -135,6 +135,51 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(761, 80);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rdb_Deletados_dia);
+            this.groupBox2.Controls.Add(this.rdb_Editados_Dia);
+            this.groupBox2.Controls.Add(this.rdb_Registro_Dia);
+            this.groupBox2.Location = new System.Drawing.Point(670, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(100, 100);
+            this.groupBox2.TabIndex = 22;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Filtrar Lista:";
+            // 
+            // rdb_Deletados_dia
+            // 
+            this.rdb_Deletados_dia.AutoSize = true;
+            this.rdb_Deletados_dia.Location = new System.Drawing.Point(7, 70);
+            this.rdb_Deletados_dia.Name = "rdb_Deletados_dia";
+            this.rdb_Deletados_dia.Size = new System.Drawing.Size(92, 17);
+            this.rdb_Deletados_dia.TabIndex = 2;
+            this.rdb_Deletados_dia.TabStop = true;
+            this.rdb_Deletados_dia.Text = "Deletados Dia";
+            this.rdb_Deletados_dia.UseVisualStyleBackColor = true;
+            // 
+            // rdb_Editados_Dia
+            // 
+            this.rdb_Editados_Dia.AutoSize = true;
+            this.rdb_Editados_Dia.Location = new System.Drawing.Point(7, 46);
+            this.rdb_Editados_Dia.Name = "rdb_Editados_Dia";
+            this.rdb_Editados_Dia.Size = new System.Drawing.Size(85, 17);
+            this.rdb_Editados_Dia.TabIndex = 1;
+            this.rdb_Editados_Dia.TabStop = true;
+            this.rdb_Editados_Dia.Text = "Editados Dia";
+            this.rdb_Editados_Dia.UseVisualStyleBackColor = true;
+            // 
+            // rdb_Registro_Dia
+            // 
+            this.rdb_Registro_Dia.AutoSize = true;
+            this.rdb_Registro_Dia.Location = new System.Drawing.Point(7, 20);
+            this.rdb_Registro_Dia.Name = "rdb_Registro_Dia";
+            this.rdb_Registro_Dia.Size = new System.Drawing.Size(83, 17);
+            this.rdb_Registro_Dia.TabIndex = 0;
+            this.rdb_Registro_Dia.TabStop = true;
+            this.rdb_Registro_Dia.Text = "Registro Dia";
+            this.rdb_Registro_Dia.UseVisualStyleBackColor = true;
             // 
             // textBox_Titular
             // 
@@ -243,51 +288,6 @@
             this.comboBox_Situacao.Size = new System.Drawing.Size(121, 21);
             this.comboBox_Situacao.TabIndex = 21;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.rdb_Deletados_dia);
-            this.groupBox2.Controls.Add(this.rdb_Editados_Dia);
-            this.groupBox2.Controls.Add(this.rdb_Registro_Dia);
-            this.groupBox2.Location = new System.Drawing.Point(670, 3);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(100, 100);
-            this.groupBox2.TabIndex = 22;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Filtrar Lista:";
-            // 
-            // rdb_Deletados_dia
-            // 
-            this.rdb_Deletados_dia.AutoSize = true;
-            this.rdb_Deletados_dia.Location = new System.Drawing.Point(7, 70);
-            this.rdb_Deletados_dia.Name = "rdb_Deletados_dia";
-            this.rdb_Deletados_dia.Size = new System.Drawing.Size(92, 17);
-            this.rdb_Deletados_dia.TabIndex = 2;
-            this.rdb_Deletados_dia.TabStop = true;
-            this.rdb_Deletados_dia.Text = "Deletados Dia";
-            this.rdb_Deletados_dia.UseVisualStyleBackColor = true;
-            // 
-            // rdb_Editados_Dia
-            // 
-            this.rdb_Editados_Dia.AutoSize = true;
-            this.rdb_Editados_Dia.Location = new System.Drawing.Point(7, 46);
-            this.rdb_Editados_Dia.Name = "rdb_Editados_Dia";
-            this.rdb_Editados_Dia.Size = new System.Drawing.Size(85, 17);
-            this.rdb_Editados_Dia.TabIndex = 1;
-            this.rdb_Editados_Dia.TabStop = true;
-            this.rdb_Editados_Dia.Text = "Editados Dia";
-            this.rdb_Editados_Dia.UseVisualStyleBackColor = true;
-            // 
-            // rdb_Registro_Dia
-            // 
-            this.rdb_Registro_Dia.AutoSize = true;
-            this.rdb_Registro_Dia.Location = new System.Drawing.Point(7, 20);
-            this.rdb_Registro_Dia.Name = "rdb_Registro_Dia";
-            this.rdb_Registro_Dia.Size = new System.Drawing.Size(83, 17);
-            this.rdb_Registro_Dia.TabIndex = 0;
-            this.rdb_Registro_Dia.TabStop = true;
-            this.rdb_Registro_Dia.Text = "Registro Dia";
-            this.rdb_Registro_Dia.UseVisualStyleBackColor = true;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -384,7 +384,6 @@
             this.label12.Size = new System.Drawing.Size(58, 13);
             this.label12.TabIndex = 104;
             this.label12.Text = "entregador";
-//            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // label13
             // 
@@ -394,7 +393,6 @@
             this.label13.Size = new System.Drawing.Size(76, 13);
             this.label13.TabIndex = 105;
             this.label13.Text = "cpf entregador";
-//            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // txtbox_nome_entregador
             // 
@@ -445,11 +443,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtBox_buscar);
             this.Controls.Add(this.rdb_NotaFiscal);
-            this.Controls.Add(this.rdb_Titular);
+            this.Controls.Add(this.rdb_Titular_cpf);
             this.Controls.Add(this.label1);
             this.Name = "Form5_Registro_Pac";
             this.Text = "Registro de Pacotes";
-//            this.Load += new System.EventHandler(this.Form5_Registro_Pac_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
@@ -462,7 +459,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RadioButton rdb_Titular;
+        private System.Windows.Forms.RadioButton rdb_Titular_cpf;
         private System.Windows.Forms.RadioButton rdb_NotaFiscal;
         private System.Windows.Forms.TextBox txtBox_buscar;
         private System.Windows.Forms.Label label2;

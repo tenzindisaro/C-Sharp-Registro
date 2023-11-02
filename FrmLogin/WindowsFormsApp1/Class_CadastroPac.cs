@@ -12,7 +12,7 @@ namespace WindowsFormsApp1
 {
     internal class Class_CadastroPac
     {
-        string funcionario, titular, situacao, email, notaFiscal, data, telefone, CPF, hora, cpf_entregador, nome_entregador;
+        string funcionario, titular, situacao, email, notaFiscal, data, telefone, CPF, hora, cpf_entregador, nome_entregador, cpf_titular_buscar, nota_fiscal_buscar;
 
         public Class_CadastroPac()
         {
@@ -27,7 +27,9 @@ namespace WindowsFormsApp1
             hora = null;
             cpf_entregador = null;
             nome_entregador = null;
-
+            //string para validar buscar:
+            cpf_titular_buscar = null;
+            nota_fiscal_buscar = null;
         }
         // set para validação de dados.
         public bool setValid_dados(string funcionario_txt, string titular_txt, string situacao_txt, string email_txt, string notaFiscal_txt, string data_txt, string telefone_txt, string cpf_txt, string hora_txt, string cpf_entregador_txt, string nome_entregador_txt)
@@ -107,6 +109,33 @@ namespace WindowsFormsApp1
 
             return true;
         }
+        // sets a baixo para válidar a busca de CPF titular ou Nota fiscal do pacote:
+        public bool setValid_cpf_buscar(string cpf)
+        {
+            bool cpf_titular_buscar = true;
+
+            if (cpf_titular_buscar == false)
+            {
+                MessageBox.Show("Insira apenas números no campo CPF.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            this.cpf_titular_buscar = cpf;
+            return true;
+        }
+
+        public bool setValid_nf_buscar(string nf)
+        {
+            bool nota_fiscal_buscar = true;
+
+            if (nota_fiscal_buscar == false)
+            {
+                MessageBox.Show("Insira apenas números no campo nota fiscal.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            this.nota_fiscal_buscar = nf;
+            return true;
+        }
+
         /* get para obter dados validados.
         public (string funcionario_nome, string titular_nome, string situacao, string email, int nota_fiscal, int data, int telefone, int cpf, int hora) GetValid_dados()
         {
