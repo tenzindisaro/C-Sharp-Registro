@@ -17,10 +17,10 @@ namespace WindowsFormsApp1
     {
         Thread t1;
         Class_BD_CRUD Bd = new Class_BD_CRUD();
+        Class_UsuarioAtual listaUsuario = new Class_UsuarioAtual();
         public FrmLogin()
         {
             InitializeComponent();
-            txtEmail.Focus();
         }
 
         private string inputEmail, inputPassword;
@@ -30,8 +30,6 @@ namespace WindowsFormsApp1
             inputEmail = txtEmail.Text;
             inputPassword = txtSenha.Text;
 
-            //User actualyUser = new User("Administrador Padrão", "admin@americanas.com.br", "admin12345", "undefined", "undefined");   //deve se ignorar este objeto e seus dados por enquanto
-            
             if (inputEmail != "" && inputPassword != "")
             {
                 try
@@ -54,6 +52,21 @@ namespace WindowsFormsApp1
             if (tentativa_login)   
             {
                 label1.Visible = false;
+                try
+                {
+                    /*
+                    Bd.setBD_Open();
+                    User funcionario = Bd.setReadBd_funcionario(inputEmail, inputPassword);
+                    Bd.setBD_Close();
+                    */
+                    User funcionario = new User("Tenzio", "@americanas.com.br", "123456", "1", 2, "3");
+                    listaUsuario.adicionarUsuario(funcionario);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString(), "Erro");
+                }
                 this.Close();
                 t1 = new Thread(abrirMenu);
                 t1.SetApartmentState(ApartmentState.MTA);
@@ -93,6 +106,12 @@ namespace WindowsFormsApp1
         private void label3_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+            txtEmail.Focus();
+            listaUsuario.removerUsuario();
         }
 
         private void abrirMenu(object obj)

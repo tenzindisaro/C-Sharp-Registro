@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\FrmLogin",
+    "\\FrmLogin\\WindowsFormsApp1",
+    "\\FrmLogin\\WindowsFormsApp1\\lista",
+    "\\FrmLogin\\WindowsFormsApp1\\lista\\Geral"
   ],
   "PreviewInSolutionExplorer": true
 }

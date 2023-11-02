@@ -16,6 +16,7 @@ namespace WindowsFormsApp1
     public partial class Form3_Tela_Menu : Form
     {
         Thread t2;
+        
         public Form3_Tela_Menu()
         {
             InitializeComponent();
@@ -73,26 +74,13 @@ namespace WindowsFormsApp1
 
         private void Form3_Tela_Menu_Load(object sender, EventArgs e)
         {
-            try
+            Class_UsuarioAtual listaUsuario = new Class_UsuarioAtual();
+            User usuario;
+            if (listaUsuario.getUserAtual() != null) 
             {
-                /*
-                // string de conexão BD
-                var strConnection = "server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ";
-                MySqlConnection conn = new MySqlConnection(strConnection);
-                //abre o BD
-                conn.Open();
-                MessageBox.Show("conectado BD.");
-                //fecha o BD
-                conn.Close();
-                */
-                Class_BD_CRUD server = new Class_BD_CRUD();
-                
+                usuario = listaUsuario.getUserAtual();
+                label11.Text = usuario.GetUserData(2);
             }
-            catch 
-            {
-                MessageBox.Show("Erro ao conectar com o banco de dados.", "Data Base");                
-            }           
-
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)

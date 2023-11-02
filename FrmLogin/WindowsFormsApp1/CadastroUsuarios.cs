@@ -9,13 +9,10 @@ namespace WindowsFormsApp1
 {
     internal class CadastroUsuarios
     {
-        private List<User> listaUsuarios;
-        private User novoUser;
         public CadastroUsuarios ()
         {
-            //listaUsuarios = new List<User> ();        não removi pois pode ser útil!
+      
         }
-
 
         public bool checkInput(string inputEmail, string inputPassword, string inputConfirmPassword, string inputName, string inputPhoneNumber)
         {
@@ -86,7 +83,7 @@ namespace WindowsFormsApp1
                 campo = "\"Telefone\"";
             }
 
-            if (inputEmail != "" && inputEmail.Contains("@americanas.com.br"))
+            if (inputEmail != "")
             {
                 opr = 0;
             }
@@ -94,6 +91,15 @@ namespace WindowsFormsApp1
             {
                 opr = 1;
                 campo = "\"Email\"";
+            }
+
+            if (inputEmail.Contains("@americanas.com.br"))
+            {
+                opr = 0; 
+            }
+            else
+            {
+                opr = 5;
             }
 
 
@@ -113,16 +119,15 @@ namespace WindowsFormsApp1
                     MessageBox.Show("As senhas inseridas não coincidem!", "Senha inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     break;
                 case 4:
-                    MessageBox.Show("As senha inserida não está no formato correto! Digite uma senha de 6 a 32 dígitos.", "Senha inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("A senha inserida não está no formato correto! Digite uma senha de 6 a 32 dígitos.", "Senha inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    break;
+                case 5:
+                    MessageBox.Show("O email inserido não está no formato correto! Digite um email corporativo.", "Senha inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     break;
             }
 
             return false;
         }
 
-        private void adicionarUsuario (User user)
-        {
-            listaUsuarios.Add(user);
-        }
     }
 }

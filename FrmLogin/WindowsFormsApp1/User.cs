@@ -8,11 +8,12 @@ namespace WindowsFormsApp1
 {
     internal class User
     {
-        private string name, password, email, phoneNumber;
+        private string name, password, email, phoneNumber, cpf;
+        private int id_endereco;
 
-        public User(string inputName , string inputEmail, string inputPassword) 
+        public User(string inputName , string inputEmail, string inputPassword, string inputCpf, int inputId_endereco, string inputPhoneNumber) 
         {
-            name = inputName;
+
             if (checkEmail(inputEmail))
             {
                 email = inputEmail;
@@ -22,7 +23,11 @@ namespace WindowsFormsApp1
             {
                 password = inputPassword;
             }
-            phoneNumber = "";
+
+            name = inputName;
+            phoneNumber = inputPhoneNumber;
+            cpf = inputCpf;
+            id_endereco = inputId_endereco;
         }
 
         public bool checkEmail (string inputEmail)
@@ -51,6 +56,7 @@ namespace WindowsFormsApp1
                 case 2: return email;
                 case 3: return phoneNumber;
                 case 4: return password;
+                case 5: return cpf;
             }
             return "undefined";
         }

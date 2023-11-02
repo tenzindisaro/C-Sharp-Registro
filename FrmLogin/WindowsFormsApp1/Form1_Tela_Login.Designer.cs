@@ -74,7 +74,7 @@
             this.txtSenha.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtSenha.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSenha.Font = new System.Drawing.Font("Arial", 12.12F);
-            this.txtSenha.Location = new System.Drawing.Point(163, 212);
+            this.txtSenha.Location = new System.Drawing.Point(154, 212);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.Size = new System.Drawing.Size(230, 19);
             this.txtSenha.TabIndex = 1;
@@ -194,6 +194,7 @@
             this.Name = "FrmLogin";
             this.Text = "Registro";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.pnlLogin.ResumeLayout(false);
             this.pnlLogin.PerformLayout();
             this.panel2.ResumeLayout(false);

@@ -118,16 +118,26 @@ namespace WindowsFormsApp1
             }
         }
 
-        public void setInputBd_funcionario (string email_funcionario, string cpf_funcionario, string nome_funcionario, string telefone_funcionario, string cargo_funcionario, string senha_funcionario)
+        public void setInputBd_funcionario (string email_funcionario, string cpf_funcionario, string nome_funcionario, string telefone_funcionario, string senha_funcionario)
         {
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
             MySqlCommand objcmd_funcionario = new MySqlCommand("INSERT INTO funcionario (email_americanas_funcionario, cpf_funcionario, nome_funcionario, telefone_funcionario, cargo_funcionario, senha_funcionario, id_americanas) VALUES (?, ?, ?, ?, ?, ?, ?)", conn);
             // parametros para o sql funcionario
+=======
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
+            MySqlCommand objcmd_funcionario = new MySqlCommand("INSERT INTO funcionario (email_americanas_funcionario, cpf_funcionario, nome_funcionario, telefone_funcionario, senha_funcionario, id_americanas) VALUES (?, ?, ?, ?, ?, ?)", conn);
+            // parametros para o sql pacote
+>>>>>>> Stashed changes
 
             objcmd_funcionario.Parameters.Add("@email_americanas_funcionario", MySqlDbType.VarChar, 255).Value = email_funcionario;
             objcmd_funcionario.Parameters.Add("@cpf_funcionario", MySqlDbType.VarChar, 15).Value = cpf_funcionario;
             objcmd_funcionario.Parameters.Add("@nome_funcionario", MySqlDbType.VarChar, 45).Value = nome_funcionario;
             objcmd_funcionario.Parameters.Add("@telefone_funcionario", MySqlDbType.VarChar, 15).Value = telefone_funcionario;
-            objcmd_funcionario.Parameters.Add("@cargo_funcionario", MySqlDbType.VarChar).Value = cargo_funcionario;
             objcmd_funcionario.Parameters.Add("@senha_funcionario", MySqlDbType.VarChar).Value = senha_funcionario;
             objcmd_funcionario.Parameters.Add("@id_americanas", MySqlDbType.Int32).Value = id_americanas;
             // executando query                       
@@ -180,45 +190,54 @@ namespace WindowsFormsApp1
             if (result > 0)
             {
                 MessageBox.Show("Login bem-sucedido.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return true; // As credenciais são válidas
+                return true;
             }
             else
             {
                 MessageBox.Show("Credenciais inválidas. Tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false; // As credenciais são inválidas
+                return false;
             }
         }
 
-        public User setReadBd_user(string usuario, string senha)
+        public User setReadBd_funcionario(string usuario, string senha)
         {
-            string query = "SELECT * FROM funcionario WHERE email_americanas_funcionario = @usuario AND senha_funcionario = @senha";
-
-            MySqlCommand objcmd_user = new MySqlCommand(query, conn);
-            objcmd_user.Parameters.Add("@usuario", MySqlDbType.VarChar, 255).Value = usuario;
-            objcmd_user.Parameters.Add("@senha", MySqlDbType.VarChar, 32).Value = senha;
-
-            using (MySqlDataReader reader = objcmd_user.ExecuteReader())
+            try
             {
-                if (reader.Read())
+                string query = "SELECT * FROM funcionario WHERE email_americanas_funcionario = @usuario AND senha_funcionario = @senha";
+
+                MySqlCommand objcmd_user = new MySqlCommand(query, conn);
+                objcmd_user.Parameters.Add("@usuario", MySqlDbType.VarChar, 255).Value = usuario;
+                objcmd_user.Parameters.Add("@senha", MySqlDbType.VarChar, 32).Value = senha;
+
+                using (MySqlDataReader reader = objcmd_user.ExecuteReader())
                 {
-                    string email, cpf, nome, telefone, cargo;
-                    int id_americanas;
+                    if (reader.Read())
+                    {
+                        string email, cpf, nome, telefone;
+                        int id_americanas;
 
-                    email = reader["email_americanas_funcionario"].ToString();
-                    cpf = reader["cpf_funcionario"].ToString();
-                    nome = reader["nome_funcionario"].ToString();
-                    telefone = reader["telefone_funcionario"].ToString();
-                    cargo = reader["cargo_funcionario"].ToString();
-                    id_americanas = Convert.ToInt32(reader["id_americanas"]);
+                        email = reader["email_americanas_funcionario"].ToString();
+                        cpf = reader["cpf_funcionario"].ToString();
+                        nome = reader["nome_funcionario"].ToString();
+                        telefone = reader["telefone_funcionario"].ToString();
+                        id_americanas = Convert.ToInt32(reader["id_americanas"]);
 
-                    User funcionario = new User(nome, email, senha);
-                    
-                    return funcionario;
+                        User funcionario = new User(nome, email, senha, cpf, id_americanas, telefone);
+                        return funcionario;
+                    }
                 }
-            }
 
-            // Se não encontrou um funcionário com as credenciais fornecidas, retorne null
-            return null;
+                // Se não encontrou um funcionário com as credenciais fornecidas, você pode lançar uma exceção ou retornar um valor padrão.
+                // Exemplo lançando uma exceção:
+                throw new InvalidOperationException("Funcionário não encontrado com as credenciais fornecidas.");
+            }
+            catch (Exception ex)
+            {
+                // Lidar com exceções de banco de dados ou conexão aqui
+                // Pode ser útil logar o erro ou tomar outras ações apropriadas.
+                Console.WriteLine("Erro: " + ex.Message);
+                return null;
+            }
         }
 
         // A BAIXO ESTÃO OS MÉTODOS PARA BUSCAR OS DADOS DO BD
