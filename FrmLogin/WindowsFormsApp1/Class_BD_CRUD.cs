@@ -20,10 +20,10 @@ namespace WindowsFormsApp1
         private MySqlConnection conn = new MySqlConnection("server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ");
         private int id_hora, id_data, id_americanas;
         // váriaveis a baixo para busca dados
-        string retorna_nf, retorna_situacao, retorna_cpf_titular, retorna_cpf_entregador, nome_titular, email_titular, telefone_titular, retorna_nome_entregador, retorna_chegada_data, retorna_retirada_data, retorna_chegada_hora, retorna_retirada_hora; 
+        string retorna_nf, retorna_situacao, retorna_cpf_titular, retorna_cpf_entregador, nome_titular, email_titular, telefone_titular, retorna_nome_entregador, retorna_chegada_data, retorna_retirada_data, retorna_chegada_hora, retorna_retirada_hora;
         int retorna_id_data, retorna_id_hora;
 
-        public Class_BD_CRUD() 
+        public Class_BD_CRUD()
         {
             /* campo vazio, abertura do BD sera manual
              MessageBox.Show("Banco de Dados public inicializado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);*/
@@ -34,14 +34,14 @@ namespace WindowsFormsApp1
             conn.Open();
             MessageBox.Show("Banco de Dados open.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
-        public void setBD_Close() 
+        public void setBD_Close()
         {
             //fecha o BD
             conn.Close();
             MessageBox.Show("BD fechado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
-        public void setInputBd_titular (string cpf_titular, string nome, string email, string telefone)
+        public void setInputBd_titular(string cpf_titular, string nome, string email, string telefone)
         {
             MySqlCommand objcmd_titular = new MySqlCommand("insert into titular (cpf_titular, nome, email, telefone) values (?, ?, ?, ?)", conn);
             // parametros para o sql titular
@@ -63,12 +63,12 @@ namespace WindowsFormsApp1
             // executando query                       
             objcmd_data.ExecuteNonQuery();
             MessageBox.Show("envio de dados data ok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            MySqlCommand last_id_data = new MySqlCommand("SELECT LAST_INSERT_ID();",conn);
+            MySqlCommand last_id_data = new MySqlCommand("SELECT LAST_INSERT_ID();", conn);
 
             id_data = Convert.ToInt32(last_id_data.ExecuteScalar());
             MessageBox.Show("valor id data = " + id_data.ToString(), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
-        
+
         public void setInputBd_hora(string chegada_hora, string retirada_hora)
         {
             MySqlCommand objcmd_hora = new MySqlCommand("insert into hora (id_hora, chegada_hora, retirada_hora) values (NULL, ?, ?)", conn);
@@ -85,7 +85,7 @@ namespace WindowsFormsApp1
             MessageBox.Show("valor id hora = " + id_hora.ToString(), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
-        public void setInputBd_americanas (string cep_americanas, string rua_americanas, string bairro_americanas, string numero_americanas)
+        public void setInputBd_americanas(string cep_americanas, string rua_americanas, string bairro_americanas, string numero_americanas)
         {
             MySqlCommand verificaExistenciaCommand = new MySqlCommand("SELECT id_americanas FROM americanas WHERE cep_americanas = @cep_endereco AND rua_americanas = @rua_endereco AND bairro_americanas = @bairro_endereco AND numero_americanas = @numero_endereco;", conn);
 
@@ -118,7 +118,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        public void setInputBd_funcionario (string email_funcionario, string cpf_funcionario, string nome_funcionario, string telefone_funcionario, string senha_funcionario)
+        public void setInputBd_funcionario(string email_funcionario, string cpf_funcionario, string nome_funcionario, string telefone_funcionario, string senha_funcionario)
         {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -145,7 +145,7 @@ namespace WindowsFormsApp1
             MessageBox.Show("envio de dados funcionario ok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
-        public void setInputBd_entregador(string cpf_entregador, string nome_entregador) 
+        public void setInputBd_entregador(string cpf_entregador, string nome_entregador)
         {
             MySqlCommand objcmd_entregador = new MySqlCommand("INSERT INTO entregador (cpf_entregador, nome_entregador) VALUES (?, ?)", conn);
             // parametros para o sql entregador
@@ -240,7 +240,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        // A BAIXO ESTÃO OS MÉTODOS PARA BUSCAR OS DADOS DO BD
+        // A BAIXO ESTÃO OS MÉTODOS PARA BUSCAR OS DADOS DO BD**************************************************************************************
         public void setRead_pacote_cpf(string cpf)
         {
             MySqlCommand cmd = new MySqlCommand("SELECT nota_fiscal_pacote, situacao_pacote, cpf_titular, cpf_entregador, id_data, id_hora FROM pacote WHERE cpf_titular = ?", conn);
@@ -252,7 +252,7 @@ namespace WindowsFormsApp1
             //recebe conteudo do banco
             MySqlDataReader dr = cmd.ExecuteReader();
             dr.Read();
-            
+
             //variaveis globais que recebem dados e as chaves estrangeiras da tabela pacote
             retorna_nf = dr.GetString(0);
             retorna_situacao = dr.GetString(1);
@@ -265,7 +265,7 @@ namespace WindowsFormsApp1
         {
             MySqlCommand cmd = new MySqlCommand("SELECT nota_fiscal_pacote, situacao_pacote, cpf_titular, cpf_entregador, id_data, id_hora FROM pacote WHERE nota_fiscal_pacote = ?", conn);
             cmd.Parameters.Clear();
-            cmd.Parameters.Add("@nota_fiscal_pacote", MySqlDbType.VarChar, 15).Value = nota_fiscal;
+            cmd.Parameters.Add("@nota_fiscal_pacote", MySqlDbType.VarChar, 45).Value = nota_fiscal;
 
             cmd.CommandType = CommandType.Text;
 
@@ -281,7 +281,7 @@ namespace WindowsFormsApp1
             retorna_id_data = dr.GetInt32(4);
             retorna_id_hora = dr.GetInt32(5);
         }
-    
+
 
         public void setRead_titular_cpf()
         {
@@ -296,7 +296,7 @@ namespace WindowsFormsApp1
             dr.Read();
             //nome_titular, email_titular, telefone_titular;
 
-            nome_titular = dr.GetString(0); 
+            nome_titular = dr.GetString(0);
             email_titular = dr.GetString(1);
             telefone_titular = dr.GetString(2);
         }
@@ -313,14 +313,14 @@ namespace WindowsFormsApp1
             MySqlDataReader dr = cmd.ExecuteReader();
             dr.Read();
 
-            retorna_nome_entregador = dr.GetString(0); 
+            retorna_nome_entregador = dr.GetString(0);
         }
 
         public void setRead_data()
         {
             MySqlCommand cmd = new MySqlCommand("SELECT chegada_data, retirada_data  FROM tbl_data WHERE id_data = ?", conn);
             cmd.Parameters.Clear();
-            cmd.Parameters.Add("@id_data", MySqlDbType.VarChar, 15).Value = retorna_id_data;
+            cmd.Parameters.Add("@id_data", MySqlDbType.Int32).Value = retorna_id_data;
 
             cmd.CommandType = CommandType.Text;
 
@@ -336,7 +336,7 @@ namespace WindowsFormsApp1
         {
             MySqlCommand cmd = new MySqlCommand("SELECT chegada_hora, retirada_hora  FROM hora WHERE id_hora = ?", conn);
             cmd.Parameters.Clear();
-            cmd.Parameters.Add("@id_hora", MySqlDbType.VarChar, 15).Value = retorna_id_hora;
+            cmd.Parameters.Add("@id_hora", MySqlDbType.Int32).Value = retorna_id_hora;
 
             cmd.CommandType = CommandType.Text;
 
@@ -347,7 +347,7 @@ namespace WindowsFormsApp1
             retorna_chegada_hora = dr.GetString(0);
             retorna_retirada_hora = dr.GetString(1);
         }
-        //GET PARA RECUPERAR TODOS OS DADOS SEPARADAMENTE DO BANCO DE DADOS MENOS FUNCIONARIO
+        //GET PARA RECUPERAR TODOS OS DADOS SEPARADAMENTE DO BANCO DE DADOS MENOS FUNCIONARIO*******************************************************
         public string getRetorna_nf() { return retorna_nf; }
         public string getRetorna_situacao() { return retorna_situacao; }
         public string getRetorna_cpf_titular() { return retorna_cpf_titular; }
@@ -363,7 +363,83 @@ namespace WindowsFormsApp1
         public int getRetorna_id_data() { return retorna_id_data; }
         public int getRetorna_id_hora() { return retorna_id_hora; }
 
+        // MÉTODOS ENVIO DE DADOS EDITADOS PELO USUÁRIO********************************************************************
+
+        public void setEdit_pacote(string nota_fiscal, string situacao, string cpf_titular, string cpf_entregador)
+        {
+            MySqlConnection conn = new MySqlConnection("server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ");
+
+            MySqlCommand objEdit = new MySqlCommand("UPDATE pacote SET nota_fiscal_pacote = ?, situacao_pacote = ?, cpf_titular = ?, cpf_entregador = ? WHERE nota_fiscal_pacote = ?", conn);
+            objEdit.Parameters.Clear();
+            objEdit.Parameters.Add("@nota_fiscal_pacote", MySqlDbType.VarChar, 45).Value = nota_fiscal;
+            objEdit.Parameters.Add("@situacao_pacote", MySqlDbType.VarChar, 20).Value = situacao;
+            objEdit.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = cpf_titular;
+            objEdit.Parameters.Add("@cpf_entregador", MySqlDbType.VarChar, 15).Value = cpf_entregador;
+            objEdit.Parameters.Add("@nota_fiscal_pacote", MySqlDbType.VarChar, 45).Value = retorna_nf; // nota fiscal antiga
+
+            objEdit.CommandType = CommandType.Text;
+            objEdit.ExecuteNonQuery();
+        }
+
+        public void setEdit_titular(string cpf, string nome, string email, string telefone)
+        {
+            MySqlConnection conn = new MySqlConnection("server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ");
+
+            MySqlCommand objEdit = new MySqlCommand("UPDATE titular SET cpf_titular = ?, nome = ?, email = ?, telefone = ? WHERE cpf_titular = ?", conn);
+            objEdit.Parameters.Clear();
+            objEdit.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = cpf;
+            objEdit.Parameters.Add("@nome", MySqlDbType.VarChar, 75).Value = nome;
+            objEdit.Parameters.Add("@email", MySqlDbType.VarChar, 30).Value = email;
+            objEdit.Parameters.Add("@telefone", MySqlDbType.VarChar, 15).Value = telefone;
+            objEdit.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = retorna_cpf_titular;
+
+            objEdit.CommandType = CommandType.Text;
+            objEdit.ExecuteNonQuery();
+        }
+
+        public void setEdit_entregador(string cpf, string nome)
+        {
+            MySqlConnection conn = new MySqlConnection("server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ");
+
+            MySqlCommand objEdit = new MySqlCommand("UPDATE entregador SET cpf_entregador = ?, nome_entregador = ? WHERE cpf_entregador = ?", conn);
+            objEdit.Parameters.Clear();
+            objEdit.Parameters.Add("@cpf_entregador", MySqlDbType.VarChar, 15).Value = cpf;
+            objEdit.Parameters.Add("@nome_entregador", MySqlDbType.VarChar, 75).Value = nome;
+            objEdit.Parameters.Add("@cpf_entregador", MySqlDbType.VarChar, 15).Value = retorna_cpf_entregador;
 
 
+            objEdit.CommandType = CommandType.Text;
+            objEdit.ExecuteNonQuery();
+        }
+
+        public void setEdit_data(string chegada, string retirada)
+        {
+            MySqlConnection conn = new MySqlConnection("server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ");
+
+            MySqlCommand objEdit = new MySqlCommand("UPDATE tbl_data SET chegada_data = ?, retirada_data = ? WHERE id_data = ?", conn);
+            objEdit.Parameters.Clear();
+            objEdit.Parameters.Add("@chegada_data", MySqlDbType.VarChar, 10).Value = chegada;
+            objEdit.Parameters.Add("@retirada_data", MySqlDbType.VarChar, 10).Value = retirada;
+            objEdit.Parameters.Add("@id_data", MySqlDbType.Int32).Value = retorna_id_data;
+
+
+            objEdit.CommandType = CommandType.Text;
+            objEdit.ExecuteNonQuery();
+        }
+
+        public void setEdit_hora(string chegada, string retirada)
+        {
+            MySqlConnection conn = new MySqlConnection("server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ");
+
+            MySqlCommand objEdit = new MySqlCommand("UPDATE hora SET chegada_hora = ?, retirada_hora = ? WHERE id_hora = ?", conn);
+            objEdit.Parameters.Clear();
+            objEdit.Parameters.Add("@chegada_hora", MySqlDbType.VarChar, 10).Value = chegada;
+            objEdit.Parameters.Add("@retirada_hora", MySqlDbType.VarChar, 10).Value = retirada;
+            objEdit.Parameters.Add("@id_hora", MySqlDbType.Int32).Value = retorna_id_hora;
+
+
+            objEdit.CommandType = CommandType.Text;
+            objEdit.ExecuteNonQuery();
+        }
     }
 }
