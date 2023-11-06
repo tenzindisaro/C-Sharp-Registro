@@ -12,7 +12,7 @@ namespace WindowsFormsApp1
 {
     internal class Class_CadastroPac
     {
-        string funcionario, titular, situacao, email, notaFiscal, data, telefone, CPF, hora, cpf_entregador, nome_entregador, cpf_titular_buscar, nota_fiscal_buscar;
+        string funcionario, titular, situacao, email, notaFiscal, data_entrada, data_retirada, telefone, CPF, hora_entrada, hora_retirada, cpf_entregador, nome_entregador, cpf_titular_buscar, nota_fiscal_buscar;
 
         public Class_CadastroPac()
         {
@@ -21,10 +21,12 @@ namespace WindowsFormsApp1
             situacao = null;
             email = null;
             notaFiscal = null;
-            data = null;
+            data_entrada = null;
+            data_retirada = null;
             telefone = null;
             CPF = null;
-            hora = null;
+            hora_entrada = null;
+            hora_retirada = null;
             cpf_entregador = null;
             nome_entregador = null;
             //string para validar buscar:
@@ -32,7 +34,7 @@ namespace WindowsFormsApp1
             nota_fiscal_buscar = null;
         }
         // set para validação de dados.
-        public bool setValid_dados(string funcionario_txt, string titular_txt, string situacao_txt, string email_txt, string notaFiscal_txt, string data_txt, string telefone_txt, string cpf_txt, string hora_txt, string cpf_entregador_txt, string nome_entregador_txt)
+        public bool setValid_dados(string funcionario_txt, string titular_txt, string situacao_txt, string email_txt, string notaFiscal_txt, string data_entrada_txt, string data_retirada_txt, string telefone_txt, string cpf_txt, string hora_entrada_txt, string hora_retirada_txt, string cpf_entregador_txt, string nome_entregador_txt)
         {
             bool EntradaFuncionario = true; //Regex.IsMatch(funcionario_txt, "^[a-zA-ZÀ-ú ]+$");
             
@@ -40,11 +42,15 @@ namespace WindowsFormsApp1
 
             bool EntradaData = true; //Regex.IsMatch(data_txt, @"^\d{2}/\d{2}/\d{4}$");
 
+            bool EntradaDataRetirada = true;
+
             bool EntradaTitular = true; //Regex.IsMatch(titular_txt, "^[a-zA-ZÀ-ú ]+$");
 
             bool EntradaCpf = true; //long.TryParse(cpf_txt, out long valid_cpf);
 
             bool EntradaHora = true; //Regex.IsMatch(hora_txt, @"^\d{2}:\d{2}$");
+            
+            bool EntradaHoraRetirada = true;
 
             bool EntradaTelefone = true; //long.TryParse(telefone_txt, out long valid_telefone);
 
@@ -71,6 +77,12 @@ namespace WindowsFormsApp1
                 return false;
             }
 
+            if (EntradaDataRetirada == false)
+            {
+                MessageBox.Show("Insira apenas números no campo Data.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             if (EntradaTitular == false)
             {
                 MessageBox.Show("Insira apenas letras no campo Titular.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -87,6 +99,13 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Insira apenas numeros no campo Hora.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+
+            if (EntradaHoraRetirada == false)
+            {
+                MessageBox.Show("Insira apenas numeros no campo Hora.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             if (EntradaTelefone == false)
             {
                 MessageBox.Show("Insira apenas numeros no campo Telefone.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -100,10 +119,12 @@ namespace WindowsFormsApp1
             situacao = situacao_txt;
             email = email_txt;
             notaFiscal = notaFiscal_txt; //valid_notaFiscal.ToString();
-            data = data_txt;
+            data_entrada = data_entrada_txt;
+            data_retirada = data_retirada_txt;
             telefone = telefone_txt; //valid_telefone.ToString();
             CPF = cpf_txt; //valid_cpf.ToString();
-            hora = hora_txt;
+            hora_entrada = hora_entrada_txt;
+            hora_retirada = hora_retirada_txt;
             nome_entregador = nome_entregador_txt;
             cpf_entregador = cpf_entregador_txt;
 
@@ -147,9 +168,11 @@ namespace WindowsFormsApp1
         public string getCad_Email() { return email; }
         public string getCad_NotaFiscal() { return notaFiscal; }
         public string getCad_Telefone() { return telefone; }
-        public string getCad_Data() { return data; }
+        public string getCad_DataEntrada() { return data_entrada; }
+        public string getCad_DataRetirada() { return data_retirada; }
         public string getCad_Cpf() { return CPF; }
-        public string getCad_Hora() { return hora; }
+        public string getCad_HoraEntrada() { return hora_entrada; }
+        public string getCad_HoraRetirada() { return hora_retirada; }
         public string getCpf_entregador() { return cpf_entregador; }
         public string getNome_entregador() { return nome_entregador; }
         public string getNota_fiscal_buscar() { return nota_fiscal_buscar; }

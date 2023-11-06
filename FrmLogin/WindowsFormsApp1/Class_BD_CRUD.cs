@@ -441,5 +441,68 @@ namespace WindowsFormsApp1
             objEdit.CommandType = CommandType.Text;
             objEdit.ExecuteNonQuery();
         }
+
+        // MÉTODOS A BAIXO PARA DELETAR DADOS DO BANCO DE DADOS***********************************************************************************************
+
+        public void setDelet_pacote(string notaFiscal) 
+        {
+            MySqlConnection conn = new MySqlConnection("server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ");
+            
+            MySqlCommand cmdDelet = new MySqlCommand("DELET FROM pacote WHERE nota_fiscal_pacote = ?", conn);
+            cmdDelet.Parameters.Clear();
+            cmdDelet.Parameters.Add("@nota_fiscal_pacote", MySqlDbType.VarChar, 45).Value = notaFiscal;
+
+            cmdDelet.CommandType = CommandType.Text;
+            cmdDelet.ExecuteNonQuery();
+            
+        }
+
+        public void setDelet_titular(string cpf) 
+        {
+            MySqlConnection conn = new MySqlConnection("server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ");
+
+            MySqlCommand cmdDelet = new MySqlCommand("DELET FROM titular WHERE cpf_titular = ?", conn);
+            cmdDelet.Parameters.Clear();
+            cmdDelet.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = cpf;
+
+            cmdDelet.CommandType = CommandType.Text;
+            cmdDelet.ExecuteNonQuery();
+        }
+
+        public void setDelet_entregador(string cpf_entregador) 
+        {
+            MySqlConnection conn = new MySqlConnection("server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ");
+
+            MySqlCommand cmdDelet = new MySqlCommand("DELET FROM entregador WHERE cpf_entregador = ?", conn);
+            cmdDelet.Parameters.Clear();
+            cmdDelet.Parameters.Add("@cpf_entregador", MySqlDbType.VarChar, 15).Value = cpf_entregador;
+
+            cmdDelet.CommandType = CommandType.Text;
+            cmdDelet.ExecuteNonQuery();
+        }
+
+        public void setDelet_data(int id_data) 
+        {
+            MySqlConnection conn = new MySqlConnection("server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ");
+
+            MySqlCommand cmdDelet = new MySqlCommand("DELET FROM tbl_data WHERE id_data = ?", conn);
+            cmdDelet.Parameters.Clear();
+            cmdDelet.Parameters.Add("@id_data", MySqlDbType.Int32).Value = id_data;
+
+            cmdDelet.CommandType = CommandType.Text;
+            cmdDelet.ExecuteNonQuery();
+        }
+
+        public void setDelet_hora(int id_hora) 
+        {
+            MySqlConnection conn = new MySqlConnection("server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ");
+
+            MySqlCommand cmdDelet = new MySqlCommand("DELET FROM hora WHERE id_hora = ?", conn);
+            cmdDelet.Parameters.Clear();
+            cmdDelet.Parameters.Add("@id_hora", MySqlDbType.Int32).Value = id_hora;
+
+            cmdDelet.CommandType = CommandType.Text;
+            cmdDelet.ExecuteNonQuery();
+        }
     }
 }
