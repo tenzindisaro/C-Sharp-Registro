@@ -1,31 +1,33 @@
-CREATE DATABASE IF NOT EXISTS projeto_registro_sql ;
+DROP DATABASE teste_sql;
+CREATE DATABASE IF NOT EXISTS teste_sql;
 
+USE teste_sql;
 CREATE TABLE IF NOT EXISTS americanas (
-  id_americanas INT AUTO_INCREMENT NOT NULL ,
-  cep_americanas VARCHAR(10) NOT NULL,
-  rua_americanas VARCHAR(75) NOT NULL,
-  bairro_americanas VARCHAR(75) NOT NULL,
-  numero_americanas VARCHAR(15) NOT NULL DEFAULT '0',
-  UNIQUE INDEX (id_americanas),
-  PRIMARY KEY (id_americanas));
-  
+    id_americanas INT AUTO_INCREMENT NOT NULL,
+    cep_americanas VARCHAR(10) NOT NULL,
+    rua_americanas VARCHAR(75) NOT NULL,
+    bairro_americanas VARCHAR(75) NOT NULL,
+    numero_americanas VARCHAR(15) NOT NULL DEFAULT '0',
+    PRIMARY KEY (id_americanas)
+);
 
 CREATE TABLE IF NOT EXISTS entregador (
-  cpf_entregador VARCHAR(15) NOT NULL,
-  nome_entregador VARCHAR(75) NULL DEFAULT NULL,
-  PRIMARY KEY (cpf_entregador));
-
+    cpf_entregador VARCHAR(15) NOT NULL,
+    nome_entregador VARCHAR(75) NULL DEFAULT NULL,
+    PRIMARY KEY (cpf_entregador)
+);
 
 CREATE TABLE IF NOT EXISTS funcionario (
-  email_americanas_funcionario VARCHAR(30) NOT NULL,
-  cpf_funcionario VARCHAR(15) NOT NULL,
-  nome_funcionario VARCHAR(75) NOT NULL,
-  telefone_funcionario VARCHAR(15) NOT NULL,
-  senha_funcionario VARCHAR(20) NOT NULL,
-  id_americanas INT NULL DEFAULT NULL,
-  UNIQUE INDEX (cpf_funcionario),
-  PRIMARY KEY (email_americanas_funcionario),
-  FOREIGN KEY (id_americanas) REFERENCES americanas (id_americanas));
+    email_americanas_funcionario VARCHAR(30) NOT NULL,
+    cpf_funcionario VARCHAR(15) NOT NULL,
+    nome_funcionario VARCHAR(75) NOT NULL,
+    telefone_funcionario VARCHAR(15) NOT NULL,
+    senha_funcionario VARCHAR(20) NOT NULL,
+    id_americanas INT NULL DEFAULT NULL,
+    UNIQUE INDEX (cpf_funcionario),
+    PRIMARY KEY (email_americanas_funcionario),
+    FOREIGN KEY (id_americanas) REFERENCES americanas (id_americanas)
+);
 
 
 CREATE TABLE IF NOT EXISTS titular (
@@ -69,8 +71,7 @@ CREATE TABLE IF NOT EXISTS pacote (
 CREATE TABLE IF NOT EXISTS observacao (
   id_relatorio INT AUTO_INCREMENT NOT NULL,
   campo_relatorio VARCHAR(1000) NULL DEFAULT NULL,
-  nota_fiscal_pacote INT NOT NULL,
+  nota_fiscal_pacote VARCHAR(45) NOT NULL,
   UNIQUE INDEX (nota_fiscal_pacote),
-  PRIMARY KEY (id_realtorio),
-  
+  PRIMARY KEY (id_relatorio),
   FOREIGN KEY (nota_fiscal_pacote) REFERENCES pacote (nota_fiscal_pacote));
