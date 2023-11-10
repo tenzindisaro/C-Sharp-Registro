@@ -57,6 +57,7 @@ namespace WindowsFormsApp1
                 case 3: return phoneNumber;
                 case 4: return password;
                 case 5: return cpf;
+                case 6: return id_endereco.ToString();
             }
             return "undefined";
         }

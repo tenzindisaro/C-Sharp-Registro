@@ -13,12 +13,13 @@ using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form3_Tela_Menu : Form
+    internal partial class Form3_Tela_Menu : Form
     {
         Thread t2;
-        
-        public Form3_Tela_Menu()
+        private Class_UsuarioAtual listaUsuario;
+        public Form3_Tela_Menu(Class_UsuarioAtual usuarioAtual)
         {
+            listaUsuario = usuarioAtual;
             InitializeComponent();
         }
         
@@ -74,12 +75,12 @@ namespace WindowsFormsApp1
 
         private void Form3_Tela_Menu_Load(object sender, EventArgs e)
         {
-            Class_UsuarioAtual listaUsuario = new Class_UsuarioAtual();
-            User usuario;
-            if (listaUsuario.getUserAtual() != null) 
+            
+            User usuario = listaUsuario.getUserAtual();
+            if (usuario != null)
             {
-                usuario = listaUsuario.getUserAtual();
                 label11.Text = usuario.GetUserData(2);
+
             }
         }
 

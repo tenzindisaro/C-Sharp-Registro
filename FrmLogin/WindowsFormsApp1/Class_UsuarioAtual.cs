@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
         {
             if (obj != null)
             {
-                usuarioAtual.Add(obj);      //essa porra não funciona :) E EU NÃO SEI PORQUEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+                usuarioAtual.Add(obj);
             }
         }
 
@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
         {
             if (usuarioAtual.Count > 0)
             {
-                MessageBox.Show(usuarioAtual[0].ToString());
+                MessageBox.Show(usuarioAtual[0].GetUserData(1));
                 return usuarioAtual[0];
             }
             else

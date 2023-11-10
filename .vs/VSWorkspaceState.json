@@ -1,6 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\FrmLogin",
+    "\\FrmLogin\\WindowsFormsApp1",
+    "\\FrmLogin\\WindowsFormsApp1\\lista",
+    "\\FrmLogin\\WindowsFormsApp1\\lista\\Geral",
+    "\\FrmLogin\\WindowsFormsApp1\\RegistrosPac"
   ],
+  "SelectedNode": "\\FrmLogin\\WindowsFormsApp1\\RegistrosPac\\Form5_Registro_Pac.cs",
   "PreviewInSolutionExplorer": true
 }

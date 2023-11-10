@@ -59,14 +59,19 @@ namespace WindowsFormsApp1
                     User funcionario = Bd.setReadBd_funcionario(inputEmail, inputPassword);
                     Bd.setBD_Close();
                     */
-                    User funcionario = new User("Tenzio", "@americanas.com.br", "123456", "1", 2, "3");
-                    listaUsuario.adicionarUsuario(funcionario);
+                    
 
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString(), "Erro");
                 }
+
+
+                User funcionario = new User("Ângelo", "angelo@americanas.com.br", "angelo", "527527038-05", 11, "(11)99755-6556");
+
+                listaUsuario.adicionarUsuario(funcionario);
+                
                 this.Close();
                 t1 = new Thread(abrirMenu);
                 t1.SetApartmentState(ApartmentState.MTA);
@@ -111,12 +116,12 @@ namespace WindowsFormsApp1
         private void FrmLogin_Load(object sender, EventArgs e)
         {
             txtEmail.Focus();
-            listaUsuario.removerUsuario();
+            //listaUsuario.removerUsuario();
         }
 
         private void abrirMenu(object obj)
         {
-            Application.Run(new Form3_Tela_Menu());
+            Application.Run(new Form3_Tela_Menu(listaUsuario));
         }
     }
 }
