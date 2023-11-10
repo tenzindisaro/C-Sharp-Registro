@@ -102,7 +102,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class_BD_CRUD.cs" />
-    <Compile Include="Class_UsuarioAtual.cs" />
     <Compile Include="FormCadastroUser.cs">
       <SubType>Form</SubType>
     </Compile>

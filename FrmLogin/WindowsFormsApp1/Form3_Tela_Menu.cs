@@ -16,10 +16,10 @@ namespace WindowsFormsApp1
     internal partial class Form3_Tela_Menu : Form
     {
         Thread t2;
-        private Class_UsuarioAtual listaUsuario;
-        public Form3_Tela_Menu(Class_UsuarioAtual usuarioAtual)
+        private User usuario;
+        public Form3_Tela_Menu(User usuarioAtual)
         {
-            listaUsuario = usuarioAtual;
+            usuario = usuarioAtual;
             InitializeComponent();
         }
         
@@ -75,12 +75,15 @@ namespace WindowsFormsApp1
 
         private void Form3_Tela_Menu_Load(object sender, EventArgs e)
         {
-            
-            User usuario = listaUsuario.getUserAtual();
+
             if (usuario != null)
             {
+                //1nome2email3phone4senha5cpf6id_endereco
                 label11.Text = usuario.GetUserData(2);
-
+                label12.Text = "Teste";
+                label10.Text = usuario.GetUserData(3);
+                MessageBox.Show("passou");
+                //label4.Text
             }
         }
 

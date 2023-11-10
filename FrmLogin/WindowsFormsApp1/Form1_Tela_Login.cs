@@ -17,12 +17,12 @@ namespace WindowsFormsApp1
     {
         Thread t1;
         Class_BD_CRUD Bd = new Class_BD_CRUD();
-        Class_UsuarioAtual listaUsuario = new Class_UsuarioAtual();
         public FrmLogin()
         {
             InitializeComponent();
         }
 
+        private User funcionario;
         private string inputEmail, inputPassword;
         private bool tentativa_login;
         private void btnContinuar_Click(object sender, EventArgs e)
@@ -54,13 +54,11 @@ namespace WindowsFormsApp1
                 label1.Visible = false;
                 try
                 {
-                    /*
                     Bd.setBD_Open();
-                    User funcionario = Bd.setReadBd_funcionario(inputEmail, inputPassword);
+                    funcionario = Bd.setReadBd_funcionario(inputEmail, inputPassword);
                     Bd.setBD_Close();
-                    */
-                    
 
+                    MessageBox.Show(funcionario.ToString());
                 }
                 catch (Exception ex)
                 {
@@ -68,10 +66,6 @@ namespace WindowsFormsApp1
                 }
 
 
-                User funcionario = new User("Ângelo", "angelo@americanas.com.br", "angelo", "527527038-05", 11, "(11)99755-6556");
-
-                listaUsuario.adicionarUsuario(funcionario);
-                
                 this.Close();
                 t1 = new Thread(abrirMenu);
                 t1.SetApartmentState(ApartmentState.MTA);
@@ -116,12 +110,11 @@ namespace WindowsFormsApp1
         private void FrmLogin_Load(object sender, EventArgs e)
         {
             txtEmail.Focus();
-            //listaUsuario.removerUsuario();
         }
 
         private void abrirMenu(object obj)
         {
-            Application.Run(new Form3_Tela_Menu(listaUsuario));
+            Application.Run(new Form3_Tela_Menu(funcionario));
         }
     }
 }

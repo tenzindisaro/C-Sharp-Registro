@@ -16,8 +16,5 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
-
-        List<User> listUser = new List<User>();
-
     }
 }
