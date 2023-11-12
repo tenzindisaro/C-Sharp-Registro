@@ -57,25 +57,37 @@
             this.txtbox_nome_entregador = new System.Windows.Forms.TextBox();
             this.txtbox_cpf_entregador = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(411, 23);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(7, 67);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.Size = new System.Drawing.Size(100, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Buscar:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // rdb_Titular_cpf
             // 
             this.rdb_Titular_cpf.AutoSize = true;
-            this.rdb_Titular_cpf.Location = new System.Drawing.Point(468, 23);
+            this.rdb_Titular_cpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdb_Titular_cpf.ForeColor = System.Drawing.Color.White;
+            this.rdb_Titular_cpf.Location = new System.Drawing.Point(144, 115);
+            this.rdb_Titular_cpf.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdb_Titular_cpf.Name = "rdb_Titular_cpf";
-            this.rdb_Titular_cpf.Size = new System.Drawing.Size(77, 17);
+            this.rdb_Titular_cpf.Size = new System.Drawing.Size(114, 22);
             this.rdb_Titular_cpf.TabIndex = 1;
             this.rdb_Titular_cpf.TabStop = true;
             this.rdb_Titular_cpf.Text = "CPF Titular";
@@ -84,9 +96,12 @@
             // rdb_NotaFiscal
             // 
             this.rdb_NotaFiscal.AutoSize = true;
-            this.rdb_NotaFiscal.Location = new System.Drawing.Point(551, 23);
+            this.rdb_NotaFiscal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdb_NotaFiscal.ForeColor = System.Drawing.Color.White;
+            this.rdb_NotaFiscal.Location = new System.Drawing.Point(12, 115);
+            this.rdb_NotaFiscal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdb_NotaFiscal.Name = "rdb_NotaFiscal";
-            this.rdb_NotaFiscal.Size = new System.Drawing.Size(78, 17);
+            this.rdb_NotaFiscal.Size = new System.Drawing.Size(115, 22);
             this.rdb_NotaFiscal.TabIndex = 2;
             this.rdb_NotaFiscal.TabStop = true;
             this.rdb_NotaFiscal.Text = "Nota Fiscal";
@@ -94,236 +109,328 @@
             // 
             // txtBox_buscar
             // 
-            this.txtBox_buscar.Location = new System.Drawing.Point(635, 22);
+            this.txtBox_buscar.Location = new System.Drawing.Point(12, 145);
+            this.txtBox_buscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBox_buscar.Name = "txtBox_buscar";
-            this.txtBox_buscar.Size = new System.Drawing.Size(138, 20);
+            this.txtBox_buscar.Size = new System.Drawing.Size(246, 22);
             this.txtBox_buscar.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 105);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(37, 191);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 13);
+            this.label2.Size = new System.Drawing.Size(61, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "Titular:";
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Location = new System.Drawing.Point(16, 171);
+            this.groupBox1.Location = new System.Drawing.Point(20, 376);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(776, 195);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(768, 134);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pacotes Registrados no Dia";
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 19);
+            this.dataGridView1.Location = new System.Drawing.Point(8, 23);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(761, 170);
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.Size = new System.Drawing.Size(739, 101);
             this.dataGridView1.TabIndex = 0;
-//            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // textBox_Titular
             // 
-            this.textBox_Titular.Location = new System.Drawing.Point(84, 101);
+            this.textBox_Titular.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_Titular.Location = new System.Drawing.Point(41, 215);
+            this.textBox_Titular.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox_Titular.Name = "textBox_Titular";
-            this.textBox_Titular.Size = new System.Drawing.Size(100, 20);
+            this.textBox_Titular.Size = new System.Drawing.Size(178, 27);
             this.textBox_Titular.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(221, 60);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(37, 118);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 13);
+            this.label3.Size = new System.Drawing.Size(99, 20);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Nota Fiscal";
+            this.label3.Text = "Nota Fiscal:";
             // 
             // textBox_NotaFiscal
             // 
-            this.textBox_NotaFiscal.Location = new System.Drawing.Point(287, 57);
+            this.textBox_NotaFiscal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_NotaFiscal.Location = new System.Drawing.Point(41, 142);
+            this.textBox_NotaFiscal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox_NotaFiscal.Name = "textBox_NotaFiscal";
-            this.textBox_NotaFiscal.Size = new System.Drawing.Size(100, 20);
+            this.textBox_NotaFiscal.Size = new System.Drawing.Size(178, 27);
             this.textBox_NotaFiscal.TabIndex = 8;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 57);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(227, 119);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 13);
+            this.label5.Size = new System.Drawing.Size(101, 20);
             this.label5.TabIndex = 11;
             this.label5.Text = "Funcionário:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(205, 103);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(227, 268);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(30, 13);
+            this.label6.Size = new System.Drawing.Size(47, 20);
             this.label6.TabIndex = 13;
             this.label6.Text = "CPF:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(387, 144);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(417, 266);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(52, 13);
+            this.label7.Size = new System.Drawing.Size(79, 20);
             this.label7.TabIndex = 15;
             this.label7.Text = "Situação:";
             // 
             // button_Cadastrar
             // 
-            this.button_Cadastrar.Location = new System.Drawing.Point(190, 372);
+            this.button_Cadastrar.BackColor = System.Drawing.Color.White;
+            this.button_Cadastrar.Location = new System.Drawing.Point(12, 215);
+            this.button_Cadastrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_Cadastrar.Name = "button_Cadastrar";
-            this.button_Cadastrar.Size = new System.Drawing.Size(75, 66);
+            this.button_Cadastrar.Size = new System.Drawing.Size(246, 57);
             this.button_Cadastrar.TabIndex = 17;
             this.button_Cadastrar.Text = "Cadastrar";
-            this.button_Cadastrar.UseVisualStyleBackColor = true;
+            this.button_Cadastrar.UseVisualStyleBackColor = false;
             this.button_Cadastrar.Click += new System.EventHandler(this.button_Cadastrar_Click);
             // 
             // button_Editar
             // 
-            this.button_Editar.Location = new System.Drawing.Point(390, 372);
+            this.button_Editar.BackColor = System.Drawing.Color.White;
+            this.button_Editar.Location = new System.Drawing.Point(12, 345);
+            this.button_Editar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_Editar.Name = "button_Editar";
-            this.button_Editar.Size = new System.Drawing.Size(75, 66);
+            this.button_Editar.Size = new System.Drawing.Size(246, 57);
             this.button_Editar.TabIndex = 18;
             this.button_Editar.Text = "Editar";
-            this.button_Editar.UseVisualStyleBackColor = true;
+            this.button_Editar.UseVisualStyleBackColor = false;
             this.button_Editar.Click += new System.EventHandler(this.button_Editar_Click);
             // 
             // button_deletar
             // 
-            this.button_deletar.Location = new System.Drawing.Point(296, 372);
+            this.button_deletar.BackColor = System.Drawing.Color.White;
+            this.button_deletar.Location = new System.Drawing.Point(12, 410);
+            this.button_deletar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_deletar.Name = "button_deletar";
-            this.button_deletar.Size = new System.Drawing.Size(75, 66);
+            this.button_deletar.Size = new System.Drawing.Size(246, 57);
             this.button_deletar.TabIndex = 20;
             this.button_deletar.Text = "Deletar";
-            this.button_deletar.UseVisualStyleBackColor = true;
+            this.button_deletar.UseVisualStyleBackColor = false;
             this.button_deletar.Click += new System.EventHandler(this.button_deletar_Click);
             // 
             // comboBox_Situacao
             // 
+            this.comboBox_Situacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_Situacao.FormattingEnabled = true;
             this.comboBox_Situacao.Items.AddRange(new object[] {
             "Recebido",
             "Entregue"});
-            this.comboBox_Situacao.Location = new System.Drawing.Point(445, 141);
+            this.comboBox_Situacao.Location = new System.Drawing.Point(421, 289);
+            this.comboBox_Situacao.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox_Situacao.Name = "comboBox_Situacao";
-            this.comboBox_Situacao.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_Situacao.Size = new System.Drawing.Size(178, 28);
             this.comboBox_Situacao.TabIndex = 21;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(13, 144);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(37, 266);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.Size = new System.Drawing.Size(56, 20);
             this.label8.TabIndex = 23;
             this.label8.Text = "Email:";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(205, 144);
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(227, 191);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(52, 13);
+            this.label9.Size = new System.Drawing.Size(78, 20);
             this.label9.TabIndex = 24;
             this.label9.Text = "Telefone:";
             // 
             // button_Buscar
             // 
-            this.button_Buscar.Location = new System.Drawing.Point(484, 372);
+            this.button_Buscar.BackColor = System.Drawing.Color.White;
+            this.button_Buscar.Location = new System.Drawing.Point(12, 280);
+            this.button_Buscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_Buscar.Name = "button_Buscar";
-            this.button_Buscar.Size = new System.Drawing.Size(75, 66);
+            this.button_Buscar.Size = new System.Drawing.Size(246, 57);
             this.button_Buscar.TabIndex = 27;
             this.button_Buscar.Text = "Buscar";
-            this.button_Buscar.UseVisualStyleBackColor = true;
+            this.button_Buscar.UseVisualStyleBackColor = false;
             this.button_Buscar.Click += new System.EventHandler(this.button_Buscar_Click);
             // 
             // maskedTextBox_CPF
             // 
-            this.maskedTextBox_CPF.Location = new System.Drawing.Point(271, 100);
+            this.maskedTextBox_CPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedTextBox_CPF.Location = new System.Drawing.Point(231, 290);
+            this.maskedTextBox_CPF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.maskedTextBox_CPF.Mask = "000,000,000-00";
             this.maskedTextBox_CPF.Name = "maskedTextBox_CPF";
-            this.maskedTextBox_CPF.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox_CPF.Size = new System.Drawing.Size(178, 27);
             this.maskedTextBox_CPF.TabIndex = 0;
             // 
             // maskedTextBox_telefone
             // 
-            this.maskedTextBox_telefone.Location = new System.Drawing.Point(271, 141);
+            this.maskedTextBox_telefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedTextBox_telefone.Location = new System.Drawing.Point(231, 215);
+            this.maskedTextBox_telefone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.maskedTextBox_telefone.Mask = "(00)0 0000-0000";
             this.maskedTextBox_telefone.Name = "maskedTextBox_telefone";
-            this.maskedTextBox_telefone.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox_telefone.Size = new System.Drawing.Size(178, 27);
             this.maskedTextBox_telefone.TabIndex = 0;
             // 
             // maskedTextBox_email
             // 
-            this.maskedTextBox_email.Location = new System.Drawing.Point(84, 141);
+            this.maskedTextBox_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedTextBox_email.Location = new System.Drawing.Point(41, 290);
+            this.maskedTextBox_email.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.maskedTextBox_email.Name = "maskedTextBox_email";
-            this.maskedTextBox_email.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox_email.Size = new System.Drawing.Size(178, 27);
             this.maskedTextBox_email.TabIndex = 0;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Location = new System.Drawing.Point(12, 20);
+            this.label11.Location = new System.Drawing.Point(38, 335);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(298, 13);
+            this.label11.Size = new System.Drawing.Size(365, 16);
             this.label11.TabIndex = 103;
-            this.label11.Text = "Todos os campos com asterisco (\"*\") devem ser preenchidos.";
+            this.label11.Text = "O preenchimento de campos com asterisco (*) é obrigatório.";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(395, 61);
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(417, 119);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(58, 13);
+            this.label12.Size = new System.Drawing.Size(91, 20);
             this.label12.TabIndex = 104;
-            this.label12.Text = "entregador";
+            this.label12.Text = "Entregador";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(568, 61);
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(417, 191);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(76, 13);
+            this.label13.Size = new System.Drawing.Size(134, 20);
             this.label13.TabIndex = 105;
-            this.label13.Text = "cpf entregador";
+            this.label13.Text = "CPF Entregador:";
             // 
             // txtbox_nome_entregador
             // 
-            this.txtbox_nome_entregador.Location = new System.Drawing.Point(459, 58);
+            this.txtbox_nome_entregador.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbox_nome_entregador.Location = new System.Drawing.Point(421, 141);
+            this.txtbox_nome_entregador.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtbox_nome_entregador.Name = "txtbox_nome_entregador";
-            this.txtbox_nome_entregador.Size = new System.Drawing.Size(100, 20);
+            this.txtbox_nome_entregador.Size = new System.Drawing.Size(178, 27);
             this.txtbox_nome_entregador.TabIndex = 106;
             // 
             // txtbox_cpf_entregador
             // 
-            this.txtbox_cpf_entregador.Location = new System.Drawing.Point(650, 58);
+            this.txtbox_cpf_entregador.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbox_cpf_entregador.Location = new System.Drawing.Point(421, 215);
+            this.txtbox_cpf_entregador.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtbox_cpf_entregador.Name = "txtbox_cpf_entregador";
-            this.txtbox_cpf_entregador.Size = new System.Drawing.Size(100, 20);
+            this.txtbox_cpf_entregador.Size = new System.Drawing.Size(178, 27);
             this.txtbox_cpf_entregador.TabIndex = 23;
             // 
             // comboBox1
             // 
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(83, 54);
+            this.comboBox1.Location = new System.Drawing.Point(231, 141);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.Size = new System.Drawing.Size(178, 28);
             this.comboBox1.TabIndex = 107;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Red;
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1069, 96);
+            this.panel1.TabIndex = 121;
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Microsoft PhagsPa", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Snow;
+            this.label4.Location = new System.Drawing.Point(17, 9);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(750, 77);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Registro de Pacotes";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Red;
+            this.panel2.Controls.Add(this.button_Cadastrar);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.button_Buscar);
+            this.panel2.Controls.Add(this.rdb_Titular_cpf);
+            this.panel2.Controls.Add(this.button_Editar);
+            this.panel2.Controls.Add(this.rdb_NotaFiscal);
+            this.panel2.Controls.Add(this.button_deletar);
+            this.panel2.Controls.Add(this.txtBox_buscar);
+            this.panel2.Location = new System.Drawing.Point(796, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(272, 557);
+            this.panel2.TabIndex = 122;
             // 
             // Form5_Registro_Pac
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.txtbox_cpf_entregador);
             this.Controls.Add(this.txtbox_nome_entregador);
@@ -333,13 +440,9 @@
             this.Controls.Add(this.maskedTextBox_email);
             this.Controls.Add(this.maskedTextBox_telefone);
             this.Controls.Add(this.maskedTextBox_CPF);
-            this.Controls.Add(this.button_Buscar);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.comboBox_Situacao);
-            this.Controls.Add(this.button_deletar);
-            this.Controls.Add(this.button_Editar);
-            this.Controls.Add(this.button_Cadastrar);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -348,14 +451,14 @@
             this.Controls.Add(this.textBox_Titular);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtBox_buscar);
-            this.Controls.Add(this.rdb_NotaFiscal);
-            this.Controls.Add(this.rdb_Titular_cpf);
-            this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form5_Registro_Pac";
             this.Text = "Registro de Pacotes";
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -392,5 +495,8 @@
         private System.Windows.Forms.TextBox txtbox_nome_entregador;
         private System.Windows.Forms.TextBox txtbox_cpf_entregador;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel2;
     }
 }

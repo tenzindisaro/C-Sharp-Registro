@@ -16,5 +16,10 @@ namespace WindowsFormsApp1.lista.Recebidos_Retirados_nodia
         {
             InitializeComponent();
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
