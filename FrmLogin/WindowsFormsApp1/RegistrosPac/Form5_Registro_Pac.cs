@@ -32,7 +32,7 @@ namespace WindowsFormsApp1.RegistrosPac
             string notaFiscal = textBox_NotaFiscal.Text;
             string titular = textBox_Titular.Text;
             string CPF = (maskedTextBox_CPF.Text).Replace("-", "").Replace(".", "");
-            string situacao = comboBox_Situacao.Text;
+            string situacao = maskedTextBoxSituacao.Text;
             string email = maskedTextBox_email.Text;
             string telefone = maskedTextBox_telefone.Text.Replace("-", "").Replace("(", "").Replace(")", "").Replace(" ", "");
             string cpf_entregador = txtbox_cpf_entregador.Text;
@@ -89,7 +89,7 @@ namespace WindowsFormsApp1.RegistrosPac
             string notaFiscal = textBox_NotaFiscal.Text;
             string titular = textBox_Titular.Text;
             string CPF = (maskedTextBox_CPF.Text).Replace("-", "").Replace(".", "");
-            string situacao = comboBox_Situacao.Text;
+            string situacao = maskedTextBoxSituacao.Text;
             string email = maskedTextBox_email.Text;
             string telefone = maskedTextBox_telefone.Text.Replace("-", "").Replace("(", "").Replace(")", "").Replace(" ", "");
             string cpf_entregador = txtbox_cpf_entregador.Text;
@@ -175,7 +175,7 @@ namespace WindowsFormsApp1.RegistrosPac
 
             //recebendo dados para enviar pros text box nos form registro pacote
             textBox_NotaFiscal.Text = Bd.getRetorna_nf();
-            comboBox_Situacao.Text = Bd.getRetorna_situacao();
+            maskedTextBoxSituacao.Text = Bd.getRetorna_situacao();
             maskedTextBox_CPF.Text = Bd.getRetorna_cpf_titular();
             txtbox_cpf_entregador.Text = Bd.getRetorna_cpf_entregador();
             textBox_Titular.Text = Bd.getNome_titular();
@@ -191,7 +191,7 @@ namespace WindowsFormsApp1.RegistrosPac
             string notaFiscal = textBox_NotaFiscal.Text;
             string titular = textBox_Titular.Text;
             string CPF = (maskedTextBox_CPF.Text).Replace("-", "").Replace(".", "");
-            string situacao = comboBox_Situacao.Text;
+            string situacao = maskedTextBoxSituacao.Text;
             string email = maskedTextBox_email.Text;
             string telefone = maskedTextBox_telefone.Text.Replace("-", "").Replace("(", "").Replace(")", "").Replace(" ", "");
             string cpf_entregador = txtbox_cpf_entregador.Text;
@@ -245,6 +245,11 @@ namespace WindowsFormsApp1.RegistrosPac
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
         }
