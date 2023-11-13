@@ -84,6 +84,13 @@ namespace WindowsFormsApp1
                 label10.Text = usuario.GetUserData(3);
                 MessageBox.Show("passou");
                 //label4.Text
+
+                AtualizarHorario();
+                System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+                timer.Interval = 1000; // Intervalo em milissegundos
+                timer.Tick += Timer_Tick;
+                timer.Start();
+
             }
         }
 
@@ -146,7 +153,32 @@ namespace WindowsFormsApp1
         {
             t2 = new Thread(abrirLista);
             t2.SetApartmentState(ApartmentState.MTA);
-            t2.Start()
+            t2.Start();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelHorarioAtual_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void registroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            AtualizarHorario();
+        }
+
+        private void AtualizarHorario()
+        {
+            labelHorarioAtual.Text = $"{DateTime.Now:HH:mm:ss}";
         }
     }
 }

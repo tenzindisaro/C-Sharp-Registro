@@ -135,6 +135,18 @@
     <Compile Include="Form3_Tela_Menu.Designer.cs">
       <DependentUpon>Form3_Tela_Menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormRelatorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRelatorio.Designer.cs">
+      <DependentUpon>FormRelatorio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRetirarPac.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRetirarPac.Designer.cs">
+      <DependentUpon>FormRetirarPac.cs</DependentUpon>
+    </Compile>
     <Compile Include="lista\Geral\Form6_Lista_Geral.cs">
       <SubType>Form</SubType>
     </Compile>
