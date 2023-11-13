@@ -60,18 +60,20 @@
             this.trocarUsuárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.btnFiltrarMenu = new System.Windows.Forms.Button();
+            this.btnRelatorios = new System.Windows.Forms.Button();
+            this.btnRetiradaPac = new System.Windows.Forms.Button();
+            this.btnListaPac = new System.Windows.Forms.Button();
+            this.btnCadastroPacMenu = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -79,8 +81,6 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -117,30 +117,31 @@
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
+            this.cadastrosToolStripMenuItem.Click += new System.EventHandler(this.cadastrosToolStripMenuItem_Click);
             // 
             // funcionáriosToolStripMenuItem
             // 
             this.funcionáriosToolStripMenuItem.Name = "funcionáriosToolStripMenuItem";
-            this.funcionáriosToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.funcionáriosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.funcionáriosToolStripMenuItem.Text = "Funcionários";
             // 
             // adicionarToolStripMenuItem1
             // 
             this.adicionarToolStripMenuItem1.Name = "adicionarToolStripMenuItem1";
-            this.adicionarToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
+            this.adicionarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.adicionarToolStripMenuItem1.Text = "Adicionar";
             this.adicionarToolStripMenuItem1.Click += new System.EventHandler(this.adicionarToolStripMenuItem1_Click_1);
             // 
             // adicionarToolStripMenuItem
             // 
             this.adicionarToolStripMenuItem.Name = "adicionarToolStripMenuItem";
-            this.adicionarToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.adicionarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.adicionarToolStripMenuItem.Text = "Editar";
             // 
             // removerToolStripMenuItem
             // 
             this.removerToolStripMenuItem.Name = "removerToolStripMenuItem";
-            this.removerToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.removerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.removerToolStripMenuItem.Text = "Remover";
             // 
             // registroToolStripMenuItem
@@ -158,20 +159,20 @@
             // registroToolStripMenuItem1
             // 
             this.registroToolStripMenuItem1.Name = "registroToolStripMenuItem1";
-            this.registroToolStripMenuItem1.Size = new System.Drawing.Size(126, 22);
+            this.registroToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.registroToolStripMenuItem1.Text = "Registrar";
             this.registroToolStripMenuItem1.Click += new System.EventHandler(this.registroToolStripMenuItem1_Click_1);
             // 
             // editarToolStripMenuItem
             // 
             this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            this.editarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.editarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editarToolStripMenuItem.Text = "Editar";
             // 
             // deletToolStripMenuItem
             // 
             this.deletToolStripMenuItem.Name = "deletToolStripMenuItem";
-            this.deletToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.deletToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deletToolStripMenuItem.Text = "Remover";
             // 
             // listaToolStripMenuItem
@@ -191,32 +192,32 @@
             // geralToolStripMenuItem
             // 
             this.geralToolStripMenuItem.Name = "geralToolStripMenuItem";
-            this.geralToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.geralToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.geralToolStripMenuItem.Text = "Geral";
             this.geralToolStripMenuItem.Click += new System.EventHandler(this.geralToolStripMenuItem_Click_1);
             // 
             // recebidosNoDiaToolStripMenuItem
             // 
             this.recebidosNoDiaToolStripMenuItem.Name = "recebidosNoDiaToolStripMenuItem";
-            this.recebidosNoDiaToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.recebidosNoDiaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.recebidosNoDiaToolStripMenuItem.Text = "Presentes";
             // 
             // retiradosToolStripMenuItem
             // 
             this.retiradosToolStripMenuItem.Name = "retiradosToolStripMenuItem";
-            this.retiradosToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.retiradosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.retiradosToolStripMenuItem.Text = "Retirados";
             // 
             // recebidosNoDiaToolStripMenuItem1
             // 
             this.recebidosNoDiaToolStripMenuItem1.Name = "recebidosNoDiaToolStripMenuItem1";
-            this.recebidosNoDiaToolStripMenuItem1.Size = new System.Drawing.Size(167, 22);
+            this.recebidosNoDiaToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.recebidosNoDiaToolStripMenuItem1.Text = "Recebidos no dia";
             // 
             // retiradosNoDiaToolStripMenuItem
             // 
             this.retiradosNoDiaToolStripMenuItem.Name = "retiradosNoDiaToolStripMenuItem";
-            this.retiradosNoDiaToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.retiradosNoDiaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.retiradosNoDiaToolStripMenuItem.Text = "Retirados no dia";
             // 
             // filtrarToolStripMenuItem
@@ -286,25 +287,25 @@
             // entregaToolStripMenuItem
             // 
             this.entregaToolStripMenuItem.Name = "entregaToolStripMenuItem";
-            this.entregaToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.entregaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.entregaToolStripMenuItem.Text = "Entrega";
             // 
             // recebimentoToolStripMenuItem
             // 
             this.recebimentoToolStripMenuItem.Name = "recebimentoToolStripMenuItem";
-            this.recebimentoToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.recebimentoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.recebimentoToolStripMenuItem.Text = "Recebimento";
             // 
             // listaGeralToolStripMenuItem
             // 
             this.listaGeralToolStripMenuItem.Name = "listaGeralToolStripMenuItem";
-            this.listaGeralToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.listaGeralToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.listaGeralToolStripMenuItem.Text = "Lista Geral";
             // 
             // reclamaçõesToolStripMenuItem
             // 
             this.reclamaçõesToolStripMenuItem.Name = "reclamaçõesToolStripMenuItem";
-            this.reclamaçõesToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.reclamaçõesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.reclamaçõesToolStripMenuItem.Text = "Reclamações";
             // 
             // sairToolStripMenuItem
@@ -321,93 +322,99 @@
             // trocarUsuárioToolStripMenuItem
             // 
             this.trocarUsuárioToolStripMenuItem.Name = "trocarUsuárioToolStripMenuItem";
-            this.trocarUsuárioToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.trocarUsuárioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.trocarUsuárioToolStripMenuItem.Text = "Trocar Usuário";
             this.trocarUsuárioToolStripMenuItem.Click += new System.EventHandler(this.trocarUsuárioToolStripMenuItem_Click_1);
             // 
             // sairToolStripMenuItem1
             // 
             this.sairToolStripMenuItem1.Name = "sairToolStripMenuItem1";
-            this.sairToolStripMenuItem1.Size = new System.Drawing.Size(154, 22);
+            this.sairToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.sairToolStripMenuItem1.Text = "Sair";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Red;
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnLogout);
+            this.panel1.Controls.Add(this.btnFiltrarMenu);
+            this.panel1.Controls.Add(this.btnRelatorios);
+            this.panel1.Controls.Add(this.btnRetiradaPac);
+            this.panel1.Controls.Add(this.btnListaPac);
+            this.panel1.Controls.Add(this.btnCadastroPacMenu);
             this.panel1.Location = new System.Drawing.Point(23, 29);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(255, 452);
             this.panel1.TabIndex = 1;
             // 
-            // button6
+            // btnLogout
             // 
-            this.button6.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button6.Location = new System.Drawing.Point(12, 374);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(231, 65);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = false;
+            this.btnLogout.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLogout.Font = new System.Drawing.Font("Impact", 17F);
+            this.btnLogout.Location = new System.Drawing.Point(12, 374);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(231, 65);
+            this.btnLogout.TabIndex = 5;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
-            // button4
+            // btnFiltrarMenu
             // 
-            this.button4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button4.Location = new System.Drawing.Point(12, 231);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(231, 65);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnFiltrarMenu.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFiltrarMenu.Font = new System.Drawing.Font("Impact", 17F);
+            this.btnFiltrarMenu.Location = new System.Drawing.Point(12, 231);
+            this.btnFiltrarMenu.Name = "btnFiltrarMenu";
+            this.btnFiltrarMenu.Size = new System.Drawing.Size(231, 65);
+            this.btnFiltrarMenu.TabIndex = 3;
+            this.btnFiltrarMenu.Text = "Filtrar";
+            this.btnFiltrarMenu.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // btnRelatorios
             // 
-            this.button5.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button5.Location = new System.Drawing.Point(12, 302);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(231, 65);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = false;
+            this.btnRelatorios.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRelatorios.Font = new System.Drawing.Font("Impact", 17F);
+            this.btnRelatorios.Location = new System.Drawing.Point(12, 302);
+            this.btnRelatorios.Name = "btnRelatorios";
+            this.btnRelatorios.Size = new System.Drawing.Size(231, 65);
+            this.btnRelatorios.TabIndex = 4;
+            this.btnRelatorios.Text = "Relatórios";
+            this.btnRelatorios.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // btnRetiradaPac
             // 
-            this.button3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button3.Location = new System.Drawing.Point(12, 159);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(231, 65);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnRetiradaPac.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRetiradaPac.Font = new System.Drawing.Font("Impact", 17F);
+            this.btnRetiradaPac.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnRetiradaPac.Location = new System.Drawing.Point(12, 159);
+            this.btnRetiradaPac.Name = "btnRetiradaPac";
+            this.btnRetiradaPac.Size = new System.Drawing.Size(231, 65);
+            this.btnRetiradaPac.TabIndex = 2;
+            this.btnRetiradaPac.Text = "Retirar pacote";
+            this.btnRetiradaPac.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // btnListaPac
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Font = new System.Drawing.Font("Impact", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Red;
-            this.button2.Location = new System.Drawing.Point(12, 88);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(231, 65);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "TESTE 2";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnListaPac.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnListaPac.Font = new System.Drawing.Font("Impact", 17F);
+            this.btnListaPac.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnListaPac.Location = new System.Drawing.Point(12, 88);
+            this.btnListaPac.Name = "btnListaPac";
+            this.btnListaPac.Size = new System.Drawing.Size(231, 65);
+            this.btnListaPac.TabIndex = 1;
+            this.btnListaPac.Text = "Lista de pacotes";
+            this.btnListaPac.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnCadastroPacMenu
             // 
-            this.button1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button1.Font = new System.Drawing.Font("Impact", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(12, 16);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(231, 65);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "TESTE 1";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnCadastroPacMenu.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCadastroPacMenu.Font = new System.Drawing.Font("Impact", 17F);
+            this.btnCadastroPacMenu.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnCadastroPacMenu.Location = new System.Drawing.Point(12, 16);
+            this.btnCadastroPacMenu.Name = "btnCadastroPacMenu";
+            this.btnCadastroPacMenu.Size = new System.Drawing.Size(231, 65);
+            this.btnCadastroPacMenu.TabIndex = 0;
+            this.btnCadastroPacMenu.Text = "Cadastro de Pacotes";
+            this.btnCadastroPacMenu.UseVisualStyleBackColor = false;
             // 
             // panel2
             // 
@@ -479,6 +486,18 @@
             this.label7.Text = "BEM VINDO(A) O QUE DESEJA FAZER?";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label12
+            // 
+            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label12.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label12.Location = new System.Drawing.Point(255, 131);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(217, 40);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "Nome";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label11
             // 
             this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -490,6 +509,18 @@
             this.label11.TabIndex = 22;
             this.label11.Text = "Login";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label10
+            // 
+            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label10.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label10.Location = new System.Drawing.Point(22, 184);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(216, 40);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Telefone";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
@@ -568,30 +599,6 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Data:";
             // 
-            // label10
-            // 
-            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label10.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label10.Location = new System.Drawing.Point(22, 184);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(216, 40);
-            this.label10.TabIndex = 21;
-            this.label10.Text = "Telefone";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label12
-            // 
-            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label12.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label12.Location = new System.Drawing.Point(255, 131);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(217, 40);
-            this.label12.TabIndex = 23;
-            this.label12.Text = "Nome";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Form3_Tela_Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -628,12 +635,12 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnRelatorios;
+        private System.Windows.Forms.Button btnFiltrarMenu;
+        private System.Windows.Forms.Button btnRetiradaPac;
+        private System.Windows.Forms.Button btnListaPac;
+        private System.Windows.Forms.Button btnCadastroPacMenu;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ToolStripMenuItem registroToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem geralToolStripMenuItem;

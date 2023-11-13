@@ -121,5 +121,18 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void cadastrosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            t2 = new Thread(abrirLogin);
+            t2.SetApartmentState(ApartmentState.MTA);
+            t2.Start();
+        }
     }
 }

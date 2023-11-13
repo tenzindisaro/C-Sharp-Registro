@@ -383,3 +383,20 @@ C:\Users\santo\Source\Repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug
 C:\Users\santo\Source\Repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\santo\Source\Repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 >>>>>>> Branch-Lucas
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormCadastroUser.resources
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form10_T_RelaEntrega.resources
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form11_OBS.resources
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FrmLogin.resources
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form3_Tela_Menu.resources
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.lista.Geral.Form6_Lista_Geral.resources
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.lista.presentes.Form7_Tela_Presentes.resources
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.lista.Recebidos_Retirados_nodia.Form9_recebidos_retirados_nodia.resources
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.lista.retirados.Form8_Tela_Retirados.resources
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.RegistrosPac.Form5_Registro_Pac.resources
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
