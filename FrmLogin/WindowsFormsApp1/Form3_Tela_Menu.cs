@@ -194,5 +194,10 @@ namespace WindowsFormsApp1
         {
             labelHorarioAtual.Text = $"{DateTime.Now:HH:mm:ss}";
         }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

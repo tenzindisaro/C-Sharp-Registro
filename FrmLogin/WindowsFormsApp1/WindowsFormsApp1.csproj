@@ -204,6 +204,9 @@
     <EmbeddedResource Include="Form3_Tela_Menu.resx">
       <DependentUpon>Form3_Tela_Menu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormRelatorio.resx">
+      <DependentUpon>FormRelatorio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="lista\Geral\Form6_Lista_Geral.resx">
       <DependentUpon>Form6_Lista_Geral.cs</DependentUpon>
     </EmbeddedResource>

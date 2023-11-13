@@ -463,6 +463,7 @@
             this.label9.Size = new System.Drawing.Size(79, 40);
             this.label9.TabIndex = 26;
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label8
             // 
