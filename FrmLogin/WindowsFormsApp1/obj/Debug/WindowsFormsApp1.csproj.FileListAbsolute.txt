@@ -49,3 +49,4 @@ C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\Wi
 C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
 C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormRelatorio.resources
