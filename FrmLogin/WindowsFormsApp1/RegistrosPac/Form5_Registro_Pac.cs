@@ -30,24 +30,20 @@ namespace WindowsFormsApp1.RegistrosPac
         {
             string funcionario = "1";//textBox_Funcionario.Text;
             string notaFiscal = textBox_NotaFiscal.Text;
-            string data_entrada = maskedTextBox_Data_entrada.Text;
-            string data_retirada = maskedTextBox_Data_saida.Text;
             string titular = textBox_Titular.Text;
             string CPF = (maskedTextBox_CPF.Text).Replace("-", "").Replace(".", "");
             string situacao = comboBox_Situacao.Text;
             string email = maskedTextBox_email.Text;
             string telefone = maskedTextBox_telefone.Text.Replace("-", "").Replace("(", "").Replace(")", "").Replace(" ", "");
-            string hora_entrada = maskedTextBox_Hora_entrada.Text;
-            string hora_retirada = maskedTextBox_Hora_saida.Text;
             string cpf_entregador = txtbox_cpf_entregador.Text;
             string nome_entregador = txtbox_nome_entregador.Text;
 
 
-            if (funcionario != "" && notaFiscal != "" && data_entrada != "" && data_retirada != "" && titular != "" & CPF != "" && situacao != ""
-                && email != "" && telefone != "" && hora_entrada != "" && hora_retirada != ""  && cpf_entregador != "" && nome_entregador != "")
+            if (funcionario != "" && notaFiscal != "" && titular != "" & CPF != "" && situacao != ""
+                && email != "" && telefone != "" && cpf_entregador != "" && nome_entregador != "")
             {
 
-                bool dadosOk = cadastroPacote.setValid_dados(funcionario, titular, situacao, email, notaFiscal, data_entrada, data_retirada, telefone, CPF, hora_entrada, hora_retirada, cpf_entregador, nome_entregador);
+                bool dadosOk = cadastroPacote.setValid_dados(funcionario, titular, situacao, email, notaFiscal, telefone, CPF, cpf_entregador, nome_entregador);
 
                 if (dadosOk == true)
                 {
@@ -57,12 +53,8 @@ namespace WindowsFormsApp1.RegistrosPac
                     string dadosValidos_situacao = cadastroPacote.getCad_Situacao();
                     string dadosValidos_email = cadastroPacote.getCad_Email();
                     string dadosValidos_notaFiscal = cadastroPacote.getCad_NotaFiscal();
-                    string dadosValidos_data_entrada = cadastroPacote.getCad_DataEntrada(); //precisa criar uma validação para data de entrada e saida
-                    string dadosValidos_data_retirada = cadastroPacote.getCad_DataRetirada();
                     string dadosValidos_telefone = cadastroPacote.getCad_Telefone();
                     string dadosValidos_CPF = cadastroPacote.getCad_Cpf();
-                    string dadosValidos_hora_entrada = cadastroPacote.getCad_HoraEntrada(); //precisa criar uma validação para hora de entrada e saida
-                    string dadosValidos_hora_retirada = cadastroPacote.getCad_HoraRetirada();
                     string dadosValidos_cpf_entregador = cadastroPacote.getCpf_entregador();
                     string dadosValidos_nome_entregador = cadastroPacote.getNome_entregador();
 
@@ -70,8 +62,6 @@ namespace WindowsFormsApp1.RegistrosPac
                     {
                         Bd.setBD_Open();
                         Bd.setInputBd_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
-                        Bd.setInputBd_data(dadosValidos_data_entrada, dadosValidos_data_retirada);
-                        Bd.setInputBd_hora(dadosValidos_hora_entrada, dadosValidos_hora_retirada);
                         Bd.setInputBd_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
                         Bd.setInputBd_pacote(dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_CPF, dadosValidos_cpf_entregador);
                         Bd.setBD_Close();
@@ -97,15 +87,11 @@ namespace WindowsFormsApp1.RegistrosPac
         {
             string funcionario = "1";//textBox_Funcionario.Text;
             string notaFiscal = textBox_NotaFiscal.Text;
-            string data_entrada = maskedTextBox_Data_entrada.Text;
-            string data_retirada = maskedTextBox_Data_saida.Text;
             string titular = textBox_Titular.Text;
             string CPF = (maskedTextBox_CPF.Text).Replace("-", "").Replace(".", "");
             string situacao = comboBox_Situacao.Text;
             string email = maskedTextBox_email.Text;
             string telefone = maskedTextBox_telefone.Text.Replace("-", "").Replace("(", "").Replace(")", "").Replace(" ", "");
-            string hora_entrada = maskedTextBox_Hora_entrada.Text;
-            string hora_retirada = maskedTextBox_Hora_saida.Text;
             string cpf_entregador = txtbox_cpf_entregador.Text;
             string nome_entregador = txtbox_nome_entregador.Text;
             int id_data = Bd.getRetorna_id_data();
@@ -113,8 +99,8 @@ namespace WindowsFormsApp1.RegistrosPac
 
 
 
-            if (funcionario != "" && notaFiscal != "" && data_entrada != "" && data_retirada != "" && titular != "" & CPF != "" && situacao != ""
-                && email != "" && telefone != "" && hora_entrada != "" && hora_retirada != "" && cpf_entregador != "" && nome_entregador != "")
+            if (funcionario != "" && notaFiscal != "" && titular != "" & CPF != "" && situacao != ""
+                && email != "" && telefone != "" && cpf_entregador != "" && nome_entregador != "")
             {
                 try
                 {
@@ -195,10 +181,6 @@ namespace WindowsFormsApp1.RegistrosPac
             textBox_Titular.Text = Bd.getNome_titular();
             maskedTextBox_email.Text = Bd.getEmail_titular();
             txtbox_nome_entregador.Text = Bd.getRetorna_nome_entregador();
-            maskedTextBox_Data_entrada.Text = Bd.getRetorna_chegada_data();
-            maskedTextBox_Data_saida.Text = Bd.getRetorna_retirada_data();
-            maskedTextBox_Hora_entrada.Text = Bd.getRetorna_chegada_hora();
-            maskedTextBox_Hora_saida.Text = Bd.getRetorna_retirada_hora();
             Bd.setBD_Close();
 
         }
@@ -207,24 +189,20 @@ namespace WindowsFormsApp1.RegistrosPac
         {
             string funcionario = "1";//textBox_Funcionario.Text;
             string notaFiscal = textBox_NotaFiscal.Text;
-            string data_entrada = maskedTextBox_Data_entrada.Text;
-            string data_retirada = maskedTextBox_Data_saida.Text;
             string titular = textBox_Titular.Text;
             string CPF = (maskedTextBox_CPF.Text).Replace("-", "").Replace(".", "");
             string situacao = comboBox_Situacao.Text;
             string email = maskedTextBox_email.Text;
             string telefone = maskedTextBox_telefone.Text.Replace("-", "").Replace("(", "").Replace(")", "").Replace(" ", "");
-            string hora_entrada = maskedTextBox_Hora_entrada.Text;
-            string hora_retirada = maskedTextBox_Hora_saida.Text;
             string cpf_entregador = txtbox_cpf_entregador.Text;
             string nome_entregador = txtbox_nome_entregador.Text;
 
 
-            if (funcionario != "" && notaFiscal != "" && data_entrada != "" && data_retirada != "" && titular != "" & CPF != "" && situacao != ""
-                && email != "" && telefone != "" && hora_entrada != "" && hora_retirada != "" && cpf_entregador != "" && nome_entregador != "")
+            if (funcionario != "" && notaFiscal != "" && titular != "" & CPF != "" && situacao != ""
+                && email != "" && telefone != "" && cpf_entregador != "" && nome_entregador != "")
             {
 
-                bool dadosOk = cadastroPacote.setValid_dados(funcionario, titular, situacao, email, notaFiscal, data_entrada, data_retirada, telefone, CPF, hora_entrada, hora_retirada, cpf_entregador, nome_entregador);
+                bool dadosOk = cadastroPacote.setValid_dados(funcionario, titular, situacao, email, notaFiscal, telefone, CPF, cpf_entregador, nome_entregador);
 
                 if (dadosOk == true)
                 {
@@ -233,12 +211,8 @@ namespace WindowsFormsApp1.RegistrosPac
                     string dadosValidos_situacao = cadastroPacote.getCad_Situacao();
                     string dadosValidos_email = cadastroPacote.getCad_Email();
                     string dadosValidos_notaFiscal = cadastroPacote.getCad_NotaFiscal();
-                    string dadosValidos_data_entrada = cadastroPacote.getCad_DataEntrada(); //precisa criar uma validação para data de entrada e saida
-                    string dadosValidos_data_retirada = cadastroPacote.getCad_DataRetirada();
                     string dadosValidos_telefone = cadastroPacote.getCad_Telefone();
                     string dadosValidos_CPF = cadastroPacote.getCad_Cpf();
-                    string dadosValidos_hora_entrada = cadastroPacote.getCad_HoraEntrada(); //precisa criar uma validação para hora de entrada e saida
-                    string dadosValidos_hora_retirada = cadastroPacote.getCad_HoraRetirada();
                     string dadosValidos_cpf_entregador = cadastroPacote.getCpf_entregador();
                     string dadosValidos_nome_entregador = cadastroPacote.getNome_entregador();
 
@@ -247,8 +221,6 @@ namespace WindowsFormsApp1.RegistrosPac
                         Bd.setBD_Open();
                         Bd.setEdit_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
                         Bd.setEdit_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
-                        Bd.setEdit_data(dadosValidos_data_entrada, dadosValidos_data_retirada);
-                        Bd.setEdit_hora(dadosValidos_hora_entrada, dadosValidos_hora_retirada);
                         Bd.setEdit_pacote(dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_CPF, dadosValidos_cpf_entregador);
                         Bd.setBD_Close();
 

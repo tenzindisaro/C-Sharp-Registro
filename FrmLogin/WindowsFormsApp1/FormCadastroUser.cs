@@ -21,12 +21,11 @@ namespace WindowsFormsApp1
         public FormCadastroUser()
         {
             InitializeComponent();
-            radioButton1.Checked = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string nome = textBox2.Text, senha = textBox3.Text, telefone = textBox4.Text, cpf = textBox5.Text, email = textBox6.Text, senha_confirmacao = textBox7.Text, rua = textBox9.Text, bairro = textBox10.Text, cep = textBox12.Text, numero = textBox11.Text;
+            string nome = textBox2.Text, senha = textBox3.Text, telefone = textBox4.Text, cpf = textBox5.Text, email = textBox6.Text, senha_confirmacao = textBox7.Text;
             bool dadosValidos = user.checkInput(email, senha, senha_confirmacao, nome, telefone);
 
             if (dadosValidos)
@@ -34,7 +33,6 @@ namespace WindowsFormsApp1
                 try
                 {
                     Bd.setBD_Open();
-                    Bd.setInputBd_americanas(cep, rua, bairro, numero);
                     Bd.setInputBd_funcionario(email, cpf, nome, telefone, senha);
                     Bd.setBD_Close();
                 }
