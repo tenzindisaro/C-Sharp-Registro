@@ -17,6 +17,7 @@ namespace WindowsFormsApp1
     {
         Thread t2;
         private User usuario;
+        private Class_BD_CRUD database = new Class_BD_CRUD();
         public Form3_Tela_Menu(User usuarioAtual)
         {
             usuario = usuarioAtual;
@@ -75,14 +76,27 @@ namespace WindowsFormsApp1
 
         private void Form3_Tela_Menu_Load(object sender, EventArgs e)
         {
+            
+
+            try
+            {
+                database.setBD_Open();
+                label8.Text = database.setRead_Presentes();
+                label9.Text = database.setRead_Retirados();
+                label13.Text = database.setRead_Todos();
+                database.setBD_Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
 
             if (usuario != null)
             {
                 //1nome2email3phone4senha5cpf6id_endereco
                 label11.Text = usuario.GetUserData(2);
-                label12.Text = "Teste";
+                label12.Text = usuario.GetUserData(1);
                 label10.Text = usuario.GetUserData(3);
-                MessageBox.Show("passou");
                 //label4.Text
 
                 AtualizarHorario();

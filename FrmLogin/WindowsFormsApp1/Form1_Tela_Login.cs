@@ -57,8 +57,6 @@ namespace WindowsFormsApp1
                     Bd.setBD_Open();
                     funcionario = Bd.setReadBd_funcionario(inputEmail, inputPassword);
                     Bd.setBD_Close();
-
-                    MessageBox.Show(funcionario.ToString());
                 }
                 catch (Exception ex)
                 {

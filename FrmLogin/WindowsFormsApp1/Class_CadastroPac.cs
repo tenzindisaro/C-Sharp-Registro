@@ -12,7 +12,7 @@ namespace WindowsFormsApp1
 {
     internal class Class_CadastroPac
     {
-        string funcionario, titular, situacao, email, notaFiscal, data_entrada, data_retirada, telefone, CPF, hora_entrada, hora_retirada, cpf_entregador, nome_entregador, cpf_titular_buscar, nota_fiscal_buscar;
+        string funcionario, titular, situacao, email, notaFiscal, telefone, CPF, cpf_entregador, nome_entregador, cpf_titular_buscar, nota_fiscal_buscar;
 
         public Class_CadastroPac()
         {
@@ -20,13 +20,8 @@ namespace WindowsFormsApp1
             titular = null;
             situacao = null;
             email = null;
-            notaFiscal = null;
-            data_entrada = null;
-            data_retirada = null;
             telefone = null;
             CPF = null;
-            hora_entrada = null;
-            hora_retirada = null;
             cpf_entregador = null;
             nome_entregador = null;
             //string para validar buscar:

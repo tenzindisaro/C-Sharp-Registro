@@ -32,13 +32,13 @@ namespace WindowsFormsApp1
         {
             //abre o BD
             conn.Open();
-            MessageBox.Show("Banco de Dados open.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            //MessageBox.Show("Banco de Dados open.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
         public void setBD_Close()
         {
             //fecha o BD
             conn.Close();
-            MessageBox.Show("BD fechado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            //MessageBox.Show("BD fechado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
         public void setInputBd_titular(string cpf_titular, string nome, string email, string telefone)
@@ -335,6 +335,70 @@ namespace WindowsFormsApp1
             retorna_chegada_hora = dr.GetString(0);
             retorna_retirada_hora = dr.GetString(1);
         }
+
+        public string setRead_Presentes()
+        {
+            string pacotesPresentes = "0";
+
+            MySqlCommand cmd = new MySqlCommand("SELECT COUNT(nota_fiscal_pacote) FROM pacote WHERE pacote.situacao_pacote = \"Presente\"", conn);
+            cmd.Parameters.Clear();
+            MySqlDataReader select = cmd.ExecuteReader();
+
+            if (select.HasRows)
+            {
+                select.Read();
+                pacotesPresentes = Convert.ToString(select[0]);
+            }
+
+            select.Close();
+            return pacotesPresentes;
+        }
+
+        public string setRead_Retirados()
+        {
+            string pacotesRetirados = "0";
+
+            DateTime data_atual = DateTime.Now.Date;
+
+            MySqlCommand cmd = new MySqlCommand("SELECT COUNT(nota_fiscal_pacote) FROM pacote INNER JOIN tbl_data ON pacote.id_data = tbl_data.id_data WHERE pacote.situacao_pacote = \"Retirado\" AND tbl_data.retirada_data = @dataAtual", conn);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@dataAtual", MySqlDbType.Date).Value = data_atual;
+
+            MySqlDataReader select = cmd.ExecuteReader();
+
+            if (select.HasRows)
+            {
+                select.Read();
+                pacotesRetirados = Convert.ToString(select[0]);
+            }
+
+            select.Close();
+            return pacotesRetirados;
+        }
+        
+        public string setRead_Todos()
+        {
+            string pacotesRetirados = "0";
+
+            DateTime data_atual = DateTime.Now.Date;
+
+            MySqlCommand cmd = new MySqlCommand("SELECT COUNT(nota_fiscal_pacote) FROM pacote INNER JOIN tbl_data ON pacote.id_data = tbl_data.id_data WHERE tbl_data.chegada_data = @dataAtual OR tbl_data.retirada_data = @dataAtual", conn);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@dataAtual", MySqlDbType.Date).Value = data_atual;
+            MySqlDataReader select = cmd.ExecuteReader();
+
+            if (select.HasRows)
+            {
+                select.Read();
+                pacotesRetirados = Convert.ToString(select[0]);
+            }
+
+            select.Close();
+            return pacotesRetirados;
+        }
+
+
+
         //GET PARA RECUPERAR TODOS OS DADOS SEPARADAMENTE DO BANCO DE DADOS MENOS FUNCIONARIO*******************************************************
         public string getRetorna_nf() { return retorna_nf; }
         public string getRetorna_situacao() { return retorna_situacao; }
