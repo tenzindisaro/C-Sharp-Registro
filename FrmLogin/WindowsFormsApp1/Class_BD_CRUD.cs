@@ -54,12 +54,11 @@ namespace WindowsFormsApp1
             MessageBox.Show("envio de dados titular ok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
-        public void setInputBd_data(string chegada_data, string retirada_data)
+        public void setInputBd_data(string chegada_data)
         {
-            MySqlCommand objcmd_data = new MySqlCommand("insert into tbl_data (id_data, chegada_data, retirada_data) values (NULL, ?, ?)", conn);
+            MySqlCommand objcmd_data = new MySqlCommand("insert into tbl_data (id_data, chegada_data) values (NULL, ?)", conn);
             // parametros para o sql data
             objcmd_data.Parameters.Add("@chegada_data", MySqlDbType.VarChar, 10).Value = chegada_data;
-            objcmd_data.Parameters.Add("@retirada_data", MySqlDbType.VarChar, 10).Value = retirada_data;
             // executando query                       
             objcmd_data.ExecuteNonQuery();
             MessageBox.Show("envio de dados data ok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -69,12 +68,11 @@ namespace WindowsFormsApp1
             MessageBox.Show("valor id data = " + id_data.ToString(), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
-        public void setInputBd_hora(string chegada_hora, string retirada_hora)
+        public void setInputBd_hora(string chegada_hora)
         {
-            MySqlCommand objcmd_hora = new MySqlCommand("insert into hora (id_hora, chegada_hora, retirada_hora) values (NULL, ?, ?)", conn);
+            MySqlCommand objcmd_hora = new MySqlCommand("insert into hora (id_hora, chegada_hora) values (NULL, ?)", conn);
             // parametros para o sql hora
             objcmd_hora.Parameters.Add("@chegada_hora", MySqlDbType.VarChar, 10).Value = chegada_hora;
-            objcmd_hora.Parameters.Add("@retirada_hora", MySqlDbType.VarChar, 10).Value = retirada_hora;
             // executando query                       
             objcmd_hora.ExecuteNonQuery();
             MessageBox.Show("envio de dados hora ok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -146,13 +144,13 @@ namespace WindowsFormsApp1
         }
 
 
-        public void setInputBd_pacote(string nota_fiscal, string situacao_pacote, /*string email_americanas_funcionario,*/ string cpf_titular, string cpf_entregador)
+        public void setInputBd_pacote(string nota_fiscal, string situacao_pacote, string email_americanas_funcionario, string cpf_titular, string cpf_entregador)
         {
-            MySqlCommand objcmd_pacote = new MySqlCommand("INSERT INTO pacote (nota_fiscal_pacote, situacao_pacote, cpf_titular, cpf_entregador, id_data, id_hora) VALUES (?, ?, ?, ?, ?, ?, ?); SELECT LAST_INSERT_ID();", conn);
+            MySqlCommand objcmd_pacote = new MySqlCommand("INSERT INTO pacote (nota_fiscal_pacote, situacao_pacote, email_americanas_funcionario, cpf_titular, cpf_entregador, id_data, id_hora) VALUES (?, ?, ?, ?, ?, ?, ?);", conn);
 
             objcmd_pacote.Parameters.Add("@nota_fiscal_pacote", MySqlDbType.VarChar, 45).Value = nota_fiscal;
             objcmd_pacote.Parameters.Add("@situacao_pacote", MySqlDbType.VarChar, 20).Value = situacao_pacote;
-            //objcmd_pacote.Parameters.Add("@email_americanas_funcionario", MySqlDbType.VarChar, 255).Value = email_americanas_funcionario;
+            objcmd_pacote.Parameters.Add("@email_americanas_funcionario", MySqlDbType.VarChar, 255).Value = email_americanas_funcionario;
             objcmd_pacote.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = cpf_titular;
             objcmd_pacote.Parameters.Add("@cpf_entregador", MySqlDbType.VarChar, 15).Value = cpf_entregador;
             objcmd_pacote.Parameters.Add("@id_data", MySqlDbType.VarChar, 15).Value = id_data;
@@ -163,6 +161,7 @@ namespace WindowsFormsApp1
             MessageBox.Show("Envio de dados pacote ok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
+        // A BAIXO ESTÃO OS MÉTODOS PARA BUSCAR OS DADOS DO BD**************************************************************************************
         public bool setReadBd_login(string usuario, string senha)
         {
             // Construa a consulta SQL para verificar as credenciais do usuário
@@ -186,7 +185,7 @@ namespace WindowsFormsApp1
                 return false;
             }
         }
-
+        
         public User setReadBd_funcionario(string usuario, string senha)
         {
             try
@@ -228,8 +227,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        // A BAIXO ESTÃO OS MÉTODOS PARA BUSCAR OS DADOS DO BD**************************************************************************************
-        public void setRead_pacote_cpf(string cpf)
+         public void setRead_pacote_cpf(string cpf)
         {
             MySqlCommand cmd = new MySqlCommand("SELECT nota_fiscal_pacote, situacao_pacote, cpf_titular, cpf_entregador, id_data, id_hora FROM pacote WHERE cpf_titular = ?", conn);
             cmd.Parameters.Clear();
@@ -385,6 +383,7 @@ namespace WindowsFormsApp1
             MySqlCommand cmd = new MySqlCommand("SELECT COUNT(nota_fiscal_pacote) FROM pacote INNER JOIN tbl_data ON pacote.id_data = tbl_data.id_data WHERE tbl_data.chegada_data = @dataAtual OR tbl_data.retirada_data = @dataAtual", conn);
             cmd.Parameters.Clear();
             cmd.Parameters.Add("@dataAtual", MySqlDbType.Date).Value = data_atual;
+
             MySqlDataReader select = cmd.ExecuteReader();
 
             if (select.HasRows)
@@ -395,6 +394,50 @@ namespace WindowsFormsApp1
 
             select.Close();
             return pacotesRetirados;
+        }
+
+        public List<string> setRead_email_funcionarios (int id_americanas)
+        {
+            List<string> emails = new List<string>();
+
+            MySqlCommand cmd = new MySqlCommand("SELECT email_americanas_funcionario FROM funcionario WHERE funcionario.id_americanas = @id_americanas", conn);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@id_americanas", MySqlDbType.Int32).Value = id_americanas;
+
+            MySqlDataReader select = cmd.ExecuteReader();
+
+            while (select.Read())
+            {
+                string email = select.GetString(0);
+                emails.Add(email);
+            }
+
+            return emails;
+        }
+        
+        public List<string> setRead_endereco_lojas (int id_americanas)
+        {
+            List<string> lojas = new List<string>();
+
+            MySqlCommand cmd = new MySqlCommand("SELECT cep_americanas, rua_americanas, bairro_americanas, numero_americanas FROM americanas", conn);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@id_americanas", MySqlDbType.Int32).Value = id_americanas;
+
+            MySqlDataReader select = cmd.ExecuteReader();
+
+            while (select.Read())
+            {
+                string cep = select.GetString(0);
+                string rua = select.GetString(1);
+                string bairro = select.GetString(2);
+                string numero = select.GetString(3);
+
+                string loja = $"{cep}, {rua}, {bairro}, {numero}";
+
+                lojas.Add(loja);
+            }
+
+            return lojas;
         }
 
 

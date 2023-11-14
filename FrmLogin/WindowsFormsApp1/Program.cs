@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
 
             if (PrimeiraExecucao())
             {
-                Application.Run(new FormCadastroUser());
+                //Application.Run(new FormCadastroUser());
                 AtualizarConfiguracao();
             }
             else

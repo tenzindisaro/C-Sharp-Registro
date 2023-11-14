@@ -322,6 +322,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FormCadastroUser";
             this.Text = "Cadastro Funcionário";
+            this.Load += new System.EventHandler(this.FormCadastroUser_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);

@@ -13,13 +13,14 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WindowsFormsApp1
 {
-    public partial class FormCadastroUser : Form
+    internal partial class FormCadastroUser : Form
     {
         Class_BD_CRUD Bd = new Class_BD_CRUD();
         CadastroUsuarios user = new CadastroUsuarios();
-
-        public FormCadastroUser()
+        User usuario;
+        public FormCadastroUser(User usuarioAtual)
         {
+            usuario = usuarioAtual;
             InitializeComponent();
         }
 
@@ -47,6 +48,22 @@ namespace WindowsFormsApp1
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void FormCadastroUser_Load(object sender, EventArgs e)
+        {
+            int id = int.Parse(usuario.GetUserData(6));
+            
+            Bd.setBD_Open();
+            List<string> lojas = Bd.setRead_endereco_lojas(id);
+            Bd.setBD_Close();
+
+            comboBox2.Items.Clear();
+
+            foreach (string loja in lojas)
+            {
+                comboBox2.Items.Add(loja);
+            }
         }
     }
 }

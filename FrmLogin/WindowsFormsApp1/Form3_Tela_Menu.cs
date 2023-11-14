@@ -47,7 +47,7 @@ namespace WindowsFormsApp1
 
         private void abrirCadastrarUsuario(object obj)
         {
-            Application.Run(new FormCadastroUser());
+            Application.Run(new FormCadastroUser(usuario));
         }
 
         private void registroToolStripMenuItem1_Click_1(object sender, EventArgs e)
@@ -59,7 +59,7 @@ namespace WindowsFormsApp1
         
         private void abrirRegistroPac(object obj)
         {
-            Application.Run(new RegistrosPac.Form5_Registro_Pac());
+            Application.Run(new RegistrosPac.Form5_Registro_Pac(usuario));
         }
         
         private void geralToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -76,8 +76,6 @@ namespace WindowsFormsApp1
 
         private void Form3_Tela_Menu_Load(object sender, EventArgs e)
         {
-            
-
             try
             {
                 database.setBD_Open();

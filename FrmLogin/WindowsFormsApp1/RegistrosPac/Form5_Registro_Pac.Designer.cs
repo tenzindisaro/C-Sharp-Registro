@@ -50,7 +50,6 @@
             this.maskedTextBox_CPF = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox_telefone = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox_email = new System.Windows.Forms.MaskedTextBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.txtbox_nome_entregador = new System.Windows.Forms.TextBox();
@@ -183,9 +182,9 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(170, 218);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 17);
+            this.label6.Size = new System.Drawing.Size(82, 17);
             this.label6.TabIndex = 13;
-            this.label6.Text = "CPF:";
+            this.label6.Text = "CPF Titular:";
             // 
             // label7
             // 
@@ -286,16 +285,6 @@
             this.maskedTextBox_email.Name = "maskedTextBox_email";
             this.maskedTextBox_email.Size = new System.Drawing.Size(134, 23);
             this.maskedTextBox_email.TabIndex = 0;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Location = new System.Drawing.Point(28, 272);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(288, 13);
-            this.label11.TabIndex = 103;
-            this.label11.Text = "O preenchimento de campos com asterisco (*) é obrigatório.";
             // 
             // label12
             // 
@@ -403,7 +392,6 @@
             this.Controls.Add(this.txtbox_nome_entregador);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.maskedTextBox_email);
             this.Controls.Add(this.maskedTextBox_telefone);
             this.Controls.Add(this.maskedTextBox_CPF);
@@ -419,6 +407,7 @@
             this.Controls.Add(this.label2);
             this.Name = "Form5_Registro_Pac";
             this.Text = "Registro de Pacotes";
+            this.Load += new System.EventHandler(this.Form5_Registro_Pac_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -452,7 +441,6 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox_CPF;
         private System.Windows.Forms.MaskedTextBox maskedTextBox_telefone;
         private System.Windows.Forms.MaskedTextBox maskedTextBox_email;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;

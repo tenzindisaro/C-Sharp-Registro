@@ -16,25 +16,26 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace WindowsFormsApp1.RegistrosPac
 {
-    public partial class Form5_Registro_Pac : Form
+    internal partial class Form5_Registro_Pac : Form
     {
+        private User usuario;
         Class_CadastroPac cadastroPacote = new Class_CadastroPac();
         Class_BD_CRUD Bd = new Class_BD_CRUD();
-
-        public Form5_Registro_Pac()
+        public Form5_Registro_Pac(User usuarioAtual)
         {
+            usuario = usuarioAtual;
             InitializeComponent();
         }
 
         private void button_Cadastrar_Click(object sender, EventArgs e)
         {
-            string funcionario = "1";//textBox_Funcionario.Text;
+            string funcionario = comboBox1.Text;
             string notaFiscal = textBox_NotaFiscal.Text;
             string titular = textBox_Titular.Text;
-            string CPF = (maskedTextBox_CPF.Text).Replace("-", "").Replace(".", "");
+            string CPF = maskedTextBox_CPF.Text;
             string situacao = maskedTextBoxSituacao.Text;
             string email = maskedTextBox_email.Text;
-            string telefone = maskedTextBox_telefone.Text.Replace("-", "").Replace("(", "").Replace(")", "").Replace(" ", "");
+            string telefone = maskedTextBox_telefone.Text;
             string cpf_entregador = txtbox_cpf_entregador.Text;
             string nome_entregador = txtbox_nome_entregador.Text;
 
@@ -58,18 +59,26 @@ namespace WindowsFormsApp1.RegistrosPac
                     string dadosValidos_cpf_entregador = cadastroPacote.getCpf_entregador();
                     string dadosValidos_nome_entregador = cadastroPacote.getNome_entregador();
 
+
+                    string hour = (DateTime.Now).ToString("HH:mm:ss");
+                    string date = DateTime.Now.Date.ToString("yyyy-MM-dd");
+
                     try
                     {
                         Bd.setBD_Open();
+                        Bd.setInputBd_hora(hour);
+                        Bd.setInputBd_data(date);
                         Bd.setInputBd_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
                         Bd.setInputBd_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
-                        Bd.setInputBd_pacote(dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_CPF, dadosValidos_cpf_entregador);
-                        Bd.setBD_Close();
-
+                        Bd.setInputBd_pacote(dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_funcionario, dadosValidos_CPF, dadosValidos_cpf_entregador);
                     }
                     catch (Exception erro)
                     {
                         MessageBox.Show("Erro ao conectar dados no banco de dados.\n\n" + erro, "Erro de conexão");
+                    }
+                    finally
+                    {
+                        Bd.setBD_Close();
                     }
                 }
                 else { return; }
@@ -85,7 +94,7 @@ namespace WindowsFormsApp1.RegistrosPac
 
         private void button_deletar_Click(object sender, EventArgs e)
         {
-            string funcionario = "1";//textBox_Funcionario.Text;
+            string funcionario = comboBox1.Text;
             string notaFiscal = textBox_NotaFiscal.Text;
             string titular = textBox_Titular.Text;
             string CPF = (maskedTextBox_CPF.Text).Replace("-", "").Replace(".", "");
@@ -187,13 +196,13 @@ namespace WindowsFormsApp1.RegistrosPac
 
         private void button_Editar_Click(object sender, EventArgs e)
         {
-            string funcionario = "1";//textBox_Funcionario.Text;
+            string funcionario = comboBox1.Text;
             string notaFiscal = textBox_NotaFiscal.Text;
             string titular = textBox_Titular.Text;
-            string CPF = (maskedTextBox_CPF.Text).Replace("-", "").Replace(".", "");
+            string CPF = maskedTextBox_CPF.Text;
             string situacao = maskedTextBoxSituacao.Text;
             string email = maskedTextBox_email.Text;
-            string telefone = maskedTextBox_telefone.Text.Replace("-", "").Replace("(", "").Replace(")", "").Replace(" ", "");
+            string telefone = maskedTextBox_telefone.Text;
             string cpf_entregador = txtbox_cpf_entregador.Text;
             string nome_entregador = txtbox_nome_entregador.Text;
 
@@ -216,12 +225,17 @@ namespace WindowsFormsApp1.RegistrosPac
                     string dadosValidos_cpf_entregador = cadastroPacote.getCpf_entregador();
                     string dadosValidos_nome_entregador = cadastroPacote.getNome_entregador();
 
+                    string hour = (DateTime.Now).ToString("HH:mm:ss");
+                    string date = DateTime.Now.Date.ToString("yyyy-MM-dd");
+
                     try
                     {
                         Bd.setBD_Open();
-                        Bd.setEdit_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
-                        Bd.setEdit_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
-                        Bd.setEdit_pacote(dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_CPF, dadosValidos_cpf_entregador);
+                        Bd.setInputBd_hora(hour);
+                        Bd.setInputBd_data(date);
+                        Bd.setInputBd_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
+                        Bd.setInputBd_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
+                        Bd.setInputBd_pacote(dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_funcionario, dadosValidos_CPF, dadosValidos_cpf_entregador);
                         Bd.setBD_Close();
 
                     }
@@ -252,6 +266,21 @@ namespace WindowsFormsApp1.RegistrosPac
         private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
+        }
+
+        private void Form5_Registro_Pac_Load(object sender, EventArgs e)
+        {
+            int id = int.Parse(usuario.GetUserData(6));
+            Bd.setBD_Open();
+            List<string> emails = Bd.setRead_email_funcionarios(id);
+            Bd.setBD_Close();
+            
+            comboBox1.Items.Clear();
+            
+            foreach (string email in emails)
+            {
+                comboBox1.Items.Add(email);
+            }
         }
     }
 }
