@@ -58,8 +58,8 @@ namespace WindowsFormsApp1
         {
             MySqlCommand objcmd_data = new MySqlCommand("insert into tbl_data (id_data, chegada_data, retirada_data) values (NULL, ?, ?)", conn);
             // parametros para o sql data
-            objcmd_data.Parameters.Add("@chegada_data", MySqlDbType.VarChar, 10).Value = chegada_data;
-            objcmd_data.Parameters.Add("@retirada_data", MySqlDbType.VarChar, 10).Value = retirada_data;
+            objcmd_data.Parameters.Add("@chegada_data", MySqlDbType.Date).Value = chegada_data;
+            objcmd_data.Parameters.Add("@retirada_data", MySqlDbType.Date).Value = retirada_data;
             // executando query                       
             objcmd_data.ExecuteNonQuery();
             MessageBox.Show("envio de dados data ok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -73,8 +73,8 @@ namespace WindowsFormsApp1
         {
             MySqlCommand objcmd_hora = new MySqlCommand("insert into hora (id_hora, chegada_hora, retirada_hora) values (NULL, ?, ?)", conn);
             // parametros para o sql hora
-            objcmd_hora.Parameters.Add("@chegada_hora", MySqlDbType.VarChar, 10).Value = chegada_hora;
-            objcmd_hora.Parameters.Add("@retirada_hora", MySqlDbType.VarChar, 10).Value = retirada_hora;
+            objcmd_hora.Parameters.Add("@chegada_hora", MySqlDbType.Time).Value = chegada_hora;
+            objcmd_hora.Parameters.Add("@retirada_hora", MySqlDbType.Time).Value = retirada_hora;
             // executando query                       
             objcmd_hora.ExecuteNonQuery();
             MessageBox.Show("envio de dados hora ok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -122,11 +122,11 @@ namespace WindowsFormsApp1
         {
             MySqlCommand objcmd_funcionario = new MySqlCommand("INSERT INTO funcionario (email_americanas_funcionario, cpf_funcionario, nome_funcionario, telefone_funcionario, senha_funcionario, id_americanas) VALUES (?, ?, ?, ?, ?, ?)", conn);
             // parametros para o sql pacote
-            objcmd_funcionario.Parameters.Add("@email_americanas_funcionario", MySqlDbType.VarChar, 255).Value = email_funcionario;
+            objcmd_funcionario.Parameters.Add("@email_americanas_funcionario", MySqlDbType.VarChar, 30).Value = email_funcionario;
             objcmd_funcionario.Parameters.Add("@cpf_funcionario", MySqlDbType.VarChar, 15).Value = cpf_funcionario;
-            objcmd_funcionario.Parameters.Add("@nome_funcionario", MySqlDbType.VarChar, 45).Value = nome_funcionario;
+            objcmd_funcionario.Parameters.Add("@nome_funcionario", MySqlDbType.VarChar, 75).Value = nome_funcionario;
             objcmd_funcionario.Parameters.Add("@telefone_funcionario", MySqlDbType.VarChar, 15).Value = telefone_funcionario;
-            objcmd_funcionario.Parameters.Add("@senha_funcionario", MySqlDbType.VarChar).Value = senha_funcionario;
+            objcmd_funcionario.Parameters.Add("@senha_funcionario", MySqlDbType.VarChar, 20).Value = senha_funcionario;
             objcmd_funcionario.Parameters.Add("@id_americanas", MySqlDbType.Int32).Value = id_americanas;
             // executando query                       
             objcmd_funcionario.ExecuteNonQuery();
@@ -155,8 +155,8 @@ namespace WindowsFormsApp1
             //objcmd_pacote.Parameters.Add("@email_americanas_funcionario", MySqlDbType.VarChar, 255).Value = email_americanas_funcionario;
             objcmd_pacote.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = cpf_titular;
             objcmd_pacote.Parameters.Add("@cpf_entregador", MySqlDbType.VarChar, 15).Value = cpf_entregador;
-            objcmd_pacote.Parameters.Add("@id_data", MySqlDbType.VarChar, 15).Value = id_data;
-            objcmd_pacote.Parameters.Add("@id_hora", MySqlDbType.VarChar, 15).Value = id_hora;
+            objcmd_pacote.Parameters.Add("@id_data", MySqlDbType.Int32).Value = id_data;
+            objcmd_pacote.Parameters.Add("@id_hora", MySqlDbType.Int32).Value = id_hora;
 
             // Executar a consulta de inserção e recuperar o ID gerado automaticamente
             objcmd_pacote.ExecuteNonQuery();
@@ -316,8 +316,8 @@ namespace WindowsFormsApp1
             MySqlDataReader dr = cmd.ExecuteReader();
             dr.Read();
 
-            retorna_chegada_data = dr.GetString(0);
-            retorna_retirada_data = dr.GetString(1);
+            retorna_chegada_data = dr.GetDateTime(0).ToString("dd/MM/yyyy");
+            retorna_retirada_data = dr.GetDateTime(1).ToString("dd/MM/yyyy");            
         }
 
         public void setRead_hora()
@@ -332,8 +332,8 @@ namespace WindowsFormsApp1
             MySqlDataReader dr = cmd.ExecuteReader();
             dr.Read();
 
-            retorna_chegada_hora = dr.GetString(0);
-            retorna_retirada_hora = dr.GetString(1);
+            retorna_chegada_hora = dr.GetTimeSpan(0).ToString(@"hh\:mm");
+            retorna_retirada_hora = dr.GetTimeSpan(1).ToString(@"hh\:mm");
         }
 
         public string setRead_Presentes()
