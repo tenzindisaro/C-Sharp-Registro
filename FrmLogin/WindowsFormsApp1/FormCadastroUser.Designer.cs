@@ -257,7 +257,7 @@
             "Loja 1",
             "Loja 2",
             "Loja 3"});
-            this.comboBox2.Location = new System.Drawing.Point(118, 98);
+            this.comboBox2.Location = new System.Drawing.Point(119, 98);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(303, 21);
             this.comboBox2.TabIndex = 118;

@@ -52,10 +52,8 @@ namespace WindowsFormsApp1
 
         private void FormCadastroUser_Load(object sender, EventArgs e)
         {
-            int id = int.Parse(usuario.GetUserData(6));
-            
             Bd.setBD_Open();
-            List<string> lojas = Bd.setRead_endereco_lojas(id);
+            List<string> lojas = Bd.setRead_endereco_lojas();
             Bd.setBD_Close();
 
             comboBox2.Items.Clear();

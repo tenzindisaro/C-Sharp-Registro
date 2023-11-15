@@ -83,39 +83,6 @@ namespace WindowsFormsApp1
             MessageBox.Show("valor id hora = " + id_hora.ToString(), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
-        public void setInputBd_americanas(string cep_americanas, string rua_americanas, string bairro_americanas, string numero_americanas)
-        {
-            MySqlCommand verificaExistenciaCommand = new MySqlCommand("SELECT id_americanas FROM americanas WHERE cep_americanas = @cep_endereco AND rua_americanas = @rua_endereco AND bairro_americanas = @bairro_endereco AND numero_americanas = @numero_endereco;", conn);
-
-            verificaExistenciaCommand.Parameters.AddWithValue("@cep_endereco", cep_americanas);
-            verificaExistenciaCommand.Parameters.AddWithValue("@rua_endereco", rua_americanas);
-            verificaExistenciaCommand.Parameters.AddWithValue("@bairro_endereco", bairro_americanas);
-            verificaExistenciaCommand.Parameters.AddWithValue("@numero_endereco", numero_americanas);
-
-            object resultado = verificaExistenciaCommand.ExecuteScalar();
-
-            if (resultado == null)
-            {
-                MySqlCommand objcmd_americanas = new MySqlCommand("INSERT INTO americanas (id_americanas, cep_americanas, rua_americanas, bairro_americanas, numero_americanas) VALUES (NULL, ?, ?, ?, ?)", conn);
-                // parametros para o sql pacote
-                objcmd_americanas.Parameters.Add("@cep_endereco", MySqlDbType.VarChar, 15).Value = cep_americanas;
-                objcmd_americanas.Parameters.Add("@rua_endereco", MySqlDbType.VarChar, 45).Value = rua_americanas;
-                objcmd_americanas.Parameters.Add("@bairro_endereco", MySqlDbType.VarChar, 15).Value = bairro_americanas;
-                objcmd_americanas.Parameters.Add("@numero_endereco", MySqlDbType.VarChar).Value = numero_americanas;
-                // executando query                       
-                objcmd_americanas.ExecuteNonQuery();
-                MessageBox.Show("envio de dados americanas ok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-
-                objcmd_americanas = new MySqlCommand("SELECT LAST_INSERT_ID();", conn);
-                id_americanas = Convert.ToInt32(objcmd_americanas.ExecuteScalar());
-            }
-            else
-            {
-                id_americanas = Convert.ToInt32(resultado);
-                MessageBox.Show("ID encontrado: " + id_americanas, "Loja encontrada");
-            }
-        }
-
         public void setInputBd_funcionario(string email_funcionario, string cpf_funcionario, string nome_funcionario, string telefone_funcionario, string senha_funcionario)
         {
             MySqlCommand objcmd_funcionario = new MySqlCommand("INSERT INTO funcionario (email_americanas_funcionario, cpf_funcionario, nome_funcionario, telefone_funcionario, senha_funcionario, id_americanas) VALUES (?, ?, ?, ?, ?, ?)", conn);
@@ -314,8 +281,8 @@ namespace WindowsFormsApp1
             MySqlDataReader dr = cmd.ExecuteReader();
             dr.Read();
 
-            retorna_chegada_data = dr.GetString(0);
-            retorna_retirada_data = dr.GetString(1);
+            retorna_chegada_data = dr.GetDateTime(0).ToString("dd/mm/yyyy");
+            retorna_retirada_data = dr.GetDateTime(1).ToString("dd/mm/yyyy");
         }
 
         public void setRead_hora()
@@ -415,13 +382,11 @@ namespace WindowsFormsApp1
             return emails;
         }
         
-        public List<string> setRead_endereco_lojas (int id_americanas)
+        public List<string> setRead_endereco_lojas ()
         {
             List<string> lojas = new List<string>();
 
-            MySqlCommand cmd = new MySqlCommand("SELECT cep_americanas, rua_americanas, bairro_americanas, numero_americanas FROM americanas", conn);
-            cmd.Parameters.Clear();
-            cmd.Parameters.Add("@id_americanas", MySqlDbType.Int32).Value = id_americanas;
+            MySqlCommand cmd = new MySqlCommand("SELECT id_americanas, cep_americanas, rua_americanas, bairro_americanas, numero_americanas FROM americanas", conn);
 
             MySqlDataReader select = cmd.ExecuteReader();
 

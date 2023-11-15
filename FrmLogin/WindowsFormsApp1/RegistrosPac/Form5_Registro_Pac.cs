@@ -29,6 +29,8 @@ namespace WindowsFormsApp1.RegistrosPac
 
         private void button_Cadastrar_Click(object sender, EventArgs e)
         {
+            string hour = (DateTime.Now).ToString("HH:mm:ss");
+            string date = DateTime.Now.Date.ToString("yyyy-MM-dd");
             string funcionario = comboBox1.Text;
             string notaFiscal = textBox_NotaFiscal.Text;
             string titular = textBox_Titular.Text;
@@ -59,9 +61,6 @@ namespace WindowsFormsApp1.RegistrosPac
                     string dadosValidos_cpf_entregador = cadastroPacote.getCpf_entregador();
                     string dadosValidos_nome_entregador = cadastroPacote.getNome_entregador();
 
-
-                    string hour = (DateTime.Now).ToString("HH:mm:ss");
-                    string date = DateTime.Now.Date.ToString("yyyy-MM-dd");
 
                     try
                     {
