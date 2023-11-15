@@ -21,10 +21,10 @@ namespace WindowsFormsApp1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
             if (PrimeiraExecucao())
             {
                 //Application.Run(new FormCadastroUser());
+                //Application.Run(new Form5_Registro_Pac());
                 AtualizarConfiguracao();
             }
             else

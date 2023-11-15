@@ -34,7 +34,6 @@
             this.txtBox_buscar = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBox_Titular = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox_NotaFiscal = new System.Windows.Forms.TextBox();
@@ -59,10 +58,17 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.maskedTextBoxSituacao = new System.Windows.Forms.MaskedTextBox();
+            this.groupBox_Data = new System.Windows.Forms.GroupBox();
+            this.textBox_data = new System.Windows.Forms.TextBox();
+            this.groupBox_hora = new System.Windows.Forms.GroupBox();
+            this.textBox_hora = new System.Windows.Forms.TextBox();
+            this.dataGridView_registro_pac = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.groupBox_Data.SuspendLayout();
+            this.groupBox_hora.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_registro_pac)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -75,7 +81,7 @@
             this.label1.Size = new System.Drawing.Size(80, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Buscar:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+//            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // rdb_Titular_cpf
             // 
@@ -122,23 +128,13 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Location = new System.Drawing.Point(15, 306);
+            this.groupBox1.Controls.Add(this.dataGridView_registro_pac);
+            this.groupBox1.Location = new System.Drawing.Point(15, 280);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(576, 109);
+            this.groupBox1.Size = new System.Drawing.Size(576, 135);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pacotes Registrados no Dia";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 19);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(554, 82);
-            this.dataGridView1.TabIndex = 0;
             // 
             // textBox_Titular
             // 
@@ -350,7 +346,7 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Registro de Pacotes";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+//            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // panel2
             // 
@@ -377,13 +373,61 @@
             this.maskedTextBoxSituacao.Size = new System.Drawing.Size(134, 23);
             this.maskedTextBoxSituacao.TabIndex = 123;
             this.maskedTextBoxSituacao.Text = "Presente";
-            this.maskedTextBoxSituacao.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox1_MaskInputRejected);
+//            this.maskedTextBoxSituacao.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox1_MaskInputRejected);
+            // 
+            // groupBox_Data
+            // 
+            this.groupBox_Data.Controls.Add(this.textBox_data);
+            this.groupBox_Data.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.groupBox_Data.Location = new System.Drawing.Point(451, 115);
+            this.groupBox_Data.Name = "groupBox_Data";
+            this.groupBox_Data.Size = new System.Drawing.Size(140, 57);
+            this.groupBox_Data.TabIndex = 124;
+            this.groupBox_Data.TabStop = false;
+            this.groupBox_Data.Text = "Data";
+            // 
+            // textBox_data
+            // 
+            this.textBox_data.Enabled = false;
+            this.textBox_data.Location = new System.Drawing.Point(6, 25);
+            this.textBox_data.Name = "textBox_data";
+            this.textBox_data.Size = new System.Drawing.Size(118, 26);
+            this.textBox_data.TabIndex = 0;
+            // 
+            // groupBox_hora
+            // 
+            this.groupBox_hora.Controls.Add(this.textBox_hora);
+            this.groupBox_hora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.groupBox_hora.Location = new System.Drawing.Point(451, 202);
+            this.groupBox_hora.Name = "groupBox_hora";
+            this.groupBox_hora.Size = new System.Drawing.Size(140, 57);
+            this.groupBox_hora.TabIndex = 125;
+            this.groupBox_hora.TabStop = false;
+            this.groupBox_hora.Text = "Hora";
+            // 
+            // textBox_hora
+            // 
+            this.textBox_hora.Enabled = false;
+            this.textBox_hora.Location = new System.Drawing.Point(6, 25);
+            this.textBox_hora.Name = "textBox_hora";
+            this.textBox_hora.Size = new System.Drawing.Size(118, 26);
+            this.textBox_hora.TabIndex = 0;
+            // 
+            // dataGridView_registro_pac
+            // 
+            this.dataGridView_registro_pac.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_registro_pac.Location = new System.Drawing.Point(6, 19);
+            this.dataGridView_registro_pac.Name = "dataGridView_registro_pac";
+            this.dataGridView_registro_pac.Size = new System.Drawing.Size(564, 110);
+            this.dataGridView_registro_pac.TabIndex = 0;
             // 
             // Form5_Registro_Pac
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.groupBox_hora);
+            this.Controls.Add(this.groupBox_Data);
             this.Controls.Add(this.maskedTextBoxSituacao);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -409,10 +453,14 @@
             this.Text = "Registro de Pacotes";
             this.Load += new System.EventHandler(this.Form5_Registro_Pac_Load);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.groupBox_Data.ResumeLayout(false);
+            this.groupBox_Data.PerformLayout();
+            this.groupBox_hora.ResumeLayout(false);
+            this.groupBox_hora.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_registro_pac)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -441,7 +489,6 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox_CPF;
         private System.Windows.Forms.MaskedTextBox maskedTextBox_telefone;
         private System.Windows.Forms.MaskedTextBox maskedTextBox_email;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtbox_nome_entregador;
@@ -451,5 +498,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxSituacao;
+        private System.Windows.Forms.GroupBox groupBox_Data;
+        private System.Windows.Forms.TextBox textBox_data;
+        private System.Windows.Forms.GroupBox groupBox_hora;
+        private System.Windows.Forms.TextBox textBox_hora;
+        private System.Windows.Forms.DataGridView dataGridView_registro_pac;
     }
 }

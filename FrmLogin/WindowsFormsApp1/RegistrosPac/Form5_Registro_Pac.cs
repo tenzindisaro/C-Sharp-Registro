@@ -21,10 +21,27 @@ namespace WindowsFormsApp1.RegistrosPac
         private User usuario;
         Class_CadastroPac cadastroPacote = new Class_CadastroPac();
         Class_BD_CRUD Bd = new Class_BD_CRUD();
+        private DataTable dataTable = new DataTable();
+        DataRow newRow;
         public Form5_Registro_Pac(User usuarioAtual)
         {
             usuario = usuarioAtual;
             InitializeComponent();
+            InitializeDataGridView();
+        }
+        private void InitializeDataGridView()
+        {
+            // Crie as colunas do DataTable
+            dataTable.Columns.Add("Nota Fiscal");
+            dataTable.Columns.Add("Situação");
+            dataTable.Columns.Add("Titular");
+            dataTable.Columns.Add("Email");
+            dataTable.Columns.Add("CPF Titular");
+            dataTable.Columns.Add("Entregador");
+            dataTable.Columns.Add("CPF Entregador");
+
+            // Associe o DataTable ao DataGridView
+            dataGridView_registro_pac.DataSource = dataTable;
         }
 
         private void button_Cadastrar_Click(object sender, EventArgs e)
@@ -50,8 +67,8 @@ namespace WindowsFormsApp1.RegistrosPac
 
                 if (dadosOk == true)
                 {
-                    //DÚVIDA EM QUESTÃO DE BOAS PRÁTICAS?
-                    string dadosValidos_funcionario = cadastroPacote.getCad_Funcionario();//avaliar se vai integrar realmente no cadastro do pacote
+                    
+                    string dadosValidos_funcionario = cadastroPacote.getCad_Funcionario();
                     string dadosValidos_nomeTitular = cadastroPacote.getCad_Titular();
                     string dadosValidos_situacao = cadastroPacote.getCad_Situacao();
                     string dadosValidos_email = cadastroPacote.getCad_Email();
@@ -118,12 +135,16 @@ namespace WindowsFormsApp1.RegistrosPac
                     Bd.setDelet_entregador(cpf_entregador);
                     Bd.setDelet_titular(CPF);
                     Bd.setDelet_pacote(notaFiscal);
-                    Bd.setBD_Close();
+                    
                 }
                 catch (Exception erro)
                 {
                     MessageBox.Show("Erro ao deletar dados do pacote no banco de dados.\n\n" + erro, "Erro de conexão");
-                }               
+                }
+                finally
+                {
+                    Bd.setBD_Close();
+                }
 
             }
             else
@@ -152,6 +173,7 @@ namespace WindowsFormsApp1.RegistrosPac
                         Bd.setRead_entregador();
                         Bd.setRead_data();
                         Bd.setRead_hora();
+                        Bd.setBD_Close();
                     }
                     else { MessageBox.Show("CPF Titular if dadosok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }                    
                 }
@@ -172,7 +194,7 @@ namespace WindowsFormsApp1.RegistrosPac
                         Bd.setRead_entregador();
                         Bd.setRead_data();
                         Bd.setRead_hora();
-
+                        Bd.setBD_Close();
                     }
                     else { MessageBox.Show("NF  if dadosok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }                    
                 }
@@ -189,7 +211,28 @@ namespace WindowsFormsApp1.RegistrosPac
             textBox_Titular.Text = Bd.getNome_titular();
             maskedTextBox_email.Text = Bd.getEmail_titular();
             txtbox_nome_entregador.Text = Bd.getRetorna_nome_entregador();
-            Bd.setBD_Close();
+
+            //recebendo dados para enviar pro Datagridview
+            dataTable.Rows.Clear();// da clear nas linhas do datatable
+            newRow = dataTable.NewRow();//cria uma nova linha no datatable
+            newRow["Nota Fiscal"] = Bd.getRetorna_nf(); 
+            newRow["Situação"] = Bd.getRetorna_situacao();
+            newRow["Titular"] = Bd.getNome_titular();
+            newRow["Email"] = Bd.getEmail_titular();
+            newRow["CPF Titular"] = Bd.getRetorna_cpf_titular();
+            newRow["Entregador"] = Bd.getRetorna_nome_entregador();
+            newRow["CPF Entregador"] = Bd.getRetorna_cpf_entregador();
+
+
+            /*
+            dataTable.Columns.Add("Nota Fiscal");
+            dataTable.Columns.Add("Situação");
+            dataTable.Columns.Add("Titular");
+            dataTable.Columns.Add("Email");
+            dataTable.Columns.Add("CPF Titular");
+            dataTable.Columns.Add("Entregador");
+            dataTable.Columns.Add("CPF Entregador");
+            */           
 
         }
 
@@ -235,12 +278,16 @@ namespace WindowsFormsApp1.RegistrosPac
                         Bd.setInputBd_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
                         Bd.setInputBd_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
                         Bd.setInputBd_pacote(dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_funcionario, dadosValidos_CPF, dadosValidos_cpf_entregador);
-                        Bd.setBD_Close();
+                        
 
                     }
                     catch (Exception erro)
                     {
                         MessageBox.Show("Erro ao editar dados no banco de dados.\n\n" + erro, "Erro de conexão");
+                    }
+                    finally
+                    {
+                        Bd.setBD_Close();
                     }
                 }
                 else { return; }
@@ -252,21 +299,7 @@ namespace WindowsFormsApp1.RegistrosPac
             }
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
+       
         private void Form5_Registro_Pac_Load(object sender, EventArgs e)
         {
             int id = int.Parse(usuario.GetUserData(6));
