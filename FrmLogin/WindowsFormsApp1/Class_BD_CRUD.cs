@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
     {   //"server=localhost;port=3307;User Id=root;database=projeto_registro_sql;password=usbw"
         //"server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ"
         private MySqlConnection conn = new MySqlConnection("server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ");
-        private int id_hora, id_data, id_americanas;
+        private int id_hora, id_data;
         // váriaveis a baixo para busca dados
         string retorna_nf, retorna_situacao, retorna_cpf_titular, retorna_cpf_entregador, nome_titular, email_titular, telefone_titular, retorna_nome_entregador, retorna_chegada_data, retorna_retirada_data, retorna_chegada_hora, retorna_retirada_hora;
         int retorna_id_data, retorna_id_hora;
@@ -83,7 +83,7 @@ namespace WindowsFormsApp1
             MessageBox.Show("valor id hora = " + id_hora.ToString(), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
-        public void setInputBd_funcionario(string email_funcionario, string cpf_funcionario, string nome_funcionario, string telefone_funcionario, string senha_funcionario)
+        public void setInputBd_funcionario(string email_funcionario, string cpf_funcionario, string nome_funcionario, string telefone_funcionario, string senha_funcionario, int id_americanas)
         {
             MySqlCommand objcmd_funcionario = new MySqlCommand("INSERT INTO funcionario (email_americanas_funcionario, cpf_funcionario, nome_funcionario, telefone_funcionario, senha_funcionario, id_americanas) VALUES (?, ?, ?, ?, ?, ?)", conn);
             // parametros para o sql pacote
@@ -301,12 +301,14 @@ namespace WindowsFormsApp1
             retorna_retirada_hora = dr.GetString(1);
         }
 
-        public string setRead_Presentes()
+        public string setRead_Presentes(int id_americanas)
         {
             string pacotesPresentes = "0";
 
-            MySqlCommand cmd = new MySqlCommand("SELECT COUNT(nota_fiscal_pacote) FROM pacote WHERE pacote.situacao_pacote = \"Presente\"", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT COUNT(p.nota_fiscal_pacote) FROM pacote p INNER JOIN funcionario f ON p.email_americanas_funcionario = f.email_americanas_funcionario WHERE p.situacao_pacote = \"Presente\" AND @id_americanas = f.id_americanas;", conn);
             cmd.Parameters.Clear();
+            cmd.Parameters.Add("@id_americanas", MySqlDbType.Int32).Value = id_americanas;
+            
             MySqlDataReader select = cmd.ExecuteReader();
 
             if (select.HasRows)
@@ -319,14 +321,15 @@ namespace WindowsFormsApp1
             return pacotesPresentes;
         }
 
-        public string setRead_Retirados()
+        public string setRead_Retirados(int id_americanas)
         {
             string pacotesRetirados = "0";
 
             DateTime data_atual = DateTime.Now.Date;
 
-            MySqlCommand cmd = new MySqlCommand("SELECT COUNT(nota_fiscal_pacote) FROM pacote INNER JOIN tbl_data ON pacote.id_data = tbl_data.id_data WHERE pacote.situacao_pacote = \"Retirado\" AND tbl_data.retirada_data = @dataAtual", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT COUNT(p.nota_fiscal_pacote) FROM pacote p INNER JOIN tbl_data d ON p.id_data = d.id_data INNER JOIN funcionario f ON p.email_americanas_funcionario = f.email_americanas_funcionario WHERE p.situacao_pacote = \"Retirado\" AND d.retirada_data = @dataAtual AND @id_americanas = f.id_americanas", conn);
             cmd.Parameters.Clear();
+            cmd.Parameters.Add("@id_americanas", MySqlDbType.Int32).Value = id_americanas;
             cmd.Parameters.Add("@dataAtual", MySqlDbType.Date).Value = data_atual;
 
             MySqlDataReader select = cmd.ExecuteReader();
@@ -341,14 +344,15 @@ namespace WindowsFormsApp1
             return pacotesRetirados;
         }
         
-        public string setRead_Todos()
+        public string setRead_Todos(int id_americanas)
         {
             string pacotesRetirados = "0";
 
             DateTime data_atual = DateTime.Now.Date;
 
-            MySqlCommand cmd = new MySqlCommand("SELECT COUNT(nota_fiscal_pacote) FROM pacote INNER JOIN tbl_data ON pacote.id_data = tbl_data.id_data WHERE tbl_data.chegada_data = @dataAtual OR tbl_data.retirada_data = @dataAtual", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT COUNT(p.nota_fiscal_pacote) FROM pacote p INNER JOIN tbl_data d ON p.id_data = d.id_data INNER JOIN funcionario f ON p.email_americanas_funcionario = f.email_americanas_funcionario WHERE (d.chegada_data = @dataAtual OR d.retirada_data = @dataAtual) AND @id_americanas = f.id_americanas", conn);
             cmd.Parameters.Clear();
+            cmd.Parameters.Add("@id_americanas", MySqlDbType.Int32).Value = id_americanas;
             cmd.Parameters.Add("@dataAtual", MySqlDbType.Date).Value = data_atual;
 
             MySqlDataReader select = cmd.ExecuteReader();
@@ -392,12 +396,13 @@ namespace WindowsFormsApp1
 
             while (select.Read())
             {
-                string cep = select.GetString(0);
-                string rua = select.GetString(1);
-                string bairro = select.GetString(2);
-                string numero = select.GetString(3);
+                string id = select.GetString(0);
+                string cep = select.GetString(1);
+                string rua = select.GetString(2);
+                string bairro = select.GetString(3);
+                string numero = select.GetString(4);
 
-                string loja = $"{cep}, {rua}, {bairro}, {numero}";
+                string loja = $"{id}, {cep}, {rua}, {bairro}, {numero}";
 
                 lojas.Add(loja);
             }
