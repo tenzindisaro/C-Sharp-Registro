@@ -65,6 +65,12 @@ namespace WindowsFormsApp1
             {
                 comboBox2.Items.Add(loja);
             }
+
+            Bd.setBD_Open();
+            int id = int.Parse(usuario.GetUserData(6));
+            dataGridView1.DataSource = Bd.setRead_funcionarios_id(id);
+            Bd.setBD_Close();
+
         }
     }
 }

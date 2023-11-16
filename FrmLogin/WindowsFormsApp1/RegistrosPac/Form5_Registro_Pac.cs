@@ -304,7 +304,7 @@ namespace WindowsFormsApp1.RegistrosPac
         {
             int id = int.Parse(usuario.GetUserData(6));
             Bd.setBD_Open();
-            List<string> emails = Bd.setRead_email_funcionarios(id);
+            List<string> emails = Bd.setRead_email_funcionarios_id(id);
             Bd.setBD_Close();
             
             comboBox1.Items.Clear();

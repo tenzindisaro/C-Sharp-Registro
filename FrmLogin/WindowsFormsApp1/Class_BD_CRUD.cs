@@ -194,6 +194,43 @@ namespace WindowsFormsApp1
             }
         }
 
+        public DataTable setRead_funcionarios_id(int id_americanas)
+        {
+            DataTable datatable = new DataTable();
+            DataRow novalinha;
+
+            datatable.Columns.Add("Email");
+            datatable.Columns.Add("CPF");
+            datatable.Columns.Add("Nome");
+            datatable.Columns.Add("Telefone");
+            datatable.Columns.Add("Cep");
+            datatable.Columns.Add("Rua");
+            datatable.Columns.Add("Bairro");
+            datatable.Columns.Add("Número");
+
+            string query = "SELECT f.email_americanas_funcionario, f.cpf_funcionario, f.nome_funcionario, f.telefone_funcionario, f.id_americanas, a.cep_americanas, a.rua_americanas, a.bairro_americanas, a.numero_americanas FROM funcionario f INNER JOIN americanas a ON f.id_americanas = a.id_americanas WHERE f.id_americanas = @id_americanas";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.Add("@id_americanas", MySqlDbType.Int32).Value = id_americanas;
+
+            MySqlDataReader select = cmd.ExecuteReader();
+
+            while (select.Read())
+            {
+                novalinha = datatable.NewRow();
+                novalinha["Email"] = select.GetString(0);
+                novalinha["CPF"] = select.GetString(1);
+                novalinha["Nome"] = select.GetString(2);
+                novalinha["Telefone"] = select.GetString(3);
+                novalinha["Cep"] = select.GetString(4);
+                novalinha["Rua"] = select.GetString(5);
+                novalinha["Bairro"] = select.GetString(6);
+                novalinha["Número"] = select.GetString(7);
+                datatable.Rows.Add(novalinha);
+            }
+
+            return datatable;
+        }
+
          public void setRead_pacote_cpf(string cpf)
         {
             MySqlCommand cmd = new MySqlCommand("SELECT nota_fiscal_pacote, situacao_pacote, cpf_titular, cpf_entregador, id_data, id_hora FROM pacote WHERE cpf_titular = ?", conn);
@@ -367,7 +404,7 @@ namespace WindowsFormsApp1
             return pacotesRetirados;
         }
 
-        public List<string> setRead_email_funcionarios (int id_americanas)
+        public List<string> setRead_email_funcionarios_id (int id_americanas)
         {
             List<string> emails = new List<string>();
 
