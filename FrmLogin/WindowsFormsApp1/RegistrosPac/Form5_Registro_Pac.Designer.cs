@@ -34,6 +34,7 @@
             this.txtBox_buscar = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dataGridView_registro_pac = new System.Windows.Forms.DataGridView();
             this.textBox_Titular = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox_NotaFiscal = new System.Windows.Forms.TextBox();
@@ -53,22 +54,22 @@
             this.label13 = new System.Windows.Forms.Label();
             this.txtbox_nome_entregador = new System.Windows.Forms.TextBox();
             this.txtbox_cpf_entregador = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox_funcionario = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtBox_buscar_cpf = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBoxSituacao = new System.Windows.Forms.MaskedTextBox();
             this.groupBox_Data = new System.Windows.Forms.GroupBox();
             this.textBox_data = new System.Windows.Forms.TextBox();
             this.groupBox_hora = new System.Windows.Forms.GroupBox();
             this.textBox_hora = new System.Windows.Forms.TextBox();
-            this.dataGridView_registro_pac = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_registro_pac)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox_Data.SuspendLayout();
             this.groupBox_hora.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_registro_pac)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -81,11 +82,11 @@
             this.label1.Size = new System.Drawing.Size(80, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Buscar:";
-//            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // rdb_Titular_cpf
             // 
             this.rdb_Titular_cpf.AutoSize = true;
+            this.rdb_Titular_cpf.Checked = true;
             this.rdb_Titular_cpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdb_Titular_cpf.ForeColor = System.Drawing.Color.White;
             this.rdb_Titular_cpf.Location = new System.Drawing.Point(108, 93);
@@ -95,6 +96,7 @@
             this.rdb_Titular_cpf.TabStop = true;
             this.rdb_Titular_cpf.Text = "CPF Titular";
             this.rdb_Titular_cpf.UseVisualStyleBackColor = true;
+            this.rdb_Titular_cpf.CheckedChanged += new System.EventHandler(this.rdb_Titular_cpf_CheckedChanged);
             // 
             // rdb_NotaFiscal
             // 
@@ -105,9 +107,9 @@
             this.rdb_NotaFiscal.Name = "rdb_NotaFiscal";
             this.rdb_NotaFiscal.Size = new System.Drawing.Size(97, 19);
             this.rdb_NotaFiscal.TabIndex = 2;
-            this.rdb_NotaFiscal.TabStop = true;
             this.rdb_NotaFiscal.Text = "Nota Fiscal";
             this.rdb_NotaFiscal.UseVisualStyleBackColor = true;
+            this.rdb_NotaFiscal.CheckedChanged += new System.EventHandler(this.rdb_NotaFiscal_CheckedChanged);
             // 
             // txtBox_buscar
             // 
@@ -115,6 +117,7 @@
             this.txtBox_buscar.Name = "txtBox_buscar";
             this.txtBox_buscar.Size = new System.Drawing.Size(186, 20);
             this.txtBox_buscar.TabIndex = 3;
+            this.txtBox_buscar.Visible = false;
             // 
             // label2
             // 
@@ -135,6 +138,17 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pacotes Registrados no Dia";
+            // 
+            // dataGridView_registro_pac
+            // 
+            this.dataGridView_registro_pac.AllowUserToAddRows = false;
+            this.dataGridView_registro_pac.AllowUserToDeleteRows = false;
+            this.dataGridView_registro_pac.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_registro_pac.Location = new System.Drawing.Point(6, 19);
+            this.dataGridView_registro_pac.Name = "dataGridView_registro_pac";
+            this.dataGridView_registro_pac.ReadOnly = true;
+            this.dataGridView_registro_pac.Size = new System.Drawing.Size(564, 110);
+            this.dataGridView_registro_pac.TabIndex = 0;
             // 
             // textBox_Titular
             // 
@@ -318,14 +332,14 @@
             this.txtbox_cpf_entregador.Size = new System.Drawing.Size(134, 23);
             this.txtbox_cpf_entregador.TabIndex = 23;
             // 
-            // comboBox1
+            // comboBox_funcionario
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(159, 115);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(134, 25);
-            this.comboBox1.TabIndex = 107;
+            this.comboBox_funcionario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox_funcionario.FormattingEnabled = true;
+            this.comboBox_funcionario.Location = new System.Drawing.Point(159, 115);
+            this.comboBox_funcionario.Name = "comboBox_funcionario";
+            this.comboBox_funcionario.Size = new System.Drawing.Size(134, 25);
+            this.comboBox_funcionario.TabIndex = 107;
             // 
             // panel1
             // 
@@ -346,11 +360,11 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Registro de Pacotes";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-//            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Red;
+            this.panel2.Controls.Add(this.txtBox_buscar_cpf);
             this.panel2.Controls.Add(this.button_Cadastrar);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.button_Buscar);
@@ -364,6 +378,15 @@
             this.panel2.Size = new System.Drawing.Size(204, 453);
             this.panel2.TabIndex = 122;
             // 
+            // txtBox_buscar_cpf
+            // 
+            this.txtBox_buscar_cpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBox_buscar_cpf.Location = new System.Drawing.Point(9, 118);
+            this.txtBox_buscar_cpf.Mask = "000,000,000-00";
+            this.txtBox_buscar_cpf.Name = "txtBox_buscar_cpf";
+            this.txtBox_buscar_cpf.Size = new System.Drawing.Size(186, 23);
+            this.txtBox_buscar_cpf.TabIndex = 1;
+            // 
             // maskedTextBoxSituacao
             // 
             this.maskedTextBoxSituacao.Enabled = false;
@@ -373,7 +396,6 @@
             this.maskedTextBoxSituacao.Size = new System.Drawing.Size(134, 23);
             this.maskedTextBoxSituacao.TabIndex = 123;
             this.maskedTextBoxSituacao.Text = "Presente";
-//            this.maskedTextBoxSituacao.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox1_MaskInputRejected);
             // 
             // groupBox_Data
             // 
@@ -413,14 +435,6 @@
             this.textBox_hora.Size = new System.Drawing.Size(118, 26);
             this.textBox_hora.TabIndex = 0;
             // 
-            // dataGridView_registro_pac
-            // 
-            this.dataGridView_registro_pac.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_registro_pac.Location = new System.Drawing.Point(6, 19);
-            this.dataGridView_registro_pac.Name = "dataGridView_registro_pac";
-            this.dataGridView_registro_pac.Size = new System.Drawing.Size(564, 110);
-            this.dataGridView_registro_pac.TabIndex = 0;
-            // 
             // Form5_Registro_Pac
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -431,7 +445,7 @@
             this.Controls.Add(this.maskedTextBoxSituacao);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBox_funcionario);
             this.Controls.Add(this.txtbox_cpf_entregador);
             this.Controls.Add(this.txtbox_nome_entregador);
             this.Controls.Add(this.label13);
@@ -453,6 +467,7 @@
             this.Text = "Registro de Pacotes";
             this.Load += new System.EventHandler(this.Form5_Registro_Pac_Load);
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_registro_pac)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -460,7 +475,6 @@
             this.groupBox_Data.PerformLayout();
             this.groupBox_hora.ResumeLayout(false);
             this.groupBox_hora.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_registro_pac)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -493,7 +507,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtbox_nome_entregador;
         private System.Windows.Forms.TextBox txtbox_cpf_entregador;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox_funcionario;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel2;
@@ -503,5 +517,6 @@
         private System.Windows.Forms.GroupBox groupBox_hora;
         private System.Windows.Forms.TextBox textBox_hora;
         private System.Windows.Forms.DataGridView dataGridView_registro_pac;
+        private System.Windows.Forms.MaskedTextBox txtBox_buscar_cpf;
     }
 }
