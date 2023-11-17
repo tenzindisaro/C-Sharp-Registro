@@ -20,6 +20,7 @@ namespace WindowsFormsApp1
         public FrmLogin()
         {
             InitializeComponent();
+            enchiosacodeporloginesenha();
         }
 
         private User funcionario;
@@ -108,6 +109,11 @@ namespace WindowsFormsApp1
         private void FrmLogin_Load(object sender, EventArgs e)
         {
             txtEmail.Focus();
+        }
+        private void enchiosacodeporloginesenha()
+        {
+            txtEmail.Text = "angelo@americanas.com.br";
+            txtSenha.Text = "angelo";
         }
 
         private void abrirMenu(object obj)

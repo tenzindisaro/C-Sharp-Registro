@@ -20,7 +20,8 @@ namespace WindowsFormsApp1
         private MySqlConnection conn = new MySqlConnection("server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ");
         private int id_hora, id_data;
         // váriaveis a baixo para busca dados
-        string retorna_nf, retorna_situacao, retorna_cpf_titular, retorna_cpf_entregador, nome_titular, email_titular, telefone_titular, retorna_nome_entregador, retorna_chegada_data, retorna_retirada_data, retorna_chegada_hora, retorna_retirada_hora;
+        string retorna_nf, retorna_situacao, retorna_cpf_titular, retorna_cpf_entregador, nome_titular, email_titular, telefone_titular, retorna_nome_entregador, retorna_chegada_data, 
+            retorna_retirada_data, retorna_chegada_hora, retorna_retirada_hora, retorna_email_funcionario;
         int retorna_id_data, retorna_id_hora;
 
         public Class_BD_CRUD()
@@ -233,7 +234,14 @@ namespace WindowsFormsApp1
 
          public void setRead_pacote_cpf(string cpf)
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT nota_fiscal_pacote, situacao_pacote, cpf_titular, cpf_entregador, id_data, id_hora FROM pacote WHERE cpf_titular = ?", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT pacote.nota_fiscal_pacote, pacote.situacao_pacote, titular.cpf_titular, entregador.cpf_entregador, tbl_data.id_data, hora.id_hora, funcionario.email_americanas_funcionario " +
+                                       "FROM pacote " +
+                                       "INNER JOIN titular ON pacote.cpf_titular = titular.cpf_titular " +
+                                       "INNER JOIN entregador ON pacote.cpf_entregador = entregador.cpf_entregador " +
+                                       "INNER JOIN tbl_data ON pacote.id_data = tbl_data.id_data " +
+                                       "INNER JOIN hora ON pacote.id_hora = hora.id_hora " +
+                                       "INNER JOIN funcionario ON pacote.email_americanas_funcionario = funcionario.email_americanas_funcionario " +
+                                       "WHERE titular.cpf_titular = ?", conn);
             cmd.Parameters.Clear();
             cmd.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = cpf;
 
@@ -250,10 +258,20 @@ namespace WindowsFormsApp1
             retorna_cpf_entregador = dr.GetString(3);
             retorna_id_data = dr.GetInt32(4);
             retorna_id_hora = dr.GetInt32(5);
+            retorna_email_funcionario = dr.GetString(6);
+
+            dr.Close();
         }
         public void setRead_pacote_nf(string nota_fiscal)
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT nota_fiscal_pacote, situacao_pacote, cpf_titular, cpf_entregador, id_data, id_hora FROM pacote WHERE nota_fiscal_pacote = ?", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT pacote.nota_fiscal_pacote, pacote.situacao_pacote, titular.cpf_titular, entregador.cpf_entregador, tbl_data.id_data, hora.id_hora, funcionario.email_americanas_funcionario " +
+                                       "FROM pacote " +
+                                       "INNER JOIN titular ON pacote.cpf_titular = titular.cpf_titular " +
+                                       "INNER JOIN entregador ON pacote.cpf_entregador = entregador.cpf_entregador " +
+                                       "INNER JOIN tbl_data ON pacote.id_data = tbl_data.id_data " +
+                                       "INNER JOIN hora ON pacote.id_hora = hora.id_hora " +
+                                       "INNER JOIN funcionario ON pacote.email_americanas_funcionario = funcionario.email_americanas_funcionario " +
+                                       "WHERE pacote.nota_fiscal_pacote = ?", conn);
             cmd.Parameters.Clear();
             cmd.Parameters.Add("@nota_fiscal_pacote", MySqlDbType.VarChar, 45).Value = nota_fiscal;
 
@@ -270,6 +288,9 @@ namespace WindowsFormsApp1
             retorna_cpf_entregador = dr.GetString(3);
             retorna_id_data = dr.GetInt32(4);
             retorna_id_hora = dr.GetInt32(5);
+            retorna_email_funcionario = dr.GetString(6);
+
+            dr.Close();
         }
 
 
@@ -289,6 +310,8 @@ namespace WindowsFormsApp1
             nome_titular = dr.GetString(0);
             email_titular = dr.GetString(1);
             telefone_titular = dr.GetString(2);
+
+            dr.Close();
         }
 
         public void setRead_entregador()
@@ -304,6 +327,8 @@ namespace WindowsFormsApp1
             dr.Read();
 
             retorna_nome_entregador = dr.GetString(0);
+
+            dr.Close();
         }
 
         public void setRead_data()
@@ -318,13 +343,16 @@ namespace WindowsFormsApp1
             MySqlDataReader dr = cmd.ExecuteReader();
             dr.Read();
 
-            retorna_chegada_data = dr.GetDateTime(0).ToString("dd/mm/yyyy");
-            retorna_retirada_data = dr.GetDateTime(1).ToString("dd/mm/yyyy");
+            retorna_chegada_data = dr.GetDateTime(0).ToString("dd/MM/yyyy");
+           // retorna_retirada_data = dr.GetDateTime(1).ToString("dd/MM/yyyy");
+
+            dr.Close();
         }
 
         public void setRead_hora()
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT chegada_hora, retirada_hora  FROM hora WHERE id_hora = ?", conn);
+            
+            MySqlCommand cmd = new MySqlCommand("SELECT chegada_hora  FROM hora WHERE id_hora = ?", conn);
             cmd.Parameters.Clear();
             cmd.Parameters.Add("@id_hora", MySqlDbType.Int32).Value = retorna_id_hora;
 
@@ -332,11 +360,15 @@ namespace WindowsFormsApp1
 
             //recebe conteudo do banco
             MySqlDataReader dr = cmd.ExecuteReader();
-            dr.Read();
-
-            retorna_chegada_hora = dr.GetString(0);
-            retorna_retirada_hora = dr.GetString(1);
+            
+            if (dr.Read())
+            {
+                retorna_chegada_hora = dr.GetTimeSpan(0).ToString(@"hh\:mm\:ss");
+            }
+            else { MessageBox.Show("esse é o setRead_hora.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
+            dr.Close();
         }
+        
 
         public string setRead_Presentes(int id_americanas)
         {
@@ -451,6 +483,7 @@ namespace WindowsFormsApp1
 
         //GET PARA RECUPERAR TODOS OS DADOS SEPARADAMENTE DO BANCO DE DADOS MENOS FUNCIONARIO*******************************************************
         public string getRetorna_nf() { return retorna_nf; }
+        public string getRetorna_emailFuncionario() { return retorna_email_funcionario; }
         public string getRetorna_situacao() { return retorna_situacao; }
         public string getRetorna_cpf_titular() { return retorna_cpf_titular; }
         public string getRetorna_cpf_entregador() { return retorna_cpf_entregador; }
