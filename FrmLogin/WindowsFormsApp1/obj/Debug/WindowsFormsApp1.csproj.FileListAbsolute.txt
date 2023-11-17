@@ -36,7 +36,6 @@ C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\Wi
 C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form10_T_RelaEntrega.resources
 C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form11_OBS.resources
 C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FrmLogin.resources
-C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources
 C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form3_Tela_Menu.resources
 C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.lista.Geral.Form6_Lista_Geral.resources
 C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.lista.presentes.Form7_Tela_Presentes.resources

@@ -88,6 +88,7 @@
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.Red;
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadastrosToolStripMenuItem,
@@ -98,8 +99,8 @@
             this.sairToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 3, 0, 3);
+            this.menuStrip1.Size = new System.Drawing.Size(1200, 35);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -114,33 +115,33 @@
             this.cadastrosToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cadastrosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
-            this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
+            this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(111, 29);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
             this.cadastrosToolStripMenuItem.Click += new System.EventHandler(this.cadastrosToolStripMenuItem_Click);
             // 
             // funcionáriosToolStripMenuItem
             // 
             this.funcionáriosToolStripMenuItem.Name = "funcionáriosToolStripMenuItem";
-            this.funcionáriosToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.funcionáriosToolStripMenuItem.Size = new System.Drawing.Size(222, 34);
             this.funcionáriosToolStripMenuItem.Text = "Funcionários";
             // 
             // adicionarToolStripMenuItem1
             // 
             this.adicionarToolStripMenuItem1.Name = "adicionarToolStripMenuItem1";
-            this.adicionarToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
+            this.adicionarToolStripMenuItem1.Size = new System.Drawing.Size(222, 34);
             this.adicionarToolStripMenuItem1.Text = "Adicionar";
             this.adicionarToolStripMenuItem1.Click += new System.EventHandler(this.adicionarToolStripMenuItem1_Click_1);
             // 
             // adicionarToolStripMenuItem
             // 
             this.adicionarToolStripMenuItem.Name = "adicionarToolStripMenuItem";
-            this.adicionarToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.adicionarToolStripMenuItem.Size = new System.Drawing.Size(222, 34);
             this.adicionarToolStripMenuItem.Text = "Editar";
             // 
             // removerToolStripMenuItem
             // 
             this.removerToolStripMenuItem.Name = "removerToolStripMenuItem";
-            this.removerToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.removerToolStripMenuItem.Size = new System.Drawing.Size(222, 34);
             this.removerToolStripMenuItem.Text = "Remover";
             // 
             // registroToolStripMenuItem
@@ -152,27 +153,27 @@
             this.registroToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.registroToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.registroToolStripMenuItem.Name = "registroToolStripMenuItem";
-            this.registroToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.registroToolStripMenuItem.Size = new System.Drawing.Size(94, 29);
             this.registroToolStripMenuItem.Text = "Pacotes";
             this.registroToolStripMenuItem.Click += new System.EventHandler(this.registroToolStripMenuItem_Click);
             // 
             // registroToolStripMenuItem1
             // 
             this.registroToolStripMenuItem1.Name = "registroToolStripMenuItem1";
-            this.registroToolStripMenuItem1.Size = new System.Drawing.Size(126, 22);
+            this.registroToolStripMenuItem1.Size = new System.Drawing.Size(191, 34);
             this.registroToolStripMenuItem1.Text = "Registrar";
             this.registroToolStripMenuItem1.Click += new System.EventHandler(this.registroToolStripMenuItem1_Click_1);
             // 
             // editarToolStripMenuItem
             // 
             this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            this.editarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.editarToolStripMenuItem.Size = new System.Drawing.Size(191, 34);
             this.editarToolStripMenuItem.Text = "Editar";
             // 
             // deletToolStripMenuItem
             // 
             this.deletToolStripMenuItem.Name = "deletToolStripMenuItem";
-            this.deletToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.deletToolStripMenuItem.Size = new System.Drawing.Size(191, 34);
             this.deletToolStripMenuItem.Text = "Remover";
             // 
             // listaToolStripMenuItem
@@ -186,38 +187,38 @@
             this.listaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listaToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.listaToolStripMenuItem.Name = "listaToolStripMenuItem";
-            this.listaToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.listaToolStripMenuItem.Size = new System.Drawing.Size(67, 29);
             this.listaToolStripMenuItem.Text = "Lista";
             // 
             // geralToolStripMenuItem
             // 
             this.geralToolStripMenuItem.Name = "geralToolStripMenuItem";
-            this.geralToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.geralToolStripMenuItem.Size = new System.Drawing.Size(259, 34);
             this.geralToolStripMenuItem.Text = "Geral";
             this.geralToolStripMenuItem.Click += new System.EventHandler(this.geralToolStripMenuItem_Click_1);
             // 
             // recebidosNoDiaToolStripMenuItem
             // 
             this.recebidosNoDiaToolStripMenuItem.Name = "recebidosNoDiaToolStripMenuItem";
-            this.recebidosNoDiaToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.recebidosNoDiaToolStripMenuItem.Size = new System.Drawing.Size(259, 34);
             this.recebidosNoDiaToolStripMenuItem.Text = "Presentes";
             // 
             // retiradosToolStripMenuItem
             // 
             this.retiradosToolStripMenuItem.Name = "retiradosToolStripMenuItem";
-            this.retiradosToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.retiradosToolStripMenuItem.Size = new System.Drawing.Size(259, 34);
             this.retiradosToolStripMenuItem.Text = "Retirados";
             // 
             // recebidosNoDiaToolStripMenuItem1
             // 
             this.recebidosNoDiaToolStripMenuItem1.Name = "recebidosNoDiaToolStripMenuItem1";
-            this.recebidosNoDiaToolStripMenuItem1.Size = new System.Drawing.Size(167, 22);
+            this.recebidosNoDiaToolStripMenuItem1.Size = new System.Drawing.Size(259, 34);
             this.recebidosNoDiaToolStripMenuItem1.Text = "Recebidos no dia";
             // 
             // retiradosNoDiaToolStripMenuItem
             // 
             this.retiradosNoDiaToolStripMenuItem.Name = "retiradosNoDiaToolStripMenuItem";
-            this.retiradosNoDiaToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.retiradosNoDiaToolStripMenuItem.Size = new System.Drawing.Size(259, 34);
             this.retiradosNoDiaToolStripMenuItem.Text = "Retirados no dia";
             // 
             // filtrarToolStripMenuItem
@@ -232,43 +233,43 @@
             this.filtrarToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.filtrarToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.filtrarToolStripMenuItem.Name = "filtrarToolStripMenuItem";
-            this.filtrarToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.filtrarToolStripMenuItem.Size = new System.Drawing.Size(78, 29);
             this.filtrarToolStripMenuItem.Text = "Filtrar";
             // 
             // penseiEmToolStripMenuItem
             // 
             this.penseiEmToolStripMenuItem.Name = "penseiEmToolStripMenuItem";
-            this.penseiEmToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.penseiEmToolStripMenuItem.Size = new System.Drawing.Size(294, 34);
             this.penseiEmToolStripMenuItem.Text = "Pensei em";
             // 
             // umDesignToolStripMenuItem
             // 
             this.umDesignToolStripMenuItem.Name = "umDesignToolStripMenuItem";
-            this.umDesignToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.umDesignToolStripMenuItem.Size = new System.Drawing.Size(294, 34);
             this.umDesignToolStripMenuItem.Text = "um Design";
             // 
             // próprioDaToolStripMenuItem
             // 
             this.próprioDaToolStripMenuItem.Name = "próprioDaToolStripMenuItem";
-            this.próprioDaToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.próprioDaToolStripMenuItem.Size = new System.Drawing.Size(294, 34);
             this.próprioDaToolStripMenuItem.Text = "próprio da ";
             // 
             // janelaMenuQToolStripMenuItem
             // 
             this.janelaMenuQToolStripMenuItem.Name = "janelaMenuQToolStripMenuItem";
-            this.janelaMenuQToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.janelaMenuQToolStripMenuItem.Size = new System.Drawing.Size(294, 34);
             this.janelaMenuQToolStripMenuItem.Text = "janela Menu q";
             // 
             // podeSerEditadoCorToolStripMenuItem
             // 
             this.podeSerEditadoCorToolStripMenuItem.Name = "podeSerEditadoCorToolStripMenuItem";
-            this.podeSerEditadoCorToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.podeSerEditadoCorToolStripMenuItem.Size = new System.Drawing.Size(294, 34);
             this.podeSerEditadoCorToolStripMenuItem.Text = "pode ser editado cor ";
             // 
             // eMaisToolStripMenuItem
             // 
             this.eMaisToolStripMenuItem.Name = "eMaisToolStripMenuItem";
-            this.eMaisToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.eMaisToolStripMenuItem.Size = new System.Drawing.Size(294, 34);
             this.eMaisToolStripMenuItem.Text = "e mais ..";
             // 
             // relatórioToolStripMenuItem
@@ -281,31 +282,31 @@
             this.relatórioToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.relatórioToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.relatórioToolStripMenuItem.Name = "relatórioToolStripMenuItem";
-            this.relatórioToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.relatórioToolStripMenuItem.Size = new System.Drawing.Size(106, 29);
             this.relatórioToolStripMenuItem.Text = "Relatório";
             // 
             // entregaToolStripMenuItem
             // 
             this.entregaToolStripMenuItem.Name = "entregaToolStripMenuItem";
-            this.entregaToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.entregaToolStripMenuItem.Size = new System.Drawing.Size(226, 34);
             this.entregaToolStripMenuItem.Text = "Entrega";
             // 
             // recebimentoToolStripMenuItem
             // 
             this.recebimentoToolStripMenuItem.Name = "recebimentoToolStripMenuItem";
-            this.recebimentoToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.recebimentoToolStripMenuItem.Size = new System.Drawing.Size(226, 34);
             this.recebimentoToolStripMenuItem.Text = "Recebimento";
             // 
             // listaGeralToolStripMenuItem
             // 
             this.listaGeralToolStripMenuItem.Name = "listaGeralToolStripMenuItem";
-            this.listaGeralToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.listaGeralToolStripMenuItem.Size = new System.Drawing.Size(226, 34);
             this.listaGeralToolStripMenuItem.Text = "Lista Geral";
             // 
             // reclamaçõesToolStripMenuItem
             // 
             this.reclamaçõesToolStripMenuItem.Name = "reclamaçõesToolStripMenuItem";
-            this.reclamaçõesToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.reclamaçõesToolStripMenuItem.Size = new System.Drawing.Size(226, 34);
             this.reclamaçõesToolStripMenuItem.Text = "Reclamações";
             // 
             // sairToolStripMenuItem
@@ -316,20 +317,20 @@
             this.sairToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sairToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(60, 29);
             this.sairToolStripMenuItem.Text = "Sair";
             // 
             // trocarUsuárioToolStripMenuItem
             // 
             this.trocarUsuárioToolStripMenuItem.Name = "trocarUsuárioToolStripMenuItem";
-            this.trocarUsuárioToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.trocarUsuárioToolStripMenuItem.Size = new System.Drawing.Size(238, 34);
             this.trocarUsuárioToolStripMenuItem.Text = "Trocar Usuário";
             this.trocarUsuárioToolStripMenuItem.Click += new System.EventHandler(this.trocarUsuárioToolStripMenuItem_Click_1);
             // 
             // sairToolStripMenuItem1
             // 
             this.sairToolStripMenuItem1.Name = "sairToolStripMenuItem1";
-            this.sairToolStripMenuItem1.Size = new System.Drawing.Size(154, 22);
+            this.sairToolStripMenuItem1.Size = new System.Drawing.Size(238, 34);
             this.sairToolStripMenuItem1.Text = "Sair";
             // 
             // panel1
@@ -341,18 +342,20 @@
             this.panel1.Controls.Add(this.btnRetiradaPac);
             this.panel1.Controls.Add(this.btnListaPac);
             this.panel1.Controls.Add(this.btnCadastroPacMenu);
-            this.panel1.Location = new System.Drawing.Point(23, 29);
+            this.panel1.Location = new System.Drawing.Point(34, 45);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(255, 452);
+            this.panel1.Size = new System.Drawing.Size(382, 695);
             this.panel1.TabIndex = 1;
             // 
             // btnLogout
             // 
             this.btnLogout.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLogout.Font = new System.Drawing.Font("Impact", 17F);
-            this.btnLogout.Location = new System.Drawing.Point(12, 374);
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.Location = new System.Drawing.Point(18, 575);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(231, 65);
+            this.btnLogout.Size = new System.Drawing.Size(346, 100);
             this.btnLogout.TabIndex = 5;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = false;
@@ -361,10 +364,11 @@
             // btnFiltrarMenu
             // 
             this.btnFiltrarMenu.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnFiltrarMenu.Font = new System.Drawing.Font("Impact", 17F);
-            this.btnFiltrarMenu.Location = new System.Drawing.Point(12, 230);
+            this.btnFiltrarMenu.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold);
+            this.btnFiltrarMenu.Location = new System.Drawing.Point(18, 354);
+            this.btnFiltrarMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnFiltrarMenu.Name = "btnFiltrarMenu";
-            this.btnFiltrarMenu.Size = new System.Drawing.Size(231, 65);
+            this.btnFiltrarMenu.Size = new System.Drawing.Size(346, 100);
             this.btnFiltrarMenu.TabIndex = 3;
             this.btnFiltrarMenu.Text = "Filtrar";
             this.btnFiltrarMenu.UseVisualStyleBackColor = false;
@@ -372,22 +376,25 @@
             // btnRelatorios
             // 
             this.btnRelatorios.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRelatorios.Font = new System.Drawing.Font("Impact", 17F);
-            this.btnRelatorios.Location = new System.Drawing.Point(12, 302);
+            this.btnRelatorios.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold);
+            this.btnRelatorios.Location = new System.Drawing.Point(18, 465);
+            this.btnRelatorios.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnRelatorios.Name = "btnRelatorios";
-            this.btnRelatorios.Size = new System.Drawing.Size(231, 65);
+            this.btnRelatorios.Size = new System.Drawing.Size(346, 100);
             this.btnRelatorios.TabIndex = 4;
             this.btnRelatorios.Text = "Relatórios";
             this.btnRelatorios.UseVisualStyleBackColor = false;
+            this.btnRelatorios.Click += new System.EventHandler(this.btnRelatorios_Click);
             // 
             // btnRetiradaPac
             // 
             this.btnRetiradaPac.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRetiradaPac.Font = new System.Drawing.Font("Impact", 17F);
+            this.btnRetiradaPac.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold);
             this.btnRetiradaPac.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnRetiradaPac.Location = new System.Drawing.Point(12, 159);
+            this.btnRetiradaPac.Location = new System.Drawing.Point(18, 245);
+            this.btnRetiradaPac.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnRetiradaPac.Name = "btnRetiradaPac";
-            this.btnRetiradaPac.Size = new System.Drawing.Size(231, 65);
+            this.btnRetiradaPac.Size = new System.Drawing.Size(346, 100);
             this.btnRetiradaPac.TabIndex = 2;
             this.btnRetiradaPac.Text = "Retirar pacote";
             this.btnRetiradaPac.UseVisualStyleBackColor = false;
@@ -395,11 +402,12 @@
             // btnListaPac
             // 
             this.btnListaPac.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnListaPac.Font = new System.Drawing.Font("Impact", 17F);
+            this.btnListaPac.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold);
             this.btnListaPac.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnListaPac.Location = new System.Drawing.Point(12, 88);
+            this.btnListaPac.Location = new System.Drawing.Point(18, 135);
+            this.btnListaPac.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnListaPac.Name = "btnListaPac";
-            this.btnListaPac.Size = new System.Drawing.Size(231, 65);
+            this.btnListaPac.Size = new System.Drawing.Size(346, 100);
             this.btnListaPac.TabIndex = 1;
             this.btnListaPac.Text = "Lista de pacotes";
             this.btnListaPac.UseVisualStyleBackColor = false;
@@ -408,11 +416,12 @@
             // btnCadastroPacMenu
             // 
             this.btnCadastroPacMenu.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnCadastroPacMenu.Font = new System.Drawing.Font("Impact", 17F);
+            this.btnCadastroPacMenu.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold);
             this.btnCadastroPacMenu.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnCadastroPacMenu.Location = new System.Drawing.Point(12, 16);
+            this.btnCadastroPacMenu.Location = new System.Drawing.Point(18, 25);
+            this.btnCadastroPacMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCadastroPacMenu.Name = "btnCadastroPacMenu";
-            this.btnCadastroPacMenu.Size = new System.Drawing.Size(231, 65);
+            this.btnCadastroPacMenu.Size = new System.Drawing.Size(346, 100);
             this.btnCadastroPacMenu.TabIndex = 0;
             this.btnCadastroPacMenu.Text = "Cadastro de Pacotes";
             this.btnCadastroPacMenu.UseVisualStyleBackColor = false;
@@ -436,9 +445,10 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(292, 29);
+            this.panel2.Location = new System.Drawing.Point(438, 45);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(490, 452);
+            this.panel2.Size = new System.Drawing.Size(735, 695);
             this.panel2.TabIndex = 2;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -447,9 +457,10 @@
             this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label13.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label13.Location = new System.Drawing.Point(393, 327);
+            this.label13.Location = new System.Drawing.Point(590, 503);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(79, 40);
+            this.label13.Size = new System.Drawing.Size(118, 60);
             this.label13.TabIndex = 27;
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -458,9 +469,10 @@
             this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label9.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label9.Location = new System.Drawing.Point(393, 278);
+            this.label9.Location = new System.Drawing.Point(590, 428);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(79, 40);
+            this.label9.Size = new System.Drawing.Size(118, 60);
             this.label9.TabIndex = 26;
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label9.Click += new System.EventHandler(this.label9_Click);
@@ -470,9 +482,10 @@
             this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label8.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label8.Location = new System.Drawing.Point(393, 231);
+            this.label8.Location = new System.Drawing.Point(590, 355);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(79, 40);
+            this.label8.Size = new System.Drawing.Size(118, 60);
             this.label8.TabIndex = 25;
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -481,9 +494,10 @@
             this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label7.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label7.Location = new System.Drawing.Point(21, 382);
+            this.label7.Location = new System.Drawing.Point(32, 588);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(451, 57);
+            this.label7.Size = new System.Drawing.Size(676, 87);
             this.label7.TabIndex = 24;
             this.label7.Text = "BEM VINDO(A) O QUE DESEJA FAZER?";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -493,9 +507,10 @@
             this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label12.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label12.Location = new System.Drawing.Point(255, 131);
+            this.label12.Location = new System.Drawing.Point(382, 202);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(217, 40);
+            this.label12.Size = new System.Drawing.Size(324, 60);
             this.label12.TabIndex = 23;
             this.label12.Text = "Nome";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -505,9 +520,10 @@
             this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label11.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label11.Location = new System.Drawing.Point(21, 131);
+            this.label11.Location = new System.Drawing.Point(32, 202);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(217, 40);
+            this.label11.Size = new System.Drawing.Size(324, 60);
             this.label11.TabIndex = 22;
             this.label11.Text = "Login";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -517,9 +533,10 @@
             this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label10.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label10.Location = new System.Drawing.Point(22, 184);
+            this.label10.Location = new System.Drawing.Point(33, 283);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(216, 40);
+            this.label10.Size = new System.Drawing.Size(323, 60);
             this.label10.TabIndex = 21;
             this.label10.Text = "Telefone";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -529,9 +546,10 @@
             this.labelHorarioAtual.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelHorarioAtual.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelHorarioAtual.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelHorarioAtual.Location = new System.Drawing.Point(255, 184);
+            this.labelHorarioAtual.Location = new System.Drawing.Point(382, 283);
+            this.labelHorarioAtual.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelHorarioAtual.Name = "labelHorarioAtual";
-            this.labelHorarioAtual.Size = new System.Drawing.Size(217, 40);
+            this.labelHorarioAtual.Size = new System.Drawing.Size(324, 60);
             this.labelHorarioAtual.TabIndex = 20;
             this.labelHorarioAtual.Text = "Horário";
             this.labelHorarioAtual.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -542,9 +560,10 @@
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label6.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label6.Location = new System.Drawing.Point(21, 231);
+            this.label6.Location = new System.Drawing.Point(32, 355);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(366, 40);
+            this.label6.Size = new System.Drawing.Size(548, 60);
             this.label6.TabIndex = 19;
             this.label6.Text = "Pacotes em Estoque:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -554,9 +573,10 @@
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label3.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(21, 278);
+            this.label3.Location = new System.Drawing.Point(32, 428);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(366, 40);
+            this.label3.Size = new System.Drawing.Size(548, 60);
             this.label3.TabIndex = 18;
             this.label3.Text = "Pacotes Retirados Hoje:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -566,9 +586,10 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(21, 327);
+            this.label1.Location = new System.Drawing.Point(32, 503);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(366, 40);
+            this.label1.Size = new System.Drawing.Size(548, 60);
             this.label1.TabIndex = 17;
             this.label1.Text = "Total de Registros Hoje:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -578,30 +599,33 @@
             // 
             this.panel5.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.americanas_logo_1;
             this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel5.Location = new System.Drawing.Point(21, 16);
+            this.panel5.Location = new System.Drawing.Point(32, 25);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(451, 104);
+            this.panel5.Size = new System.Drawing.Size(676, 160);
             this.panel5.TabIndex = 11;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(74, 56);
+            this.label2.Location = new System.Drawing.Point(111, 86);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 13);
+            this.label2.Size = new System.Drawing.Size(48, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Data:";
             // 
             // Form3_Tela_Menu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 527);
+            this.ClientSize = new System.Drawing.Size(1200, 811);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form3_Tela_Menu";
             this.Text = "Americanas Rastreio";
             this.Load += new System.EventHandler(this.Form3_Tela_Menu_Load);

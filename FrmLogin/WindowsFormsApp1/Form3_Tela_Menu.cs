@@ -156,7 +156,7 @@ namespace WindowsFormsApp1
 
         private void btnCadastroPacMenu_Click(object sender, EventArgs e)
         {
-             t2 = new Thread(abrirRegistroPac);
+            t2 = new Thread(abrirRegistroPac);
             t2.SetApartmentState(ApartmentState.STA);
             t2.Start();
         }
@@ -196,6 +196,18 @@ namespace WindowsFormsApp1
         private void label9_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnRelatorios_Click(object sender, EventArgs e)
+        {
+            t2 = new Thread(abrirRelatorios);
+            t2.SetApartmentState(ApartmentState.STA);
+            t2.Start();
+        }
+
+        private void abrirRelatorios(object obj)
+        {
+            Application.Run(new FormRelatorio());
         }
     }
 }
