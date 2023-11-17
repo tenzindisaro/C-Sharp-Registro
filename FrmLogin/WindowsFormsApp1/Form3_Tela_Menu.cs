@@ -78,10 +78,12 @@ namespace WindowsFormsApp1
         {
             try
             {
+                int id = int.Parse(usuario.GetUserData(6));
+
                 database.setBD_Open();
-                label8.Text = database.setRead_Presentes();
-                label9.Text = database.setRead_Retirados();
-                label13.Text = database.setRead_Todos();
+                label8.Text = database.setRead_Presentes(id);
+                label9.Text = database.setRead_Retirados(id);
+                label13.Text = database.setRead_Todos(id);
                 database.setBD_Close();
             }
             catch (Exception ex)
