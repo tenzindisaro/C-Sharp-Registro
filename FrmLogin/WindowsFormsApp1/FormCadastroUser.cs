@@ -210,54 +210,58 @@ namespace WindowsFormsApp1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            button1.Enabled = false;
-            string busca = comboBox1.Text;
-            string valor = textBox1.Text;
-            try
+            
+            if(comboBox1.Text != "" && comboBox1.Text != "Escolha uma opção" && textBox1.Text != "")
             {
-                Bd.setBD_Open();
-                switch (busca)
+                string busca = comboBox1.Text;
+                string valor = textBox1.Text;
+
+                try
                 {
-                    case "Nome":
-                        dataGridView1.DataSource = Bd.setRead_funcionario_Nome(valor);
-                        break;
+                    Bd.setBD_Open();
+                    switch (busca)
+                    {
+                        case "Nome":
+                            dataGridView1.DataSource = Bd.setRead_funcionario_Nome(valor);
+                            break;
 
-                    case "CPF":
-                        dataGridView1.DataSource = Bd.setRead_funcionario_Cpf(valor);
-                        break;
+                        case "CPF":
+                            dataGridView1.DataSource = Bd.setRead_funcionario_Cpf(valor);
+                            break;
 
-                    case "Email":
-                        dataGridView1.DataSource = Bd.setRead_funcionario_Email(valor);
-                        break;
+                        case "Email":
+                            dataGridView1.DataSource = Bd.setRead_funcionario_Email(valor);
+                            break;
 
-                    case "Telefone":
-                        dataGridView1.DataSource = Bd.setRead_funcionario_Telefone(valor);
-                        break;
+                        case "Telefone":
+                            dataGridView1.DataSource = Bd.setRead_funcionario_Telefone(valor);
+                            break;
 
-                    case "CEP":
-                        dataGridView1.DataSource = Bd.setRead_funcionario_Cep(valor);
-                        break;
+                        case "CEP":
+                            dataGridView1.DataSource = Bd.setRead_funcionario_Cep(valor);
+                            break;
 
-                    case "Rua da Loja":
-                        break;
-
-                    case "Bairro da Loja":
-                        break;
-
-                    case "Número da Loja":
-                        break;
-
-
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    Bd.setBD_Close();
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Você deve escolher uma opção de busca e digitar um valor para a pesquisa!", "Erro de Busca", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                comboBox1.Text = "Escolha uma opção";
             }
-            finally
-            {
-                Bd.setBD_Close();
-            }
+
+            button2.Enabled = false;
+            button4.Enabled = false;
+            textBox3.Enabled = true;
+            textBox7.Enabled = true;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -272,6 +276,7 @@ namespace WindowsFormsApp1
             textBox2.Text = "";
             textBox4.Text = "";
             comboBox2.Text = "";
+            comboBox1.Text = "";
         }
     }
 }

@@ -246,10 +246,7 @@
             "CPF",
             "Email",
             "Telefone",
-            "CEP da Loja",
-            "Rua da Loja",
-            "Bairro da Loja",
-            "Número da Loja"});
+            "CEP"});
             this.comboBox1.Location = new System.Drawing.Point(479, 98);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(151, 21);
