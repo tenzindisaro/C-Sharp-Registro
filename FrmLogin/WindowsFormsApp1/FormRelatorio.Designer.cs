@@ -71,12 +71,6 @@
             // 
             // textBox3
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(645, 145);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(149, 19);
-            this.textBox3.TabIndex = 25;
-            this.textBox3.Text = "Nota Fiscal";
             // 
             // panel1
             // 
@@ -211,7 +205,6 @@
             this.dataGridRelatorio.Name = "dataGridRelatorio";
             this.dataGridRelatorio.Size = new System.Drawing.Size(763, 234);
             this.dataGridRelatorio.TabIndex = 0;
-            this.dataGridRelatorio.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button4
             // 
