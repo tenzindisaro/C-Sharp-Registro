@@ -58,6 +58,26 @@
             this.label3.TabIndex = 128;
             this.label3.Text = "vão redirecionar para a tela registroPac>>>";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(645, 174);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(148, 49);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "Buscar";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(645, 145);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(149, 19);
+            this.textBox3.TabIndex = 25;
+            this.textBox3.Text = "Nota Fiscal";
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Red;
