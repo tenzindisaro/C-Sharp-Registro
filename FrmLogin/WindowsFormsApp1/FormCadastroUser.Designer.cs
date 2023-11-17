@@ -53,6 +53,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -68,7 +69,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(410, 132);
+            this.label8.Location = new System.Drawing.Point(410, 129);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 13);
             this.label8.TabIndex = 100;
@@ -87,40 +88,45 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(6, 19);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(764, 128);
+            this.dataGridView1.Size = new System.Drawing.Size(770, 128);
             this.dataGridView1.TabIndex = 0;
             // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(206, 378);
+            this.button4.Location = new System.Drawing.Point(168, 386);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(184, 48);
+            this.button4.Size = new System.Drawing.Size(150, 48);
             this.button4.TabIndex = 95;
             this.button4.Text = "Editar Funcionário";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(596, 378);
+            this.button3.Location = new System.Drawing.Point(480, 386);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(184, 48);
+            this.button3.Size = new System.Drawing.Size(150, 48);
             this.button3.TabIndex = 94;
             this.button3.Text = "Buscar";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(397, 378);
+            this.button2.Location = new System.Drawing.Point(324, 386);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(193, 48);
+            this.button2.Size = new System.Drawing.Size(150, 48);
             this.button2.TabIndex = 93;
             this.button2.Text = "Remover Usuário";
             this.button2.UseVisualStyleBackColor = false;
@@ -128,9 +134,9 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(16, 378);
+            this.button1.Location = new System.Drawing.Point(12, 386);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(184, 48);
+            this.button1.Size = new System.Drawing.Size(150, 48);
             this.button1.TabIndex = 92;
             this.button1.Text = "Adicionar Funcionário";
             this.button1.UseVisualStyleBackColor = false;
@@ -292,11 +298,23 @@
             this.label7.Text = "Cadastro de Funcionários";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.White;
+            this.button5.Location = new System.Drawing.Point(636, 386);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(151, 48);
+            this.button5.TabIndex = 121;
+            this.button5.Text = "Cancelar Edição";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // FormCadastroUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button4);
@@ -357,5 +375,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button5;
     }
 }

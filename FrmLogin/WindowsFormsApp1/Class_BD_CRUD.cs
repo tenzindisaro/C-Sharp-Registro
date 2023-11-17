@@ -203,10 +203,11 @@ namespace WindowsFormsApp1
             datatable.Columns.Add("CPF");
             datatable.Columns.Add("Nome");
             datatable.Columns.Add("Telefone");
-            datatable.Columns.Add("Cep");
-            datatable.Columns.Add("Rua");
-            datatable.Columns.Add("Bairro");
-            datatable.Columns.Add("Número");
+            datatable.Columns.Add("Id da Loja");
+            datatable.Columns.Add("Cep da Loja");
+            datatable.Columns.Add("Rua da Loja");
+            datatable.Columns.Add("Bairro da Loja");
+            datatable.Columns.Add("Número da Loja");
 
             string query = "SELECT f.email_americanas_funcionario, f.cpf_funcionario, f.nome_funcionario, f.telefone_funcionario, f.id_americanas, a.cep_americanas, a.rua_americanas, a.bairro_americanas, a.numero_americanas FROM funcionario f INNER JOIN americanas a ON f.id_americanas = a.id_americanas WHERE f.id_americanas = @id_americanas";
             MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -221,10 +222,11 @@ namespace WindowsFormsApp1
                 novalinha["CPF"] = select.GetString(1);
                 novalinha["Nome"] = select.GetString(2);
                 novalinha["Telefone"] = select.GetString(3);
-                novalinha["Cep"] = select.GetString(4);
-                novalinha["Rua"] = select.GetString(5);
-                novalinha["Bairro"] = select.GetString(6);
-                novalinha["Número"] = select.GetString(7);
+                novalinha["Id da Loja"] = select.GetString(4);
+                novalinha["Cep da Loja"] = select.GetString(5);
+                novalinha["Rua da Loja"] = select.GetString(6);
+                novalinha["Bairro da Loja"] = select.GetString(7);
+                novalinha["Número da Loja"] = select.GetString(8);
                 datatable.Rows.Add(novalinha);
             }
 
@@ -439,7 +441,7 @@ namespace WindowsFormsApp1
                 string bairro = select.GetString(3);
                 string numero = select.GetString(4);
 
-                string loja = $"{id}, {cep}, {rua}, {bairro}, {numero}";
+                string loja = $"ID: {id}, CEP: {cep}, {rua}, {bairro}, Número: {numero}";
 
                 lojas.Add(loja);
             }
@@ -447,6 +449,201 @@ namespace WindowsFormsApp1
             return lojas;
         }
 
+        public DataTable setRead_funcionario_Nome (string nome)
+        {
+            DataTable datatable = new DataTable();
+            DataRow novalinha;
+
+            datatable.Columns.Add("Email");
+            datatable.Columns.Add("CPF");
+            datatable.Columns.Add("Nome");
+            datatable.Columns.Add("Telefone");
+            datatable.Columns.Add("Id da Loja");
+            datatable.Columns.Add("Cep da Loja");
+            datatable.Columns.Add("Rua da Loja");
+            datatable.Columns.Add("Bairro da Loja");
+            datatable.Columns.Add("Número da Loja");
+
+            string query = "SELECT f.email_americanas_funcionario, f.cpf_funcionario, f.nome_funcionario, f.telefone_funcionario, f.id_americanas, a.cep_americanas, a.rua_americanas, a.bairro_americanas, a.numero_americanas FROM funcionario f INNER JOIN americanas a ON f.id_americanas = a.id_americanas WHERE f.nome_funcionario = @nome";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.Add("@nome", MySqlDbType.VarChar, 100).Value = nome;
+
+            MySqlDataReader select = cmd.ExecuteReader();
+
+            while (select.Read())
+            {
+                novalinha = datatable.NewRow();
+                novalinha["Email"] = select.GetString(0);
+                novalinha["CPF"] = select.GetString(1);
+                novalinha["Nome"] = select.GetString(2);
+                novalinha["Telefone"] = select.GetString(3);
+                novalinha["Id da Loja"] = select.GetString(4);
+                novalinha["Cep da Loja"] = select.GetString(5);
+                novalinha["Rua da Loja"] = select.GetString(6);
+                novalinha["Bairro da Loja"] = select.GetString(7);
+                novalinha["Número da Loja"] = select.GetString(8);
+                datatable.Rows.Add(novalinha);
+            }
+
+            return datatable;
+        }
+        
+        public DataTable setRead_funcionario_Cpf (string cpf)
+        {
+            DataTable datatable = new DataTable();
+            DataRow novalinha;
+
+            datatable.Columns.Add("Email");
+            datatable.Columns.Add("CPF");
+            datatable.Columns.Add("Nome");
+            datatable.Columns.Add("Telefone");
+            datatable.Columns.Add("Id da Loja");
+            datatable.Columns.Add("Cep da Loja");
+            datatable.Columns.Add("Rua da Loja");
+            datatable.Columns.Add("Bairro da Loja");
+            datatable.Columns.Add("Número da Loja");
+
+            string query = "SELECT f.email_americanas_funcionario, f.cpf_funcionario, f.nome_funcionario, f.telefone_funcionario, f.id_americanas, a.cep_americanas, a.rua_americanas, a.bairro_americanas, a.numero_americanas FROM funcionario f INNER JOIN americanas a ON f.id_americanas = a.id_americanas WHERE f.cpf_funcionario = @cpf";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.Add("@cpf", MySqlDbType.VarChar, 100).Value = cpf;
+
+            MySqlDataReader select = cmd.ExecuteReader();
+
+            while (select.Read())
+            {
+                novalinha = datatable.NewRow();
+                novalinha["Email"] = select.GetString(0);
+                novalinha["CPF"] = select.GetString(1);
+                novalinha["Nome"] = select.GetString(2);
+                novalinha["Telefone"] = select.GetString(3);
+                novalinha["Id da Loja"] = select.GetString(4);
+                novalinha["Cep da Loja"] = select.GetString(5);
+                novalinha["Rua da Loja"] = select.GetString(6);
+                novalinha["Bairro da Loja"] = select.GetString(7);
+                novalinha["Número da Loja"] = select.GetString(8);
+                datatable.Rows.Add(novalinha);
+            }
+
+            return datatable;
+        }
+        
+        
+        public DataTable setRead_funcionario_Email (string email)
+        {
+            DataTable datatable = new DataTable();
+            DataRow novalinha;
+
+            datatable.Columns.Add("Email");
+            datatable.Columns.Add("CPF");
+            datatable.Columns.Add("Nome");
+            datatable.Columns.Add("Telefone");
+            datatable.Columns.Add("Id da Loja");
+            datatable.Columns.Add("Cep da Loja");
+            datatable.Columns.Add("Rua da Loja");
+            datatable.Columns.Add("Bairro da Loja");
+            datatable.Columns.Add("Número da Loja");
+
+            string query = "SELECT f.email_americanas_funcionario, f.cpf_funcionario, f.nome_funcionario, f.telefone_funcionario, f.id_americanas, a.cep_americanas, a.rua_americanas, a.bairro_americanas, a.numero_americanas FROM funcionario f INNER JOIN americanas a ON f.id_americanas = a.id_americanas WHERE f.email_americanas_funcionario = @email";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.Add("@email", MySqlDbType.VarChar, 100).Value = email;
+
+            MySqlDataReader select = cmd.ExecuteReader();
+
+            while (select.Read())
+            {
+                novalinha = datatable.NewRow();
+                novalinha["Email"] = select.GetString(0);
+                novalinha["CPF"] = select.GetString(1);
+                novalinha["Nome"] = select.GetString(2);
+                novalinha["Telefone"] = select.GetString(3);
+                novalinha["Id da Loja"] = select.GetString(4);
+                novalinha["Cep da Loja"] = select.GetString(5);
+                novalinha["Rua da Loja"] = select.GetString(6);
+                novalinha["Bairro da Loja"] = select.GetString(7);
+                novalinha["Número da Loja"] = select.GetString(8);
+                datatable.Rows.Add(novalinha);
+            }
+
+            return datatable;
+        }
+
+        public DataTable setRead_funcionario_Telefone (string telefone)
+        {
+            DataTable datatable = new DataTable();
+            DataRow novalinha;
+
+            datatable.Columns.Add("Email");
+            datatable.Columns.Add("CPF");
+            datatable.Columns.Add("Nome");
+            datatable.Columns.Add("Telefone");
+            datatable.Columns.Add("Id da Loja");
+            datatable.Columns.Add("Cep da Loja");
+            datatable.Columns.Add("Rua da Loja");
+            datatable.Columns.Add("Bairro da Loja");
+            datatable.Columns.Add("Número da Loja");
+
+            string query = "SELECT f.email_americanas_funcionario, f.cpf_funcionario, f.nome_funcionario, f.telefone_funcionario, f.id_americanas, a.cep_americanas, a.rua_americanas, a.bairro_americanas, a.numero_americanas FROM funcionario f INNER JOIN americanas a ON f.id_americanas = a.id_americanas WHERE f.telefone_funcionario = @telefone";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.Add("@telefone", MySqlDbType.VarChar, 100).Value = telefone;
+
+            MySqlDataReader select = cmd.ExecuteReader();
+
+            while (select.Read())
+            {
+                novalinha = datatable.NewRow();
+                novalinha["Email"] = select.GetString(0);
+                novalinha["CPF"] = select.GetString(1);
+                novalinha["Nome"] = select.GetString(2);
+                novalinha["Telefone"] = select.GetString(3);
+                novalinha["Id da Loja"] = select.GetString(4);
+                novalinha["Cep da Loja"] = select.GetString(5);
+                novalinha["Rua da Loja"] = select.GetString(6);
+                novalinha["Bairro da Loja"] = select.GetString(7);
+                novalinha["Número da Loja"] = select.GetString(8);
+                datatable.Rows.Add(novalinha);
+            }
+
+            return datatable;
+        }
+
+        public DataTable setRead_funcionario_Cep (string cep)
+        {
+            DataTable datatable = new DataTable();
+            DataRow novalinha;
+
+            datatable.Columns.Add("Email");
+            datatable.Columns.Add("CPF");
+            datatable.Columns.Add("Nome");
+            datatable.Columns.Add("Telefone");
+            datatable.Columns.Add("Id da Loja");
+            datatable.Columns.Add("Cep da Loja");
+            datatable.Columns.Add("Rua da Loja");
+            datatable.Columns.Add("Bairro da Loja");
+            datatable.Columns.Add("Número da Loja");
+
+            string query = "SELECT f.email_americanas_funcionario, f.cpf_funcionario, f.nome_funcionario, f.telefone_funcionario, f.id_americanas, a.cep_americanas, a.rua_americanas, a.bairro_americanas, a.numero_americanas FROM funcionario f INNER JOIN americanas a ON f.id_americanas = a.id_americanas WHERE a.cep_americanas = @cep";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.Add("@cep", MySqlDbType.VarChar, 100).Value = cep;
+
+            MySqlDataReader select = cmd.ExecuteReader();
+
+            while (select.Read())
+            {
+                novalinha = datatable.NewRow();
+                novalinha["Email"] = select.GetString(0);
+                novalinha["CPF"] = select.GetString(1);
+                novalinha["Nome"] = select.GetString(2);
+                novalinha["Telefone"] = select.GetString(3);
+                novalinha["Id da Loja"] = select.GetString(4);
+                novalinha["Cep da Loja"] = select.GetString(5);
+                novalinha["Rua da Loja"] = select.GetString(6);
+                novalinha["Bairro da Loja"] = select.GetString(7);
+                novalinha["Número da Loja"] = select.GetString(8);
+                datatable.Rows.Add(novalinha);
+            }
+
+            return datatable;
+        }
 
 
         //GET PARA RECUPERAR TODOS OS DADOS SEPARADAMENTE DO BANCO DE DADOS MENOS FUNCIONARIO*******************************************************
@@ -543,6 +740,20 @@ namespace WindowsFormsApp1
             objEdit.CommandType = CommandType.Text;
             objEdit.ExecuteNonQuery();
         }
+
+        public void setEdit_funcionario (string email, string cpf, string nome, string telefone, int id)
+        {
+            MySqlCommand cmd = new MySqlCommand("UPDATE funcionario f SET f.email_americanas_funcionario = @email, f.cpf_funcionario = @cpf, f.nome_funcionario = @nome, f.telefone_funcionario = @telefone, f.id_americanas = @id WHERE f.email_americanas_funcionario = @email OR f.cpf_funcionario = @cpf OR f.telefone_funcionario = @telefone;", conn);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@email", MySqlDbType.VarChar, 30).Value = email;
+            cmd.Parameters.Add("@cpf", MySqlDbType.VarChar, 15).Value = cpf;
+            cmd.Parameters.Add("@nome", MySqlDbType.VarChar, 75).Value = nome;
+            cmd.Parameters.Add("@telefone", MySqlDbType.VarChar, 15).Value = telefone;
+            cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+
+            cmd.ExecuteNonQuery();
+        }
+
 
         // MÉTODOS A BAIXO PARA DELETAR DADOS DO BANCO DE DADOS***********************************************************************************************
 
