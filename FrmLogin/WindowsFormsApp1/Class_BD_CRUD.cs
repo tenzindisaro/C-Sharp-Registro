@@ -850,5 +850,17 @@ namespace WindowsFormsApp1
             cmdDelet.CommandType = CommandType.Text;
             cmdDelet.ExecuteNonQuery();
         }
+
+        // MÉTODOS A BAIXO PARA DATA GRID QUERYIES***********************************************************************************************
+
+        public void setQuery_pacote(DataGridView dataGrid)
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT nota_fiscal_pacote, situacao_pacote, cpf_titular, cpf_entregador, id_data, id_hora FROM pacote", conn);
+            cmd.CommandType = CommandType.Text;
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            DataTable pacote = new DataTable();
+            da.Fill(pacote);
+            dataGrid.DataSource = pacote;
+        }
     }
 }

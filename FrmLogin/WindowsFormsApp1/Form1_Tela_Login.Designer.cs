@@ -153,6 +153,7 @@
             // btnContinuar
             // 
             this.btnContinuar.BackColor = System.Drawing.Color.Red;
+            this.btnContinuar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnContinuar.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnContinuar.FlatAppearance.BorderSize = 0;
             this.btnContinuar.Font = new System.Drawing.Font("Impact", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

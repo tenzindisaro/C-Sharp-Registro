@@ -12,11 +12,16 @@ namespace WindowsFormsApp1
 {
     public partial class FormRelatorio : Form
     {
+        private Class_BD_CRUD database = new Class_BD_CRUD();
         public FormRelatorio()
         {
             InitializeComponent();
         }
 
+        private void FormRelatorio_Load(object sender, EventArgs e)
+        {
+            database.setQuery_pacote(dataGrid: dataGridRelatorio);
+        }
         private void label4_Click(object sender, EventArgs e)
         {
 
