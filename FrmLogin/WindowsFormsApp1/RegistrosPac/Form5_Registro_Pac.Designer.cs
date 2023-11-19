@@ -209,7 +209,7 @@
             // button_Cadastrar
             // 
             this.button_Cadastrar.BackColor = System.Drawing.Color.White;
-            this.button_Cadastrar.Location = new System.Drawing.Point(9, 175);
+            this.button_Cadastrar.Location = new System.Drawing.Point(11, 227);
             this.button_Cadastrar.Name = "button_Cadastrar";
             this.button_Cadastrar.Size = new System.Drawing.Size(184, 46);
             this.button_Cadastrar.TabIndex = 17;
@@ -262,7 +262,7 @@
             // button_Buscar
             // 
             this.button_Buscar.BackColor = System.Drawing.Color.White;
-            this.button_Buscar.Location = new System.Drawing.Point(9, 228);
+            this.button_Buscar.Location = new System.Drawing.Point(11, 155);
             this.button_Buscar.Name = "button_Buscar";
             this.button_Buscar.Size = new System.Drawing.Size(184, 46);
             this.button_Buscar.TabIndex = 27;

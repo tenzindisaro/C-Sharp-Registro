@@ -138,12 +138,13 @@ namespace WindowsFormsApp1.RegistrosPac
                 try
                 {
                     Bd.setBD_Open();
+                    Bd.setDelet_pacote(notaFiscal);
                     Bd.setDelet_data(id_data);
                     Bd.setDelet_hora(id_hora);
                     Bd.setDelet_entregador(cpf_entregador);
                     Bd.setDelet_titular(CPF);
-                    Bd.setDelet_pacote(notaFiscal);
                     
+
                 }
                 catch (Exception erro)
                 {
