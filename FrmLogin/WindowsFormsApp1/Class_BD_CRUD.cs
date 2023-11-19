@@ -862,64 +862,71 @@ namespace WindowsFormsApp1
 
         public DataTable setDataTable_pacotesDoDia(string data)
         {
-            DataTable dataTable = new DataTable();
+            DataTable dt_pacsDia = new DataTable();
             DataRow newRow;
 
             // Crie as colunas do DataTable
-            dataTable.Columns.Add("Nota Fiscal");
-            dataTable.Columns.Add("Funcionário");
-            dataTable.Columns.Add("Situação");
-            dataTable.Columns.Add("Titular");
-            dataTable.Columns.Add("Telefone");
-            dataTable.Columns.Add("Email");
-            dataTable.Columns.Add("CPF Titular");
-            dataTable.Columns.Add("Entregador");
-            dataTable.Columns.Add("CPF Entregador");
-            dataTable.Columns.Add("Data");
-            dataTable.Columns.Add("Hora");
+            dt_pacsDia.Columns.Add("Nota Fiscal");
+            dt_pacsDia.Columns.Add("Funcionário");
+            dt_pacsDia.Columns.Add("Situação");
+            dt_pacsDia.Columns.Add("Titular");
+            dt_pacsDia.Columns.Add("Telefone");
+            dt_pacsDia.Columns.Add("Email");
+            dt_pacsDia.Columns.Add("CPF Titular");
+            dt_pacsDia.Columns.Add("Entregador");
+            dt_pacsDia.Columns.Add("CPF Entregador");
+            dt_pacsDia.Columns.Add("Data");
+            dt_pacsDia.Columns.Add("Hora");
 
-
-            MySqlCommand cmd = new MySqlCommand("SELECT p.nota_fiscal_pacote, p.email_americanas_funcionario, p.situacao_pacote, t.nome, t.telefone, t.email, p.cpf_titular, e.nome," +
+            MySqlCommand cmd = new MySqlCommand("SELECT p.nota_fiscal_pacote, p.email_americanas_funcionario, p.situacao_pacote, t.nome, t.telefone, t.email, p.cpf_titular, e.nome_entregador," +
                 " p.cpf_entregador, d.chegada_data, h.chegada_hora FROM pacote p " +
                 "INNER JOIN funcionario f ON p.email_americanas_funcionario = f.email_americanas_funcionario " +
                 "INNER JOIN titular t ON p.cpf_titular = t.cpf_titular " +
                 "INNER JOIN entregador e ON p.cpf_entregador = e.cpf_entregador " +
                 "INNER JOIN tbl_data d ON p.id_data = d.id_data " +
                 "INNER JOIN hora h ON p.id_hora = h.id_hora " +
-                "WHERE d.chegada_data = @chegada_data" +
+                "WHERE d.chegada_data = @chegada_data " +
                 "ORDER BY h.chegada_hora ASC, t.nome", conn);
-            
+
             cmd.Parameters.Clear();
             cmd.Parameters.Add("@chegada_data", MySqlDbType.Date).Value = data;
 
             cmd.CommandType = CommandType.Text;
-
-            //recebe conteudo do banco
-            MySqlDataReader select = cmd.ExecuteReader();
-            while (select.Read())
+            try // caso não tenha pacotes ele inicializa pelo try sem pacotes
             {
-                //recebendo dados para enviar pro Datagridview
-                dataTable.Rows.Clear();// da clear nas linhas do datatable
-                newRow = dataTable.NewRow();//cria uma nova linha no datatable
-                newRow["Nota Fiscal"] = select.GetString(0);
-                newRow["Funcionário"] = select.GetString(1);
-                newRow["Situação"] = select.GetString(2);
-                newRow["Titular"] = select.GetString(3);
-                newRow["Telefone"] = select.GetString(4);
-                newRow["Email"] = select.GetString(5);
-                newRow["CPF Titular"] = select.GetString(6);
-                newRow["Entregador"] = select.GetString(7);
-                newRow["CPF Entregador"] = select.GetString(8);
-                newRow["Data"] = select.GetDateTime(9).ToString("dd/MM/yyyy");
-                newRow["Hora"] = select.GetTimeSpan(10).ToString(@"hh\:mm\:ss");
-                // add as linhas do datagridview
-                dataTable.Rows.Add(newRow);
+                //recebe conteudo do banco
+                MySqlDataReader select = cmd.ExecuteReader();
 
+                while (select.Read())
+                {
+                    //recebendo dados para enviar pro Datagridview
+                    dt_pacsDia.Rows.Clear();// da clear nas linhas do datatable
+                    newRow = dt_pacsDia.NewRow();//cria uma nova linha no datatable
+                    newRow["Nota Fiscal"] = select.GetString(0);
+                    newRow["Funcionário"] = select.GetString(1);
+                    newRow["Situação"] = select.GetString(2);
+                    newRow["Titular"] = select.GetString(3);
+                    newRow["Telefone"] = select.GetString(4);
+                    newRow["Email"] = select.GetString(5);
+                    newRow["CPF Titular"] = select.GetString(6);
+                    newRow["Entregador"] = select.GetString(7);
+                    newRow["CPF Entregador"] = select.GetString(8);
+                    newRow["Data"] = select.GetDateTime(9).ToString("dd/MM/yyyy");
+                    newRow["Hora"] = select.GetTimeSpan(10).ToString(@"hh\:mm\:ss");
+                    // add as linhas do datagridview
+                    dt_pacsDia.Rows.Add(newRow);
+                }
+                select.Close();
                 
             }
-            select.Close();
+            catch (Exception ex)
+            {
+                // Captura e trata a exceção
+                MessageBox.Show("Nenhum pacote cadastrado:\n\n" + ex);
+            }
 
-            return dataTable;
-        }   
+            return dt_pacsDia;
+        } 
+        
     }
 }

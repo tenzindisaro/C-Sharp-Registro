@@ -53,7 +53,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.txtbox_nome_entregador = new System.Windows.Forms.TextBox();
-            this.txtbox_cpf_entregador = new System.Windows.Forms.TextBox();
             this.comboBox_funcionario = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -64,6 +63,7 @@
             this.textBox_data = new System.Windows.Forms.TextBox();
             this.groupBox_hora = new System.Windows.Forms.GroupBox();
             this.textBox_hora = new System.Windows.Forms.TextBox();
+            this.txtbox_cpf_entregador = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_registro_pac)).BeginInit();
             this.panel1.SuspendLayout();
@@ -324,14 +324,6 @@
             this.txtbox_nome_entregador.Size = new System.Drawing.Size(134, 23);
             this.txtbox_nome_entregador.TabIndex = 106;
             // 
-            // txtbox_cpf_entregador
-            // 
-            this.txtbox_cpf_entregador.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbox_cpf_entregador.Location = new System.Drawing.Point(302, 175);
-            this.txtbox_cpf_entregador.Name = "txtbox_cpf_entregador";
-            this.txtbox_cpf_entregador.Size = new System.Drawing.Size(134, 23);
-            this.txtbox_cpf_entregador.TabIndex = 23;
-            // 
             // comboBox_funcionario
             // 
             this.comboBox_funcionario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -435,18 +427,27 @@
             this.textBox_hora.Size = new System.Drawing.Size(118, 26);
             this.textBox_hora.TabIndex = 0;
             // 
+            // txtbox_cpf_entregador
+            // 
+            this.txtbox_cpf_entregador.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbox_cpf_entregador.Location = new System.Drawing.Point(302, 175);
+            this.txtbox_cpf_entregador.Mask = "000,000,000-00";
+            this.txtbox_cpf_entregador.Name = "txtbox_cpf_entregador";
+            this.txtbox_cpf_entregador.Size = new System.Drawing.Size(134, 23);
+            this.txtbox_cpf_entregador.TabIndex = 126;
+            // 
             // Form5_Registro_Pac
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtbox_cpf_entregador);
             this.Controls.Add(this.groupBox_hora);
             this.Controls.Add(this.groupBox_Data);
             this.Controls.Add(this.maskedTextBoxSituacao);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.comboBox_funcionario);
-            this.Controls.Add(this.txtbox_cpf_entregador);
             this.Controls.Add(this.txtbox_nome_entregador);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -506,7 +507,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtbox_nome_entregador;
-        private System.Windows.Forms.TextBox txtbox_cpf_entregador;
         private System.Windows.Forms.ComboBox comboBox_funcionario;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
@@ -518,5 +518,6 @@
         private System.Windows.Forms.TextBox textBox_hora;
         private System.Windows.Forms.DataGridView dataGridView_registro_pac;
         private System.Windows.Forms.MaskedTextBox txtBox_buscar_cpf;
+        private System.Windows.Forms.MaskedTextBox txtbox_cpf_entregador;
     }
 }

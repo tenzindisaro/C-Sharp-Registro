@@ -32,25 +32,12 @@ namespace WindowsFormsApp1.RegistrosPac
         private void InitializeDataGridView()
         {
             string date = DateTime.Now.Date.ToString("yyyy-MM-dd");
+            Bd.setBD_Open();
+            DataTable datatable_dos_pacotes_registrados_no_dia = Bd.setDataTable_pacotesDoDia(date);
 
-            // Crie as colunas do DataTable
-            dataTable.Columns.Add("Nota Fiscal");
-            dataTable.Columns.Add("Funcionário");
-            dataTable.Columns.Add("Situação");
-            dataTable.Columns.Add("Titular");
-            dataTable.Columns.Add("Telefone");
-            dataTable.Columns.Add("Email");
-            dataTable.Columns.Add("CPF Titular");
-            dataTable.Columns.Add("Entregador");
-            dataTable.Columns.Add("CPF Entregador");
-            dataTable.Columns.Add("Data");
-            dataTable.Columns.Add("Hora");
-
-
-
-
-            // Associe o DataTable ao DataGridView
-            dataGridView_registro_pac.DataSource = dataTable;
+            
+            dataGridView_registro_pac.DataSource = datatable_dos_pacotes_registrados_no_dia;
+            Bd.setBD_Close();
         }
 
         private void button_Cadastrar_Click(object sender, EventArgs e)
@@ -258,6 +245,18 @@ namespace WindowsFormsApp1.RegistrosPac
             textBox_data.Text = Bd.getRetorna_chegada_data();
             textBox_hora.Text = Bd.getRetorna_chegada_hora();//Bd.getRetorna_id_hora().ToString();//Bd.getRetorna_chegada_hora();
 
+            //Crie as colunas do DataTable
+            dataTable.Columns.Add("Nota Fiscal");
+            dataTable.Columns.Add("Funcionário");
+            dataTable.Columns.Add("Situação");
+            dataTable.Columns.Add("Titular");
+            dataTable.Columns.Add("Telefone");
+            dataTable.Columns.Add("Email");
+            dataTable.Columns.Add("CPF Titular");
+            dataTable.Columns.Add("Entregador");
+            dataTable.Columns.Add("CPF Entregador");
+            dataTable.Columns.Add("Data");
+            dataTable.Columns.Add("Hora");
 
             //recebendo dados para enviar pro Datagridview
             dataTable.Rows.Clear();// da clear nas linhas do datatable
@@ -275,6 +274,7 @@ namespace WindowsFormsApp1.RegistrosPac
             newRow["Hora"] = Bd.getRetorna_chegada_hora();
             // add as linhas do datagridview
             dataTable.Rows.Add(newRow);
+            dataGridView_registro_pac.DataSource = dataTable;
         }
 
         private void button_Editar_Click(object sender, EventArgs e)
