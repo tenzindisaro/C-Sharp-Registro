@@ -900,7 +900,7 @@ namespace WindowsFormsApp1
                 while (select.Read())
                 {
                     //recebendo dados para enviar pro Datagridview
-                    dt_pacsDia.Rows.Clear();// da clear nas linhas do datatable
+                    
                     newRow = dt_pacsDia.NewRow();//cria uma nova linha no datatable
                     newRow["Nota Fiscal"] = select.GetString(0);
                     newRow["Funcionário"] = select.GetString(1);
