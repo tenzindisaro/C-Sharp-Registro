@@ -67,7 +67,6 @@ namespace WindowsFormsApp1.RegistrosPac
             string cpf_entregador = txtbox_cpf_entregador.Text;
             string nome_entregador = txtbox_nome_entregador.Text;
 
-
             if (funcionario != "" && notaFiscal != "" && titular != "" & CPF != "" && situacao != ""
                 && email != "" && telefone != "" && cpf_entregador != "" && nome_entregador != "")
             {
@@ -307,20 +306,15 @@ namespace WindowsFormsApp1.RegistrosPac
                     string dadosValidos_CPF = cadastroPacote.getCad_Cpf();
                     string dadosValidos_cpf_entregador = cadastroPacote.getCpf_entregador();
                     string dadosValidos_nome_entregador = cadastroPacote.getNome_entregador();
-
                     string hour = (DateTime.Now).ToString("HH:mm:ss");
                     string date = DateTime.Now.Date.ToString("yyyy-MM-dd");
 
                     try
                     {
                         Bd.setBD_Open();
-                        Bd.setInputBd_hora(hour);
-                        Bd.setInputBd_data(date);
-                        Bd.setInputBd_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
-                        Bd.setInputBd_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
-                        Bd.setInputBd_pacote(dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_funcionario, dadosValidos_CPF, dadosValidos_cpf_entregador);
-                        
-
+                        Bd.setEdit_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
+                        Bd.setEdit_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
+                        Bd.setEdit_pacote(dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_funcionario, dadosValidos_CPF, dadosValidos_cpf_entregador);
                     }
                     catch (Exception erro)
                     {
