@@ -363,5 +363,6 @@ namespace WindowsFormsApp1.RegistrosPac
             txtBox_buscar.Visible = false;
             txtBox_buscar_cpf.Visible = true;
         }
+
     }
 }

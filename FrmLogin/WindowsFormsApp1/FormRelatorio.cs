@@ -12,15 +12,32 @@ namespace WindowsFormsApp1
 {
     public partial class FormRelatorio : Form
     {
-        private Class_BD_CRUD database = new Class_BD_CRUD();
+
+        private User usuario;
+        Class_CadastroPac cadastroPacote = new Class_CadastroPac();
+        Class_BD_CRUD Bd = new Class_BD_CRUD();
+        private DataTable dataTable = new DataTable();
+        DataRow newRow;
         public FormRelatorio()
         {
             InitializeComponent();
+            InitializeDataGridView();
+        }
+
+        private void InitializeDataGridView()
+        {
+            string date = DateTime.Now.Date.ToString("yyyy-MM-dd");
+            Bd.setBD_Open();
+            DataTable datatable_dos_pacotes_registrados_no_dia = Bd.setDataTable_pacotesDoDia(date);
+
+
+            dataGridRelatorio.DataSource = datatable_dos_pacotes_registrados_no_dia;
+            Bd.setBD_Close();
         }
 
         private void FormRelatorio_Load(object sender, EventArgs e)
         {
-            database.setQuery_pacote(dataGrid: dataGridRelatorio);
+            
         }
         private void label4_Click(object sender, EventArgs e)
         {

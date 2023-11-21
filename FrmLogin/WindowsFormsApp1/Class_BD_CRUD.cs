@@ -17,9 +17,10 @@ namespace WindowsFormsApp1
 
     internal class Class_BD_CRUD
     {   //"server=localhost;port=3307;User Id=root;database=projeto_registro_sql;password=usbw"
+        //'server=americanas.mysql.database.azure.com;port=3307;User Id=joao;database=teste_sql;password=Adriana1
         //"server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ"
         //private MySqlConnection conn = new MySqlConnection("server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ");
-        private MySqlConnection conn = new MySqlConnection("server=localhost;User Id=root;database=teste_sql;password=Tenzin2023#");
+        private MySqlConnection conn = new MySqlConnection("server=americanas.mysql.database.azure.com;port=3306;User Id=joao;database=teste_sql;password=Adriana1");
 
         private int id_hora, id_data;
         // váriaveis a baixo para busca dados
@@ -862,15 +863,6 @@ namespace WindowsFormsApp1
 
         // MÉTODOS A BAIXO PARA DATA GRID QUERYIES***********************************************************************************************
 
-        public void setQuery_pacote(DataGridView dataGrid)
-        {
-            MySqlCommand cmd = new MySqlCommand("SELECT nota_fiscal_pacote, situacao_pacote, cpf_titular, cpf_entregador, id_data, id_hora FROM pacote", conn);
-            cmd.CommandType = CommandType.Text;
-            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-            DataTable pacote = new DataTable();
-            da.Fill(pacote);
-            dataGrid.DataSource = pacote;
-        }
 
         public DataTable setDataTable_pacotesDoDia(string data)
         {
