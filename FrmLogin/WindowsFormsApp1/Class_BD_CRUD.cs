@@ -848,6 +848,18 @@ namespace WindowsFormsApp1
             cmdDelet.ExecuteNonQuery();
         }
 
+        public void setDelet_funcionario (string email)
+        {
+            MySqlCommand cmd = new MySqlCommand("DELETE FROM funcionario WHERE email_funcionario_americanas = @email;", conn);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@email", MySqlDbType.VarChar, 75).Value = email;
+
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+        
+        }
+
+
         // MÉTODOS A BAIXO PARA DATA GRID QUERYIES***********************************************************************************************
 
         public void setQuery_pacote(DataGridView dataGrid)

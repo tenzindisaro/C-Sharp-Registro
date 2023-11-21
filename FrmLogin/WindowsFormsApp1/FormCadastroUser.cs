@@ -13,6 +13,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.Runtime.ConstrainedExecution;
 using System.Security.Cryptography;
+using MySqlX.XDevAPI.Common;
 
 namespace WindowsFormsApp1
 {
@@ -33,11 +34,16 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string nome = textBox2.Text, senha = textBox3.Text, telefone = textBox4.Text, cpf = textBox5.Text, email = textBox6.Text, senha_confirmacao = textBox7.Text;
+            string nome = textBox2.Text, senha = textBox3.Text, telefone = maskedTextBox2.Text, cpf = maskedTextBox1.Text, email = maskedTextBox3.Text, senha_confirmacao = textBox7.Text;
             bool dadosValidos = user.checkInput(email, senha, senha_confirmacao, nome, telefone);
-            
-            string[] endereco = comboBox2.Text.Split(',');
-            int id_loja = int.Parse(endereco[0]);
+
+            string endereco = comboBox2.Text;
+
+            int indiceInicioId = endereco.IndexOf("ID:") + "ID: ".Length;
+
+            int indiceFimId = endereco.IndexOf(",", indiceInicioId);
+
+            int id_loja = int.Parse(endereco.Substring(indiceInicioId, indiceFimId - indiceInicioId));
 
             if (dadosValidos)
             {
@@ -45,11 +51,13 @@ namespace WindowsFormsApp1
                 {
                     Bd.setBD_Open();
                     Bd.setInputBd_funcionario(email, cpf, nome, telefone, senha, id_loja);
-                    Bd.setBD_Close();
                 }
-                catch (Exception ex)
+                catch 
                 {
-                    MessageBox.Show("Erro ao conectar dados no banco de dados.\n\n" + ex, "Erro de conexão");
+                    MessageBox.Show("Infelizmente não foi possível efetuar o cadastro do funcionário!\nVerifique se o funcionário já foi cadastrado ou se sua conexão está boa e tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
                     Bd.setBD_Close();
                 }
             }
@@ -110,10 +118,10 @@ namespace WindowsFormsApp1
                     numero = selectedRow.Cells[8].Value.ToString();
                     endereco = $"ID: {id}, CEP: {cep}, {rua}, {bairro}, Número: {numero}";
 
-                    textBox6.Text = email;
-                    textBox5.Text = cpf;
+                    maskedTextBox3.Text = email;
+                    maskedTextBox1.Text = cpf;
                     textBox2.Text = nome;
-                    textBox4.Text = telefone;
+                    maskedTextBox2.Text = telefone;
                     comboBox2.Text = endereco;
                     textBox3.Enabled = false;
                     textBox7.Enabled = false;
@@ -151,10 +159,10 @@ namespace WindowsFormsApp1
                     numero = selectedRow.Cells[8].Value.ToString();
                     endereco = $"ID: {id}, CEP: {cep}, {rua}, {bairro}, Número: {numero}";
 
-                    textBox6.Text = email;
-                    textBox5.Text = cpf;
+                    maskedTextBox3.Text = email;
+                    maskedTextBox1.Text = cpf;
                     textBox2.Text = nome;
-                    textBox4.Text = telefone;
+                    maskedTextBox2.Text = telefone;
                     comboBox2.Text = endereco;
                     textBox3.Enabled = false;
                     textBox7.Enabled = false;
@@ -173,10 +181,10 @@ namespace WindowsFormsApp1
             string nome, email, telefone, cpf, endereco;
             int id;
 
-            email = textBox6.Text;
-            cpf = textBox5.Text;
+            email = maskedTextBox3.Text;
+            cpf = maskedTextBox1.Text;
             nome = textBox2.Text;
-            telefone = textBox4.Text;
+            telefone = maskedTextBox2.Text;
             endereco = comboBox2.Text;
 
             int indiceInicioId = endereco.IndexOf("ID:") + "ID: ".Length;
@@ -192,9 +200,9 @@ namespace WindowsFormsApp1
                 Bd.setBD_Open();
                 Bd.setEdit_funcionario(email, cpf, nome, telefone, id);
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Infelizmente não foi possível efetuar a edição do funcionário!\nVerifique se sua conexão está boa e tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -243,9 +251,10 @@ namespace WindowsFormsApp1
 
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Infelizmente não foi possível efetuar a busca do funcionário!\nVerifique se sua conexão está boa e tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
                 finally
                 {
@@ -262,6 +271,11 @@ namespace WindowsFormsApp1
             button4.Enabled = false;
             textBox3.Enabled = true;
             textBox7.Enabled = true;
+
+            if(dataGridView1.DataSource == null)
+            {
+                MessageBox.Show("Não foi encontrado funcionário cadastrado com a informação apresentada na busca!", "Funcionário não encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -271,12 +285,41 @@ namespace WindowsFormsApp1
             button4.Enabled = false;
             textBox3.Enabled = true;
             textBox7.Enabled = true;
-            textBox6.Text = "";
-            textBox5.Text = "";
+            maskedTextBox1.Text = "";
+            maskedTextBox2.Text = "";
+            maskedTextBox3.Text = "";
             textBox2.Text = "";
-            textBox4.Text = "";
             comboBox2.Text = "";
             comboBox1.Text = "";
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string email = maskedTextBox3.Text;
+
+            DialogResult result = MessageBox.Show($"Tem certeza que dejesa apagar o funcionário com email {email}?", "Confirme a operação", MessageBoxButtons.YesNo);
+
+            if(result == DialogResult.Yes)
+            {
+                try
+                {
+                    Bd.setBD_Open();
+                    Bd.setDelet_funcionario(email);
+                    MessageBox.Show("Funcionário apagado com sucesso!", "Operação concluída");
+                }
+                catch (Exception er)
+                {
+                    MessageBox.Show(er.Message);
+                }
+                finally
+                {
+                    Bd.setBD_Close();
+                }
+            }
+                    
+        }
+
+
+
     }
 }
