@@ -34,27 +34,49 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string nome = textBox2.Text, senha = textBox3.Text, telefone = maskedTextBox2.Text, cpf = maskedTextBox1.Text, email = maskedTextBox3.Text, senha_confirmacao = textBox7.Text;
-            bool dadosValidos = user.checkInput(email, senha, senha_confirmacao, nome, telefone);
+            string nome = textBox2.Text, senha = textBox3.Text, telefone = maskedTextBox2.Text, cpf = maskedTextBox1.Text, email = maskedTextBox3.Text, senha_confirmacao = textBox7.Text, endereco = comboBox2.Text;
+            int id_loja;
+            FormValidacaoLogin formValidacaoLogin = new FormValidacaoLogin(Bd);
 
-            string endereco = comboBox2.Text;
-
-            int indiceInicioId = endereco.IndexOf("ID:") + "ID: ".Length;
-
+            int indiceInicioId = endereco.IndexOf("ID: ") + "ID: ".Length;
             int indiceFimId = endereco.IndexOf(",", indiceInicioId);
+            string idString = endereco.Substring(indiceInicioId, indiceFimId - indiceInicioId);
 
-            int id_loja = int.Parse(endereco.Substring(indiceInicioId, indiceFimId - indiceInicioId));
+            int.TryParse(idString, out id_loja);
+
+            bool dadosValidos = user.checkInput(email, senha, senha_confirmacao, nome, telefone, endereco);
+            bool arg = false;
 
             if (dadosValidos)
             {
                 try
                 {
                     Bd.setBD_Open();
-                    Bd.setInputBd_funcionario(email, cpf, nome, telefone, senha, id_loja);
+                    DialogResult resultado = formValidacaoLogin.ShowDialog();
+                    if (resultado == DialogResult.OK)
+                    {
+                        Bd.setInputBd_funcionario(email, cpf, nome, telefone, senha, id_loja);
+                        arg = false;
+                    }
+                    else
+                    {
+                        ArgumentException argumentException = new ArgumentException("Erro");
+                        arg = true;
+                        throw argumentException;
+                    }
                 }
-                catch 
+                catch (ArgumentException)
                 {
-                    MessageBox.Show("Infelizmente não foi possível efetuar o cadastro do funcionário!\nVerifique se o funcionário já foi cadastrado ou se sua conexão está boa e tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if(arg)
+                    {
+                        MessageBox.Show("Infelizmente não foi possível validar as credencias para criar o novo usuário.", "Credenciais inválidas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Infelizmente não foi possível efetuar o cadastro do funcionário!\nVerifique se o funcionário já foi cadastrado ou se sua conexão está boa e tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+
                 }
                 finally
                 {

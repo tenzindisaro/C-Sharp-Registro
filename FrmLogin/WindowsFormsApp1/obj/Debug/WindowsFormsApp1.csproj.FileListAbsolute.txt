@@ -355,3 +355,4 @@ C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsAp
 C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
 C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormValidacaoLogin.resources

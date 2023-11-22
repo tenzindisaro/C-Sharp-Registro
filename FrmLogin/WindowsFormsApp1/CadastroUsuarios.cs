@@ -14,7 +14,7 @@ namespace WindowsFormsApp1
       
         }
 
-        public bool checkInput(string inputEmail, string inputPassword, string inputConfirmPassword, string inputName, string inputPhoneNumber)
+        public bool checkInput(string inputEmail, string inputPassword, string inputConfirmPassword, string inputName, string inputPhoneNumber, string inputEndereco)
         {
             string campo = "";
             int opr;
@@ -102,6 +102,15 @@ namespace WindowsFormsApp1
                 opr = 5;
             }
 
+            if (inputEndereco != "")
+            {
+                opr = 0;
+            }
+            else
+            {
+                opr = 1;
+                campo = "\"Loja do Funcionário\"";
+            }
 
             switch (opr) 
             {
@@ -109,7 +118,7 @@ namespace WindowsFormsApp1
                     return true;
 
                 case 1:
-                    MessageBox.Show("Campo {0} não preenchido!\nPor favor, preencha todos os campos!" + campo, "Erro no cadastro");
+                    MessageBox.Show($"Campo {campo} não preenchido!\nPor favor, preencha todos os campos!", "Erro no cadastro");
                     break;
                 
                 case 2:

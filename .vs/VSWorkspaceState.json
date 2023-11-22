@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\FrmLogin",
+    "\\FrmLogin\\WindowsFormsApp1",
+    "\\FrmLogin\\WindowsFormsApp1\\lista",
+    "\\FrmLogin\\WindowsFormsApp1\\lista\\Geral",
+    "\\FrmLogin\\WindowsFormsApp1\\RegistrosPac"
   ],
-  "SelectedNode": "\\FrmLogin.sln",
+  "SelectedNode": "\\FrmLogin\\WindowsFormsApp1\\FormCadastroUser.cs",
   "PreviewInSolutionExplorer": true
 }

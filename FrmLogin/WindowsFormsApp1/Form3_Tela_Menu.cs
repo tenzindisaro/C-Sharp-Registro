@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Threading;
 using MySql.Data.MySqlClient;
+using WindowsFormsApp1.RegistrosPac;
 
 namespace WindowsFormsApp1
 {
@@ -39,29 +40,16 @@ namespace WindowsFormsApp1
 
         private void adicionarToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            t2 = new Thread(abrirCadastrarUsuario);
-            t2.SetApartmentState(ApartmentState.STA);
-            t2.Start();
-        }
-
-
-        private void abrirCadastrarUsuario(object obj)
-        {
-            Application.Run(new FormCadastroUser(usuario));
+            FormCadastroUser form = new FormCadastroUser(usuario);
+            form.ShowDialog();            
         }
 
         private void registroToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            t2 = new Thread(abrirRegistroPac);
-            t2.SetApartmentState(ApartmentState.STA);
-            t2.Start();
+            Form5_Registro_Pac form = new RegistrosPac.Form5_Registro_Pac(usuario);
+            form.ShowDialog();
         }
-        
-        private void abrirRegistroPac(object obj)
-        {
-            Application.Run(new RegistrosPac.Form5_Registro_Pac(usuario));
-        }
-        
+                
         private void geralToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             t2 = new Thread(abrirLista);
@@ -158,9 +146,8 @@ namespace WindowsFormsApp1
 
         private void btnCadastroPacMenu_Click(object sender, EventArgs e)
         {
-            t2 = new Thread(abrirRegistroPac);
-            t2.SetApartmentState(ApartmentState.STA);
-            t2.Start();
+            Form5_Registro_Pac form = new RegistrosPac.Form5_Registro_Pac(usuario);
+            form.ShowDialog();
         }
 
         private void btnListaPac_Click(object sender, EventArgs e)

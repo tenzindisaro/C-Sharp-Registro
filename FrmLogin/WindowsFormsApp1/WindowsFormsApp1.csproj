@@ -140,6 +140,12 @@
     <Compile Include="FormRetirarPac.Designer.cs">
       <DependentUpon>FormRetirarPac.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormValidacaoLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormValidacaoLogin.Designer.cs">
+      <DependentUpon>FormValidacaoLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="lista\Geral\Form6_Lista_Geral.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormRelatorio.resx">
       <DependentUpon>FormRelatorio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormValidacaoLogin.resx">
+      <DependentUpon>FormValidacaoLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="lista\Geral\Form6_Lista_Geral.resx">
       <DependentUpon>Form6_Lista_Geral.cs</DependentUpon>
