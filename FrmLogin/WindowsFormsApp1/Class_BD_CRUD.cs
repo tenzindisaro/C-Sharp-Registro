@@ -851,7 +851,7 @@ namespace WindowsFormsApp1
 
         public void setDelet_funcionario (string email)
         {
-            MySqlCommand cmd = new MySqlCommand("DELETE FROM funcionario WHERE email_funcionario_americanas = @email;", conn);
+            MySqlCommand cmd = new MySqlCommand("DELETE FROM funcionario WHERE email_americanas_funcionario = @email;", conn);
             cmd.Parameters.Clear();
             cmd.Parameters.Add("@email", MySqlDbType.VarChar, 75).Value = email;
 

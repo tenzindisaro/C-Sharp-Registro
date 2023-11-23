@@ -28,8 +28,6 @@ namespace WindowsFormsApp1
             
             InitializeComponent();
 
-            dataGridView1.CellClick += dataGridView1_CellClick;
-            dataGridView1.SelectionChanged += DataGridView1_SelectionChanged;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,17 +36,16 @@ namespace WindowsFormsApp1
             int id_loja;
             FormValidacaoLogin formValidacaoLogin = new FormValidacaoLogin(Bd);
 
-            int indiceInicioId = endereco.IndexOf("ID: ") + "ID: ".Length;
-            int indiceFimId = endereco.IndexOf(",", indiceInicioId);
-            string idString = endereco.Substring(indiceInicioId, indiceFimId - indiceInicioId);
-
-            int.TryParse(idString, out id_loja);
-
             bool dadosValidos = user.checkInput(email, senha, senha_confirmacao, nome, telefone, endereco);
             bool arg = false;
 
             if (dadosValidos)
             {
+                int indiceInicioId = endereco.IndexOf("ID: ") + "ID: ".Length;
+                int indiceFimId = endereco.IndexOf(",", indiceInicioId);
+                string idString = endereco.Substring(indiceInicioId, indiceFimId - indiceInicioId);
+                int.TryParse(idString, out id_loja);
+
                 try
                 {
                     Bd.setBD_Open();
@@ -80,6 +77,8 @@ namespace WindowsFormsApp1
                 }
                 finally
                 {
+                    int id = int.Parse(usuario.GetUserData(6));
+                    dataGridView1.DataSource = Bd.setRead_funcionarios_id(id);
                     Bd.setBD_Close();
                 }
             }
@@ -108,14 +107,17 @@ namespace WindowsFormsApp1
             dataGridView1.DataSource = Bd.setRead_funcionarios_id(id);
             Bd.setBD_Close();
 
+            button1.Enabled = true;
             button2.Enabled = false;
             button4.Enabled = false;
             textBox3.Enabled = true;
             textBox7.Enabled = true;
+            textBox2.Focus();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            button1.Enabled = false;
             button2.Enabled = true;
             button4.Enabled = true;
             textBox3.Enabled = false;
@@ -157,6 +159,7 @@ namespace WindowsFormsApp1
 
         private void DataGridView1_SelectionChanged(object sender, EventArgs e)
         {
+            button1.Enabled = false;
             button2.Enabled = true;
             button4.Enabled = true;
             textBox3.Enabled = false;
@@ -221,6 +224,23 @@ namespace WindowsFormsApp1
             {
                 Bd.setBD_Open();
                 Bd.setEdit_funcionario(email, cpf, nome, telefone, id);
+                
+                MessageBox.Show("Funcionário editado com sucesso!", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                maskedTextBox1.Text = "";
+                maskedTextBox2.Text = "";
+                maskedTextBox3.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox7.Text = "";
+                comboBox2.Text = "";
+                comboBox1.Text = "";
+
+                textBox3.Enabled = true;
+                textBox7.Enabled = true;
+                button1.Enabled = true;
+                button2.Enabled = false;
+                button4.Enabled = false;
             }
             catch
             {
@@ -228,14 +248,10 @@ namespace WindowsFormsApp1
             }
             finally
             {
+                dataGridView1.DataSource = Bd.setRead_funcionarios_id(id);
                 Bd.setBD_Close();
             }
-
-            textBox3.Enabled = true;
-            textBox7.Enabled = true;
-            button1.Enabled = true; 
-            button2.Enabled = false; 
-            button4.Enabled = false; 
+ 
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -272,6 +288,12 @@ namespace WindowsFormsApp1
                             break;
 
                     }
+
+                    if (dataGridView1.DataSource == null)
+                    {
+                        MessageBox.Show("Não foi encontrado funcionário cadastrado com a informação apresentada na busca!", "Funcionário não encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
                 }
                 catch
                 {
@@ -281,23 +303,17 @@ namespace WindowsFormsApp1
                 finally
                 {
                     Bd.setBD_Close();
+                    button2.Enabled = true;
+                    button4.Enabled = true;
+                    textBox3.Enabled = false;
+                    textBox7.Enabled = false;
                 }
             }
             else
             {
                 MessageBox.Show("Você deve escolher uma opção de busca e digitar um valor para a pesquisa!", "Erro de Busca", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 comboBox1.Text = "Escolha uma opção";
-            }
-
-            button2.Enabled = false;
-            button4.Enabled = false;
-            textBox3.Enabled = true;
-            textBox7.Enabled = true;
-
-            if(dataGridView1.DataSource == null)
-            {
-                MessageBox.Show("Não foi encontrado funcionário cadastrado com a informação apresentada na busca!", "Funcionário não encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            }          
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -311,6 +327,8 @@ namespace WindowsFormsApp1
             maskedTextBox2.Text = "";
             maskedTextBox3.Text = "";
             textBox2.Text = "";
+            textBox3.Text = "";
+            textBox7.Text = "";
             comboBox2.Text = "";
             comboBox1.Text = "";
         }
@@ -327,7 +345,23 @@ namespace WindowsFormsApp1
                 {
                     Bd.setBD_Open();
                     Bd.setDelet_funcionario(email);
-                    MessageBox.Show("Funcionário apagado com sucesso!", "Operação concluída");
+                    
+                    MessageBox.Show("Funcionário apagado com sucesso!", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                    maskedTextBox1.Text = "";
+                    maskedTextBox2.Text = "";
+                    maskedTextBox3.Text = "";
+                    textBox2.Text = "";
+                    textBox3.Text = "";
+                    textBox7.Text = "";
+                    comboBox2.Text = "";
+                    comboBox1.Text = "";
+
+                    textBox3.Enabled = true;
+                    textBox7.Enabled = true;
+                    button1.Enabled = true;
+                    button2.Enabled = false;
+                    button4.Enabled = false;
                 }
                 catch (Exception er)
                 {
@@ -335,10 +369,12 @@ namespace WindowsFormsApp1
                 }
                 finally
                 {
+                    int id = int.Parse(usuario.GetUserData(6));
+                    dataGridView1.DataSource = Bd.setRead_funcionarios_id(id);
                     Bd.setBD_Close();
                 }
             }
-                    
+
         }
 
 
