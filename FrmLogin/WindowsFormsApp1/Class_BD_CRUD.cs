@@ -782,11 +782,12 @@ namespace WindowsFormsApp1
          }
         */
 
-        public void setEdit_funcionario (string email, string cpf, string nome, string telefone, int id)
+        public void setEdit_funcionario (string email, string emailAntigo, string cpf, string nome, string telefone, int id)
         {
-            MySqlCommand cmd = new MySqlCommand("UPDATE funcionario f SET f.email_americanas_funcionario = @email, f.cpf_funcionario = @cpf, f.nome_funcionario = @nome, f.telefone_funcionario = @telefone, f.id_americanas = @id WHERE f.email_americanas_funcionario = @email OR f.cpf_funcionario = @cpf OR f.telefone_funcionario = @telefone;", conn);
+            MySqlCommand cmd = new MySqlCommand("UPDATE funcionario f SET f.email_americanas_funcionario = @email, f.cpf_funcionario = @cpf, f.nome_funcionario = @nome, f.telefone_funcionario = @telefone, f.id_americanas = @id WHERE f.email_americanas_funcionario = @emailAntigo;", conn);
             cmd.Parameters.Clear();
             cmd.Parameters.Add("@email", MySqlDbType.VarChar, 30).Value = email;
+            cmd.Parameters.Add("@emailAntigo", MySqlDbType.VarChar, 30).Value = emailAntigo;
             cmd.Parameters.Add("@cpf", MySqlDbType.VarChar, 15).Value = cpf;
             cmd.Parameters.Add("@nome", MySqlDbType.VarChar, 75).Value = nome;
             cmd.Parameters.Add("@telefone", MySqlDbType.VarChar, 15).Value = telefone;

@@ -22,6 +22,7 @@ namespace WindowsFormsApp1
         Class_BD_CRUD Bd = new Class_BD_CRUD();
         CadastroUsuarios user = new CadastroUsuarios();
         User usuario;
+        private string emailAntigo;
         public FormCadastroUser(User usuarioAtual)
         {
             usuario = usuarioAtual;
@@ -132,6 +133,7 @@ namespace WindowsFormsApp1
                 if (selectedRow != null)
                 {
                     email = selectedRow.Cells[0].Value.ToString();
+                    emailAntigo = email;
                     cpf = selectedRow.Cells[1].Value.ToString();
                     nome = selectedRow.Cells[2].Value.ToString();
                     telefone = selectedRow.Cells[3].Value.ToString();
@@ -174,6 +176,7 @@ namespace WindowsFormsApp1
                 if (selectedRow != null)
                 {
                     email = selectedRow.Cells[0].Value.ToString();
+                    emailAntigo = email;
                     cpf = selectedRow.Cells[1].Value.ToString();
                     nome = selectedRow.Cells[2].Value.ToString();
                     telefone = selectedRow.Cells[3].Value.ToString();
@@ -223,10 +226,11 @@ namespace WindowsFormsApp1
             try
             {
                 Bd.setBD_Open();
-                Bd.setEdit_funcionario(email, cpf, nome, telefone, id);
+                Bd.setEdit_funcionario(email, emailAntigo, cpf, nome, telefone, id);
                 
                 MessageBox.Show("Funcionário editado com sucesso!", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
+
+                emailAntigo = "";
                 maskedTextBox1.Text = "";
                 maskedTextBox2.Text = "";
                 maskedTextBox3.Text = "";
@@ -303,6 +307,7 @@ namespace WindowsFormsApp1
                 finally
                 {
                     Bd.setBD_Close();
+                    emailAntigo = "";
                     button2.Enabled = true;
                     button4.Enabled = true;
                     textBox3.Enabled = false;
@@ -331,6 +336,7 @@ namespace WindowsFormsApp1
             textBox7.Text = "";
             comboBox2.Text = "";
             comboBox1.Text = "";
+            emailAntigo = "";
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -356,6 +362,7 @@ namespace WindowsFormsApp1
                     textBox7.Text = "";
                     comboBox2.Text = "";
                     comboBox1.Text = "";
+                    emailAntigo = "";
 
                     textBox3.Enabled = true;
                     textBox7.Enabled = true;
