@@ -37,7 +37,7 @@ namespace WindowsFormsApp1
             int id_loja;
             FormValidacaoLogin formValidacaoLogin = new FormValidacaoLogin(Bd);
 
-            bool dadosValidos = user.checkInput(email, senha, senha_confirmacao, nome, telefone, endereco);
+            bool dadosValidos = user.checkInput(email, senha, cpf, senha_confirmacao, nome, telefone, endereco);
             bool arg = false;
 
             if (dadosValidos)

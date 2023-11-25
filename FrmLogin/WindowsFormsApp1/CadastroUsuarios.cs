@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,129 +14,83 @@ namespace WindowsFormsApp1
         {
       
         }
-
-        public bool checkInput(string inputEmail, string inputPassword, string inputConfirmPassword, string inputName, string inputPhoneNumber, string inputEndereco)
+        private bool IsValidName(string inputName)
         {
-            string campo = "";
-            int opr;
+            return string.IsNullOrWhiteSpace(inputName) || (!Regex.IsMatch(inputName, @"^[\p{L} ]+$"));
+        }
 
-            if (inputName != "")
-            {
-                opr = 0;
-            }
-            else
-            {
-                opr = 1;
-                campo = "\"Nome\"";
-            }
+        private bool IsValidCPF(string inputCPF)
+        {
+            return string.IsNullOrWhiteSpace(inputCPF) || (!Regex.IsMatch(inputCPF, @"^\d{3}\.\d{3}\.\d{3}-\d{2}$"));
+        }
 
-            if (inputPassword != "")
-            {
-                if (inputPassword.Length > 6 && inputPassword.Length < 32) 
-                { 
-                    opr = 0;
-                }
-                else
-                {
-                    opr = 4;
-                }
-            }
-            else
-            {
-                opr = 1;
-                campo = "\"Senha\"";
-            }
+        private bool IsValidPassword(string password)
+        {
+            return string.IsNullOrWhiteSpace(password) || (!(password.Length >= 6 && password.Length <= 32));
+        }
 
-            if (inputConfirmPassword != "")
-            {
-                if (inputPassword.Length > 6 && inputPassword.Length < 32)
-                {
-                    opr = 0;
+        private bool ArePasswordsMatching(string password, string confirmPassword)
+        {
+            return !string.Equals(password, confirmPassword);
+        }
 
-                }
-                else
-                {
-                    opr = 4;
-                }
-            }
-            else
-            {
-                opr = 1;
-                campo = "\"Confirme a Senha\"";
-            }
+        private bool IsValidPhoneNumber(string inputPhoneNumber)
+        {
+            return string.IsNullOrWhiteSpace(inputPhoneNumber) || (!Regex.IsMatch(inputPhoneNumber, @"\(\d{2}\) \d{5}-\d{4}"));
+        }
 
-            if (inputPassword == inputConfirmPassword)
-            {
-                opr = 0; 
-            }
-            else
-            {
-                opr = 3;
-            }
+        private bool IsValidEmail(string inputEmail)
+        {
+            string pattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?!.*[&=_\-'<>,.])(?!.*\.\.)[^&=_\-'<>,.]+$";
+            return string.IsNullOrWhiteSpace(inputEmail) || (!Regex.IsMatch(inputEmail, pattern)) && (!inputEmail.Contains("@americanas.com.br"));
+        }
 
-            if (inputPhoneNumber != "")
-            {
-                opr = 0;
-            }
-            else
-            {
-                opr = 1;
-                campo = "\"Telefone\"";
-            }
+        private bool IsValidAddress(string inputEndereco)
+        {
+            return string.IsNullOrWhiteSpace(inputEndereco);
+        }
 
-            if (inputEmail != "")
+        public bool checkInput(string inputEmail, string inputPassword, string inputCPF, string inputConfirmPassword, string inputName, string inputPhoneNumber, string inputEndereco)
+        {
+
+
+            if (IsValidAddress(inputEndereco))
             {
-                opr = 0;
+                MessageBox.Show("O endereço não foi preenchido!", "Endereço inválido");
+                return false;
             }
-            else
+            else if (IsValidName(inputName))
             {
-                opr = 1;
-                campo = "\"Email\"";
+                MessageBox.Show("O nome possui caracteres incoerentes!\nPor favor, digite novamente o nome completo.", "Nome inválido");
+                return false;
+            }
+            else if (IsValidCPF(inputCPF))
+            {
+                MessageBox.Show("O CPF possui caracteres incoerentes!\nPor favor, digite novamente o CPF.", "CPF inválido");
+                return false;
+            }
+            else if (IsValidEmail(inputEmail))
+            {
+                MessageBox.Show("O email inserido não está no formato correto! Digite um email válido.", "Email inválido");
+                return false;
+            }
+            else if (IsValidPhoneNumber(inputPhoneNumber))
+            {
+                MessageBox.Show("O telefone inserido não está no formato correto! Digite apenas números.", "Telefone inválido");
+                return false;
+            }
+            else if(IsValidPassword(inputPassword))
+            {
+                MessageBox.Show("A senha inserida não está no formato correto! Digite uma senha de 6 a 32 dígitos.", "Senha inválida");
+                return false;
+            }
+            else if (IsValidPassword(inputConfirmPassword) || ArePasswordsMatching(inputPassword, inputConfirmPassword))
+            {
+                MessageBox.Show("As senhas inseridas não coincidem!", "Senha inválida");
+                return false;
             }
 
-            if (inputEmail.Contains("@americanas.com.br"))
-            {
-                opr = 0; 
-            }
-            else
-            {
-                opr = 5;
-            }
-
-            if (inputEndereco != "")
-            {
-                opr = 0;
-            }
-            else
-            {
-                opr = 1;
-                campo = "\"Loja do Funcionário\"";
-            }
-
-            switch (opr) 
-            {
-                case 0:
-                    return true;
-
-                case 1:
-                    MessageBox.Show($"Campo {campo} não preenchido!\nPor favor, preencha todos os campos!", "Erro no cadastro");
-                    break;
-                
-                case 2:
-                    MessageBox.Show("");
-                    break;
-                case 3:
-                    MessageBox.Show("As senhas inseridas não coincidem!", "Senha inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    break;
-                case 4:
-                    MessageBox.Show("A senha inserida não está no formato correto! Digite uma senha de 6 a 32 dígitos.", "Senha inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    break;
-                case 5:
-                    MessageBox.Show("O email inserido não está no formato correto! Digite um email corporativo.", "Senha inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    break;
-            }
-
-            return false;
+            return true;
         }
 
     }
