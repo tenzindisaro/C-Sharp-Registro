@@ -100,7 +100,6 @@ namespace WindowsFormsApp1
             objcmd_funcionario.Parameters.Add("@id_americanas", MySqlDbType.Int32).Value = id_americanas;
             // executando query                       
             objcmd_funcionario.ExecuteNonQuery();
-            MessageBox.Show("envio de dados funcionario ok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
         public void setInputBd_entregador(string cpf_entregador, string nome_entregador)
@@ -500,9 +499,9 @@ namespace WindowsFormsApp1
             datatable.Columns.Add("Bairro da Loja");
             datatable.Columns.Add("Número da Loja");
 
-            string query = "SELECT f.email_americanas_funcionario, f.cpf_funcionario, f.nome_funcionario, f.telefone_funcionario, f.id_americanas, a.cep_americanas, a.rua_americanas, a.bairro_americanas, a.numero_americanas FROM funcionario f INNER JOIN americanas a ON f.id_americanas = a.id_americanas WHERE f.nome_funcionario = @nome";
+            string query = "SELECT f.email_americanas_funcionario, f.cpf_funcionario, f.nome_funcionario, f.telefone_funcionario, f.id_americanas, a.cep_americanas, a.rua_americanas, a.bairro_americanas, a.numero_americanas FROM funcionario f INNER JOIN americanas a ON f.id_americanas = a.id_americanas WHERE f.nome_funcionario LIKE @nome";
             MySqlCommand cmd = new MySqlCommand(query, conn);
-            cmd.Parameters.Add("@nome", MySqlDbType.VarChar, 100).Value = nome;
+            cmd.Parameters.Add("@nome", MySqlDbType.VarChar, 100).Value = "%" + nome + "%"; 
 
             MySqlDataReader select = cmd.ExecuteReader();
 
@@ -539,9 +538,9 @@ namespace WindowsFormsApp1
             datatable.Columns.Add("Bairro da Loja");
             datatable.Columns.Add("Número da Loja");
 
-            string query = "SELECT f.email_americanas_funcionario, f.cpf_funcionario, f.nome_funcionario, f.telefone_funcionario, f.id_americanas, a.cep_americanas, a.rua_americanas, a.bairro_americanas, a.numero_americanas FROM funcionario f INNER JOIN americanas a ON f.id_americanas = a.id_americanas WHERE f.cpf_funcionario = @cpf";
+            string query = "SELECT f.email_americanas_funcionario, f.cpf_funcionario, f.nome_funcionario, f.telefone_funcionario, f.id_americanas, a.cep_americanas, a.rua_americanas, a.bairro_americanas, a.numero_americanas FROM funcionario f INNER JOIN americanas a ON f.id_americanas = a.id_americanas WHERE f.cpf_funcionario LIKE @cpf";
             MySqlCommand cmd = new MySqlCommand(query, conn);
-            cmd.Parameters.Add("@cpf", MySqlDbType.VarChar, 100).Value = cpf;
+            cmd.Parameters.Add("@cpf", MySqlDbType.VarChar, 100).Value = "%" + cpf + "%";
 
             MySqlDataReader select = cmd.ExecuteReader();
 
@@ -579,9 +578,9 @@ namespace WindowsFormsApp1
             datatable.Columns.Add("Bairro da Loja");
             datatable.Columns.Add("Número da Loja");
 
-            string query = "SELECT f.email_americanas_funcionario, f.cpf_funcionario, f.nome_funcionario, f.telefone_funcionario, f.id_americanas, a.cep_americanas, a.rua_americanas, a.bairro_americanas, a.numero_americanas FROM funcionario f INNER JOIN americanas a ON f.id_americanas = a.id_americanas WHERE f.email_americanas_funcionario = @email";
+            string query = "SELECT f.email_americanas_funcionario, f.cpf_funcionario, f.nome_funcionario, f.telefone_funcionario, f.id_americanas, a.cep_americanas, a.rua_americanas, a.bairro_americanas, a.numero_americanas FROM funcionario f INNER JOIN americanas a ON f.id_americanas = a.id_americanas WHERE f.email_americanas_funcionario LIKE @email";
             MySqlCommand cmd = new MySqlCommand(query, conn);
-            cmd.Parameters.Add("@email", MySqlDbType.VarChar, 100).Value = email;
+            cmd.Parameters.Add("@email", MySqlDbType.VarChar, 100).Value = "%" + email + "%";
 
             MySqlDataReader select = cmd.ExecuteReader();
 
@@ -618,9 +617,9 @@ namespace WindowsFormsApp1
             datatable.Columns.Add("Bairro da Loja");
             datatable.Columns.Add("Número da Loja");
 
-            string query = "SELECT f.email_americanas_funcionario, f.cpf_funcionario, f.nome_funcionario, f.telefone_funcionario, f.id_americanas, a.cep_americanas, a.rua_americanas, a.bairro_americanas, a.numero_americanas FROM funcionario f INNER JOIN americanas a ON f.id_americanas = a.id_americanas WHERE f.telefone_funcionario = @telefone";
+            string query = "SELECT f.email_americanas_funcionario, f.cpf_funcionario, f.nome_funcionario, f.telefone_funcionario, f.id_americanas, a.cep_americanas, a.rua_americanas, a.bairro_americanas, a.numero_americanas FROM funcionario f INNER JOIN americanas a ON f.id_americanas = a.id_americanas WHERE f.telefone_funcionario LIKE @telefone";
             MySqlCommand cmd = new MySqlCommand(query, conn);
-            cmd.Parameters.Add("@telefone", MySqlDbType.VarChar, 100).Value = telefone;
+            cmd.Parameters.Add("@telefone", MySqlDbType.VarChar, 100).Value = "%" + telefone + "%";
 
             MySqlDataReader select = cmd.ExecuteReader();
 
@@ -657,9 +656,9 @@ namespace WindowsFormsApp1
             datatable.Columns.Add("Bairro da Loja");
             datatable.Columns.Add("Número da Loja");
 
-            string query = "SELECT f.email_americanas_funcionario, f.cpf_funcionario, f.nome_funcionario, f.telefone_funcionario, f.id_americanas, a.cep_americanas, a.rua_americanas, a.bairro_americanas, a.numero_americanas FROM funcionario f INNER JOIN americanas a ON f.id_americanas = a.id_americanas WHERE a.cep_americanas = @cep";
+            string query = "SELECT f.email_americanas_funcionario, f.cpf_funcionario, f.nome_funcionario, f.telefone_funcionario, f.id_americanas, a.cep_americanas, a.rua_americanas, a.bairro_americanas, a.numero_americanas FROM funcionario f INNER JOIN americanas a ON f.id_americanas = a.id_americanas WHERE a.cep_americanas LIKE @cep";
             MySqlCommand cmd = new MySqlCommand(query, conn);
-            cmd.Parameters.Add("@cep", MySqlDbType.VarChar, 100).Value = cep;
+            cmd.Parameters.Add("@cep", MySqlDbType.VarChar, 100).Value = "%" + cep + "%";
 
             MySqlDataReader select = cmd.ExecuteReader();
 

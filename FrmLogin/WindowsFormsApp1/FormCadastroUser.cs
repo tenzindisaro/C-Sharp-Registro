@@ -62,6 +62,8 @@ namespace WindowsFormsApp1
                         arg = true;
                         throw argumentException;
                     }
+
+                    MessageBox.Show("Funcionário adicionado com sucesso!", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (ArgumentException)
                 {
@@ -81,6 +83,26 @@ namespace WindowsFormsApp1
                     int id = int.Parse(usuario.GetUserData(6));
                     dataGridView1.DataSource = Bd.setRead_funcionarios_id(id);
                     Bd.setBD_Close();
+
+                    button1.Enabled = true;
+                    button2.Enabled = false;
+                    button4.Enabled = false;
+                    textBox3.Enabled = true;
+                    textBox7.Enabled = true;
+                    
+                    if (!arg)
+                    {                        
+                        maskedTextBox1.Text = "";
+                        maskedTextBox2.Text = "";
+                        maskedTextBox3.Text = "";
+                        maskedTextBox4.Text = "";
+                        textBox2.Text = "";
+                        textBox3.Text = "";
+                        textBox7.Text = "";
+                        comboBox2.Text = "";
+                        comboBox1.Text = "";
+                        emailAntigo = "";
+                    }
                 }
             }
         }
@@ -92,28 +114,53 @@ namespace WindowsFormsApp1
 
         private void FormCadastroUser_Load(object sender, EventArgs e)
         {
-            Bd.setBD_Open();
-            List<string> lojas = Bd.setRead_endereco_lojas();
-            Bd.setBD_Close();
-
-            comboBox2.Items.Clear();
-
-            foreach (string loja in lojas)
+            try
             {
-                comboBox2.Items.Add(loja);
+                Bd.setBD_Open();
+                List<string> lojas = Bd.setRead_endereco_lojas();
+                Bd.setBD_Close();
+
+                comboBox2.Items.Clear();
+
+                foreach (string loja in lojas)
+                {
+                    comboBox2.Items.Add(loja);
+                }
+
+                
+            }
+            catch
+            {
+                MessageBox.Show("Não foi possível carregar as informações de endereços de loja.\nPor favor verifique sua conexão com a internete e abra esta janela novamente.","Erro de carregamento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                Bd.setBD_Close();
             }
 
-            Bd.setBD_Open();
-            int id = int.Parse(usuario.GetUserData(6));
-            dataGridView1.DataSource = Bd.setRead_funcionarios_id(id);
-            Bd.setBD_Close();
+            try
+            {
+                Bd.setBD_Open();
+                int id = int.Parse(usuario.GetUserData(6));
+                dataGridView1.DataSource = Bd.setRead_funcionarios_id(id);
 
-            button1.Enabled = true;
-            button2.Enabled = false;
-            button4.Enabled = false;
-            textBox3.Enabled = true;
-            textBox7.Enabled = true;
-            textBox2.Focus();
+
+                button1.Enabled = true;
+                button2.Enabled = false;
+                button4.Enabled = false;
+                textBox3.Enabled = true;
+                textBox7.Enabled = true;
+                textBox2.Focus();
+
+            }
+            catch
+            {
+                MessageBox.Show("Não foi possível carregar as informações de funcionários cadastrados.\nPor favor verifique sua conexão com a internete e abra esta janela novamente.", "Erro de carregamento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                Bd.setBD_Close();
+            }
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -261,10 +308,10 @@ namespace WindowsFormsApp1
         private void button3_Click(object sender, EventArgs e)
         {
             
-            if(comboBox1.Text != "" && comboBox1.Text != "Escolha uma opção" && textBox1.Text != "")
+            if(comboBox1.Text != "" && comboBox1.Text != "Escolha uma opção" && maskedTextBox4.Text != "")
             {
                 string busca = comboBox1.Text;
-                string valor = textBox1.Text;
+                string valor = maskedTextBox4.Text;
 
                 try
                 {
@@ -323,6 +370,22 @@ namespace WindowsFormsApp1
 
         private void button5_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Bd.setBD_Open();
+                int id = int.Parse(usuario.GetUserData(6));
+                dataGridView1.DataSource = Bd.setRead_funcionarios_id(id);
+
+            }
+            catch
+            {
+                MessageBox.Show("Não foi possível carregar as informações de funcionários cadastrados.\nPor favor verifique sua conexão com a internete e abra esta janela novamente.", "Erro de carregamento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                Bd.setBD_Close();
+            }
+
             button1.Enabled = true;
             button2.Enabled = false;
             button4.Enabled = false;
@@ -331,6 +394,7 @@ namespace WindowsFormsApp1
             maskedTextBox1.Text = "";
             maskedTextBox2.Text = "";
             maskedTextBox3.Text = "";
+            maskedTextBox4.Text = "";
             textBox2.Text = "";
             textBox3.Text = "";
             textBox7.Text = "";
@@ -384,7 +448,23 @@ namespace WindowsFormsApp1
 
         }
 
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            maskedTextBox4.Mask = "";
+            maskedTextBox4.Text = "";
 
-
+            if (comboBox1.Text == "CPF")
+            {
+                maskedTextBox4.Mask = "000.000.000-00";
+            }
+            else if (comboBox1.Text == "Telefone")
+            {
+                maskedTextBox4.Mask = "(00) 00000-0000";
+            }
+            else if (comboBox1.Text == "CEP")
+            {
+                maskedTextBox4.Mask = "00000-000";
+            }
+        }
     }
 }

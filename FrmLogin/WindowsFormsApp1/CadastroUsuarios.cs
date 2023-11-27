@@ -50,6 +50,55 @@ namespace WindowsFormsApp1
             return string.IsNullOrWhiteSpace(inputEndereco);
         }
 
+        public bool ValidaCPF(string cpf)
+        {
+            cpf = new string(cpf.Where(char.IsDigit).ToArray());
+
+            if (cpf.Length != 11)
+            {
+                return false;
+            }
+
+            bool cpfTodosDigitosIguais = Enumerable.Range(1, 9).All(i => cpf[i] == cpf[0]);
+            if (cpfTodosDigitosIguais)
+            {
+                return false;
+            }
+
+            int[] multiplicadoresPrimeiroDigito = { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int[] multiplicadoresSegundoDigito = { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+
+            int soma = 0;
+            for (int i = 0; i < 9; i++)
+            {
+                soma += int.Parse(cpf[i].ToString()) * multiplicadoresPrimeiroDigito[i];
+            }
+
+            int resto = soma % 11;
+            int primeiroDigitoVerificador = resto < 2 ? 0 : 11 - resto;
+
+            if (primeiroDigitoVerificador != int.Parse(cpf[9].ToString()))
+            {
+                return false;
+            }
+
+            soma = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                soma += int.Parse(cpf[i].ToString()) * multiplicadoresSegundoDigito[i];
+            }
+
+            resto = soma % 11;
+            int segundoDigitoVerificador = resto < 2 ? 0 : 11 - resto;
+
+            if (segundoDigitoVerificador != int.Parse(cpf[10].ToString()))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public bool checkInput(string inputEmail, string inputPassword, string inputCPF, string inputConfirmPassword, string inputName, string inputPhoneNumber, string inputEndereco)
         {
 
@@ -64,7 +113,7 @@ namespace WindowsFormsApp1
                 MessageBox.Show("O nome possui caracteres incoerentes!\nPor favor, digite novamente o nome completo.", "Nome inválido");
                 return false;
             }
-            else if (IsValidCPF(inputCPF))
+            else if (IsValidCPF(inputCPF) || !ValidaCPF(inputCPF))
             {
                 MessageBox.Show("O CPF possui caracteres incoerentes!\nPor favor, digite novamente o CPF.", "CPF inválido");
                 return false;
