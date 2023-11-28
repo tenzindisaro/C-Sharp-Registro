@@ -312,54 +312,68 @@ namespace WindowsFormsApp1
             {
                 string busca = comboBox1.Text;
                 string valor = maskedTextBox4.Text;
+                bool maskCompleted = false;
 
-                try
+                if (!(maskedTextBox4.Mask == ""))
                 {
-                    Bd.setBD_Open();
-                    switch (busca)
+                    maskCompleted = maskedTextBox4.MaskedTextProvider.MaskCompleted;
+                }
+
+                if (maskCompleted || busca == "Nome" || busca == "Email")
+                {
+                    try
                     {
-                        case "Nome":
-                            dataGridView1.DataSource = Bd.setRead_funcionario_Nome(valor);
-                            break;
+                        Bd.setBD_Open();
+                        switch (busca)
+                        {
+                            case "Nome":
+                                dataGridView1.DataSource = Bd.setRead_funcionario_Nome(valor);
+                                break;
 
-                        case "CPF":
-                            dataGridView1.DataSource = Bd.setRead_funcionario_Cpf(valor);
-                            break;
+                            case "CPF":
+                                dataGridView1.DataSource = Bd.setRead_funcionario_Cpf(valor);
+                                break;
 
-                        case "Email":
-                            dataGridView1.DataSource = Bd.setRead_funcionario_Email(valor);
-                            break;
+                            case "Email":
+                                dataGridView1.DataSource = Bd.setRead_funcionario_Email(valor);
+                                break;
 
-                        case "Telefone":
-                            dataGridView1.DataSource = Bd.setRead_funcionario_Telefone(valor);
-                            break;
+                            case "Telefone":
+                                dataGridView1.DataSource = Bd.setRead_funcionario_Telefone(valor);
+                                break;
 
-                        case "CEP":
-                            dataGridView1.DataSource = Bd.setRead_funcionario_Cep(valor);
-                            break;
+                            case "CEP":
+                                dataGridView1.DataSource = Bd.setRead_funcionario_Cep(valor);
+                                break;
+
+                        }
+
+                        if (dataGridView1.DataSource == null)
+                        {
+                            MessageBox.Show("Não foi encontrado funcionário cadastrado com a informação apresentada na busca!", "Funcionário não encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
 
                     }
-
-                    if (dataGridView1.DataSource == null)
+                    catch
                     {
-                        MessageBox.Show("Não foi encontrado funcionário cadastrado com a informação apresentada na busca!", "Funcionário não encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Infelizmente não foi possível efetuar a busca do funcionário!\nVerifique se sua conexão está boa e tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     }
-
+                    finally
+                    {
+                        Bd.setBD_Close();
+                        emailAntigo = "";
+                        button2.Enabled = true;
+                        button4.Enabled = true;
+                        textBox3.Enabled = false;
+                        textBox7.Enabled = false;
+                    }
                 }
-                catch
+                else
                 {
-                    MessageBox.Show("Infelizmente não foi possível efetuar a busca do funcionário!\nVerifique se sua conexão está boa e tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                    MessageBox.Show("Digite o elemento completo que será buscado!", "Busca Inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                finally
-                {
-                    Bd.setBD_Close();
-                    emailAntigo = "";
-                    button2.Enabled = true;
-                    button4.Enabled = true;
-                    textBox3.Enabled = false;
-                    textBox7.Enabled = false;
-                }
+                
             }
             else
             {
@@ -395,6 +409,7 @@ namespace WindowsFormsApp1
             maskedTextBox2.Text = "";
             maskedTextBox3.Text = "";
             maskedTextBox4.Text = "";
+            maskedTextBox4.Mask = "";
             textBox2.Text = "";
             textBox3.Text = "";
             textBox7.Text = "";
@@ -455,7 +470,7 @@ namespace WindowsFormsApp1
 
             if (comboBox1.Text == "CPF")
             {
-                maskedTextBox4.Mask = "000.000.000-00";
+                maskedTextBox4.Mask = "000,000,000-00";
             }
             else if (comboBox1.Text == "Telefone")
             {
