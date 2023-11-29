@@ -30,13 +30,15 @@
         {
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtBox_buscar = new System.Windows.Forms.TextBox();
+            this.txtBox_buscar_cpf = new System.Windows.Forms.MaskedTextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.rdb_Titular_cpf = new System.Windows.Forms.RadioButton();
+            this.rdb_NotaFiscal = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -58,35 +60,80 @@
             this.label3.TabIndex = 128;
             this.label3.Text = "vão redirecionar para a tela registroPac>>>";
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(645, 174);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(148, 49);
-            this.button1.TabIndex = 26;
-            this.button1.Text = "Buscar";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // textBox3
-            // 
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Red;
+            this.panel1.Controls.Add(this.txtBox_buscar);
+            this.panel1.Controls.Add(this.txtBox_buscar_cpf);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.rdb_Titular_cpf);
+            this.panel1.Controls.Add(this.rdb_NotaFiscal);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.radioButton1);
             this.panel1.Controls.Add(this.radioButton2);
             this.panel1.Controls.Add(this.radioButton3);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.dateTimePicker1);
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(802, 81);
             this.panel1.TabIndex = 129;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // txtBox_buscar
+            // 
+            this.txtBox_buscar.Location = new System.Drawing.Point(585, 30);
+            this.txtBox_buscar.Name = "txtBox_buscar";
+            this.txtBox_buscar.Size = new System.Drawing.Size(186, 20);
+            this.txtBox_buscar.TabIndex = 12;
+            // 
+            // txtBox_buscar_cpf
+            // 
+            this.txtBox_buscar_cpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBox_buscar_cpf.Location = new System.Drawing.Point(237, 37);
+            this.txtBox_buscar_cpf.Mask = "000,000,000-00";
+            this.txtBox_buscar_cpf.Name = "txtBox_buscar_cpf";
+            this.txtBox_buscar_cpf.Size = new System.Drawing.Size(183, 23);
+            this.txtBox_buscar_cpf.TabIndex = 9;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(567, 54);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(218, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Buscar";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // rdb_Titular_cpf
+            // 
+            this.rdb_Titular_cpf.AutoSize = true;
+            this.rdb_Titular_cpf.Checked = true;
+            this.rdb_Titular_cpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdb_Titular_cpf.ForeColor = System.Drawing.Color.White;
+            this.rdb_Titular_cpf.Location = new System.Drawing.Point(681, 7);
+            this.rdb_Titular_cpf.Name = "rdb_Titular_cpf";
+            this.rdb_Titular_cpf.Size = new System.Drawing.Size(96, 19);
+            this.rdb_Titular_cpf.TabIndex = 10;
+            this.rdb_Titular_cpf.TabStop = true;
+            this.rdb_Titular_cpf.Text = "CPF Titular";
+            this.rdb_Titular_cpf.UseVisualStyleBackColor = true;
+            this.rdb_Titular_cpf.CheckedChanged += new System.EventHandler(this.rdb_Titular_cpf_CheckedChanged);
+            // 
+            // rdb_NotaFiscal
+            // 
+            this.rdb_NotaFiscal.AutoSize = true;
+            this.rdb_NotaFiscal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdb_NotaFiscal.ForeColor = System.Drawing.Color.White;
+            this.rdb_NotaFiscal.Location = new System.Drawing.Point(585, 6);
+            this.rdb_NotaFiscal.Name = "rdb_NotaFiscal";
+            this.rdb_NotaFiscal.Size = new System.Drawing.Size(97, 19);
+            this.rdb_NotaFiscal.TabIndex = 11;
+            this.rdb_NotaFiscal.Text = "Nota Fiscal";
+            this.rdb_NotaFiscal.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -104,7 +151,7 @@
             this.radioButton1.AutoSize = true;
             this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton1.ForeColor = System.Drawing.Color.White;
-            this.radioButton1.Location = new System.Drawing.Point(378, 7);
+            this.radioButton1.Location = new System.Drawing.Point(435, 7);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(99, 22);
             this.radioButton1.TabIndex = 2;
@@ -117,7 +164,7 @@
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton2.ForeColor = System.Drawing.Color.White;
-            this.radioButton2.Location = new System.Drawing.Point(378, 49);
+            this.radioButton2.Location = new System.Drawing.Point(435, 49);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(66, 22);
             this.radioButton2.TabIndex = 3;
@@ -130,7 +177,7 @@
             this.radioButton3.AutoSize = true;
             this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton3.ForeColor = System.Drawing.Color.White;
-            this.radioButton3.Location = new System.Drawing.Point(378, 28);
+            this.radioButton3.Location = new System.Drawing.Point(435, 28);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(92, 22);
             this.radioButton3.TabIndex = 4;
@@ -138,45 +185,17 @@
             this.radioButton3.Text = "Situação";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(572, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 18);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Data:";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(575, 28);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(217, 20);
-            this.dateTimePicker1.TabIndex = 5;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(575, 52);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(218, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Buscar";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(298, 7);
+            this.label2.Location = new System.Drawing.Point(369, 7);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 18);
             this.label2.TabIndex = 1;
             this.label2.Text = "Ordem:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // button2
             // 
@@ -225,6 +244,7 @@
             this.button5.TabIndex = 125;
             this.button5.Text = "Gerar Relatório";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button3
             // 
@@ -267,9 +287,6 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -277,5 +294,10 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.MaskedTextBox txtBox_buscar_cpf;
+        private System.Windows.Forms.RadioButton rdb_Titular_cpf;
+        private System.Windows.Forms.RadioButton rdb_NotaFiscal;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtBox_buscar;
     }
 }
