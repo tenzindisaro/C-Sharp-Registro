@@ -197,7 +197,7 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
-                    MessageBox.Show("Nenhum valor na linha selecionada!");
+                    MessageBox.Show("Nenhum valor na linha selecionada!", "Seleção inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -241,7 +241,7 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
-                    MessageBox.Show("Nenhum valor na linha selecionada!");
+                    MessageBox.Show("Nenhum valor na linha selecionada!", "Seleção inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
             }
@@ -463,7 +463,7 @@ namespace WindowsFormsApp1
                     button2.Enabled = false;
                     button4.Enabled = false;
                 }
-                catch (Exception er)
+                catch (Exception)
                 {
                     if (arg)
                     {

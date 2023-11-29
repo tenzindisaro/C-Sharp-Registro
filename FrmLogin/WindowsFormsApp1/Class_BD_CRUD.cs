@@ -731,11 +731,25 @@ namespace WindowsFormsApp1
 
         // MÉTODOS ENVIO DE DADOS EDITADOS PELO USUÁRIO********************************************************************
 
+        public void setEdit_Retirada(string notaFiscal, string dataRetirada, string horaRetirada)
+        {
+            string query = "UPDATE pacote p " +
+                   "INNER JOIN tbl_data d ON p.id_data = d.id_data " +
+                   "INNER JOIN hora h ON p.id_hora = h.id_hora " +
+                   "SET p.situacao_pacote = \"Retirado\", d.retirada_data = @dataRetirada, h.retirada_hora = @horaRetirada " +
+                   "WHERE p.nota_fiscal_pacote = @notaFiscal;";
+            MySqlCommand obj = new MySqlCommand(query, conn);
+            obj.Parameters.Clear();
+            obj.Parameters.Add("@dataRetirada", MySqlDbType.VarChar, 10).Value = dataRetirada;
+            obj.Parameters.Add("@horaRetirada", MySqlDbType.VarChar, 10).Value = horaRetirada;
+            obj.Parameters.Add("@notaFiscal", MySqlDbType.VarChar, 45).Value = notaFiscal;
+
+            obj.CommandType = CommandType.Text;
+            obj.ExecuteNonQuery();
+        }
+
         public void setEdit_pacote(string nota_fiscal, string situacao, string funcionario, string cpf_titular, string cpf_entregador)
         {
-             
-
-
             MySqlCommand objEdit = new MySqlCommand("UPDATE pacote SET nota_fiscal_pacote = ?, situacao_pacote = ?, email_americanas_funcionario = ?, cpf_titular = ?, cpf_entregador = ? WHERE nota_fiscal_pacote = ?", conn);
             objEdit.Parameters.Clear();
             objEdit.Parameters.Add("@nova_nota_fiscal_pacote", MySqlDbType.VarChar, 45).Value = nota_fiscal;
@@ -911,11 +925,13 @@ namespace WindowsFormsApp1
             dt_pacsDia.Columns.Add("CPF Titular");
             dt_pacsDia.Columns.Add("Entregador");
             dt_pacsDia.Columns.Add("CPF Entregador");
-            dt_pacsDia.Columns.Add("Data");
-            dt_pacsDia.Columns.Add("Hora");
+            dt_pacsDia.Columns.Add("Data de Chegada");
+            dt_pacsDia.Columns.Add("Hora de Chegada");
+            dt_pacsDia.Columns.Add("Data de Retirada");
+            dt_pacsDia.Columns.Add("Hora de Retirada");
 
             MySqlCommand cmd = new MySqlCommand("SELECT p.nota_fiscal_pacote, p.email_americanas_funcionario, p.situacao_pacote, t.nome, t.telefone, t.email, p.cpf_titular, e.nome_entregador," +
-                " p.cpf_entregador, d.chegada_data, h.chegada_hora FROM pacote p " +
+                " p.cpf_entregador, d.chegada_data, h.chegada_hora, d.retirada_data, h.retirada_hora FROM pacote p " +
                 "INNER JOIN funcionario f ON p.email_americanas_funcionario = f.email_americanas_funcionario " +
                 "INNER JOIN titular t ON p.cpf_titular = t.cpf_titular " +
                 "INNER JOIN entregador e ON p.cpf_entregador = e.cpf_entregador " +
@@ -947,8 +963,18 @@ namespace WindowsFormsApp1
                     newRow["CPF Titular"] = select.GetString(6);
                     newRow["Entregador"] = select.GetString(7);
                     newRow["CPF Entregador"] = select.GetString(8);
-                    newRow["Data"] = select.GetDateTime(9).ToString("dd/MM/yyyy");
-                    newRow["Hora"] = select.GetTimeSpan(10).ToString(@"hh\:mm\:ss");
+                    newRow["Data de Chegada"] = select.GetDateTime(9).ToString("dd/MM/yyyy");
+                    newRow["Hora de Chegada"] = select.GetTimeSpan(10).ToString(@"hh\:mm\:ss");
+                    if(!select.IsDBNull(11))
+                    {
+                        newRow["Data de Retirada"] = select.GetDateTime(11).ToString("dd/MM/yyyy");
+                        newRow["Hora de Retirada"] = select.GetTimeSpan(12).ToString(@"hh\:mm\:ss");
+                    }
+                    else
+                    {
+                        newRow["Data de Retirada"] = "";
+                        newRow["Hora de Retirada"] = "";
+                    }
                     // add as linhas do datagridview
                     dt_pacsDia.Rows.Add(newRow);
                 }

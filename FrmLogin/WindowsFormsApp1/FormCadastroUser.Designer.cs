@@ -38,22 +38,22 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -90,7 +90,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(770, 128);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.TabIndex = 11;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.DataGridView1_SelectionChanged);
             // 
@@ -100,7 +100,7 @@
             this.button4.Location = new System.Drawing.Point(168, 386);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(150, 48);
-            this.button4.TabIndex = 95;
+            this.button4.TabIndex = 12;
             this.button4.Text = "Editar Funcionário";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -111,7 +111,7 @@
             this.button3.Location = new System.Drawing.Point(480, 386);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(150, 48);
-            this.button3.TabIndex = 94;
+            this.button3.TabIndex = 10;
             this.button3.Text = "Buscar";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -122,7 +122,7 @@
             this.button2.Location = new System.Drawing.Point(324, 386);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(150, 48);
-            this.button2.TabIndex = 93;
+            this.button2.TabIndex = 13;
             this.button2.Text = "Remover Usuário";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -133,7 +133,7 @@
             this.button1.Location = new System.Drawing.Point(12, 386);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(150, 48);
-            this.button1.TabIndex = 92;
+            this.button1.TabIndex = 7;
             this.button1.Text = "Adicionar Funcionário";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -153,7 +153,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.PasswordChar = '*';
             this.textBox3.Size = new System.Drawing.Size(178, 20);
-            this.textBox3.TabIndex = 82;
+            this.textBox3.TabIndex = 5;
             // 
             // label3
             // 
@@ -163,13 +163,6 @@
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 81;
             this.label3.Text = "Senha:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(18, 145);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(178, 20);
-            this.textBox2.TabIndex = 80;
             // 
             // label2
             // 
@@ -195,7 +188,7 @@
             this.textBox7.Name = "textBox7";
             this.textBox7.PasswordChar = '*';
             this.textBox7.Size = new System.Drawing.Size(178, 20);
-            this.textBox7.TabIndex = 104;
+            this.textBox7.TabIndex = 6;
             // 
             // label10
             // 
@@ -227,21 +220,8 @@
             this.comboBox1.Location = new System.Drawing.Point(479, 98);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(151, 21);
-            this.comboBox1.TabIndex = 117;
+            this.comboBox1.TabIndex = 8;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "(Exemplo)",
-            "Loja 1",
-            "Loja 2",
-            "Loja 3"});
-            this.comboBox2.Location = new System.Drawing.Point(119, 98);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(303, 21);
-            this.comboBox2.TabIndex = 118;
             // 
             // label6
             // 
@@ -278,18 +258,10 @@
             this.button5.Location = new System.Drawing.Point(636, 386);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(151, 48);
-            this.button5.TabIndex = 121;
+            this.button5.TabIndex = 14;
             this.button5.Text = "Cancelar Edição";
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(216, 144);
-            this.maskedTextBox1.Mask = "000,000,000-00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(177, 20);
-            this.maskedTextBox1.TabIndex = 122;
             // 
             // maskedTextBox2
             // 
@@ -297,14 +269,7 @@
             this.maskedTextBox2.Mask = "(00) 00000-0000";
             this.maskedTextBox2.Name = "maskedTextBox2";
             this.maskedTextBox2.Size = new System.Drawing.Size(177, 20);
-            this.maskedTextBox2.TabIndex = 123;
-            // 
-            // maskedTextBox3
-            // 
-            this.maskedTextBox3.Location = new System.Drawing.Point(413, 144);
-            this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.Size = new System.Drawing.Size(177, 20);
-            this.maskedTextBox3.TabIndex = 124;
+            this.maskedTextBox2.TabIndex = 4;
             // 
             // maskedTextBox4
             // 
@@ -312,7 +277,42 @@
             this.maskedTextBox4.Location = new System.Drawing.Point(636, 98);
             this.maskedTextBox4.Name = "maskedTextBox4";
             this.maskedTextBox4.Size = new System.Drawing.Size(150, 21);
-            this.maskedTextBox4.TabIndex = 125;
+            this.maskedTextBox4.TabIndex = 9;
+            // 
+            // maskedTextBox3
+            // 
+            this.maskedTextBox3.Location = new System.Drawing.Point(413, 144);
+            this.maskedTextBox3.Name = "maskedTextBox3";
+            this.maskedTextBox3.Size = new System.Drawing.Size(177, 20);
+            this.maskedTextBox3.TabIndex = 3;
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(216, 144);
+            this.maskedTextBox1.Mask = "000,000,000-00";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(177, 20);
+            this.maskedTextBox1.TabIndex = 2;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "(Exemplo)",
+            "Loja 1",
+            "Loja 2",
+            "Loja 3"});
+            this.comboBox2.Location = new System.Drawing.Point(119, 98);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(303, 21);
+            this.comboBox2.TabIndex = 0;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(18, 145);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(178, 20);
+            this.textBox2.TabIndex = 1;
             // 
             // FormCadastroUser
             // 
@@ -373,7 +373,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label7;
@@ -382,5 +381,6 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
         private System.Windows.Forms.MaskedTextBox maskedTextBox3;
         private System.Windows.Forms.MaskedTextBox maskedTextBox4;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }

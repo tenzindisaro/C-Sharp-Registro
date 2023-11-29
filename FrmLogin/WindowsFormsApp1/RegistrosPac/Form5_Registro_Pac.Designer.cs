@@ -57,6 +57,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.txtBox_buscar_cpf = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBoxSituacao = new System.Windows.Forms.MaskedTextBox();
             this.groupBox_Data = new System.Windows.Forms.GroupBox();
@@ -92,7 +93,7 @@
             this.rdb_Titular_cpf.Location = new System.Drawing.Point(108, 93);
             this.rdb_Titular_cpf.Name = "rdb_Titular_cpf";
             this.rdb_Titular_cpf.Size = new System.Drawing.Size(96, 19);
-            this.rdb_Titular_cpf.TabIndex = 1;
+            this.rdb_Titular_cpf.TabIndex = 11;
             this.rdb_Titular_cpf.TabStop = true;
             this.rdb_Titular_cpf.Text = "CPF Titular";
             this.rdb_Titular_cpf.UseVisualStyleBackColor = true;
@@ -106,7 +107,7 @@
             this.rdb_NotaFiscal.Location = new System.Drawing.Point(9, 93);
             this.rdb_NotaFiscal.Name = "rdb_NotaFiscal";
             this.rdb_NotaFiscal.Size = new System.Drawing.Size(97, 19);
-            this.rdb_NotaFiscal.TabIndex = 2;
+            this.rdb_NotaFiscal.TabIndex = 10;
             this.rdb_NotaFiscal.Text = "Nota Fiscal";
             this.rdb_NotaFiscal.UseVisualStyleBackColor = true;
             this.rdb_NotaFiscal.CheckedChanged += new System.EventHandler(this.rdb_NotaFiscal_CheckedChanged);
@@ -132,9 +133,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridView_registro_pac);
-            this.groupBox1.Location = new System.Drawing.Point(15, 280);
+            this.groupBox1.Location = new System.Drawing.Point(15, 270);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(576, 135);
+            this.groupBox1.Size = new System.Drawing.Size(576, 173);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pacotes Registrados no Dia";
@@ -147,8 +148,10 @@
             this.dataGridView_registro_pac.Location = new System.Drawing.Point(6, 19);
             this.dataGridView_registro_pac.Name = "dataGridView_registro_pac";
             this.dataGridView_registro_pac.ReadOnly = true;
-            this.dataGridView_registro_pac.Size = new System.Drawing.Size(564, 110);
-            this.dataGridView_registro_pac.TabIndex = 0;
+            this.dataGridView_registro_pac.Size = new System.Drawing.Size(564, 148);
+            this.dataGridView_registro_pac.TabIndex = 14;
+            this.dataGridView_registro_pac.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_registro_pac_CellClick);
+            this.dataGridView_registro_pac.SelectionChanged += new System.EventHandler(this.dataGridView_registro_pac_SelectionChanged);
             // 
             // textBox_Titular
             // 
@@ -156,7 +159,7 @@
             this.textBox_Titular.Location = new System.Drawing.Point(17, 175);
             this.textBox_Titular.Name = "textBox_Titular";
             this.textBox_Titular.Size = new System.Drawing.Size(134, 23);
-            this.textBox_Titular.TabIndex = 6;
+            this.textBox_Titular.TabIndex = 3;
             // 
             // label3
             // 
@@ -174,7 +177,7 @@
             this.textBox_NotaFiscal.Location = new System.Drawing.Point(17, 115);
             this.textBox_NotaFiscal.Name = "textBox_NotaFiscal";
             this.textBox_NotaFiscal.Size = new System.Drawing.Size(134, 23);
-            this.textBox_NotaFiscal.TabIndex = 8;
+            this.textBox_NotaFiscal.TabIndex = 0;
             // 
             // label5
             // 
@@ -209,10 +212,10 @@
             // button_Cadastrar
             // 
             this.button_Cadastrar.BackColor = System.Drawing.Color.White;
-            this.button_Cadastrar.Location = new System.Drawing.Point(11, 227);
+            this.button_Cadastrar.Location = new System.Drawing.Point(9, 228);
             this.button_Cadastrar.Name = "button_Cadastrar";
             this.button_Cadastrar.Size = new System.Drawing.Size(184, 46);
-            this.button_Cadastrar.TabIndex = 17;
+            this.button_Cadastrar.TabIndex = 8;
             this.button_Cadastrar.Text = "Cadastrar";
             this.button_Cadastrar.UseVisualStyleBackColor = false;
             this.button_Cadastrar.Click += new System.EventHandler(this.button_Cadastrar_Click);
@@ -223,7 +226,7 @@
             this.button_Editar.Location = new System.Drawing.Point(9, 280);
             this.button_Editar.Name = "button_Editar";
             this.button_Editar.Size = new System.Drawing.Size(184, 46);
-            this.button_Editar.TabIndex = 18;
+            this.button_Editar.TabIndex = 15;
             this.button_Editar.Text = "Editar";
             this.button_Editar.UseVisualStyleBackColor = false;
             this.button_Editar.Click += new System.EventHandler(this.button_Editar_Click);
@@ -234,7 +237,7 @@
             this.button_deletar.Location = new System.Drawing.Point(9, 333);
             this.button_deletar.Name = "button_deletar";
             this.button_deletar.Size = new System.Drawing.Size(184, 46);
-            this.button_deletar.TabIndex = 20;
+            this.button_deletar.TabIndex = 16;
             this.button_deletar.Text = "Deletar";
             this.button_deletar.UseVisualStyleBackColor = false;
             this.button_deletar.Click += new System.EventHandler(this.button_deletar_Click);
@@ -265,7 +268,7 @@
             this.button_Buscar.Location = new System.Drawing.Point(11, 155);
             this.button_Buscar.Name = "button_Buscar";
             this.button_Buscar.Size = new System.Drawing.Size(184, 46);
-            this.button_Buscar.TabIndex = 27;
+            this.button_Buscar.TabIndex = 13;
             this.button_Buscar.Text = "Buscar";
             this.button_Buscar.UseVisualStyleBackColor = false;
             this.button_Buscar.Click += new System.EventHandler(this.button_Buscar_Click);
@@ -277,7 +280,7 @@
             this.maskedTextBox_CPF.Mask = "000,000,000-00";
             this.maskedTextBox_CPF.Name = "maskedTextBox_CPF";
             this.maskedTextBox_CPF.Size = new System.Drawing.Size(134, 23);
-            this.maskedTextBox_CPF.TabIndex = 0;
+            this.maskedTextBox_CPF.TabIndex = 7;
             // 
             // maskedTextBox_telefone
             // 
@@ -286,7 +289,7 @@
             this.maskedTextBox_telefone.Mask = "(00)0 0000-0000";
             this.maskedTextBox_telefone.Name = "maskedTextBox_telefone";
             this.maskedTextBox_telefone.Size = new System.Drawing.Size(134, 23);
-            this.maskedTextBox_telefone.TabIndex = 0;
+            this.maskedTextBox_telefone.TabIndex = 4;
             // 
             // maskedTextBox_email
             // 
@@ -294,7 +297,7 @@
             this.maskedTextBox_email.Location = new System.Drawing.Point(17, 236);
             this.maskedTextBox_email.Name = "maskedTextBox_email";
             this.maskedTextBox_email.Size = new System.Drawing.Size(134, 23);
-            this.maskedTextBox_email.TabIndex = 0;
+            this.maskedTextBox_email.TabIndex = 6;
             // 
             // label12
             // 
@@ -322,7 +325,7 @@
             this.txtbox_nome_entregador.Location = new System.Drawing.Point(302, 115);
             this.txtbox_nome_entregador.Name = "txtbox_nome_entregador";
             this.txtbox_nome_entregador.Size = new System.Drawing.Size(134, 23);
-            this.txtbox_nome_entregador.TabIndex = 106;
+            this.txtbox_nome_entregador.TabIndex = 2;
             // 
             // comboBox_funcionario
             // 
@@ -331,7 +334,7 @@
             this.comboBox_funcionario.Location = new System.Drawing.Point(159, 115);
             this.comboBox_funcionario.Name = "comboBox_funcionario";
             this.comboBox_funcionario.Size = new System.Drawing.Size(134, 25);
-            this.comboBox_funcionario.TabIndex = 107;
+            this.comboBox_funcionario.TabIndex = 1;
             // 
             // panel1
             // 
@@ -356,6 +359,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Red;
+            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.txtBox_buscar_cpf);
             this.panel2.Controls.Add(this.button_Cadastrar);
             this.panel2.Controls.Add(this.label1);
@@ -370,6 +374,17 @@
             this.panel2.Size = new System.Drawing.Size(204, 453);
             this.panel2.TabIndex = 122;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(9, 385);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(184, 46);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "Retirar";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // txtBox_buscar_cpf
             // 
             this.txtBox_buscar_cpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -377,7 +392,7 @@
             this.txtBox_buscar_cpf.Mask = "000,000,000-00";
             this.txtBox_buscar_cpf.Name = "txtBox_buscar_cpf";
             this.txtBox_buscar_cpf.Size = new System.Drawing.Size(186, 23);
-            this.txtBox_buscar_cpf.TabIndex = 1;
+            this.txtBox_buscar_cpf.TabIndex = 12;
             // 
             // maskedTextBoxSituacao
             // 
@@ -392,39 +407,39 @@
             // groupBox_Data
             // 
             this.groupBox_Data.Controls.Add(this.textBox_data);
-            this.groupBox_Data.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.groupBox_Data.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox_Data.Location = new System.Drawing.Point(451, 115);
             this.groupBox_Data.Name = "groupBox_Data";
             this.groupBox_Data.Size = new System.Drawing.Size(140, 57);
             this.groupBox_Data.TabIndex = 124;
             this.groupBox_Data.TabStop = false;
-            this.groupBox_Data.Text = "Data";
+            this.groupBox_Data.Text = "Data de Chegada";
             // 
             // textBox_data
             // 
             this.textBox_data.Enabled = false;
             this.textBox_data.Location = new System.Drawing.Point(6, 25);
             this.textBox_data.Name = "textBox_data";
-            this.textBox_data.Size = new System.Drawing.Size(118, 26);
+            this.textBox_data.Size = new System.Drawing.Size(118, 21);
             this.textBox_data.TabIndex = 0;
             // 
             // groupBox_hora
             // 
             this.groupBox_hora.Controls.Add(this.textBox_hora);
-            this.groupBox_hora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.groupBox_hora.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox_hora.Location = new System.Drawing.Point(451, 202);
             this.groupBox_hora.Name = "groupBox_hora";
             this.groupBox_hora.Size = new System.Drawing.Size(140, 57);
             this.groupBox_hora.TabIndex = 125;
             this.groupBox_hora.TabStop = false;
-            this.groupBox_hora.Text = "Hora";
+            this.groupBox_hora.Text = "Hora de Chegada";
             // 
             // textBox_hora
             // 
             this.textBox_hora.Enabled = false;
             this.textBox_hora.Location = new System.Drawing.Point(6, 25);
             this.textBox_hora.Name = "textBox_hora";
-            this.textBox_hora.Size = new System.Drawing.Size(118, 26);
+            this.textBox_hora.Size = new System.Drawing.Size(118, 21);
             this.textBox_hora.TabIndex = 0;
             // 
             // txtbox_cpf_entregador
@@ -434,7 +449,7 @@
             this.txtbox_cpf_entregador.Mask = "000,000,000-00";
             this.txtbox_cpf_entregador.Name = "txtbox_cpf_entregador";
             this.txtbox_cpf_entregador.Size = new System.Drawing.Size(134, 23);
-            this.txtbox_cpf_entregador.TabIndex = 126;
+            this.txtbox_cpf_entregador.TabIndex = 5;
             // 
             // Form5_Registro_Pac
             // 
@@ -519,5 +534,6 @@
         private System.Windows.Forms.DataGridView dataGridView_registro_pac;
         private System.Windows.Forms.MaskedTextBox txtBox_buscar_cpf;
         private System.Windows.Forms.MaskedTextBox txtbox_cpf_entregador;
+        private System.Windows.Forms.Button button1;
     }
 }
