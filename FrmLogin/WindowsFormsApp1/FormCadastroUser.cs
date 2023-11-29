@@ -21,11 +21,11 @@ namespace WindowsFormsApp1
     {
         Class_BD_CRUD Bd = new Class_BD_CRUD();
         CadastroUsuarios user = new CadastroUsuarios();
-        User usuario;
+        Class_loja loja;
         private string emailAntigo;
-        public FormCadastroUser(User usuarioAtual)
+        public FormCadastroUser(Class_loja lojaAtual)
         {
-            usuario = usuarioAtual;
+            loja = lojaAtual;
             
             InitializeComponent();
 
@@ -34,7 +34,7 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             string nome = textBox2.Text, senha = textBox3.Text, telefone = maskedTextBox2.Text, cpf = maskedTextBox1.Text, email = maskedTextBox3.Text, senha_confirmacao = textBox7.Text, endereco = comboBox2.Text;
-            int id_loja;
+            
             FormValidacaoLogin formValidacaoLogin = new FormValidacaoLogin(Bd);
 
             bool dadosValidos = user.checkInput(email, senha, cpf, senha_confirmacao, nome, telefone, endereco);
@@ -45,19 +45,20 @@ namespace WindowsFormsApp1
                 int indiceInicioId = endereco.IndexOf("ID: ") + "ID: ".Length;
                 int indiceFimId = endereco.IndexOf(",", indiceInicioId);
                 string idString = endereco.Substring(indiceInicioId, indiceFimId - indiceInicioId);
-                int.TryParse(idString, out id_loja);
-
+                
                 try
                 {
                     Bd.setBD_Open();
                     DialogResult resultado = formValidacaoLogin.ShowDialog();
-                    if (resultado == DialogResult.OK)
+                    if (formValidacaoLogin.getValidacaoCredenciais())
                     {
-                        Bd.setInputBd_funcionario(email, cpf, nome, telefone, senha, id_loja);
+                        formValidacaoLogin.Close();
+                        Bd.setInputBd_funcionario(email, cpf, nome, telefone, senha, idString);
                         arg = false;
                     }
                     else
                     {
+                        formValidacaoLogin.Close();
                         ArgumentException argumentException = new ArgumentException("Erro");
                         arg = true;
                         throw argumentException;
@@ -80,7 +81,7 @@ namespace WindowsFormsApp1
                 }
                 finally
                 {
-                    int id = int.Parse(usuario.GetUserData(6));
+                    string id = loja.getIdLoja();
                     dataGridView1.DataSource = Bd.setRead_funcionarios_id(id);
                     Bd.setBD_Close();
 
@@ -105,11 +106,6 @@ namespace WindowsFormsApp1
                     }
                 }
             }
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void FormCadastroUser_Load(object sender, EventArgs e)
@@ -141,7 +137,7 @@ namespace WindowsFormsApp1
             try
             {
                 Bd.setBD_Open();
-                int id = int.Parse(usuario.GetUserData(6));
+                string id = loja.getIdLoja();
                 dataGridView1.DataSource = Bd.setRead_funcionarios_id(id);
 
 
@@ -254,7 +250,6 @@ namespace WindowsFormsApp1
         private void button4_Click(object sender, EventArgs e)
         {
             string nome, email, telefone, cpf, endereco;
-            int id;
 
             email = maskedTextBox3.Text;
             cpf = maskedTextBox1.Text;
@@ -268,41 +263,47 @@ namespace WindowsFormsApp1
 
             string idString = endereco.Substring(indiceInicioId, indiceFimId - indiceInicioId);
 
-            int.TryParse(idString, out id);
+            FormValidacaoLogin formValidacaoLogin = new FormValidacaoLogin(Bd);
 
             try
             {
                 Bd.setBD_Open();
-                Bd.setEdit_funcionario(email, emailAntigo, cpf, nome, telefone, id);
-                
-                MessageBox.Show("Funcionário editado com sucesso!", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                formValidacaoLogin.ShowDialog();
+                if (formValidacaoLogin.getValidacaoCredenciais())
+                {
+                    formValidacaoLogin.Close();
+                    Bd.setEdit_funcionario(email, emailAntigo, cpf, nome, telefone, idString);
 
-                emailAntigo = "";
-                maskedTextBox1.Text = "";
-                maskedTextBox2.Text = "";
-                maskedTextBox3.Text = "";
-                textBox2.Text = "";
-                textBox3.Text = "";
-                textBox7.Text = "";
-                comboBox2.Text = "";
-                comboBox1.Text = "";
+                    MessageBox.Show("Funcionário editado com sucesso!", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                textBox3.Enabled = true;
-                textBox7.Enabled = true;
-                button1.Enabled = true;
-                button2.Enabled = false;
-                button4.Enabled = false;
+                    dataGridView1.DataSource = Bd.setRead_funcionarios_id(idString);
+
+                    emailAntigo = "";
+                    maskedTextBox1.Text = "";
+                    maskedTextBox2.Text = "";
+                    maskedTextBox3.Text = "";
+                    textBox2.Text = "";
+                    textBox3.Text = "";
+                    textBox7.Text = "";
+                    comboBox2.Text = "";
+                    comboBox1.Text = "";
+
+                    textBox3.Enabled = true;
+                    textBox7.Enabled = true;
+                    button1.Enabled = true;
+                    button2.Enabled = false;
+                    button4.Enabled = false;
+                }
             }
             catch
             {
+                formValidacaoLogin.Close();
                 MessageBox.Show("Infelizmente não foi possível efetuar a edição do funcionário!\nVerifique se sua conexão está boa e tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                dataGridView1.DataSource = Bd.setRead_funcionarios_id(id);
                 Bd.setBD_Close();
             }
- 
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -387,7 +388,7 @@ namespace WindowsFormsApp1
             try
             {
                 Bd.setBD_Open();
-                int id = int.Parse(usuario.GetUserData(6));
+                string id = loja.getIdLoja();
                 dataGridView1.DataSource = Bd.setRead_funcionarios_id(id);
 
             }
@@ -420,7 +421,11 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string email = maskedTextBox3.Text;
+            string email = maskedTextBox3.Text, novoEmail = "";
+
+            FormValidacaoLogin formValidacaoLogin = new FormValidacaoLogin(Bd);
+
+            bool arg = false;
 
             DialogResult result = MessageBox.Show($"Tem certeza que dejesa apagar o funcionário com email {email}?", "Confirme a operação", MessageBoxButtons.YesNo);
 
@@ -428,20 +433,29 @@ namespace WindowsFormsApp1
             {
                 try
                 {
-                    Bd.setBD_Open();
-                    Bd.setDelet_funcionario(email);
+                    Bd.setBD_Open(); 
+                    formValidacaoLogin.ShowDialog();
+                    novoEmail = formValidacaoLogin.getInputEmail();
+
+                    if (formValidacaoLogin.getValidacaoCredenciais())
+                    {
+                        formValidacaoLogin.Close();
+                        Bd.setDelet_funcionario(email, novoEmail);
+                        arg = false;
+                    }
+                    else
+                    {
+                        formValidacaoLogin.Close();
+                        ArgumentException argumentException = new ArgumentException();
+                        arg = true;
+                        throw argumentException;
+                    }
+
                     
                     MessageBox.Show("Funcionário apagado com sucesso!", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
-                    maskedTextBox1.Text = "";
-                    maskedTextBox2.Text = "";
-                    maskedTextBox3.Text = "";
-                    textBox2.Text = "";
-                    textBox3.Text = "";
-                    textBox7.Text = "";
-                    comboBox2.Text = "";
-                    comboBox1.Text = "";
-                    emailAntigo = "";
+
+                    string id = loja.getIdLoja();
+                    dataGridView1.DataSource = Bd.setRead_funcionarios_id(id);
 
                     textBox3.Enabled = true;
                     textBox7.Enabled = true;
@@ -451,13 +465,31 @@ namespace WindowsFormsApp1
                 }
                 catch (Exception er)
                 {
-                    MessageBox.Show(er.Message);
+                    if (arg)
+                    {
+                        MessageBox.Show("Infelizmente não foi possível validar as credencias para criar o novo usuário.", "Credenciais inválidas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Infelizmente não foi possível apagar o funcionário!\nVerifique se o funcionário está cadastrado ou se sua conexão está boa e tente novamente, além disso, não é possível o próprio usuário apagar seu cadastro.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 finally
                 {
-                    int id = int.Parse(usuario.GetUserData(6));
-                    dataGridView1.DataSource = Bd.setRead_funcionarios_id(id);
                     Bd.setBD_Close();
+                
+                    if (!arg)
+                    {
+                        maskedTextBox1.Text = "";
+                        maskedTextBox2.Text = "";
+                        maskedTextBox3.Text = "";
+                        textBox2.Text = "";
+                        textBox3.Text = "";
+                        textBox7.Text = "";
+                        comboBox2.Text = "";
+                        comboBox1.Text = "";
+                        emailAntigo = "";
+                    }
                 }
             }
 

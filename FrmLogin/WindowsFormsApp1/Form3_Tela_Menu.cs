@@ -17,11 +17,11 @@ namespace WindowsFormsApp1
     internal partial class Form3_Tela_Menu : Form
     {
         Thread t2;
-        private User usuario;
+        private Class_loja loja;
         private Class_BD_CRUD database = new Class_BD_CRUD();
-        public Form3_Tela_Menu(User usuarioAtual)
+        public Form3_Tela_Menu(Class_loja lojaAtual)
         {
-            usuario = usuarioAtual;
+            loja = lojaAtual;
             InitializeComponent();
         }
         
@@ -40,13 +40,13 @@ namespace WindowsFormsApp1
 
         private void adicionarToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            FormCadastroUser form = new FormCadastroUser(usuario);
+            FormCadastroUser form = new FormCadastroUser(loja);
             form.ShowDialog();            
         }
 
         private void registroToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            Form5_Registro_Pac form = new RegistrosPac.Form5_Registro_Pac(usuario);
+            Form5_Registro_Pac form = new RegistrosPac.Form5_Registro_Pac(loja);
             form.ShowDialog();
         }
                 
@@ -66,7 +66,7 @@ namespace WindowsFormsApp1
         {
             try
             {
-                int id = int.Parse(usuario.GetUserData(6));
+                string id = loja.getIdLoja();
 
                 database.setBD_Open();
                 label8.Text = database.setRead_Presentes(id);
@@ -79,12 +79,12 @@ namespace WindowsFormsApp1
                 MessageBox.Show(ex.ToString());
             }
 
-            if (usuario != null)
+            if (loja != null)
             {
-                //1nome2email3phone4senha5cpf6id_endereco
-                label11.Text = usuario.GetUserData(2);
-                label12.Text = usuario.GetUserData(1);
-                label10.Text = usuario.GetUserData(3);
+                string textMenu = $"ID: {loja.getIdLoja()}, CEP: {loja.getCepLoja()}, {loja.getRuaLoja()}, {loja.getBairroLoja()}, {loja.getNumeroLoja()}";
+                
+                label11.Text = textMenu;
+                label10.Text = loja.getTelefoneLoja();
                 //label4.Text
 
                 AtualizarHorario();
@@ -146,7 +146,7 @@ namespace WindowsFormsApp1
 
         private void btnCadastroPacMenu_Click(object sender, EventArgs e)
         {
-            Form5_Registro_Pac form = new RegistrosPac.Form5_Registro_Pac(usuario);
+            Form5_Registro_Pac form = new RegistrosPac.Form5_Registro_Pac(loja);
             form.ShowDialog();
         }
 

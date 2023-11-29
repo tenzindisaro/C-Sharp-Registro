@@ -18,14 +18,14 @@ namespace WindowsFormsApp1.RegistrosPac
 {
     internal partial class Form5_Registro_Pac : Form
     {
-        private User usuario;
-        Class_CadastroPac cadastroPacote = new Class_CadastroPac();
-        Class_BD_CRUD Bd = new Class_BD_CRUD();
+        private Class_loja loja;
+        private Class_CadastroPac cadastroPacote = new Class_CadastroPac();
+        private Class_BD_CRUD Bd = new Class_BD_CRUD();
         private DataTable dataTable = new DataTable();
-        DataRow newRow;
-        public Form5_Registro_Pac(User usuarioAtual)
+        private DataRow newRow;
+        public Form5_Registro_Pac(Class_loja lojaAtual)
         {
-            usuario = usuarioAtual;
+            loja = lojaAtual;
             InitializeComponent();
             InitializeDataGridView();
         }
@@ -338,7 +338,7 @@ namespace WindowsFormsApp1.RegistrosPac
        
         private void Form5_Registro_Pac_Load(object sender, EventArgs e)
         {
-            int id = int.Parse(usuario.GetUserData(6));
+            string id = loja.getIdLoja();
             Bd.setBD_Open();
             List<string> emails = Bd.setRead_email_funcionarios_id(id);
             Bd.setBD_Close();

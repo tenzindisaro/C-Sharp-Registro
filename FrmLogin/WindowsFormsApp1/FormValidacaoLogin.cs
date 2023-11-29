@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
             
             if (validacaoCredenciais)
             {
-                this.Close();
+                this.Hide();
             }
             else
             {
@@ -43,16 +43,14 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void FormValidacaoLogin_FormClosed(object sender, FormClosedEventArgs e)
+        public string getInputEmail ()
         {
-            if (validacaoCredenciais)
-            {
-                this.DialogResult = DialogResult.OK;
-            }
-            else
-            {
-                this.DialogResult = DialogResult.No;
-            }
+            return txtEmail.Text;
+        }
+
+        public bool getValidacaoCredenciais ()
+        {
+            return validacaoCredenciais;
         }
     }
 }
