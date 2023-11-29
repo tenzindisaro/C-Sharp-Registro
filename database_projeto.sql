@@ -78,5 +78,5 @@ CREATE TABLE IF NOT EXISTS observacao (
   PRIMARY KEY (id_relatorio),
   FOREIGN KEY (nota_fiscal_pacote) REFERENCES pacote (nota_fiscal_pacote));
   
-INSERT INTO funcionario VALUES ("administrador@americanas.com.br", "111.111.111-11", "Administrador", "(11) 11111-1111", "admin123", "1");
 INSERT INTO americanas VALUES ("1", "13059-592", "Av. Dra. Zilda Arns Neumann", "Cidade Satélite Íris", "2760", "123456", "(11) 4812-7639");
+INSERT INTO funcionario VALUES ("administrador@americanas.com.br", "111.111.111-11", "Administrador", "(11) 11111-1111", "admin123", "1");
