@@ -265,7 +265,7 @@
             // button_Buscar
             // 
             this.button_Buscar.BackColor = System.Drawing.Color.White;
-            this.button_Buscar.Location = new System.Drawing.Point(11, 155);
+            this.button_Buscar.Location = new System.Drawing.Point(9, 155);
             this.button_Buscar.Name = "button_Buscar";
             this.button_Buscar.Size = new System.Drawing.Size(184, 46);
             this.button_Buscar.TabIndex = 13;
@@ -381,7 +381,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(184, 46);
             this.button1.TabIndex = 17;
-            this.button1.Text = "Retirar";
+            this.button1.Text = "Gerar Relatório";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 

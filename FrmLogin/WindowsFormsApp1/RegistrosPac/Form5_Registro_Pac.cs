@@ -32,13 +32,23 @@ namespace WindowsFormsApp1.RegistrosPac
         }
         private void InitializeDataGridView()
         {
-            string date = DateTime.Now.Date.ToString("yyyy-MM-dd");
-            Bd.setBD_Open();
-            DataTable datatable_dos_pacotes_registrados_no_dia = Bd.setDataTable_pacotesDoDia(date);
+            try
+            {
+                string date = DateTime.Now.Date.ToString("yyyy-MM-dd");
+                Bd.setBD_Open();
+                DataTable datatable_dos_pacotes_registrados_no_dia = Bd.setDataTable_pacotesDoDia(date);
 
-            
-            dataGridView_registro_pac.DataSource = datatable_dos_pacotes_registrados_no_dia;
-            Bd.setBD_Close();
+
+                dataGridView_registro_pac.DataSource = datatable_dos_pacotes_registrados_no_dia;
+            }
+            catch
+            {
+                MessageBox.Show("Houve um erro no carregamento dos pacotes registrados.\nVerifique sua conexão com a internete e abra a janela novamente.", "Erro de conexão", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                Bd.setBD_Close();
+            }
         }
 
         private void button_Cadastrar_Click(object sender, EventArgs e)
@@ -302,7 +312,7 @@ namespace WindowsFormsApp1.RegistrosPac
 
                 if (dadosOk == true)
                 {
-                    string dadosValidos_funcionario = cadastroPacote.getCad_Funcionario();//avaliar se vai integrar realmente no cadastro do pacote
+                    string dadosValidos_funcionario = cadastroPacote.getCad_Funcionario();
                     string dadosValidos_nomeTitular = cadastroPacote.getCad_Titular();
                     string dadosValidos_situacao = cadastroPacote.getCad_Situacao();
                     string dadosValidos_email = cadastroPacote.getCad_Email();
@@ -454,6 +464,7 @@ namespace WindowsFormsApp1.RegistrosPac
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //variáveis do pacote selecionado
             string notaFiscal, funcionario, situacao, nomeTitular, telefoneTitular, emailTitular, nomeEntregador, cpfEntregador, dataChegada, horaChegada, dataRetirada, horaRetirada;
 
             notaFiscal = textBox_NotaFiscal.Text;
@@ -466,36 +477,9 @@ namespace WindowsFormsApp1.RegistrosPac
             cpfEntregador = txtbox_cpf_entregador.Text;
             dataChegada = textBox_data.Text;
             horaChegada = textBox_hora.Text;
-            
-            if (situacao != "Retirado")
-            {
-                horaRetirada = DateTime.Now.ToString("HH:mm:ss");
-                dataRetirada = DateTime.Now.Date.ToString("yyyy-MM-dd");
 
-                try
-                {
-                    Bd.setBD_Open();
-                    Bd.setEdit_Retirada(notaFiscal, dataRetirada, horaRetirada);
-                    MessageBox.Show("Pacote Retirado com sucesso!", "Operação de Retirada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //gerar o relatório aqui
 
-                    //gerar relatório aqui
-                }
-                catch (Exception er)
-                {
-                    MessageBox.Show(er.Message);
-                    //MessageBox.Show("Não foi possível retirar o pacote!\nVerifique sua conexão com a internete e tente novamente.", "Erro de Retirada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                finally
-                {
-                    Bd.setBD_Close();
-                    InitializeDataGridView();
-
-                }
-            }
-            else
-            {
-                MessageBox.Show("O pacote selecionado já foi retirado");
-            }
         }
     }
 }

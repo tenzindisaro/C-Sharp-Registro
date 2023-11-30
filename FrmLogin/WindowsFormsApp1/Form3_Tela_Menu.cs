@@ -59,7 +59,7 @@ namespace WindowsFormsApp1
                
         private void abrirLista(object obj)
         {
-            Application.Run(new lista.Geral.Form6_Lista_Geral());
+            Application.Run(new lista.Geral.Form6_Lista_Geral(loja));
         }
 
         private void Form3_Tela_Menu_Load(object sender, EventArgs e)
@@ -189,6 +189,7 @@ namespace WindowsFormsApp1
 
         private void btnRelatorios_Click(object sender, EventArgs e)
         {
+            this.Close();
             t2 = new Thread(abrirRelatorios);
             t2.SetApartmentState(ApartmentState.STA);
             t2.Start();
@@ -197,6 +198,18 @@ namespace WindowsFormsApp1
         private void abrirRelatorios(object obj)
         {
             Application.Run(new FormRelatorio());
+        }
+
+        private void btnRetiradaPac_Click(object sender, EventArgs e)
+        {
+            FormRetirarPac form = new FormRetirarPac();
+            form.ShowDialog();
+        }
+
+        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormRetirarPac form = new FormRetirarPac();
+            form.ShowDialog();
         }
     }
 }

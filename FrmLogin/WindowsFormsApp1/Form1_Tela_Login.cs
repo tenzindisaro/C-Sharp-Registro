@@ -17,15 +17,14 @@ namespace WindowsFormsApp1
     {
         Thread t1;
         Class_BD_CRUD Bd = new Class_BD_CRUD();
+        private string inputId, inputPassword;
+        private Class_loja loja = null;
+
         public FrmLogin()
         {
             InitializeComponent();
             enchiosacodeporloginesenha();
         }
-
-        private User funcionario;
-        private string inputId, inputPassword;
-        private Class_loja loja = null;
 
         private void btnContinuar_Click(object sender, EventArgs e)
         {

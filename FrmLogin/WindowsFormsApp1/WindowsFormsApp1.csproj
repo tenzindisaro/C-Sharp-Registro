@@ -267,6 +267,9 @@
     <EmbeddedResource Include="FormRelatorio.resx">
       <DependentUpon>FormRelatorio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormRetirarPac.resx">
+      <DependentUpon>FormRetirarPac.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormValidacaoLogin.resx">
       <DependentUpon>FormValidacaoLogin.cs</DependentUpon>
     </EmbeddedResource>
