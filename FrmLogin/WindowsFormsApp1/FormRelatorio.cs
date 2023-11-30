@@ -1,4 +1,7 @@
-﻿using System;
+﻿using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -188,7 +191,28 @@ namespace WindowsFormsApp1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            GerarRelatorioPDF();
+            string caminhoDoArquivo = @"C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\testeRelatorio.pdf";
+
+            try
+            {
+                using (PdfWriter writer = new PdfWriter(caminhoDoArquivo))
+                {
+                    using (PdfDocument pdf = new PdfDocument(writer))
+                    {
+                        Document document = new Document(pdf);
+
+                        document.Add(new Paragraph("Olá, este é um documento PDF gerado usando o iText7."));
+
+                        document.Close();
+                    }
+                }
+
+                Console.WriteLine("Documento PDF criado com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ocorreu um erro ao gerar o PDF: {ex.Message}");
+            }
         }
 
         private void GerarRelatorioPDF()
@@ -196,7 +220,7 @@ namespace WindowsFormsApp1
             if (dataGridRelatorio.SelectedRows.Count > 0)
             {
                 DataGridViewRow linhaSelecionada = dataGridRelatorio.SelectedRows[0];
-                string caminhoDoArquivo = @"C:\testes\testeRelatorio.pdf";
+                string caminhoDoArquivo = @"C:\BACKUP\testeRelatorio.pdf";
 
                 PdfGenerator geradorPDF = new PdfGenerator();
                 geradorPDF.GerarRelatorioDadoSelecionado(linhaSelecionada, caminhoDoArquivo);

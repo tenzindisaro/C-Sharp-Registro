@@ -395,3 +395,4 @@ C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsAp
 C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.Primitives.xml
 C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.xml
 C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\System.ValueTuple.xml
+C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\System.Text.Encoding.CodePages.dll
