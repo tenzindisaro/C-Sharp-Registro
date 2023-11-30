@@ -92,7 +92,7 @@ namespace WindowsFormsApp1
         {
             MySqlCommand objcmd_funcionario = new MySqlCommand("INSERT INTO funcionario (email_americanas_funcionario, cpf_funcionario, nome_funcionario, telefone_funcionario, senha_funcionario, id_americanas) VALUES (?, ?, ?, ?, ?, ?)", conn);
             // parametros para o sql pacote
-            objcmd_funcionario.Parameters.Add("@email_americanas_funcionario", MySqlDbType.VarChar, 255).Value = email_funcionario;
+            objcmd_funcionario.Parameters.Add("@email_americanas_funcionario", MySqlDbType.VarChar, 75).Value = email_funcionario;
             objcmd_funcionario.Parameters.Add("@cpf_funcionario", MySqlDbType.VarChar, 15).Value = cpf_funcionario;
             objcmd_funcionario.Parameters.Add("@nome_funcionario", MySqlDbType.VarChar, 45).Value = nome_funcionario;
             objcmd_funcionario.Parameters.Add("@telefone_funcionario", MySqlDbType.VarChar, 15).Value = telefone_funcionario;
@@ -118,10 +118,17 @@ namespace WindowsFormsApp1
         public void setInputBd_pacote(string nota_fiscal, string situacao_pacote, string email_americanas_funcionario, string cpf_titular, string cpf_entregador)
         {
             MySqlCommand objcmd_pacote = new MySqlCommand("INSERT INTO pacote (nota_fiscal_pacote, situacao_pacote, email_americanas_funcionario, cpf_titular, cpf_entregador, id_data, id_hora) VALUES (?, ?, ?, ?, ?, ?, ?);", conn);
-
-            objcmd_pacote.Parameters.Add("@nota_fiscal_pacote", MySqlDbType.VarChar, 45).Value = nota_fiscal;
+            try
+            {
+                MessageBox.Show("entrou teste.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                objcmd_pacote.Parameters.Add("@nota_fiscal_pacote", MySqlDbType.VarChar, 45).Value = nota_fiscal;
+            }
+            catch (MySqlException)
+            {
+                MessageBox.Show("Nota fiscal já existente no banco de dados.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             objcmd_pacote.Parameters.Add("@situacao_pacote", MySqlDbType.VarChar, 20).Value = situacao_pacote;
-            objcmd_pacote.Parameters.Add("@email_americanas_funcionario", MySqlDbType.VarChar, 255).Value = email_americanas_funcionario;
+            objcmd_pacote.Parameters.Add("@email_americanas_funcionario", MySqlDbType.VarChar, 75).Value = email_americanas_funcionario;
             objcmd_pacote.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = cpf_titular;
             objcmd_pacote.Parameters.Add("@cpf_entregador", MySqlDbType.VarChar, 15).Value = cpf_entregador;
             objcmd_pacote.Parameters.Add("@id_data", MySqlDbType.VarChar, 15).Value = id_data;

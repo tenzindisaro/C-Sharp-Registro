@@ -430,7 +430,7 @@
             // textBox_NotaFiscal
             // 
             this.textBox_NotaFiscal.Location = new System.Drawing.Point(17, 117);
-            this.textBox_NotaFiscal.Mask = "000000000";
+            this.textBox_NotaFiscal.Mask = "0000000000000000000000000000000000000000000000000000000000000000000";
             this.textBox_NotaFiscal.Name = "textBox_NotaFiscal";
             this.textBox_NotaFiscal.Size = new System.Drawing.Size(134, 20);
             this.textBox_NotaFiscal.TabIndex = 9;
