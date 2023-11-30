@@ -133,6 +133,32 @@ namespace WindowsFormsApp1
         }
 
         // A BAIXO ESTÃO OS MÉTODOS PARA BUSCAR OS DADOS DO BD**************************************************************************************
+        
+        public DataTable setReadBd_Pacote_notaFiscal (string inputNotaFiscal)
+        {
+            string query = "SELECT p.nota_fiscal_pacote, p.email_americanas_funcionario, t.nome, p.cpf_titular, e.nome_entregador, p.cpf_entregador, d.chegada_data, d.retirada_data, h.chegada_hora, h.retirada_horaFROM pacote p INNER JOIN titular t ON t.cpf_titular = p.cpf_titular INNER JOIN entregador e ON e.cpf_entregador = p.cpf_entregador INNER JOIN tbl_data d ON d.id_data = p.id_data INNER JOIN hora h ON h.id_hora = p.id_hora WHERE p.nota_fiscal_pacote = @notaFiscal;";
+
+            MySqlCommand obj = new MySqlCommand(query, conn);
+            obj.Parameters.Clear();
+            obj.Parameters.Add("@notaFiscal", MySqlDbType.VarChar, 45).Value = inputNotaFiscal;
+
+            MySqlDataReader reader = obj.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    string notaFiscal = reader["nota_fiscal_pacote"].ToString();
+                    string cep_loja = reader["cep_americanas"].ToString();
+                    string rua_loja = reader["rua_americanas"].ToString();
+                    string bairro_loja = reader["bairro_americanas"].ToString();
+                    string numero_loja = reader["numero_americanas"].ToString();
+                    string telefone_loja = reader["telefone_americanas"].ToString();
+                }
+            }
+            
+        }
+        
         public Class_loja setReadBd_credLoja (string id, string senha)
         {
             string query = "SELECT id_americanas, cep_americanas, rua_americanas, bairro_americanas, numero_americanas, telefone_americanas FROM americanas WHERE id_americanas = @id AND senha_americanas = @senha";

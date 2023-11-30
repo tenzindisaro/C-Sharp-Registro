@@ -48,5 +48,21 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+
+            }
+            else if (radioButton2.Checked)
+            {
+
+            }
+            else if (radioButton3.Checked)
+            {
+
+            }
+        }
     }
 }
