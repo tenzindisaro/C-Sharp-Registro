@@ -12,20 +12,21 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace WindowsFormsApp1.RegistrosPac
 {
     internal partial class Form5_Registro_Pac : Form
     {
-        private User usuario;
-        Class_CadastroPac cadastroPacote = new Class_CadastroPac();
-        Class_BD_CRUD Bd = new Class_BD_CRUD();
+        private Class_loja loja;
+        private Class_CadastroPac cadastroPacote = new Class_CadastroPac();
+        private Class_BD_CRUD Bd = new Class_BD_CRUD();
         private DataTable dataTable = new DataTable();
-        DataRow newRow;
-        public Form5_Registro_Pac(User usuarioAtual)
+        private DataRow newRow;
+        public Form5_Registro_Pac(Class_loja lojaAtual)
         {
-            usuario = usuarioAtual;
+            loja = lojaAtual;
             InitializeComponent();
             InitializeDataGridView();
         }
@@ -90,6 +91,8 @@ namespace WindowsFormsApp1.RegistrosPac
                     finally
                     {
                         Bd.setBD_Close();
+                        InitializeDataGridView();
+
                     }
                 }
                 else { return; }
@@ -140,6 +143,7 @@ namespace WindowsFormsApp1.RegistrosPac
                 finally
                 {
                     Bd.setBD_Close();
+                    InitializeDataGridView();
                 }
 
             }
@@ -324,6 +328,7 @@ namespace WindowsFormsApp1.RegistrosPac
                     finally
                     {
                         Bd.setBD_Close();
+                        InitializeDataGridView();
                     }
                 }
                 else { return; }
@@ -338,7 +343,7 @@ namespace WindowsFormsApp1.RegistrosPac
        
         private void Form5_Registro_Pac_Load(object sender, EventArgs e)
         {
-            int id = int.Parse(usuario.GetUserData(6));
+            string id = loja.getIdLoja();
             Bd.setBD_Open();
             List<string> emails = Bd.setRead_email_funcionarios_id(id);
             Bd.setBD_Close();
@@ -364,5 +369,133 @@ namespace WindowsFormsApp1.RegistrosPac
             txtBox_buscar_cpf.Visible = true;
         }
 
+        private void dataGridView_registro_pac_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dataGridView_registro_pac.Rows[e.RowIndex];
+                string notaFiscal, funcionario, situacao, nomeTitular, telefoneTitular, emailTitular, cpfTitular, nomeEntregador, cpfEntregador, dataChegada, horaChegada;
+
+                if (selectedRow != null)
+                {
+                    notaFiscal = selectedRow.Cells["Nota Fiscal"].Value.ToString();
+                    funcionario = selectedRow.Cells["Funcionário"].Value.ToString();
+                    situacao = selectedRow.Cells["Situação"].Value.ToString();
+                    nomeTitular = selectedRow.Cells["Titular"].Value.ToString();
+                    telefoneTitular = selectedRow.Cells["Telefone"].Value.ToString();
+                    emailTitular = selectedRow.Cells["Email"].Value.ToString();
+                    cpfTitular = selectedRow.Cells["CPF Titular"].Value.ToString();
+                    nomeEntregador = selectedRow.Cells["Entregador"].Value.ToString();
+                    cpfEntregador = selectedRow.Cells["CPF Entregador"].Value.ToString();
+                    dataChegada = selectedRow.Cells["Data de Chegada"].Value.ToString();
+                    horaChegada = selectedRow.Cells["Hora de Chegada"].Value.ToString();
+
+                    textBox_NotaFiscal.Text = notaFiscal;
+                    comboBox_funcionario.Text = funcionario;
+                    maskedTextBoxSituacao.Text = situacao;
+                    textBox_Titular.Text = nomeTitular;
+                    maskedTextBox_telefone.Text = telefoneTitular;
+                    maskedTextBox_email.Text = emailTitular;
+                    maskedTextBox_CPF.Text = cpfTitular;
+                    txtbox_nome_entregador.Text = nomeEntregador;
+                    txtbox_cpf_entregador.Text = cpfEntregador;
+                    textBox_data.Text = dataChegada;
+                    textBox_hora.Text = horaChegada;
+
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum valor na linha selecionada!", "Seleção inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+
+        private void dataGridView_registro_pac_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView_registro_pac.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView_registro_pac.SelectedRows[0];
+                string notaFiscal, funcionario, situacao, nomeTitular, telefoneTitular, emailTitular, cpfTitular, nomeEntregador, cpfEntregador, dataChegada, horaChegada;
+
+
+                if (selectedRow != null)
+                {
+                    notaFiscal = selectedRow.Cells["Nota Fiscal"].Value.ToString();
+                    funcionario = selectedRow.Cells["Funcionário"].Value.ToString();
+                    situacao = selectedRow.Cells["Situação"].Value.ToString();
+                    nomeTitular = selectedRow.Cells["Titular"].Value.ToString();
+                    telefoneTitular = selectedRow.Cells["Telefone"].Value.ToString();
+                    emailTitular = selectedRow.Cells["Email"].Value.ToString();
+                    cpfTitular = selectedRow.Cells["CPF Titular"].Value.ToString();
+                    nomeEntregador = selectedRow.Cells["Entregador"].Value.ToString();
+                    cpfEntregador = selectedRow.Cells["CPF Entregador"].Value.ToString();
+                    dataChegada = selectedRow.Cells["Data de Chegada"].Value.ToString();
+                    horaChegada = selectedRow.Cells["Hora de Chegada"].Value.ToString();
+
+                    textBox_NotaFiscal.Text = notaFiscal;
+                    comboBox_funcionario.Text = funcionario;
+                    maskedTextBoxSituacao.Text = situacao;
+                    textBox_Titular.Text = nomeTitular;
+                    maskedTextBox_telefone.Text = telefoneTitular;
+                    maskedTextBox_email.Text = emailTitular;
+                    maskedTextBox_CPF.Text = cpfTitular;
+                    txtbox_nome_entregador.Text = nomeEntregador;
+                    txtbox_cpf_entregador.Text = cpfEntregador;
+                    textBox_data.Text = dataChegada;
+                    textBox_hora.Text = horaChegada;
+
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum valor na linha selecionada!", "Seleção inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string notaFiscal, funcionario, situacao, nomeTitular, telefoneTitular, emailTitular, nomeEntregador, cpfEntregador, dataChegada, horaChegada, dataRetirada, horaRetirada;
+
+            notaFiscal = textBox_NotaFiscal.Text;
+            funcionario = comboBox_funcionario.Text;
+            situacao = maskedTextBoxSituacao.Text;
+            nomeTitular = textBox_Titular.Text;
+            telefoneTitular = maskedTextBox_telefone.Text;
+            emailTitular = maskedTextBox_email.Text;
+            nomeEntregador = txtbox_nome_entregador.Text;
+            cpfEntregador = txtbox_cpf_entregador.Text;
+            dataChegada = textBox_data.Text;
+            horaChegada = textBox_hora.Text;
+            
+            if (situacao != "Retirado")
+            {
+                horaRetirada = DateTime.Now.ToString("HH:mm:ss");
+                dataRetirada = DateTime.Now.Date.ToString("yyyy-MM-dd");
+
+                try
+                {
+                    Bd.setBD_Open();
+                    Bd.setEdit_Retirada(notaFiscal, dataRetirada, horaRetirada);
+                    MessageBox.Show("Pacote Retirado com sucesso!", "Operação de Retirada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    //gerar relatório aqui
+                }
+                catch (Exception er)
+                {
+                    MessageBox.Show(er.Message);
+                    //MessageBox.Show("Não foi possível retirar o pacote!\nVerifique sua conexão com a internete e tente novamente.", "Erro de Retirada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                finally
+                {
+                    Bd.setBD_Close();
+                    InitializeDataGridView();
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("O pacote selecionado já foi retirado");
+            }
+        }
     }
 }

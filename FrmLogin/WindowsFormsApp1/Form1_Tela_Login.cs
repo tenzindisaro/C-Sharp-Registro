@@ -24,45 +24,37 @@ namespace WindowsFormsApp1
         }
 
         private User funcionario;
-        private string inputEmail, inputPassword;
-        private bool tentativa_login;
+        private string inputId, inputPassword;
+        private Class_loja loja = null;
+
         private void btnContinuar_Click(object sender, EventArgs e)
         {
-            inputEmail = txtEmail.Text;
+            inputId = txtEmail.Text;
             inputPassword = txtSenha.Text;
 
-            if (inputEmail != "" && inputPassword != "")
+            if (inputId != "" && inputPassword != "")
             {
                 try
                 {
                     Bd.setBD_Open();
-                    tentativa_login = Bd.setReadBd_login(inputEmail , inputPassword);
+                    loja = Bd.setReadBd_credLoja(inputId , inputPassword);
                     Bd.setBD_Close();
                 }
                 catch (Exception ex)
                 {
-                    tentativa_login = false;
+                    loja = null;
                     MessageBox.Show("Erro ao conectar dados no banco de dados.\n\n" + ex, "Erro de conexão");
                 }
             }
             else
             {
-                tentativa_login = false;
+                loja = null;
             }
             
-            if (tentativa_login)   
+            if (loja != null)   
             {
                 label1.Visible = false;
-                try
-                {
-                    Bd.setBD_Open();
-                    funcionario = Bd.setReadBd_funcionario(inputEmail, inputPassword);
-                    Bd.setBD_Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString(), "Erro");
-                }
+                
 
 
                 this.Close();
@@ -112,13 +104,13 @@ namespace WindowsFormsApp1
         }
         private void enchiosacodeporloginesenha()
         {
-            txtEmail.Text = "angelo@americanas.com.br";
-            txtSenha.Text = "angelo";
+            txtEmail.Text = "1";
+            txtSenha.Text = "123456";
         }
 
         private void abrirMenu(object obj)
         {
-            Application.Run(new Form3_Tela_Menu(funcionario));
+            Application.Run(new Form3_Tela_Menu(loja));
         }
     }
 }

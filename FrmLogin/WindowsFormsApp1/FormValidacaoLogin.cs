@@ -13,6 +13,7 @@ namespace WindowsFormsApp1
     internal partial class FormValidacaoLogin : Form
     {
         Class_BD_CRUD Bd;
+        private bool validacaoCredenciais = false;
         public FormValidacaoLogin(Class_BD_CRUD database)
         {
             Bd = database;
@@ -21,7 +22,6 @@ namespace WindowsFormsApp1
 
         private void btnContinuar_Click(object sender, EventArgs e)
         {
-            bool validacaoCredenciais = false;
             string email = txtEmail.Text, senha = txtSenha.Text;
             
             try
@@ -35,8 +35,7 @@ namespace WindowsFormsApp1
             
             if (validacaoCredenciais)
             {
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                this.Hide();
             }
             else
             {
@@ -44,9 +43,14 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void FormValidacaoLogin_FormClosed(object sender, FormClosedEventArgs e)
+        public string getInputEmail ()
         {
-            this.DialogResult = DialogResult.No;
+            return txtEmail.Text;
+        }
+
+        public bool getValidacaoCredenciais ()
+        {
+            return validacaoCredenciais;
         }
     }
 }
