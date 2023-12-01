@@ -35,9 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView_registro_pac = new System.Windows.Forms.DataGridView();
-            this.textBox_Titular = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox_NotaFiscal = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -52,7 +50,6 @@
             this.maskedTextBox_email = new System.Windows.Forms.MaskedTextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.txtbox_nome_entregador = new System.Windows.Forms.TextBox();
             this.comboBox_funcionario = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -65,6 +62,9 @@
             this.groupBox_hora = new System.Windows.Forms.GroupBox();
             this.textBox_hora = new System.Windows.Forms.TextBox();
             this.txtbox_cpf_entregador = new System.Windows.Forms.MaskedTextBox();
+            this.textBox_NotaFiscal = new System.Windows.Forms.MaskedTextBox();
+            this.txtbox_nome_entregador = new System.Windows.Forms.MaskedTextBox();
+            this.textBox_Titular = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_registro_pac)).BeginInit();
             this.panel1.SuspendLayout();
@@ -153,14 +153,6 @@
             this.dataGridView_registro_pac.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_registro_pac_CellClick);
             this.dataGridView_registro_pac.SelectionChanged += new System.EventHandler(this.dataGridView_registro_pac_SelectionChanged);
             // 
-            // textBox_Titular
-            // 
-            this.textBox_Titular.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Titular.Location = new System.Drawing.Point(17, 175);
-            this.textBox_Titular.Name = "textBox_Titular";
-            this.textBox_Titular.Size = new System.Drawing.Size(134, 23);
-            this.textBox_Titular.TabIndex = 3;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -170,14 +162,6 @@
             this.label3.Size = new System.Drawing.Size(82, 17);
             this.label3.TabIndex = 7;
             this.label3.Text = "Nota Fiscal:";
-            // 
-            // textBox_NotaFiscal
-            // 
-            this.textBox_NotaFiscal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_NotaFiscal.Location = new System.Drawing.Point(17, 115);
-            this.textBox_NotaFiscal.Name = "textBox_NotaFiscal";
-            this.textBox_NotaFiscal.Size = new System.Drawing.Size(134, 23);
-            this.textBox_NotaFiscal.TabIndex = 0;
             // 
             // label5
             // 
@@ -319,14 +303,6 @@
             this.label13.TabIndex = 105;
             this.label13.Text = "CPF Entregador:";
             // 
-            // txtbox_nome_entregador
-            // 
-            this.txtbox_nome_entregador.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbox_nome_entregador.Location = new System.Drawing.Point(302, 115);
-            this.txtbox_nome_entregador.Name = "txtbox_nome_entregador";
-            this.txtbox_nome_entregador.Size = new System.Drawing.Size(134, 23);
-            this.txtbox_nome_entregador.TabIndex = 2;
-            // 
             // comboBox_funcionario
             // 
             this.comboBox_funcionario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -451,11 +427,38 @@
             this.txtbox_cpf_entregador.Size = new System.Drawing.Size(134, 23);
             this.txtbox_cpf_entregador.TabIndex = 5;
             // 
+            // textBox_NotaFiscal
+            // 
+            this.textBox_NotaFiscal.Location = new System.Drawing.Point(17, 117);
+            this.textBox_NotaFiscal.Mask = "0000000000000000000000000000000000000000000000000000000000000000000";
+            this.textBox_NotaFiscal.Name = "textBox_NotaFiscal";
+            this.textBox_NotaFiscal.Size = new System.Drawing.Size(134, 20);
+            this.textBox_NotaFiscal.TabIndex = 9;
+            // 
+            // txtbox_nome_entregador
+            // 
+            this.txtbox_nome_entregador.Location = new System.Drawing.Point(302, 115);
+            this.txtbox_nome_entregador.Mask = "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL";
+            this.txtbox_nome_entregador.Name = "txtbox_nome_entregador";
+            this.txtbox_nome_entregador.Size = new System.Drawing.Size(134, 20);
+            this.txtbox_nome_entregador.TabIndex = 15;
+            // 
+            // textBox_Titular
+            // 
+            this.textBox_Titular.Location = new System.Drawing.Point(19, 181);
+            this.textBox_Titular.Mask = "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL";
+            this.textBox_Titular.Name = "textBox_Titular";
+            this.textBox_Titular.Size = new System.Drawing.Size(134, 20);
+            this.textBox_Titular.TabIndex = 16;
+            // 
             // Form5_Registro_Pac
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBox_Titular);
+            this.Controls.Add(this.txtbox_nome_entregador);
+            this.Controls.Add(this.textBox_NotaFiscal);
             this.Controls.Add(this.txtbox_cpf_entregador);
             this.Controls.Add(this.groupBox_hora);
             this.Controls.Add(this.groupBox_Data);
@@ -463,7 +466,6 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.comboBox_funcionario);
-            this.Controls.Add(this.txtbox_nome_entregador);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.maskedTextBox_email);
@@ -474,9 +476,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox_NotaFiscal);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox_Titular);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
             this.Name = "Form5_Registro_Pac";
@@ -504,9 +504,7 @@
         private System.Windows.Forms.TextBox txtBox_buscar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox_Titular;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox_NotaFiscal;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -521,7 +519,6 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox_email;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtbox_nome_entregador;
         private System.Windows.Forms.ComboBox comboBox_funcionario;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
@@ -535,5 +532,8 @@
         private System.Windows.Forms.MaskedTextBox txtBox_buscar_cpf;
         private System.Windows.Forms.MaskedTextBox txtbox_cpf_entregador;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.MaskedTextBox textBox_NotaFiscal;
+        private System.Windows.Forms.MaskedTextBox textBox_Titular;
+        private System.Windows.Forms.MaskedTextBox txtbox_nome_entregador;
     }
 }

@@ -41,7 +41,7 @@ namespace WindowsFormsApp1
         
             bool EntradaTelefone = true; //long.TryParse(telefone_txt, out long valid_telefone);
 
-            bool EntredaCpfEntregador = true;
+            bool EntradaCpfEntregador = true;
 
             bool EntradaNomeEntregador = true;
 
