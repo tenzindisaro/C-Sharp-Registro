@@ -76,6 +76,18 @@ namespace WindowsFormsApp1
                 return false;
             }
 
+            if (EntredaCpfEntregador == false)
+            {
+                MessageBox.Show("Insira apenas números no campo CPF.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            
+            if (EntradaNomeEntregador == false)
+            {
+                MessageBox.Show("Insira apenas numeros no campo Telefone.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
 
             // email e situação precisa pensar em validação
             funcionario = funcionario_txt;

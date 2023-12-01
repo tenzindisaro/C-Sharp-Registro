@@ -30,6 +30,25 @@ namespace WindowsFormsApp1.RegistrosPac
             InitializeComponent();
             InitializeDataGridView();
         }
+
+        public Form5_Registro_Pac(Class_loja lojaAtual, string notaFiscal, string funcionario, string nome_entregador, string nome_titular, string telefone, string cpf_entregador, string email_titular, string cpf_titular, string situacao, string chegada_data, string chegada_hora)
+        {
+            loja = lojaAtual;
+            InitializeComponent();
+
+            textBox_NotaFiscal.Text = notaFiscal;
+            comboBox_funcionario.Text = funcionario;
+            txtbox_nome_entregador.Text = nome_entregador;
+            textBox_Titular.Text = nome_titular;
+            maskedTextBox_telefone.Text = telefone;
+            txtbox_cpf_entregador.Text = cpf_entregador;
+            maskedTextBox_email.Text = email_titular;
+            maskedTextBox_CPF.Text = cpf_entregador;
+            maskedTextBoxSituacao.Text = situacao;
+            textBox_data.Text = chegada_data;
+            textBox_hora.Text = chegada_data;
+        }
+
         private void InitializeDataGridView()
         {
             try
@@ -121,10 +140,10 @@ namespace WindowsFormsApp1.RegistrosPac
             string funcionario = comboBox_funcionario.Text;
             string notaFiscal = textBox_NotaFiscal.Text;
             string titular = textBox_Titular.Text;
-            string CPF = (maskedTextBox_CPF.Text).Replace("-", "").Replace(".", "");
+            string CPF = maskedTextBox_CPF.Text;
             string situacao = maskedTextBoxSituacao.Text;
             string email = maskedTextBox_email.Text;
-            string telefone = maskedTextBox_telefone.Text.Replace("-", "").Replace("(", "").Replace(")", "").Replace(" ", "");
+            string telefone = maskedTextBox_telefone.Text;
             string cpf_entregador = txtbox_cpf_entregador.Text;
             string nome_entregador = txtbox_nome_entregador.Text;
             int id_data = Bd.getRetorna_id_data();
@@ -139,12 +158,7 @@ namespace WindowsFormsApp1.RegistrosPac
                 {
                     Bd.setBD_Open();
                     Bd.setDelet_pacote(notaFiscal);
-                    Bd.setDelet_data(id_data);
-                    Bd.setDelet_hora(id_hora);
-                    Bd.setDelet_entregador(cpf_entregador);
-                    Bd.setDelet_titular(CPF);
                     
-
                 }
                 catch (Exception erro)
                 {

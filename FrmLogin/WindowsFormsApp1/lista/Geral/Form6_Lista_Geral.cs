@@ -15,6 +15,8 @@ namespace WindowsFormsApp1.lista.Geral
     {
         private Class_BD_CRUD Bd = new Class_BD_CRUD();
         private Class_loja loja = null;
+        private string notaFiscal, funcionario, situacao, nomeTitular, telefoneTitular, emailTitular, cpfTitular, nomeEntregador, cpfEntregador, dataChegada, horaChegada;
+
         public Form6_Lista_Geral(Class_loja lojaAtual)
         {
             loja = lojaAtual;
@@ -23,6 +25,7 @@ namespace WindowsFormsApp1.lista.Geral
 
         private void button4_Click(object sender, EventArgs e)
         {
+            //deletar
 
         }
 
@@ -36,10 +39,18 @@ namespace WindowsFormsApp1.lista.Geral
             this.Hide();
             Form5_Registro_Pac form = new Form5_Registro_Pac(loja);
             form.ShowDialog();
+            this.Show();
+            InitializeDataGrid();
+
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            Form5_Registro_Pac form = new Form5_Registro_Pac(loja, notaFiscal, funcionario, nomeEntregador, nomeTitular, telefoneTitular, cpfEntregador, emailTitular, cpfTitular, situacao,  dataChegada, horaChegada);
+            form.ShowDialog();
+            this.Show();
+            InitializeDataGrid();
 
         }
 
@@ -71,11 +82,25 @@ namespace WindowsFormsApp1.lista.Geral
         {
             DateTime dataBusca = dateTimePicker1.Value;
             string data = dataBusca.Date.ToString("yyyy-MM-dd");
+            string ordem = "";
+
+            if (radioButton1.Checked)
+            {
+                ordem = "ORDER BY t.nome ASC;";
+            }
+            else if (radioButton2.Checked)
+            {
+                ordem = "ORDER BY p.situacao_pacote;";
+            }
+            else if (radioButton3.Checked)
+            {
+                ordem = "ORDER BY h.chegada_hora ASC;";
+            }
 
             try
             {
                 Bd.setBD_Open();
-                dataGridView1.DataSource = Bd.setDataTable_pacotesDoDia(data);
+                dataGridView1.DataSource = Bd.setDataTable_pacotesPorOrdem(data, ordem);
             }
             catch (Exception ex)
             {
@@ -84,6 +109,61 @@ namespace WindowsFormsApp1.lista.Geral
             finally
             {
                 Bd.setBD_Close();
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
+
+                if (selectedRow != null)
+                {
+                    notaFiscal = selectedRow.Cells["Nota Fiscal"].Value.ToString();
+                    funcionario = selectedRow.Cells["Funcionário"].Value.ToString();
+                    situacao = selectedRow.Cells["Situação"].Value.ToString();
+                    nomeTitular = selectedRow.Cells["Titular"].Value.ToString();
+                    telefoneTitular = selectedRow.Cells["Telefone"].Value.ToString();
+                    emailTitular = selectedRow.Cells["Email"].Value.ToString();
+                    cpfTitular = selectedRow.Cells["CPF Titular"].Value.ToString();
+                    nomeEntregador = selectedRow.Cells["Entregador"].Value.ToString();
+                    cpfEntregador = selectedRow.Cells["CPF Entregador"].Value.ToString();
+                    dataChegada = selectedRow.Cells["Data de Chegada"].Value.ToString();
+                    horaChegada = selectedRow.Cells["Hora de Chegada"].Value.ToString();
+
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum valor na linha selecionada!", "Seleção inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+               
+                if (selectedRow != null)
+                {
+                    notaFiscal = selectedRow.Cells["Nota Fiscal"].Value.ToString();
+                    funcionario = selectedRow.Cells["Funcionário"].Value.ToString();
+                    situacao = selectedRow.Cells["Situação"].Value.ToString();
+                    nomeTitular = selectedRow.Cells["Titular"].Value.ToString();
+                    telefoneTitular = selectedRow.Cells["Telefone"].Value.ToString();
+                    emailTitular = selectedRow.Cells["Email"].Value.ToString();
+                    cpfTitular = selectedRow.Cells["CPF Titular"].Value.ToString();
+                    nomeEntregador = selectedRow.Cells["Entregador"].Value.ToString();
+                    cpfEntregador = selectedRow.Cells["CPF Entregador"].Value.ToString();
+                    dataChegada = selectedRow.Cells["Data de Chegada"].Value.ToString();
+                    horaChegada = selectedRow.Cells["Hora de Chegada"].Value.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum valor na linha selecionada!", "Seleção inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
     }
