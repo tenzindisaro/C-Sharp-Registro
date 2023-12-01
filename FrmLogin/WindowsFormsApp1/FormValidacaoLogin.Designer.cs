@@ -56,7 +56,7 @@
             this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(230, 19);
             this.txtSenha.TabIndex = 11;
-            this.txtSenha.Text = "admin123";
+            this.txtSenha.Text = "angelo";
             // 
             // label4
             // 
@@ -80,7 +80,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(230, 19);
             this.txtEmail.TabIndex = 10;
-            this.txtEmail.Text = "administrador@americanas.com.br";
+            this.txtEmail.Text = "angelo@americanas.com.br";
             // 
             // label3
             // 
