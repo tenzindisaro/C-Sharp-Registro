@@ -18,6 +18,11 @@ namespace WindowsFormsApp1.lista.Geral
         private Class_loja loja = null;
         private string notaFiscal, funcionario, situacao, nomeTitular, telefoneTitular, emailTitular, cpfTitular, nomeEntregador, cpfEntregador, dataChegada, horaChegada;
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            InitializeDataGrid();
+        }
+
         public Form6_Lista_Geral(Class_loja lojaAtual)
         {
             loja = lojaAtual;
@@ -50,7 +55,18 @@ namespace WindowsFormsApp1.lista.Geral
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            if(situacao != "Retirado")
+            {
+                this.Hide();
+                FormRetirarPac form = new FormRetirarPac(notaFiscal, funcionario, nomeEntregador, nomeTitular, telefoneTitular, cpfEntregador, emailTitular, cpfTitular, situacao, dataChegada, horaChegada);
+                form.ShowDialog();
+                this.Show();
+                InitializeDataGrid();
+            }
+            else
+            {
+                MessageBox.Show("O pacote selecionado já foi retirado");
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -60,7 +76,6 @@ namespace WindowsFormsApp1.lista.Geral
             form.ShowDialog();
             this.Show();
             InitializeDataGrid();
-
         }
 
         private void button3_Click(object sender, EventArgs e)

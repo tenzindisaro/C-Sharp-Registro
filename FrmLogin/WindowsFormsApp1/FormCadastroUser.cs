@@ -294,6 +294,10 @@ namespace WindowsFormsApp1
                     button2.Enabled = false;
                     button4.Enabled = false;
                 }
+                else
+                {
+                    MessageBox.Show("Credenciais inválidas! Operação de edição não realizada!", "Operação interrompida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch
             {

@@ -136,6 +136,22 @@ namespace WindowsFormsApp1
 
         // A BAIXO ESTÃO OS MÉTODOS PARA BUSCAR OS DADOS DO BD**************************************************************************************
         
+        public bool setReadBd_CountPacote (string notaFiscal_txt)
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM pacote WHERE nota_fiscal_pacote = @NumeroNotaFiscal", conn);
+            cmd.Parameters.AddWithValue("@NumeroNotaFiscal", notaFiscal_txt);
+
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+            if (count > 0)
+            {
+                MessageBox.Show("Nota Fiscal já existente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+
         public DataTable setReadBd_Pacote_notaFiscal (string inputNotaFiscal)
         {
             string query = "SELECT p.nota_fiscal_pacote, p.email_americanas_funcionario, t.nome, p.cpf_titular, e.nome_entregador, p.cpf_entregador, d.chegada_data, d.retirada_data, h.chegada_hora, h.retirada_horaFROM pacote p INNER JOIN titular t ON t.cpf_titular = p.cpf_titular INNER JOIN entregador e ON e.cpf_entregador = p.cpf_entregador INNER JOIN tbl_data d ON d.id_data = p.id_data INNER JOIN hora h ON h.id_hora = p.id_hora WHERE p.nota_fiscal_pacote = @notaFiscal;";

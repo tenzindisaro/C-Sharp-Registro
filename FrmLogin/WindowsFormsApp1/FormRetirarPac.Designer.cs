@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRetirarPac));
             this.txtbox_cpf_entregador = new System.Windows.Forms.MaskedTextBox();
             this.groupBox_hora = new System.Windows.Forms.GroupBox();
             this.textBox_hora = new System.Windows.Forms.TextBox();
@@ -479,8 +480,9 @@
             this.Controls.Add(this.textBox_Titular);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormRetirarPac";
-            this.Text = "FormRetirarPac";
+            this.Text = "Americanas Rastreio";
             this.Load += new System.EventHandler(this.FormRetirarPac_Load);
             this.groupBox_hora.ResumeLayout(false);
             this.groupBox_hora.PerformLayout();

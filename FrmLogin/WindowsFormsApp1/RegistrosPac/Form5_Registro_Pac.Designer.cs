@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form5_Registro_Pac));
             this.label1 = new System.Windows.Forms.Label();
             this.rdb_Titular_cpf = new System.Windows.Forms.RadioButton();
             this.rdb_NotaFiscal = new System.Windows.Forms.RadioButton();
@@ -479,8 +480,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form5_Registro_Pac";
-            this.Text = "Registro de Pacotes";
+            this.Text = "Americanas Rastreio";
             this.Load += new System.EventHandler(this.Form5_Registro_Pac_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_registro_pac)).EndInit();

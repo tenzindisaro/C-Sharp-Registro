@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class FormRetirarPac : Form
+    internal partial class FormRetirarPac : Form
     {
         private Class_BD_CRUD Bd = new Class_BD_CRUD();
         private Class_CadastroPac cadastroPacote = new Class_CadastroPac();
@@ -18,6 +18,24 @@ namespace WindowsFormsApp1
         public FormRetirarPac()
         {
             InitializeComponent();
+        }
+        
+        public FormRetirarPac(string notaFiscal, string funcionario, string nome_entregador, string nome_titular, string telefone, string cpf_entregador, string email_titular, string cpf_titular, string situacao, string chegada_data, string chegada_hora)
+        {
+            InitializeComponent();
+
+            textBox_NotaFiscal.Text = notaFiscal;
+            comboBox_funcionario.Text = funcionario;
+            txtbox_nome_entregador.Text = nome_entregador;
+            textBox_Titular.Text = nome_titular;
+            maskedTextBox_telefone.Text = telefone;
+            txtbox_cpf_entregador.Text = cpf_entregador;
+            maskedTextBox_email.Text = email_titular;
+            maskedTextBox_CPF.Text = cpf_entregador;
+            maskedTextBoxSituacao.Text = situacao;
+            textBox_data.Text = chegada_data;
+            textBox_hora.Text = chegada_data;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -40,11 +58,23 @@ namespace WindowsFormsApp1
                 horaRetirada = DateTime.Now.ToString("HH:mm:ss");
                 dataRetirada = DateTime.Now.Date.ToString("yyyy-MM-dd");
 
+                FormValidacaoLogin formValidacaoLogin = new FormValidacaoLogin(Bd);
+
                 try
                 {
                     Bd.setBD_Open();
-                    Bd.setEdit_Retirada(notaFiscal, dataRetirada, horaRetirada);
-                    MessageBox.Show("Pacote Retirado com sucesso!", "Operação de Retirada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    formValidacaoLogin.ShowDialog();
+                    if (formValidacaoLogin.getValidacaoCredenciais())
+                    {
+                        formValidacaoLogin.Close();
+
+                        Bd.setEdit_Retirada(notaFiscal, dataRetirada, horaRetirada);
+                        MessageBox.Show("Pacote Retirado com sucesso!", "Operação de Retirada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Credenciais inválidas! Operação de edição não realizada!", "Operação interrompida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 catch
                 {
@@ -115,8 +145,6 @@ namespace WindowsFormsApp1
                     string dadosValidos_CPF = cadastroPacote.getCad_Cpf();
                     string dadosValidos_cpf_entregador = cadastroPacote.getCpf_entregador();
                     string dadosValidos_nome_entregador = cadastroPacote.getNome_entregador();
-                    string hour = (DateTime.Now).ToString("HH:mm:ss");
-                    string date = DateTime.Now.Date.ToString("yyyy-MM-dd");
 
                     try
                     {

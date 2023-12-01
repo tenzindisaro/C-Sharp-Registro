@@ -86,13 +86,31 @@ namespace WindowsFormsApp1.RegistrosPac
             string cpf_entregador = txtbox_cpf_entregador.Text;
             string nome_entregador = txtbox_nome_entregador.Text;
 
+            //validação nota fiscal caso já exista
+            bool nf_existente = false;
+            try
+            {
+                Bd.setBD_Open();
+                nf_existente = Bd.setReadBd_CountPacote(notaFiscal);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao verificar nota fiscal: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                nf_existente = false;
+            }
+            finally
+            {
+                Bd.setBD_Close();
+            }
+
+
             if (funcionario != "" && notaFiscal != "" && titular != "" & CPF != "" && situacao != ""
                 && email != "" && telefone != "" && cpf_entregador != "" && nome_entregador != "")
             {
 
                 bool dadosOk = cadastroPacote.setValid_dados(funcionario, titular, situacao, email, notaFiscal, telefone, CPF, cpf_entregador, nome_entregador);
 
-                if (dadosOk == true)
+                if (dadosOk == true && nf_existente == true)
                 {
                     
                     string dadosValidos_funcionario = cadastroPacote.getCad_Funcionario();
