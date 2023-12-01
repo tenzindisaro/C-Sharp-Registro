@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.RegistrosPac;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace WindowsFormsApp1.lista.Geral
 {
@@ -26,7 +27,25 @@ namespace WindowsFormsApp1.lista.Geral
         private void button4_Click(object sender, EventArgs e)
         {
             //deletar
+            DialogResult result = MessageBox.Show($"Tem certeza que dejesa apagar o pacote com a nota fiscal {notaFiscal}?", "Confirme a operação", MessageBoxButtons.YesNo);
 
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    Bd.setBD_Open();
+                    Bd.setDelet_pacote(notaFiscal);
+                }
+                catch (Exception erro)
+                {
+                    MessageBox.Show("Erro ao deletar dados do pacote no banco de dados.\n\n" + erro, "Erro de conexão");
+                }
+                finally
+                {
+                    Bd.setBD_Close();
+                    InitializeDataGrid();
+                }
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

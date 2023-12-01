@@ -24,6 +24,8 @@ namespace WindowsFormsApp1.RegistrosPac
         private Class_BD_CRUD Bd = new Class_BD_CRUD();
         private DataTable dataTable = new DataTable();
         private DataRow newRow;
+        private string notaFiscalAntiga = "";
+
         public Form5_Registro_Pac(Class_loja lojaAtual)
         {
             loja = lojaAtual;
@@ -274,6 +276,7 @@ namespace WindowsFormsApp1.RegistrosPac
             textBox_hora.Text = Bd.getRetorna_chegada_hora();//Bd.getRetorna_id_hora().ToString();//Bd.getRetorna_chegada_hora();
 
             //Crie as colunas do DataTable
+            dataTable.Columns.Clear();
             dataTable.Columns.Add("Nota Fiscal");
             dataTable.Columns.Add("Funcionário");
             dataTable.Columns.Add("Situação");
@@ -335,15 +338,33 @@ namespace WindowsFormsApp1.RegistrosPac
                     string dadosValidos_CPF = cadastroPacote.getCad_Cpf();
                     string dadosValidos_cpf_entregador = cadastroPacote.getCpf_entregador();
                     string dadosValidos_nome_entregador = cadastroPacote.getNome_entregador();
-                    string hour = (DateTime.Now).ToString("HH:mm:ss");
-                    string date = DateTime.Now.Date.ToString("yyyy-MM-dd");
 
                     try
                     {
                         Bd.setBD_Open();
-                        Bd.setEdit_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
-                        Bd.setEdit_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
-                        Bd.setEdit_pacote(dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_funcionario, dadosValidos_CPF, dadosValidos_cpf_entregador);
+                        string pesquisaTitular = Bd.setRead_titular_ByCpf(dadosValidos_CPF);
+                        string pesquisaEntregador = Bd.setRead_entregador_ByCpf(dadosValidos_cpf_entregador);
+
+                        if (pesquisaTitular != null)
+                        {
+                            Bd.setEdit_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
+                        }
+                        else
+                        {
+                            Bd.setInputBd_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);                        
+                        }
+
+                        if (pesquisaEntregador != null)
+                        {
+                            Bd.setEdit_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
+                        }
+                        else
+                        {
+                            Bd.setInputBd_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
+                        }
+
+                        Bd.setEdit_pacote(notaFiscalAntiga, dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_funcionario, dadosValidos_CPF, dadosValidos_cpf_entregador);
+
                     }
                     catch (Exception erro)
                     {
@@ -355,7 +376,6 @@ namespace WindowsFormsApp1.RegistrosPac
                         InitializeDataGridView();
                     }
                 }
-                else { return; }
 
             }
             else
@@ -368,16 +388,32 @@ namespace WindowsFormsApp1.RegistrosPac
         private void Form5_Registro_Pac_Load(object sender, EventArgs e)
         {
             string id = loja.getIdLoja();
-            Bd.setBD_Open();
-            List<string> emails = Bd.setRead_email_funcionarios_id(id);
-            Bd.setBD_Close();
+            List<string> emails;
             
-            comboBox_funcionario.Items.Clear();
-            
-            foreach (string email in emails)
+            try
             {
-                comboBox_funcionario.Items.Add(email);
+                Bd.setBD_Open();
+                emails = Bd.setRead_email_funcionarios_id(id);
+
+                comboBox_funcionario.Items.Clear();
+
+                foreach (string email in emails)
+                {
+                    comboBox_funcionario.Items.Add(email);
+                }
             }
+            catch (Exception er)
+            {
+                //MessageBox.Show("Houve um erro durante o carregamento de fucionários", "Erro de conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(er.Message);
+            }
+            finally
+            {
+                Bd.setBD_Close();
+
+            }
+
+
         }
 
         private void rdb_NotaFiscal_CheckedChanged(object sender, EventArgs e)
@@ -403,6 +439,7 @@ namespace WindowsFormsApp1.RegistrosPac
                 if (selectedRow != null)
                 {
                     notaFiscal = selectedRow.Cells["Nota Fiscal"].Value.ToString();
+                    notaFiscalAntiga = notaFiscal;
                     funcionario = selectedRow.Cells["Funcionário"].Value.ToString();
                     situacao = selectedRow.Cells["Situação"].Value.ToString();
                     nomeTitular = selectedRow.Cells["Titular"].Value.ToString();
@@ -445,6 +482,7 @@ namespace WindowsFormsApp1.RegistrosPac
                 if (selectedRow != null)
                 {
                     notaFiscal = selectedRow.Cells["Nota Fiscal"].Value.ToString();
+                    notaFiscalAntiga = notaFiscal;
                     funcionario = selectedRow.Cells["Funcionário"].Value.ToString();
                     situacao = selectedRow.Cells["Situação"].Value.ToString();
                     nomeTitular = selectedRow.Cells["Titular"].Value.ToString();

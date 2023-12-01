@@ -76,7 +76,7 @@ namespace WindowsFormsApp1
                 return false;
             }
 
-            if (EntredaCpfEntregador == false)
+            if (EntradaCpfEntregador == false)
             {
                 MessageBox.Show("Insira apenas números no campo CPF.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;

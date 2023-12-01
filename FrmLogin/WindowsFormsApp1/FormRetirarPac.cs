@@ -14,6 +14,7 @@ namespace WindowsFormsApp1
     {
         private Class_BD_CRUD Bd = new Class_BD_CRUD();
         private Class_CadastroPac cadastroPacote = new Class_CadastroPac();
+        private string notaFiscalAntiga = "";
         public FormRetirarPac()
         {
             InitializeComponent();
@@ -120,9 +121,28 @@ namespace WindowsFormsApp1
                     try
                     {
                         Bd.setBD_Open();
-                        Bd.setEdit_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
-                        Bd.setEdit_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
-                        Bd.setEdit_pacote(dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_funcionario, dadosValidos_CPF, dadosValidos_cpf_entregador);
+                        string pesquisaTitular = Bd.setRead_titular_ByCpf(dadosValidos_CPF);
+                        string pesquisaEntregador = Bd.setRead_entregador_ByCpf(dadosValidos_cpf_entregador);
+
+                        if (pesquisaTitular != null)
+                        {
+                            Bd.setEdit_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
+                        }
+                        else
+                        {
+                            Bd.setInputBd_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
+                        }
+
+                        if (pesquisaEntregador != null)
+                        {
+                            Bd.setEdit_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
+                        }
+                        else
+                        {
+                            Bd.setInputBd_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
+                        }
+
+                        Bd.setEdit_pacote(notaFiscalAntiga, dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_funcionario, dadosValidos_CPF, dadosValidos_cpf_entregador);
                     }
                     catch (Exception erro)
                     {
@@ -218,6 +238,7 @@ namespace WindowsFormsApp1
                 if (selectedRow != null)
                 {
                     notaFiscal = selectedRow.Cells["Nota Fiscal"].Value.ToString();
+                    notaFiscalAntiga = notaFiscal;
                     funcionario = selectedRow.Cells["Funcionário"].Value.ToString();
                     situacao = selectedRow.Cells["Situação"].Value.ToString();
                     nomeTitular = selectedRow.Cells["Titular"].Value.ToString();
@@ -260,6 +281,7 @@ namespace WindowsFormsApp1
                 if (selectedRow != null)
                 {
                     notaFiscal = selectedRow.Cells["Nota Fiscal"].Value.ToString();
+                    notaFiscalAntiga = notaFiscal;
                     funcionario = selectedRow.Cells["Funcionário"].Value.ToString();
                     situacao = selectedRow.Cells["Situação"].Value.ToString();
                     nomeTitular = selectedRow.Cells["Titular"].Value.ToString();

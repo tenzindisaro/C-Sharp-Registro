@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Common;
 using Org.BouncyCastle.Asn1.X509;
 using Org.BouncyCastle.Utilities.Collections;
 using System;
@@ -310,7 +311,7 @@ namespace WindowsFormsApp1
                                        "INNER JOIN tbl_data ON pacote.id_data = tbl_data.id_data " +
                                        "INNER JOIN hora ON pacote.id_hora = hora.id_hora " +
                                        "INNER JOIN funcionario ON pacote.email_americanas_funcionario = funcionario.email_americanas_funcionario " +
-                                       "WHERE titular.cpf_titular = ?", conn);
+                                       "WHERE titular.cpf_titular LIKE ?", conn);
             cmd.Parameters.Clear();
             cmd.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = cpf;
 
@@ -340,24 +341,27 @@ namespace WindowsFormsApp1
                                        "INNER JOIN tbl_data ON pacote.id_data = tbl_data.id_data " +
                                        "INNER JOIN hora ON pacote.id_hora = hora.id_hora " +
                                        "INNER JOIN funcionario ON pacote.email_americanas_funcionario = funcionario.email_americanas_funcionario " +
-                                       "WHERE pacote.nota_fiscal_pacote = ?", conn);
+                                       "WHERE pacote.nota_fiscal_pacote LIKE @nota_fiscal_pacote;", conn);
             cmd.Parameters.Clear();
-            cmd.Parameters.Add("@nota_fiscal_pacote", MySqlDbType.VarChar, 45).Value = nota_fiscal;
+            cmd.Parameters.Add("@nota_fiscal_pacote", MySqlDbType.VarChar, 75).Value = nota_fiscal;
 
             cmd.CommandType = CommandType.Text;
 
             //recebe conteudo do banco
             MySqlDataReader dr = cmd.ExecuteReader();
-            dr.Read();
-
+            
+            if (dr.Read())
+            {
+                retorna_nf = dr.GetString(0);
+                retorna_situacao = dr.GetString(1);
+                retorna_cpf_titular = dr.GetString(2);
+                retorna_cpf_entregador = dr.GetString(3);
+                retorna_id_data = dr.GetInt32(4);
+                retorna_id_hora = dr.GetInt32(5);
+                retorna_email_funcionario = dr.GetString(6);
+            }
             //variaveis globais que recebem dados e as chaves estrangeiras da tabela pacote
-            retorna_nf = dr.GetString(0);
-            retorna_situacao = dr.GetString(1);
-            retorna_cpf_titular = dr.GetString(2);
-            retorna_cpf_entregador = dr.GetString(3);
-            retorna_id_data = dr.GetInt32(4);
-            retorna_id_hora = dr.GetInt32(5);
-            retorna_email_funcionario = dr.GetString(6);
+            
 
             dr.Close();
         }
@@ -365,7 +369,7 @@ namespace WindowsFormsApp1
 
         public void setRead_titular_cpf()
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT nome, email, telefone  FROM titular WHERE cpf_titular = ?", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT nome, email, telefone FROM titular WHERE cpf_titular = ?", conn);
             cmd.Parameters.Clear();
             cmd.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = retorna_cpf_titular;
 
@@ -373,14 +377,36 @@ namespace WindowsFormsApp1
 
             //recebe conteudo do banco
             MySqlDataReader dr = cmd.ExecuteReader();
-            dr.Read();
+
+            if (dr.Read())
+            {
+                nome_titular = dr.GetString(0);
+                email_titular = dr.GetString(1);
+                telefone_titular = dr.GetString(2);
+
+            }
             //nome_titular, email_titular, telefone_titular;
-
-            nome_titular = dr.GetString(0);
-            email_titular = dr.GetString(1);
-            telefone_titular = dr.GetString(2);
-
             dr.Close();
+        }
+        
+        public string setRead_titular_ByCpf(string cpf_titular)
+        {
+            string result = null;
+
+            MySqlCommand cmd = new MySqlCommand("SELECT cpf_titular FROM titular WHERE cpf_titular = ?", conn);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = cpf_titular;
+
+            cmd.CommandType = CommandType.Text;
+
+            MySqlDataReader select = cmd.ExecuteReader();
+
+            if (select.Read())
+            {
+                result = select.GetString(0);
+            }
+            select.Close();
+            return result;
         }
 
         public void setRead_entregador()
@@ -393,11 +419,32 @@ namespace WindowsFormsApp1
 
             //recebe conteudo do banco
             MySqlDataReader dr = cmd.ExecuteReader();
-            dr.Read();
-
-            retorna_nome_entregador = dr.GetString(0);
-
+            if (dr.Read())
+            {
+                retorna_nome_entregador = dr.GetString(0);
+            }
+    
             dr.Close();
+        }
+        
+        public string setRead_entregador_ByCpf(string cpf_entregador)
+        {
+            string result = null;
+
+            MySqlCommand cmd = new MySqlCommand("SELECT cpf_entregador FROM entregador WHERE cpf_entregador = ?", conn);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@cpf_entregador", MySqlDbType.VarChar, 15).Value = cpf_entregador;
+
+            cmd.CommandType = CommandType.Text;
+
+            MySqlDataReader select = cmd.ExecuteReader();
+
+            if (select.Read())
+            {
+                result = select.GetString(0);
+            }
+            select.Close();
+            return result;
         }
 
         public void setRead_data()
@@ -410,10 +457,10 @@ namespace WindowsFormsApp1
 
             //recebe conteudo do banco
             MySqlDataReader dr = cmd.ExecuteReader();
-            dr.Read();
-
-            retorna_chegada_data = dr.GetDateTime(0).ToString("dd/MM/yyyy");
-           // retorna_retirada_data = dr.GetDateTime(1).ToString("dd/MM/yyyy");
+            if (dr.Read())
+            {
+                retorna_chegada_data = dr.GetDateTime(0).ToString("dd/MM/yyyy");
+            }
 
             dr.Close();
         }
@@ -434,7 +481,7 @@ namespace WindowsFormsApp1
             {
                 retorna_chegada_hora = dr.GetTimeSpan(0).ToString(@"hh\:mm\:ss");
             }
-            else { MessageBox.Show("esse é o setRead_hora.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
+
             dr.Close();
         }
         
@@ -775,22 +822,23 @@ namespace WindowsFormsApp1
             obj.Parameters.Clear();
             obj.Parameters.Add("@dataRetirada", MySqlDbType.VarChar, 10).Value = dataRetirada;
             obj.Parameters.Add("@horaRetirada", MySqlDbType.VarChar, 10).Value = horaRetirada;
-            obj.Parameters.Add("@notaFiscal", MySqlDbType.VarChar, 45).Value = notaFiscal;
+            obj.Parameters.Add("@notaFiscal", MySqlDbType.VarChar, 75).Value = notaFiscal;
 
             obj.CommandType = CommandType.Text;
             obj.ExecuteNonQuery();
         }
 
-        public void setEdit_pacote(string nota_fiscal, string situacao, string funcionario, string cpf_titular, string cpf_entregador)
+        public void setEdit_pacote(string nota_fiscal_antiga, string nota_fiscal, string situacao, string funcionario, string cpf_titular, string cpf_entregador)
         {
-            MySqlCommand objEdit = new MySqlCommand("UPDATE pacote SET nota_fiscal_pacote = ?, situacao_pacote = ?, email_americanas_funcionario = ?, cpf_titular = ?, cpf_entregador = ? WHERE nota_fiscal_pacote = ?", conn);
+            MySqlCommand objEdit = new MySqlCommand("UPDATE pacote SET nota_fiscal_pacote = @nova_nota_fiscal_pacote, situacao_pacote = @situacao_pacote, email_americanas_funcionario = @email_americanas_funcionario, cpf_titular = @email_americanas_funcionario, cpf_entregador = @cpf_entregador WHERE nota_fiscal_pacote = @nota_fiscal_pacote", conn);
             objEdit.Parameters.Clear();
-            objEdit.Parameters.Add("@nova_nota_fiscal_pacote", MySqlDbType.VarChar, 45).Value = nota_fiscal;
+            objEdit.Parameters.Add("@nova_nota_fiscal_pacote", MySqlDbType.VarChar, 75).Value = nota_fiscal;
             objEdit.Parameters.Add("@situacao_pacote", MySqlDbType.VarChar, 20).Value = situacao;
             objEdit.Parameters.Add("@email_americanas_funcionario", MySqlDbType.VarChar, 30).Value = funcionario;
             objEdit.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = cpf_titular;
             objEdit.Parameters.Add("@cpf_entregador", MySqlDbType.VarChar, 15).Value = cpf_entregador;
-            objEdit.Parameters.Add("@nota_fiscal_pacote", MySqlDbType.VarChar, 45).Value = retorna_nf; // nota fiscal antiga
+            objEdit.Parameters.Add("@nota_fiscal_pacote", MySqlDbType.VarChar, 75).Value = nota_fiscal_antiga; // nota fiscal antiga
+            MessageBox.Show(nota_fiscal_antiga);
 
             objEdit.CommandType = CommandType.Text;
             objEdit.ExecuteNonQuery();
@@ -798,16 +846,16 @@ namespace WindowsFormsApp1
 
         public void setEdit_titular(string cpf, string nome, string email, string telefone)
         {
-            MessageBox.Show("entrou titular setEdit");
-            MySqlCommand objEdit = new MySqlCommand("UPDATE pacote p INNER JOIN titular t ON p.cpf_titular = t.cpf_titular SET p.cpf_titular = @novo_cpf_titular, t.cpf_titular = @novo_cpf_titular, t.nome = @nome, t.email = @email, t.telefone = @telefone WHERE p.cpf_titular = @cpf_titular", conn);
+            string query = "UPDATE titular t SET t.nome = @nome, t.email = @email, t.telefone = @telefone WHERE t.cpf_titular = @cpf_titular;";
+
+            MySqlCommand objEdit = new MySqlCommand(query, conn);
 
             //MySqlCommand objEdit = new MySqlCommand("UPDATE titular SET cpf_titular = ?, nome = ?, email = ?, telefone = ? WHERE cpf_titular = ?", conn);
             objEdit.Parameters.Clear();
-            objEdit.Parameters.Add("@novo_cpf_titular", MySqlDbType.VarChar, 15).Value = cpf;
+            objEdit.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = cpf;
             objEdit.Parameters.Add("@nome", MySqlDbType.VarChar, 75).Value = nome;
             objEdit.Parameters.Add("@email", MySqlDbType.VarChar, 30).Value = email;
             objEdit.Parameters.Add("@telefone", MySqlDbType.VarChar, 15).Value = telefone;
-            objEdit.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = retorna_cpf_titular;
 
             objEdit.CommandType = CommandType.Text;
             objEdit.ExecuteNonQuery();
@@ -815,13 +863,12 @@ namespace WindowsFormsApp1
 
         public void setEdit_entregador(string cpf, string nome)
         {
+            string query = "UPDATE entregador e SET e.nome_entregador = @nome_entregador WHERE e.cpf_entregador = @cpf_entregador;";
 
-
-            MySqlCommand objEdit = new MySqlCommand("UPDATE entregador SET cpf_entregador = ?, nome_entregador = ? WHERE cpf_entregador = ?", conn);
+            MySqlCommand objEdit = new MySqlCommand(query, conn);
             objEdit.Parameters.Clear();
-            objEdit.Parameters.Add("@novo_cpf_entregador", MySqlDbType.VarChar, 15).Value = cpf;
+            objEdit.Parameters.Add("@cpf_entregador", MySqlDbType.VarChar, 15).Value = cpf;
             objEdit.Parameters.Add("@nome_entregador", MySqlDbType.VarChar, 75).Value = nome;
-            objEdit.Parameters.Add("@cpf_entregador", MySqlDbType.VarChar, 15).Value = retorna_cpf_entregador;
 
 
             objEdit.CommandType = CommandType.Text;
