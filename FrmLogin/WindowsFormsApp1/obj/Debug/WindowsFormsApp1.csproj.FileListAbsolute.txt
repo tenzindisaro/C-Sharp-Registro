@@ -528,3 +528,8 @@ C:\Users\Tenzin\Desktop\projeto\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsForms
 C:\Users\Tenzin\Desktop\projeto\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
 C:\Users\Tenzin\Desktop\projeto\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\Tenzin\Desktop\projeto\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\Tenzin\Desktop\projeto\FrmLogin\WindowsFormsApp1\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\Tenzin\Desktop\projeto\FrmLogin\WindowsFormsApp1\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\Tenzin\Desktop\projeto\FrmLogin\WindowsFormsApp1\bin\Debug\MySql.Data.xml
+C:\Users\Tenzin\Desktop\projeto\FrmLogin\WindowsFormsApp1\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\Tenzin\Desktop\projeto\FrmLogin\WindowsFormsApp1\bin\Debug\System.Text.Encoding.CodePages.xml

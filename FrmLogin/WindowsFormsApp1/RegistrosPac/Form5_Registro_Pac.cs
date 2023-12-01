@@ -86,17 +86,39 @@ namespace WindowsFormsApp1.RegistrosPac
             string cpf_entregador = txtbox_cpf_entregador.Text;
             string nome_entregador = txtbox_nome_entregador.Text;
 
-            //validação nota fiscal caso já exista
+            //validações
             bool nf_existente = false;
+            bool EmailFuncionario_check = false;
+            bool validTelefone = false;
+            bool validCpf_titular = false;
+            bool validCpf_entregador = false;
+            bool emailTitular_check = false;
             try
             {
                 Bd.setBD_Open();
                 nf_existente = Bd.setReadBd_CountPacote(notaFiscal);
+                EmailFuncionario_check = Bd.setReadBd_CountEmailFuncionario(funcionario);
+                validTelefone = cadastroPacote.validarTelefone(telefone);
+                validCpf_titular = cadastroPacote.validCPF(CPF);
+                validCpf_entregador = cadastroPacote.validCPF(cpf_entregador);
+                if(validCpf_titular == false)
+                {
+                    MessageBox.Show("Insira CPF titular correto.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                if(validCpf_entregador == false)
+                {
+                    MessageBox.Show("Insira CPF entregador correto.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                emailTitular_check = cadastroPacote.IsValidEmailTitular(email);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao verificar nota fiscal: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro nas validações de dados: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 nf_existente = false;
+                EmailFuncionario_check = false;
+                validTelefone = false;
+                validCpf_titular = false;
+                validCpf_entregador = false;
             }
             finally
             {
@@ -107,10 +129,10 @@ namespace WindowsFormsApp1.RegistrosPac
             if (funcionario != "" && notaFiscal != "" && titular != "" & CPF != "" && situacao != ""
                 && email != "" && telefone != "" && cpf_entregador != "" && nome_entregador != "")
             {
-
+                
                 bool dadosOk = cadastroPacote.setValid_dados(funcionario, titular, situacao, email, notaFiscal, telefone, CPF, cpf_entregador, nome_entregador);
 
-                if (dadosOk == true && nf_existente == true)
+                if (dadosOk == true && nf_existente == true && EmailFuncionario_check == true && validTelefone == true && validCpf_titular == true && validCpf_entregador == true && emailTitular_check == true)
                 {
                     
                     string dadosValidos_funcionario = cadastroPacote.getCad_Funcionario();

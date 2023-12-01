@@ -160,7 +160,7 @@ namespace WindowsFormsApp1
 
             if (count == 0)
             {
-                MessageBox.Show("Email não existente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Funcionario email não existente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 

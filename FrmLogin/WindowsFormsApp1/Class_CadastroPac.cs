@@ -47,6 +47,8 @@ namespace WindowsFormsApp1
 
             bool EntradaNomeEntregador = true;
 
+
+
             if (EntradaFuncionario == false)
             {
                 MessageBox.Show("Insira apenas letras no campo Funcionário.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -121,6 +123,76 @@ namespace WindowsFormsApp1
                 return false;
             }
             this.nota_fiscal_buscar = nf;
+            return true;
+        }
+        public bool validarTelefone(string telefone)
+        {
+
+            if (!Regex.IsMatch(telefone, @"\(\d{2}\) \d{5}-\d{4}"))
+            {
+                MessageBox.Show("Insira o telefone completo.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+        public bool validCPF(string cpf)
+        {
+            cpf = new string(cpf.Where(char.IsDigit).ToArray());
+
+            if (cpf.Length != 11)
+            {
+                return false;
+            }
+
+            bool cpfTodosDigitosIguais = Enumerable.Range(1, 9).All(i => cpf[i] == cpf[0]);
+            if (cpfTodosDigitosIguais)
+            {
+                return false;
+            }
+
+            int[] multiplicadoresPrimeiroDigito = { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int[] multiplicadoresSegundoDigito = { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+
+            int soma = 0;
+            for (int i = 0; i < 9; i++)
+            {
+                soma += int.Parse(cpf[i].ToString()) * multiplicadoresPrimeiroDigito[i];
+            }
+
+            int resto = soma % 11;
+            int primeiroDigitoVerificador = resto < 2 ? 0 : 11 - resto;
+
+            if (primeiroDigitoVerificador != int.Parse(cpf[9].ToString()))
+            {
+                return false;
+            }
+
+            soma = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                soma += int.Parse(cpf[i].ToString()) * multiplicadoresSegundoDigito[i];
+            }
+
+            resto = soma % 11;
+            int segundoDigitoVerificador = resto < 2 ? 0 : 11 - resto;
+
+            if (segundoDigitoVerificador != int.Parse(cpf[10].ToString()))
+            {
+                return false;
+            }
+
+            return true;
+        }
+        public bool IsValidEmailTitular(string email)
+        {
+            string emailRegular = @"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
+            if(!Regex.IsMatch(email, emailRegular))
+            {
+                MessageBox.Show("Insira um formato de email válido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            
             return true;
         }
 
