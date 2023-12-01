@@ -198,7 +198,7 @@ namespace WindowsFormsApp1.RegistrosPac
             if (rdb_cpf_checked)
             {
                 CPF = txtBox_buscar_cpf.Text;
-                if (CPF != "")
+                if (CPF != "")      //Não está funcionando a validação de campo preenchido, é por causa da máscara!!!!!
                 {
                     dadosOk = cadastroPacote.setValid_cpf_buscar(CPF);
                     if (dadosOk)

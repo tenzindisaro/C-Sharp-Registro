@@ -311,7 +311,7 @@ namespace WindowsFormsApp1
                                        "INNER JOIN tbl_data ON pacote.id_data = tbl_data.id_data " +
                                        "INNER JOIN hora ON pacote.id_hora = hora.id_hora " +
                                        "INNER JOIN funcionario ON pacote.email_americanas_funcionario = funcionario.email_americanas_funcionario " +
-                                       "WHERE titular.cpf_titular LIKE ?", conn);
+                                       "WHERE titular.cpf_titular = ?", conn);
             cmd.Parameters.Clear();
             cmd.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = cpf;
 
@@ -319,16 +319,20 @@ namespace WindowsFormsApp1
 
             //recebe conteudo do banco
             MySqlDataReader dr = cmd.ExecuteReader();
-            dr.Read();
 
-            //variaveis globais que recebem dados e as chaves estrangeiras da tabela pacote
-            retorna_nf = dr.GetString(0);
-            retorna_situacao = dr.GetString(1);
-            retorna_cpf_titular = dr.GetString(2);
-            retorna_cpf_entregador = dr.GetString(3);
-            retorna_id_data = dr.GetInt32(4);
-            retorna_id_hora = dr.GetInt32(5);
-            retorna_email_funcionario = dr.GetString(6);
+            if (dr.Read())
+            {
+
+                //variaveis globais que recebem dados e as chaves estrangeiras da tabela pacote
+                retorna_nf = dr.GetString(0);
+                retorna_situacao = dr.GetString(1);
+                retorna_cpf_titular = dr.GetString(2);
+                retorna_cpf_entregador = dr.GetString(3);
+                retorna_id_data = dr.GetInt32(4);
+                retorna_id_hora = dr.GetInt32(5);
+                retorna_email_funcionario = dr.GetString(6);
+
+            }
 
             dr.Close();
         }
@@ -341,7 +345,7 @@ namespace WindowsFormsApp1
                                        "INNER JOIN tbl_data ON pacote.id_data = tbl_data.id_data " +
                                        "INNER JOIN hora ON pacote.id_hora = hora.id_hora " +
                                        "INNER JOIN funcionario ON pacote.email_americanas_funcionario = funcionario.email_americanas_funcionario " +
-                                       "WHERE pacote.nota_fiscal_pacote LIKE @nota_fiscal_pacote;", conn);
+                                       "WHERE pacote.nota_fiscal_pacote = @nota_fiscal_pacote;", conn);
             cmd.Parameters.Clear();
             cmd.Parameters.Add("@nota_fiscal_pacote", MySqlDbType.VarChar, 75).Value = nota_fiscal;
 
