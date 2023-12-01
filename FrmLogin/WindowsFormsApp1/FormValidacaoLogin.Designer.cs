@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormValidacaoLogin));
             this.panel5 = new System.Windows.Forms.Panel();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -135,9 +136,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnContinuar);
             this.Controls.Add(this.panel5);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormValidacaoLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormValidacaoLogin";
+            this.Text = "Americanas Rastreio";
             this.ResumeLayout(false);
             this.PerformLayout();
 
