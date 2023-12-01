@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace WindowsFormsApp1
 {
     internal class Class_CadastroPac
     {
+        private MySqlConnection conn = new MySqlConnection("server=americanas.mysql.database.azure.com;port=3306;User Id=joao;database=teste_sql;password=Adriana1");
         string funcionario, titular, situacao, email, notaFiscal, telefone, CPF, cpf_entregador, nome_entregador, cpf_titular_buscar, nota_fiscal_buscar;
 
         public Class_CadastroPac()
@@ -33,7 +35,7 @@ namespace WindowsFormsApp1
         {
             bool EntradaFuncionario = true; //Regex.IsMatch(funcionario_txt, "^[a-zA-ZÀ-ú ]+$");
             
-            bool EntradaNotaFiscal = true; //int.TryParse(notaFiscal_txt, out int valid_notaFiscal);
+             //int.TryParse(notaFiscal_txt, out int valid_notaFiscal);
 
             bool EntradaTitular = true; //Regex.IsMatch(titular_txt, "^[a-zA-ZÀ-ú ]+$");
 
@@ -45,16 +47,37 @@ namespace WindowsFormsApp1
 
             bool EntradaNomeEntregador = true;
 
+            //validação nota fiscal caso já exista
+            
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM pacote WHERE nota_fiscal_pacote = @NumeroNotaFiscal", conn);
+                cmd.Parameters.AddWithValue("@NumeroNotaFiscal", notaFiscal_txt);
 
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                if (count > 0)
+                {
+                    MessageBox.Show("Nota Fiscal já existente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show("Erro ao verificar nota fiscal: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+
+          
             if (EntradaFuncionario == false)
             {
                 MessageBox.Show("Insira apenas letras no campo Funcionário.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            if (EntradaNotaFiscal == false)
-            {
-                MessageBox.Show("Insira apenas números no campo Nota Fiscal.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
