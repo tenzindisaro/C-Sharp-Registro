@@ -107,9 +107,9 @@
             this.txtEmail.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtEmail.Font = new System.Drawing.Font("Arial", 12.12F);
-            this.txtEmail.Location = new System.Drawing.Point(154, 165);
+            this.txtEmail.Location = new System.Drawing.Point(187, 165);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(230, 19);
+            this.txtEmail.Size = new System.Drawing.Size(197, 19);
             this.txtEmail.TabIndex = 0;
             // 
             // label3
@@ -122,7 +122,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(315, 37);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Email";
+            this.label3.Text = "ID da Loja";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label3.Click += new System.EventHandler(this.label3_Click_1);
             // 

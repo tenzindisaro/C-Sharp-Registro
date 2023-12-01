@@ -12,32 +12,64 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace WindowsFormsApp1.RegistrosPac
 {
     internal partial class Form5_Registro_Pac : Form
     {
-        private User usuario;
-        Class_CadastroPac cadastroPacote = new Class_CadastroPac();
-        Class_BD_CRUD Bd = new Class_BD_CRUD();
+        private Class_loja loja;
+        private Class_CadastroPac cadastroPacote = new Class_CadastroPac();
+        private Class_BD_CRUD Bd = new Class_BD_CRUD();
         private DataTable dataTable = new DataTable();
-        DataRow newRow;
-        public Form5_Registro_Pac(User usuarioAtual)
+        private DataRow newRow;
+        private string notaFiscalAntiga = "";
+
+        public Form5_Registro_Pac(Class_loja lojaAtual)
         {
-            usuario = usuarioAtual;
+            loja = lojaAtual;
             InitializeComponent();
             InitializeDataGridView();
         }
+
+        public Form5_Registro_Pac(Class_loja lojaAtual, string notaFiscal, string funcionario, string nome_entregador, string nome_titular, string telefone, string cpf_entregador, string email_titular, string cpf_titular, string situacao, string chegada_data, string chegada_hora)
+        {
+            loja = lojaAtual;
+            InitializeComponent();
+
+            textBox_NotaFiscal.Text = notaFiscal;
+            comboBox_funcionario.Text = funcionario;
+            txtbox_nome_entregador.Text = nome_entregador;
+            textBox_Titular.Text = nome_titular;
+            maskedTextBox_telefone.Text = telefone;
+            txtbox_cpf_entregador.Text = cpf_entregador;
+            maskedTextBox_email.Text = email_titular;
+            maskedTextBox_CPF.Text = cpf_entregador;
+            maskedTextBoxSituacao.Text = situacao;
+            textBox_data.Text = chegada_data;
+            textBox_hora.Text = chegada_data;
+        }
+
         private void InitializeDataGridView()
         {
-            string date = DateTime.Now.Date.ToString("yyyy-MM-dd");
-            Bd.setBD_Open();
-            DataTable datatable_dos_pacotes_registrados_no_dia = Bd.setDataTable_pacotesDoDia(date);
+            try
+            {
+                string date = DateTime.Now.Date.ToString("yyyy-MM-dd");
+                Bd.setBD_Open();
+                DataTable datatable_dos_pacotes_registrados_no_dia = Bd.setDataTable_pacotesDoDia(date);
 
-            
-            dataGridView_registro_pac.DataSource = datatable_dos_pacotes_registrados_no_dia;
-            Bd.setBD_Close();
+
+                dataGridView_registro_pac.DataSource = datatable_dos_pacotes_registrados_no_dia;
+            }
+            catch
+            {
+                MessageBox.Show("Houve um erro no carregamento dos pacotes registrados.\nVerifique sua conexão com a internete e abra a janela novamente.", "Erro de conexão", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                Bd.setBD_Close();
+            }
         }
 
         private void button_Cadastrar_Click(object sender, EventArgs e)
@@ -54,13 +86,31 @@ namespace WindowsFormsApp1.RegistrosPac
             string cpf_entregador = txtbox_cpf_entregador.Text;
             string nome_entregador = txtbox_nome_entregador.Text;
 
+            //validação nota fiscal caso já exista
+            bool nf_existente = false;
+            try
+            {
+                Bd.setBD_Open();
+                nf_existente = Bd.setReadBd_CountPacote(notaFiscal);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao verificar nota fiscal: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                nf_existente = false;
+            }
+            finally
+            {
+                Bd.setBD_Close();
+            }
+
+
             if (funcionario != "" && notaFiscal != "" && titular != "" & CPF != "" && situacao != ""
                 && email != "" && telefone != "" && cpf_entregador != "" && nome_entregador != "")
             {
 
                 bool dadosOk = cadastroPacote.setValid_dados(funcionario, titular, situacao, email, notaFiscal, telefone, CPF, cpf_entregador, nome_entregador);
 
-                if (dadosOk == true)
+                if (dadosOk == true && nf_existente == true)
                 {
                     
                     string dadosValidos_funcionario = cadastroPacote.getCad_Funcionario();
@@ -90,6 +140,8 @@ namespace WindowsFormsApp1.RegistrosPac
                     finally
                     {
                         Bd.setBD_Close();
+                        InitializeDataGridView();
+
                     }
                 }
                 else { return; }
@@ -108,10 +160,10 @@ namespace WindowsFormsApp1.RegistrosPac
             string funcionario = comboBox_funcionario.Text;
             string notaFiscal = textBox_NotaFiscal.Text;
             string titular = textBox_Titular.Text;
-            string CPF = (maskedTextBox_CPF.Text).Replace("-", "").Replace(".", "");
+            string CPF = maskedTextBox_CPF.Text;
             string situacao = maskedTextBoxSituacao.Text;
             string email = maskedTextBox_email.Text;
-            string telefone = maskedTextBox_telefone.Text.Replace("-", "").Replace("(", "").Replace(")", "").Replace(" ", "");
+            string telefone = maskedTextBox_telefone.Text;
             string cpf_entregador = txtbox_cpf_entregador.Text;
             string nome_entregador = txtbox_nome_entregador.Text;
             int id_data = Bd.getRetorna_id_data();
@@ -126,12 +178,7 @@ namespace WindowsFormsApp1.RegistrosPac
                 {
                     Bd.setBD_Open();
                     Bd.setDelet_pacote(notaFiscal);
-                    Bd.setDelet_data(id_data);
-                    Bd.setDelet_hora(id_hora);
-                    Bd.setDelet_entregador(cpf_entregador);
-                    Bd.setDelet_titular(CPF);
                     
-
                 }
                 catch (Exception erro)
                 {
@@ -140,6 +187,7 @@ namespace WindowsFormsApp1.RegistrosPac
                 finally
                 {
                     Bd.setBD_Close();
+                    InitializeDataGridView();
                 }
 
             }
@@ -168,7 +216,7 @@ namespace WindowsFormsApp1.RegistrosPac
             if (rdb_cpf_checked)
             {
                 CPF = txtBox_buscar_cpf.Text;
-                if (CPF != "")
+                if (CPF != "")      //Não está funcionando a validação de campo preenchido, é por causa da máscara!!!!!
                 {
                     dadosOk = cadastroPacote.setValid_cpf_buscar(CPF);
                     if (dadosOk)
@@ -246,6 +294,7 @@ namespace WindowsFormsApp1.RegistrosPac
             textBox_hora.Text = Bd.getRetorna_chegada_hora();//Bd.getRetorna_id_hora().ToString();//Bd.getRetorna_chegada_hora();
 
             //Crie as colunas do DataTable
+            dataTable.Columns.Clear();
             dataTable.Columns.Add("Nota Fiscal");
             dataTable.Columns.Add("Funcionário");
             dataTable.Columns.Add("Situação");
@@ -298,7 +347,7 @@ namespace WindowsFormsApp1.RegistrosPac
 
                 if (dadosOk == true)
                 {
-                    string dadosValidos_funcionario = cadastroPacote.getCad_Funcionario();//avaliar se vai integrar realmente no cadastro do pacote
+                    string dadosValidos_funcionario = cadastroPacote.getCad_Funcionario();
                     string dadosValidos_nomeTitular = cadastroPacote.getCad_Titular();
                     string dadosValidos_situacao = cadastroPacote.getCad_Situacao();
                     string dadosValidos_email = cadastroPacote.getCad_Email();
@@ -307,15 +356,33 @@ namespace WindowsFormsApp1.RegistrosPac
                     string dadosValidos_CPF = cadastroPacote.getCad_Cpf();
                     string dadosValidos_cpf_entregador = cadastroPacote.getCpf_entregador();
                     string dadosValidos_nome_entregador = cadastroPacote.getNome_entregador();
-                    string hour = (DateTime.Now).ToString("HH:mm:ss");
-                    string date = DateTime.Now.Date.ToString("yyyy-MM-dd");
 
                     try
                     {
                         Bd.setBD_Open();
-                        Bd.setEdit_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
-                        Bd.setEdit_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
-                        Bd.setEdit_pacote(dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_funcionario, dadosValidos_CPF, dadosValidos_cpf_entregador);
+                        string pesquisaTitular = Bd.setRead_titular_ByCpf(dadosValidos_CPF);
+                        string pesquisaEntregador = Bd.setRead_entregador_ByCpf(dadosValidos_cpf_entregador);
+
+                        if (pesquisaTitular != null)
+                        {
+                            Bd.setEdit_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
+                        }
+                        else
+                        {
+                            Bd.setInputBd_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);                        
+                        }
+
+                        if (pesquisaEntregador != null)
+                        {
+                            Bd.setEdit_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
+                        }
+                        else
+                        {
+                            Bd.setInputBd_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
+                        }
+
+                        Bd.setEdit_pacote(notaFiscalAntiga, dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_funcionario, dadosValidos_CPF, dadosValidos_cpf_entregador);
+
                     }
                     catch (Exception erro)
                     {
@@ -324,9 +391,9 @@ namespace WindowsFormsApp1.RegistrosPac
                     finally
                     {
                         Bd.setBD_Close();
+                        InitializeDataGridView();
                     }
                 }
-                else { return; }
 
             }
             else
@@ -338,17 +405,33 @@ namespace WindowsFormsApp1.RegistrosPac
        
         private void Form5_Registro_Pac_Load(object sender, EventArgs e)
         {
-            int id = int.Parse(usuario.GetUserData(6));
-            Bd.setBD_Open();
-            List<string> emails = Bd.setRead_email_funcionarios_id(id);
-            Bd.setBD_Close();
+            string id = loja.getIdLoja();
+            List<string> emails;
             
-            comboBox_funcionario.Items.Clear();
-            
-            foreach (string email in emails)
+            try
             {
-                comboBox_funcionario.Items.Add(email);
+                Bd.setBD_Open();
+                emails = Bd.setRead_email_funcionarios_id(id);
+
+                comboBox_funcionario.Items.Clear();
+
+                foreach (string email in emails)
+                {
+                    comboBox_funcionario.Items.Add(email);
+                }
             }
+            catch (Exception er)
+            {
+                //MessageBox.Show("Houve um erro durante o carregamento de fucionários", "Erro de conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(er.Message);
+            }
+            finally
+            {
+                Bd.setBD_Close();
+
+            }
+
+
         }
 
         private void rdb_NotaFiscal_CheckedChanged(object sender, EventArgs e)
@@ -364,5 +447,109 @@ namespace WindowsFormsApp1.RegistrosPac
             txtBox_buscar_cpf.Visible = true;
         }
 
+        private void dataGridView_registro_pac_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dataGridView_registro_pac.Rows[e.RowIndex];
+                string notaFiscal, funcionario, situacao, nomeTitular, telefoneTitular, emailTitular, cpfTitular, nomeEntregador, cpfEntregador, dataChegada, horaChegada;
+
+                if (selectedRow != null)
+                {
+                    notaFiscal = selectedRow.Cells["Nota Fiscal"].Value.ToString();
+                    notaFiscalAntiga = notaFiscal;
+                    funcionario = selectedRow.Cells["Funcionário"].Value.ToString();
+                    situacao = selectedRow.Cells["Situação"].Value.ToString();
+                    nomeTitular = selectedRow.Cells["Titular"].Value.ToString();
+                    telefoneTitular = selectedRow.Cells["Telefone"].Value.ToString();
+                    emailTitular = selectedRow.Cells["Email"].Value.ToString();
+                    cpfTitular = selectedRow.Cells["CPF Titular"].Value.ToString();
+                    nomeEntregador = selectedRow.Cells["Entregador"].Value.ToString();
+                    cpfEntregador = selectedRow.Cells["CPF Entregador"].Value.ToString();
+                    dataChegada = selectedRow.Cells["Data de Chegada"].Value.ToString();
+                    horaChegada = selectedRow.Cells["Hora de Chegada"].Value.ToString();
+
+                    textBox_NotaFiscal.Text = notaFiscal;
+                    comboBox_funcionario.Text = funcionario;
+                    maskedTextBoxSituacao.Text = situacao;
+                    textBox_Titular.Text = nomeTitular;
+                    maskedTextBox_telefone.Text = telefoneTitular;
+                    maskedTextBox_email.Text = emailTitular;
+                    maskedTextBox_CPF.Text = cpfTitular;
+                    txtbox_nome_entregador.Text = nomeEntregador;
+                    txtbox_cpf_entregador.Text = cpfEntregador;
+                    textBox_data.Text = dataChegada;
+                    textBox_hora.Text = horaChegada;
+
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum valor na linha selecionada!", "Seleção inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+
+        private void dataGridView_registro_pac_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView_registro_pac.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView_registro_pac.SelectedRows[0];
+                string notaFiscal, funcionario, situacao, nomeTitular, telefoneTitular, emailTitular, cpfTitular, nomeEntregador, cpfEntregador, dataChegada, horaChegada;
+
+
+                if (selectedRow != null)
+                {
+                    notaFiscal = selectedRow.Cells["Nota Fiscal"].Value.ToString();
+                    notaFiscalAntiga = notaFiscal;
+                    funcionario = selectedRow.Cells["Funcionário"].Value.ToString();
+                    situacao = selectedRow.Cells["Situação"].Value.ToString();
+                    nomeTitular = selectedRow.Cells["Titular"].Value.ToString();
+                    telefoneTitular = selectedRow.Cells["Telefone"].Value.ToString();
+                    emailTitular = selectedRow.Cells["Email"].Value.ToString();
+                    cpfTitular = selectedRow.Cells["CPF Titular"].Value.ToString();
+                    nomeEntregador = selectedRow.Cells["Entregador"].Value.ToString();
+                    cpfEntregador = selectedRow.Cells["CPF Entregador"].Value.ToString();
+                    dataChegada = selectedRow.Cells["Data de Chegada"].Value.ToString();
+                    horaChegada = selectedRow.Cells["Hora de Chegada"].Value.ToString();
+
+                    textBox_NotaFiscal.Text = notaFiscal;
+                    comboBox_funcionario.Text = funcionario;
+                    maskedTextBoxSituacao.Text = situacao;
+                    textBox_Titular.Text = nomeTitular;
+                    maskedTextBox_telefone.Text = telefoneTitular;
+                    maskedTextBox_email.Text = emailTitular;
+                    maskedTextBox_CPF.Text = cpfTitular;
+                    txtbox_nome_entregador.Text = nomeEntregador;
+                    txtbox_cpf_entregador.Text = cpfEntregador;
+                    textBox_data.Text = dataChegada;
+                    textBox_hora.Text = horaChegada;
+
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum valor na linha selecionada!", "Seleção inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //variáveis do pacote selecionado
+            string notaFiscal, funcionario, situacao, nomeTitular, telefoneTitular, emailTitular, nomeEntregador, cpfEntregador, dataChegada, horaChegada, dataRetirada, horaRetirada;
+
+            notaFiscal = textBox_NotaFiscal.Text;
+            funcionario = comboBox_funcionario.Text;
+            situacao = maskedTextBoxSituacao.Text;
+            nomeTitular = textBox_Titular.Text;
+            telefoneTitular = maskedTextBox_telefone.Text;
+            emailTitular = maskedTextBox_email.Text;
+            nomeEntregador = txtbox_nome_entregador.Text;
+            cpfEntregador = txtbox_cpf_entregador.Text;
+            dataChegada = textBox_data.Text;
+            horaChegada = textBox_hora.Text;
+
+            //gerar o relatório aqui
+
+        }
     }
 }

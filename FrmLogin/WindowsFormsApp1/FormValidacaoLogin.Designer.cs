@@ -56,6 +56,7 @@
             this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(230, 19);
             this.txtSenha.TabIndex = 11;
+            this.txtSenha.Text = "admin123";
             // 
             // label4
             // 
@@ -79,6 +80,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(230, 19);
             this.txtEmail.TabIndex = 10;
+            this.txtEmail.Text = "administrador@americanas.com.br";
             // 
             // label3
             // 
@@ -136,7 +138,6 @@
             this.Name = "FormValidacaoLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormValidacaoLogin";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormValidacaoLogin_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,13 +1,15 @@
-DROP DATABASE teste_sql;
+DROP DATABASE IF EXISTS teste_sql;
 CREATE DATABASE IF NOT EXISTS teste_sql;
 
 USE teste_sql;
 CREATE TABLE IF NOT EXISTS americanas (
-    id_americanas INT AUTO_INCREMENT NOT NULL,
+    id_americanas VARCHAR(50)  NOT NULL,
     cep_americanas VARCHAR(10) NOT NULL,
     rua_americanas VARCHAR(75) NOT NULL,
     bairro_americanas VARCHAR(75) NOT NULL,
     numero_americanas VARCHAR(15) NOT NULL DEFAULT '0',
+    senha_americanas VARCHAR(16) NOT NULL,
+    telefone_americanas VARCHAR(15) NOT NULL,
     PRIMARY KEY (id_americanas)
 );
 
@@ -18,12 +20,12 @@ CREATE TABLE IF NOT EXISTS entregador (
 );
 
 CREATE TABLE IF NOT EXISTS funcionario (
-    email_americanas_funcionario VARCHAR(30) NOT NULL,
+    email_americanas_funcionario VARCHAR(75) NOT NULL,
     cpf_funcionario VARCHAR(15) NOT NULL,
     nome_funcionario VARCHAR(75) NOT NULL,
     telefone_funcionario VARCHAR(15) NOT NULL,
     senha_funcionario VARCHAR(20) NOT NULL,
-    id_americanas INT NULL DEFAULT NULL,
+    id_americanas VARCHAR(50) NOT NULL,
     UNIQUE INDEX (cpf_funcionario),
     PRIMARY KEY (email_americanas_funcionario),
     FOREIGN KEY (id_americanas) REFERENCES americanas (id_americanas)
@@ -75,3 +77,7 @@ CREATE TABLE IF NOT EXISTS observacao (
   UNIQUE INDEX (nota_fiscal_pacote),
   PRIMARY KEY (id_relatorio),
   FOREIGN KEY (nota_fiscal_pacote) REFERENCES pacote (nota_fiscal_pacote));
+    
+INSERT INTO americanas VALUES ("1", "13059-592", "Av. Dra. Zilda Arns Neumann", "Cidade Satélite Íris", "2760", "123456", "(11) 4812-7639");
+INSERT INTO funcionario VALUES ("administrador@americanas.com.br", "111.111.111-11", "Administrador", "(11) 11111-1111", "admin123", "1");
+

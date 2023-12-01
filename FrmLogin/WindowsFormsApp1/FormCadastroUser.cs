@@ -21,10 +21,11 @@ namespace WindowsFormsApp1
     {
         Class_BD_CRUD Bd = new Class_BD_CRUD();
         CadastroUsuarios user = new CadastroUsuarios();
-        User usuario;
-        public FormCadastroUser(User usuarioAtual)
+        Class_loja loja;
+        private string emailAntigo;
+        public FormCadastroUser(Class_loja lojaAtual)
         {
-            usuario = usuarioAtual;
+            loja = lojaAtual;
             
             InitializeComponent();
 
@@ -33,10 +34,10 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             string nome = textBox2.Text, senha = textBox3.Text, telefone = maskedTextBox2.Text, cpf = maskedTextBox1.Text, email = maskedTextBox3.Text, senha_confirmacao = textBox7.Text, endereco = comboBox2.Text;
-            int id_loja;
+            
             FormValidacaoLogin formValidacaoLogin = new FormValidacaoLogin(Bd);
 
-            bool dadosValidos = user.checkInput(email, senha, senha_confirmacao, nome, telefone, endereco);
+            bool dadosValidos = user.checkInput(email, senha, cpf, senha_confirmacao, nome, telefone, endereco);
             bool arg = false;
 
             if (dadosValidos)
@@ -44,23 +45,26 @@ namespace WindowsFormsApp1
                 int indiceInicioId = endereco.IndexOf("ID: ") + "ID: ".Length;
                 int indiceFimId = endereco.IndexOf(",", indiceInicioId);
                 string idString = endereco.Substring(indiceInicioId, indiceFimId - indiceInicioId);
-                int.TryParse(idString, out id_loja);
-
+                
                 try
                 {
                     Bd.setBD_Open();
                     DialogResult resultado = formValidacaoLogin.ShowDialog();
-                    if (resultado == DialogResult.OK)
+                    if (formValidacaoLogin.getValidacaoCredenciais())
                     {
-                        Bd.setInputBd_funcionario(email, cpf, nome, telefone, senha, id_loja);
+                        formValidacaoLogin.Close();
+                        Bd.setInputBd_funcionario(email, cpf, nome, telefone, senha, idString);
                         arg = false;
                     }
                     else
                     {
+                        formValidacaoLogin.Close();
                         ArgumentException argumentException = new ArgumentException("Erro");
                         arg = true;
                         throw argumentException;
                     }
+
+                    MessageBox.Show("Funcionário adicionado com sucesso!", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (ArgumentException)
                 {
@@ -77,42 +81,82 @@ namespace WindowsFormsApp1
                 }
                 finally
                 {
-                    int id = int.Parse(usuario.GetUserData(6));
+                    string id = loja.getIdLoja();
                     dataGridView1.DataSource = Bd.setRead_funcionarios_id(id);
                     Bd.setBD_Close();
+
+                    button1.Enabled = true;
+                    button2.Enabled = false;
+                    button4.Enabled = false;
+                    textBox3.Enabled = true;
+                    textBox7.Enabled = true;
+                    
+                    if (!arg)
+                    {                        
+                        maskedTextBox1.Text = "";
+                        maskedTextBox2.Text = "";
+                        maskedTextBox3.Text = "";
+                        maskedTextBox4.Text = "";
+                        textBox2.Text = "";
+                        textBox3.Text = "";
+                        textBox7.Text = "";
+                        comboBox2.Text = "";
+                        comboBox1.Text = "";
+                        emailAntigo = "";
+                    }
                 }
             }
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void FormCadastroUser_Load(object sender, EventArgs e)
         {
-            Bd.setBD_Open();
-            List<string> lojas = Bd.setRead_endereco_lojas();
-            Bd.setBD_Close();
-
-            comboBox2.Items.Clear();
-
-            foreach (string loja in lojas)
+            try
             {
-                comboBox2.Items.Add(loja);
+                Bd.setBD_Open();
+                List<string> lojas = Bd.setRead_endereco_lojas();
+                Bd.setBD_Close();
+
+                comboBox2.Items.Clear();
+
+                foreach (string loja in lojas)
+                {
+                    comboBox2.Items.Add(loja);
+                }
+
+                
+            }
+            catch
+            {
+                MessageBox.Show("Não foi possível carregar as informações de endereços de loja.\nPor favor verifique sua conexão com a internete e abra esta janela novamente.","Erro de carregamento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                Bd.setBD_Close();
             }
 
-            Bd.setBD_Open();
-            int id = int.Parse(usuario.GetUserData(6));
-            dataGridView1.DataSource = Bd.setRead_funcionarios_id(id);
-            Bd.setBD_Close();
+            try
+            {
+                Bd.setBD_Open();
+                string id = loja.getIdLoja();
+                dataGridView1.DataSource = Bd.setRead_funcionarios_id(id);
 
-            button1.Enabled = true;
-            button2.Enabled = false;
-            button4.Enabled = false;
-            textBox3.Enabled = true;
-            textBox7.Enabled = true;
-            textBox2.Focus();
+
+                button1.Enabled = true;
+                button2.Enabled = false;
+                button4.Enabled = false;
+                textBox3.Enabled = true;
+                textBox7.Enabled = true;
+                textBox2.Focus();
+
+            }
+            catch
+            {
+                MessageBox.Show("Não foi possível carregar as informações de funcionários cadastrados.\nPor favor verifique sua conexão com a internete e abra esta janela novamente.", "Erro de carregamento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                Bd.setBD_Close();
+            }
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -132,6 +176,7 @@ namespace WindowsFormsApp1
                 if (selectedRow != null)
                 {
                     email = selectedRow.Cells[0].Value.ToString();
+                    emailAntigo = email;
                     cpf = selectedRow.Cells[1].Value.ToString();
                     nome = selectedRow.Cells[2].Value.ToString();
                     telefone = selectedRow.Cells[3].Value.ToString();
@@ -152,7 +197,7 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
-                    MessageBox.Show("Nenhum valor na linha selecionada!");
+                    MessageBox.Show("Nenhum valor na linha selecionada!", "Seleção inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -174,6 +219,7 @@ namespace WindowsFormsApp1
                 if (selectedRow != null)
                 {
                     email = selectedRow.Cells[0].Value.ToString();
+                    emailAntigo = email;
                     cpf = selectedRow.Cells[1].Value.ToString();
                     nome = selectedRow.Cells[2].Value.ToString();
                     telefone = selectedRow.Cells[3].Value.ToString();
@@ -195,7 +241,7 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
-                    MessageBox.Show("Nenhum valor na linha selecionada!");
+                    MessageBox.Show("Nenhum valor na linha selecionada!", "Seleção inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
             }
@@ -204,7 +250,6 @@ namespace WindowsFormsApp1
         private void button4_Click(object sender, EventArgs e)
         {
             string nome, email, telefone, cpf, endereco;
-            int id;
 
             email = maskedTextBox3.Text;
             cpf = maskedTextBox1.Text;
@@ -218,136 +263,22 @@ namespace WindowsFormsApp1
 
             string idString = endereco.Substring(indiceInicioId, indiceFimId - indiceInicioId);
 
-            int.TryParse(idString, out id);
+            FormValidacaoLogin formValidacaoLogin = new FormValidacaoLogin(Bd);
 
             try
             {
                 Bd.setBD_Open();
-                Bd.setEdit_funcionario(email, cpf, nome, telefone, id);
-                
-                MessageBox.Show("Funcionário editado com sucesso!", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
-                maskedTextBox1.Text = "";
-                maskedTextBox2.Text = "";
-                maskedTextBox3.Text = "";
-                textBox2.Text = "";
-                textBox3.Text = "";
-                textBox7.Text = "";
-                comboBox2.Text = "";
-                comboBox1.Text = "";
-
-                textBox3.Enabled = true;
-                textBox7.Enabled = true;
-                button1.Enabled = true;
-                button2.Enabled = false;
-                button4.Enabled = false;
-            }
-            catch
-            {
-                MessageBox.Show("Infelizmente não foi possível efetuar a edição do funcionário!\nVerifique se sua conexão está boa e tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                dataGridView1.DataSource = Bd.setRead_funcionarios_id(id);
-                Bd.setBD_Close();
-            }
- 
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            
-            if(comboBox1.Text != "" && comboBox1.Text != "Escolha uma opção" && textBox1.Text != "")
-            {
-                string busca = comboBox1.Text;
-                string valor = textBox1.Text;
-
-                try
+                formValidacaoLogin.ShowDialog();
+                if (formValidacaoLogin.getValidacaoCredenciais())
                 {
-                    Bd.setBD_Open();
-                    switch (busca)
-                    {
-                        case "Nome":
-                            dataGridView1.DataSource = Bd.setRead_funcionario_Nome(valor);
-                            break;
+                    formValidacaoLogin.Close();
+                    Bd.setEdit_funcionario(email, emailAntigo, cpf, nome, telefone, idString);
 
-                        case "CPF":
-                            dataGridView1.DataSource = Bd.setRead_funcionario_Cpf(valor);
-                            break;
+                    MessageBox.Show("Funcionário editado com sucesso!", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        case "Email":
-                            dataGridView1.DataSource = Bd.setRead_funcionario_Email(valor);
-                            break;
+                    dataGridView1.DataSource = Bd.setRead_funcionarios_id(idString);
 
-                        case "Telefone":
-                            dataGridView1.DataSource = Bd.setRead_funcionario_Telefone(valor);
-                            break;
-
-                        case "CEP":
-                            dataGridView1.DataSource = Bd.setRead_funcionario_Cep(valor);
-                            break;
-
-                    }
-
-                    if (dataGridView1.DataSource == null)
-                    {
-                        MessageBox.Show("Não foi encontrado funcionário cadastrado com a informação apresentada na busca!", "Funcionário não encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-
-                }
-                catch
-                {
-                    MessageBox.Show("Infelizmente não foi possível efetuar a busca do funcionário!\nVerifique se sua conexão está boa e tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }
-                finally
-                {
-                    Bd.setBD_Close();
-                    button2.Enabled = true;
-                    button4.Enabled = true;
-                    textBox3.Enabled = false;
-                    textBox7.Enabled = false;
-                }
-            }
-            else
-            {
-                MessageBox.Show("Você deve escolher uma opção de busca e digitar um valor para a pesquisa!", "Erro de Busca", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                comboBox1.Text = "Escolha uma opção";
-            }          
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            button1.Enabled = true;
-            button2.Enabled = false;
-            button4.Enabled = false;
-            textBox3.Enabled = true;
-            textBox7.Enabled = true;
-            maskedTextBox1.Text = "";
-            maskedTextBox2.Text = "";
-            maskedTextBox3.Text = "";
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox7.Text = "";
-            comboBox2.Text = "";
-            comboBox1.Text = "";
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            string email = maskedTextBox3.Text;
-
-            DialogResult result = MessageBox.Show($"Tem certeza que dejesa apagar o funcionário com email {email}?", "Confirme a operação", MessageBoxButtons.YesNo);
-
-            if(result == DialogResult.Yes)
-            {
-                try
-                {
-                    Bd.setBD_Open();
-                    Bd.setDelet_funcionario(email);
-                    
-                    MessageBox.Show("Funcionário apagado com sucesso!", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
+                    emailAntigo = "";
                     maskedTextBox1.Text = "";
                     maskedTextBox2.Text = "";
                     maskedTextBox3.Text = "";
@@ -363,21 +294,228 @@ namespace WindowsFormsApp1
                     button2.Enabled = false;
                     button4.Enabled = false;
                 }
-                catch (Exception er)
+                else
                 {
-                    MessageBox.Show(er.Message);
+                    MessageBox.Show("Credenciais inválidas! Operação de edição não realizada!", "Operação interrompida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch
+            {
+                formValidacaoLogin.Close();
+                MessageBox.Show("Infelizmente não foi possível efetuar a edição do funcionário!\nVerifique se sua conexão está boa e tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Bd.setBD_Close();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
+            if(comboBox1.Text != "" && comboBox1.Text != "Escolha uma opção" && maskedTextBox4.Text != "")
+            {
+                string busca = comboBox1.Text;
+                string valor = maskedTextBox4.Text;
+                bool maskCompleted = false;
+
+                if (!(maskedTextBox4.Mask == ""))
+                {
+                    maskCompleted = maskedTextBox4.MaskedTextProvider.MaskCompleted;
+                }
+
+                if (maskCompleted || busca == "Nome" || busca == "Email")
+                {
+                    try
+                    {
+                        Bd.setBD_Open();
+                        switch (busca)
+                        {
+                            case "Nome":
+                                dataGridView1.DataSource = Bd.setRead_funcionario_Nome(valor);
+                                break;
+
+                            case "CPF":
+                                dataGridView1.DataSource = Bd.setRead_funcionario_Cpf(valor);
+                                break;
+
+                            case "Email":
+                                dataGridView1.DataSource = Bd.setRead_funcionario_Email(valor);
+                                break;
+
+                            case "Telefone":
+                                dataGridView1.DataSource = Bd.setRead_funcionario_Telefone(valor);
+                                break;
+
+                            case "CEP":
+                                dataGridView1.DataSource = Bd.setRead_funcionario_Cep(valor);
+                                break;
+
+                        }
+
+                        if (dataGridView1.DataSource == null)
+                        {
+                            MessageBox.Show("Não foi encontrado funcionário cadastrado com a informação apresentada na busca!", "Funcionário não encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Infelizmente não foi possível efetuar a busca do funcionário!\nVerifique se sua conexão está boa e tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+                    finally
+                    {
+                        Bd.setBD_Close();
+                        emailAntigo = "";
+                        button2.Enabled = true;
+                        button4.Enabled = true;
+                        textBox3.Enabled = false;
+                        textBox7.Enabled = false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Digite o elemento completo que será buscado!", "Busca Inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("Você deve escolher uma opção de busca e digitar um valor para a pesquisa!", "Erro de Busca", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                comboBox1.Text = "Escolha uma opção";
+            }          
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Bd.setBD_Open();
+                string id = loja.getIdLoja();
+                dataGridView1.DataSource = Bd.setRead_funcionarios_id(id);
+
+            }
+            catch
+            {
+                MessageBox.Show("Não foi possível carregar as informações de funcionários cadastrados.\nPor favor verifique sua conexão com a internete e abra esta janela novamente.", "Erro de carregamento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                Bd.setBD_Close();
+            }
+
+            button1.Enabled = true;
+            button2.Enabled = false;
+            button4.Enabled = false;
+            textBox3.Enabled = true;
+            textBox7.Enabled = true;
+            maskedTextBox1.Text = "";
+            maskedTextBox2.Text = "";
+            maskedTextBox3.Text = "";
+            maskedTextBox4.Text = "";
+            maskedTextBox4.Mask = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox7.Text = "";
+            comboBox2.Text = "";
+            comboBox1.Text = "";
+            emailAntigo = "";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string email = maskedTextBox3.Text, novoEmail = "";
+
+            FormValidacaoLogin formValidacaoLogin = new FormValidacaoLogin(Bd);
+
+            bool arg = false;
+
+            DialogResult result = MessageBox.Show($"Tem certeza que dejesa apagar o funcionário com email {email}?", "Confirme a operação", MessageBoxButtons.YesNo);
+
+            if(result == DialogResult.Yes)
+            {
+                try
+                {
+                    Bd.setBD_Open(); 
+                    formValidacaoLogin.ShowDialog();
+                    novoEmail = formValidacaoLogin.getInputEmail();
+
+                    if (formValidacaoLogin.getValidacaoCredenciais())
+                    {
+                        formValidacaoLogin.Close();
+                        Bd.setDelet_funcionario(email, novoEmail);
+                        arg = false;
+                    }
+                    else
+                    {
+                        formValidacaoLogin.Close();
+                        ArgumentException argumentException = new ArgumentException();
+                        arg = true;
+                        throw argumentException;
+                    }
+
+                    
+                    MessageBox.Show("Funcionário apagado com sucesso!", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    string id = loja.getIdLoja();
+                    dataGridView1.DataSource = Bd.setRead_funcionarios_id(id);
+
+                    textBox3.Enabled = true;
+                    textBox7.Enabled = true;
+                    button1.Enabled = true;
+                    button2.Enabled = false;
+                    button4.Enabled = false;
+                }
+                catch (Exception)
+                {
+                    if (arg)
+                    {
+                        MessageBox.Show("Infelizmente não foi possível validar as credencias para criar o novo usuário.", "Credenciais inválidas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Infelizmente não foi possível apagar o funcionário!\nVerifique se o funcionário está cadastrado ou se sua conexão está boa e tente novamente, além disso, não é possível o próprio usuário apagar seu cadastro.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 finally
                 {
-                    int id = int.Parse(usuario.GetUserData(6));
-                    dataGridView1.DataSource = Bd.setRead_funcionarios_id(id);
                     Bd.setBD_Close();
+                
+                    if (!arg)
+                    {
+                        maskedTextBox1.Text = "";
+                        maskedTextBox2.Text = "";
+                        maskedTextBox3.Text = "";
+                        textBox2.Text = "";
+                        textBox3.Text = "";
+                        textBox7.Text = "";
+                        comboBox2.Text = "";
+                        comboBox1.Text = "";
+                        emailAntigo = "";
+                    }
                 }
             }
 
         }
 
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            maskedTextBox4.Mask = "";
+            maskedTextBox4.Text = "";
 
-
+            if (comboBox1.Text == "CPF")
+            {
+                maskedTextBox4.Mask = "000,000,000-00";
+            }
+            else if (comboBox1.Text == "Telefone")
+            {
+                maskedTextBox4.Mask = "(00) 00000-0000";
+            }
+            else if (comboBox1.Text == "CEP")
+            {
+                maskedTextBox4.Mask = "00000-000";
+            }
+        }
     }
 }
