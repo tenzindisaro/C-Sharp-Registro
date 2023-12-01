@@ -151,6 +151,22 @@ namespace WindowsFormsApp1
             return true;
         }
 
+        public bool setReadBd_CountEmailFuncionario(string emailFuncionario)
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM funcionario WHERE email_americanas_funcionario = @emailFuncionario", conn);
+            cmd.Parameters.AddWithValue("@emailFuncionario", emailFuncionario);
+
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+            if (count == 0)
+            {
+                MessageBox.Show("Email não existente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+
         public DataTable setReadBd_Pacote_notaFiscal (string inputNotaFiscal)
         {
             string query = "SELECT p.nota_fiscal_pacote, p.email_americanas_funcionario, t.nome, p.cpf_titular, e.nome_entregador, p.cpf_entregador, d.chegada_data, d.retirada_data, h.chegada_hora, h.retirada_horaFROM pacote p INNER JOIN titular t ON t.cpf_titular = p.cpf_titular INNER JOIN entregador e ON e.cpf_entregador = p.cpf_entregador INNER JOIN tbl_data d ON d.id_data = p.id_data INNER JOIN hora h ON h.id_hora = p.id_hora WHERE p.nota_fiscal_pacote = @notaFiscal;";
