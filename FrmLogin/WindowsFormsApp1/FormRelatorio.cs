@@ -195,17 +195,13 @@ namespace WindowsFormsApp1
 
             try
             {
-                using (PdfWriter writer = new PdfWriter(caminhoDoArquivo))
-                {
-                    using (PdfDocument pdf = new PdfDocument(writer))
-                    {
-                        Document document = new Document(pdf);
+                PdfWriter writer = new PdfWriter(caminhoDoArquivo);
+                PdfDocument pdf = new PdfDocument(writer);
+                Document document = new Document(pdf);
 
-                        document.Add(new Paragraph("Olá, este é um documento PDF gerado usando o iText7."));
+                document.Add(new Paragraph("Olá, este é um documento PDF gerado usando o iText7."));
 
-                        document.Close();
-                    }
-                }
+                document.Close();
 
                 Console.WriteLine("Documento PDF criado com sucesso.");
             }
@@ -213,6 +209,7 @@ namespace WindowsFormsApp1
             {
                 Console.WriteLine($"Ocorreu um erro ao gerar o PDF: {ex.Message}");
             }
+
         }
 
         private void GerarRelatorioPDF()
