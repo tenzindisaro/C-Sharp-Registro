@@ -52,14 +52,10 @@ namespace WindowsFormsApp1
                 
         private void geralToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            t2 = new Thread(abrirLista);
-            t2.SetApartmentState(ApartmentState.MTA);
-            t2.Start();
-        }
-               
-        private void abrirLista(object obj)
-        {
-            Application.Run(new lista.Geral.Form6_Lista_Geral());
+            this.Hide();
+            lista.Geral.Form6_Lista_Geral form = new lista.Geral.Form6_Lista_Geral(loja);
+            form.ShowDialog();
+            this.Show();
         }
 
         private void Form3_Tela_Menu_Load(object sender, EventArgs e)
@@ -152,9 +148,10 @@ namespace WindowsFormsApp1
 
         private void btnListaPac_Click(object sender, EventArgs e)
         {
-            t2 = new Thread(abrirLista);
-            t2.SetApartmentState(ApartmentState.MTA);
-            t2.Start();
+            this.Hide();
+            lista.Geral.Form6_Lista_Geral form = new lista.Geral.Form6_Lista_Geral(loja);
+            form.ShowDialog();
+            this.Show();
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -189,6 +186,7 @@ namespace WindowsFormsApp1
 
         private void btnRelatorios_Click(object sender, EventArgs e)
         {
+            this.Close();
             t2 = new Thread(abrirRelatorios);
             t2.SetApartmentState(ApartmentState.STA);
             t2.Start();
@@ -197,6 +195,18 @@ namespace WindowsFormsApp1
         private void abrirRelatorios(object obj)
         {
             Application.Run(new FormRelatorio());
+        }
+
+        private void btnRetiradaPac_Click(object sender, EventArgs e)
+        {
+            FormRetirarPac form = new FormRetirarPac(loja);
+            form.ShowDialog();
+        }
+
+        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormRetirarPac form = new FormRetirarPac(loja);
+            form.ShowDialog();
         }
     }
 }

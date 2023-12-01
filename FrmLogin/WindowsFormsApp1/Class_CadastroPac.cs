@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace WindowsFormsApp1
 {
     internal class Class_CadastroPac
     {
+        private MySqlConnection conn = new MySqlConnection("server=americanas.mysql.database.azure.com;port=3306;User Id=joao;database=teste_sql;password=Adriana1");
         string funcionario, titular, situacao, email, notaFiscal, telefone, CPF, cpf_entregador, nome_entregador, cpf_titular_buscar, nota_fiscal_buscar;
 
         public Class_CadastroPac()
@@ -33,7 +35,7 @@ namespace WindowsFormsApp1
         {
             bool EntradaFuncionario = true; //Regex.IsMatch(funcionario_txt, "^[a-zA-ZÀ-ú ]+$");
             
-            bool EntradaNotaFiscal = true; //int.TryParse(notaFiscal_txt, out int valid_notaFiscal);
+             //int.TryParse(notaFiscal_txt, out int valid_notaFiscal);
 
             bool EntradaTitular = true; //Regex.IsMatch(titular_txt, "^[a-zA-ZÀ-ú ]+$");
 
@@ -41,20 +43,13 @@ namespace WindowsFormsApp1
         
             bool EntradaTelefone = true; //long.TryParse(telefone_txt, out long valid_telefone);
 
-            bool EntredaCpfEntregador = true;
+            bool EntradaCpfEntregador = true;
 
             bool EntradaNomeEntregador = true;
-
 
             if (EntradaFuncionario == false)
             {
                 MessageBox.Show("Insira apenas letras no campo Funcionário.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            if (EntradaNotaFiscal == false)
-            {
-                MessageBox.Show("Insira apenas números no campo Nota Fiscal.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -71,6 +66,18 @@ namespace WindowsFormsApp1
             }
             
             if (EntradaTelefone == false)
+            {
+                MessageBox.Show("Insira apenas numeros no campo Telefone.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (EntradaCpfEntregador == false)
+            {
+                MessageBox.Show("Insira apenas números no campo CPF.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            
+            if (EntradaNomeEntregador == false)
             {
                 MessageBox.Show("Insira apenas numeros no campo Telefone.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;

@@ -28,26 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3_Tela_Menu));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cadastrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adicionarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.registroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registroToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deletToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.geralToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recebidosNoDiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.retiradosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recebidosNoDiaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.retiradosNoDiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.filtrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.penseiEmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.umDesignToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.próprioDaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.janelaMenuQToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.podeSerEditadoCorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eMaisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatórioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.entregaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recebimentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,7 +82,6 @@
             this.cadastrosToolStripMenuItem,
             this.registroToolStripMenuItem,
             this.listaToolStripMenuItem,
-            this.filtrarToolStripMenuItem,
             this.relatórioToolStripMenuItem,
             this.sairToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -114,7 +106,7 @@
             // adicionarToolStripMenuItem1
             // 
             this.adicionarToolStripMenuItem1.Name = "adicionarToolStripMenuItem1";
-            this.adicionarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.adicionarToolStripMenuItem1.Size = new System.Drawing.Size(129, 22);
             this.adicionarToolStripMenuItem1.Text = "Gerenciar";
             this.adicionarToolStripMenuItem1.Click += new System.EventHandler(this.adicionarToolStripMenuItem1_Click_1);
             // 
@@ -122,8 +114,7 @@
             // 
             this.registroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.registroToolStripMenuItem1,
-            this.editarToolStripMenuItem,
-            this.deletToolStripMenuItem});
+            this.editarToolStripMenuItem});
             this.registroToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.registroToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.registroToolStripMenuItem.Name = "registroToolStripMenuItem";
@@ -134,21 +125,16 @@
             // registroToolStripMenuItem1
             // 
             this.registroToolStripMenuItem1.Name = "registroToolStripMenuItem1";
-            this.registroToolStripMenuItem1.Size = new System.Drawing.Size(126, 22);
+            this.registroToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
             this.registroToolStripMenuItem1.Text = "Registrar";
             this.registroToolStripMenuItem1.Click += new System.EventHandler(this.registroToolStripMenuItem1_Click_1);
             // 
             // editarToolStripMenuItem
             // 
             this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            this.editarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.editarToolStripMenuItem.Text = "Editar";
-            // 
-            // deletToolStripMenuItem
-            // 
-            this.deletToolStripMenuItem.Name = "deletToolStripMenuItem";
-            this.deletToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.deletToolStripMenuItem.Text = "Remover";
+            this.editarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.editarToolStripMenuItem.Text = "Retirar";
+            this.editarToolStripMenuItem.Click += new System.EventHandler(this.editarToolStripMenuItem_Click);
             // 
             // listaToolStripMenuItem
             // 
@@ -194,57 +180,6 @@
             this.retiradosNoDiaToolStripMenuItem.Name = "retiradosNoDiaToolStripMenuItem";
             this.retiradosNoDiaToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.retiradosNoDiaToolStripMenuItem.Text = "Retirados no dia";
-            // 
-            // filtrarToolStripMenuItem
-            // 
-            this.filtrarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.penseiEmToolStripMenuItem,
-            this.umDesignToolStripMenuItem,
-            this.próprioDaToolStripMenuItem,
-            this.janelaMenuQToolStripMenuItem,
-            this.podeSerEditadoCorToolStripMenuItem,
-            this.eMaisToolStripMenuItem});
-            this.filtrarToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.filtrarToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.filtrarToolStripMenuItem.Name = "filtrarToolStripMenuItem";
-            this.filtrarToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.filtrarToolStripMenuItem.Text = "Filtrar";
-            // 
-            // penseiEmToolStripMenuItem
-            // 
-            this.penseiEmToolStripMenuItem.Name = "penseiEmToolStripMenuItem";
-            this.penseiEmToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.penseiEmToolStripMenuItem.Text = "Pensei em";
-            // 
-            // umDesignToolStripMenuItem
-            // 
-            this.umDesignToolStripMenuItem.Name = "umDesignToolStripMenuItem";
-            this.umDesignToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.umDesignToolStripMenuItem.Text = "um Design";
-            // 
-            // próprioDaToolStripMenuItem
-            // 
-            this.próprioDaToolStripMenuItem.Name = "próprioDaToolStripMenuItem";
-            this.próprioDaToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.próprioDaToolStripMenuItem.Text = "próprio da ";
-            // 
-            // janelaMenuQToolStripMenuItem
-            // 
-            this.janelaMenuQToolStripMenuItem.Name = "janelaMenuQToolStripMenuItem";
-            this.janelaMenuQToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.janelaMenuQToolStripMenuItem.Text = "janela Menu q";
-            // 
-            // podeSerEditadoCorToolStripMenuItem
-            // 
-            this.podeSerEditadoCorToolStripMenuItem.Name = "podeSerEditadoCorToolStripMenuItem";
-            this.podeSerEditadoCorToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.podeSerEditadoCorToolStripMenuItem.Text = "pode ser editado cor ";
-            // 
-            // eMaisToolStripMenuItem
-            // 
-            this.eMaisToolStripMenuItem.Name = "eMaisToolStripMenuItem";
-            this.eMaisToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.eMaisToolStripMenuItem.Text = "e mais ..";
             // 
             // relatórioToolStripMenuItem
             // 
@@ -367,6 +302,7 @@
             this.btnRetiradaPac.TabIndex = 2;
             this.btnRetiradaPac.Text = "Retirar pacote";
             this.btnRetiradaPac.UseVisualStyleBackColor = false;
+            this.btnRetiradaPac.Click += new System.EventHandler(this.btnRetiradaPac_Click);
             // 
             // btnListaPac
             // 
@@ -564,6 +500,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form3_Tela_Menu";
             this.Text = "Americanas Rastreio";
@@ -584,7 +521,6 @@
         private System.Windows.Forms.ToolStripMenuItem cadastrosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem filtrarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem relatórioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
@@ -604,13 +540,6 @@
         private System.Windows.Forms.ToolStripMenuItem retiradosNoDiaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adicionarToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem deletToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem penseiEmToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem umDesignToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem próprioDaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem janelaMenuQToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem podeSerEditadoCorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem eMaisToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem entregaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem recebimentoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reclamaçõesToolStripMenuItem;
