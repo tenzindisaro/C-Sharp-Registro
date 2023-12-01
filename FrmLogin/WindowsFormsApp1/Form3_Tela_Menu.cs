@@ -199,13 +199,13 @@ namespace WindowsFormsApp1
 
         private void btnRetiradaPac_Click(object sender, EventArgs e)
         {
-            FormRetirarPac form = new FormRetirarPac();
+            FormRetirarPac form = new FormRetirarPac(loja);
             form.ShowDialog();
         }
 
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormRetirarPac form = new FormRetirarPac();
+            FormRetirarPac form = new FormRetirarPac(loja);
             form.ShowDialog();
         }
     }

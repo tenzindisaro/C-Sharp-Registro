@@ -58,7 +58,7 @@ namespace WindowsFormsApp1.lista.Geral
             if(situacao != "Retirado")
             {
                 this.Hide();
-                FormRetirarPac form = new FormRetirarPac(notaFiscal, funcionario, nomeEntregador, nomeTitular, telefoneTitular, cpfEntregador, emailTitular, cpfTitular, situacao, dataChegada, horaChegada);
+                FormRetirarPac form = new FormRetirarPac(loja, notaFiscal, funcionario, nomeEntregador, nomeTitular, telefoneTitular, cpfEntregador, emailTitular, cpfTitular, situacao, dataChegada, horaChegada);
                 form.ShowDialog();
                 this.Show();
                 InitializeDataGrid();

@@ -124,14 +124,27 @@ namespace WindowsFormsApp1.RegistrosPac
                     string dadosValidos_nome_entregador = cadastroPacote.getNome_entregador();
 
 
+                    FormValidacaoLogin formValidacaoLogin = new FormValidacaoLogin(Bd, dadosValidos_funcionario);
+
                     try
                     {
                         Bd.setBD_Open();
-                        Bd.setInputBd_hora(hour);
-                        Bd.setInputBd_data(date);
-                        Bd.setInputBd_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
-                        Bd.setInputBd_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
-                        Bd.setInputBd_pacote(dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_funcionario, dadosValidos_CPF, dadosValidos_cpf_entregador);
+                        formValidacaoLogin.ShowDialog();
+                        if (formValidacaoLogin.getValidacaoCredenciais())
+                        {
+                            formValidacaoLogin.Close();
+
+                            Bd.setInputBd_hora(hour);
+                            Bd.setInputBd_data(date);
+                            Bd.setInputBd_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
+                            Bd.setInputBd_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
+                            Bd.setInputBd_pacote(dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_funcionario, dadosValidos_CPF, dadosValidos_cpf_entregador);
+                            MessageBox.Show("Pacote cadastrado com sucesso!", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Credenciais inválidas! Operação de cadastro não foi realizada.", "Operação interrompida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                     catch (Exception erro)
                     {
@@ -174,11 +187,23 @@ namespace WindowsFormsApp1.RegistrosPac
             if (funcionario != "" && notaFiscal != "" && titular != "" & CPF != "" && situacao != ""
                 && email != "" && telefone != "" && cpf_entregador != "" && nome_entregador != "")
             {
+                FormValidacaoLogin formValidacaoLogin = new FormValidacaoLogin(Bd, funcionario);
+
                 try
                 {
                     Bd.setBD_Open();
-                    Bd.setDelet_pacote(notaFiscal);
-                    
+                    formValidacaoLogin.ShowDialog();
+                    if (formValidacaoLogin.getValidacaoCredenciais())
+                    {
+                        formValidacaoLogin.Close();
+
+                        Bd.setDelet_pacote(notaFiscal);
+                        MessageBox.Show("Pacote excluído com sucesso!", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Credenciais inválidas! Operação de remoção não foi realizada.", "Operação interrompida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 catch (Exception erro)
                 {
@@ -357,32 +382,44 @@ namespace WindowsFormsApp1.RegistrosPac
                     string dadosValidos_cpf_entregador = cadastroPacote.getCpf_entregador();
                     string dadosValidos_nome_entregador = cadastroPacote.getNome_entregador();
 
+                    FormValidacaoLogin formValidacaoLogin = new FormValidacaoLogin(Bd, dadosValidos_funcionario);
+
                     try
                     {
                         Bd.setBD_Open();
-                        string pesquisaTitular = Bd.setRead_titular_ByCpf(dadosValidos_CPF);
-                        string pesquisaEntregador = Bd.setRead_entregador_ByCpf(dadosValidos_cpf_entregador);
-
-                        if (pesquisaTitular != null)
+                        formValidacaoLogin.ShowDialog();
+                        if (formValidacaoLogin.getValidacaoCredenciais())
                         {
-                            Bd.setEdit_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
+                            formValidacaoLogin.Close();
+
+                            string pesquisaTitular = Bd.setRead_titular_ByCpf(dadosValidos_CPF);
+                            string pesquisaEntregador = Bd.setRead_entregador_ByCpf(dadosValidos_cpf_entregador);
+
+                            if (pesquisaTitular != null)
+                            {
+                                Bd.setEdit_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
+                            }
+                            else
+                            {
+                                Bd.setInputBd_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
+                            }
+
+                            if (pesquisaEntregador != null)
+                            {
+                                Bd.setEdit_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
+                            }
+                            else
+                            {
+                                Bd.setInputBd_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
+                            }
+
+                            Bd.setEdit_pacote(notaFiscalAntiga, dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_funcionario, dadosValidos_CPF, dadosValidos_cpf_entregador);
+                            MessageBox.Show("Informações do Pacote alteradas com sucesso!", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                         else
                         {
-                            Bd.setInputBd_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);                        
+                            MessageBox.Show("Credenciais inválidas! Operação de edição não foi realizada.", "Operação interrompida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-
-                        if (pesquisaEntregador != null)
-                        {
-                            Bd.setEdit_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
-                        }
-                        else
-                        {
-                            Bd.setInputBd_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
-                        }
-
-                        Bd.setEdit_pacote(notaFiscalAntiga, dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_funcionario, dadosValidos_CPF, dadosValidos_cpf_entregador);
-
                     }
                     catch (Exception erro)
                     {

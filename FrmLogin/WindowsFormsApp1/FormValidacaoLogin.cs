@@ -19,6 +19,13 @@ namespace WindowsFormsApp1
             Bd = database;
             InitializeComponent();
         }
+        public FormValidacaoLogin(Class_BD_CRUD database, string funcionario)
+        {
+            Bd = database;
+            InitializeComponent();
+            txtEmail.Text = funcionario;
+            txtEmail.Enabled = false;
+        }
 
         private void btnContinuar_Click(object sender, EventArgs e)
         {

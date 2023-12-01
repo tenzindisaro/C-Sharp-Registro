@@ -120,7 +120,6 @@ namespace WindowsFormsApp1
         {
             MySqlCommand objcmd_pacote = new MySqlCommand("INSERT INTO pacote (nota_fiscal_pacote, situacao_pacote, email_americanas_funcionario, cpf_titular, cpf_entregador, id_data, id_hora) VALUES (?, ?, ?, ?, ?, ?, ?);", conn);
             
-            MessageBox.Show("entrou teste.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             objcmd_pacote.Parameters.Add("@nota_fiscal_pacote", MySqlDbType.VarChar, 45).Value = nota_fiscal;
             objcmd_pacote.Parameters.Add("@situacao_pacote", MySqlDbType.VarChar, 20).Value = situacao_pacote;
             objcmd_pacote.Parameters.Add("@email_americanas_funcionario", MySqlDbType.VarChar, 75).Value = email_americanas_funcionario;
@@ -288,7 +287,7 @@ namespace WindowsFormsApp1
             datatable.Columns.Add("Bairro da Loja");
             datatable.Columns.Add("Número da Loja");
 
-            string query = "SELECT f.email_americanas_funcionario, f.cpf_funcionario, f.nome_funcionario, f.telefone_funcionario, f.id_americanas, a.cep_americanas, a.rua_americanas, a.bairro_americanas, a.numero_americanas FROM funcionario f INNER JOIN americanas a ON f.id_americanas = a.id_americanas WHERE f.id_americanas = @id_americanas";
+            string query = "SELECT f.email_americanas_funcionario, f.cpf_funcionario, f.nome_funcionario, f.telefone_funcionario, f.id_americanas, a.cep_americanas, a.rua_americanas, a.bairro_americanas, a.numero_americanas FROM funcionario f INNER JOIN americanas a ON f.id_americanas = a.id_americanas WHERE f.id_americanas = @id_americanas AND f.email_americanas_funcionario <> \"administrador@americanas.com.br\"";
             MySqlCommand cmd = new MySqlCommand(query, conn);
             cmd.Parameters.Add("@id_americanas", MySqlDbType.VarChar, 36).Value = id_americanas;
 
@@ -570,7 +569,7 @@ namespace WindowsFormsApp1
         {
             List<string> emails = new List<string>();
 
-            MySqlCommand cmd = new MySqlCommand("SELECT email_americanas_funcionario FROM funcionario WHERE funcionario.id_americanas = @id_americanas", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT email_americanas_funcionario FROM funcionario WHERE funcionario.id_americanas = @id_americanas AND funcionario.email_americanas_funcionario <> \"administrador@americanas.com.br\"", conn);
             cmd.Parameters.Clear();
             cmd.Parameters.Add("@id_americanas", MySqlDbType.VarChar, 36).Value = id_americanas;
 
