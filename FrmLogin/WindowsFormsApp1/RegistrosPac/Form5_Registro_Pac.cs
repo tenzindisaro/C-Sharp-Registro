@@ -158,8 +158,16 @@ namespace WindowsFormsApp1.RegistrosPac
 
                             Bd.setInputBd_hora(hour);
                             Bd.setInputBd_data(date);
-                            Bd.setInputBd_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
-                            Bd.setInputBd_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
+                            //caso tenha o cpf titular já cadastrado:
+                            if (Bd.setReadBd_CountCpfTitular(dadosValidos_CPF) == true)
+                            {
+                                Bd.setInputBd_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
+                            }
+                            //caso tenha o cpf entregador já cadastrado:
+                            if (Bd.setReadBd_CountCpfEntregador(dadosValidos_cpf_entregador) == true)
+                            {
+                                Bd.setInputBd_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
+                            }
                             Bd.setInputBd_pacote(dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_funcionario, dadosValidos_CPF, dadosValidos_cpf_entregador);
                             MessageBox.Show("Pacote cadastrado com sucesso!", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
