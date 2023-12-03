@@ -22,8 +22,6 @@ namespace WindowsFormsApp1.RegistrosPac
         private Class_loja loja = null;
         private Class_CadastroPac cadastroPacote = new Class_CadastroPac();
         private Class_BD_CRUD Bd = new Class_BD_CRUD();
-        private DataTable dataTable = new DataTable();
-        private DataRow newRow;
         private string notaFiscalAntiga = "";
 
         public Form5_Registro_Pac(Class_loja lojaAtual)
@@ -284,7 +282,8 @@ namespace WindowsFormsApp1.RegistrosPac
                             Bd.setRead_entregador();
                             Bd.setRead_data();
                             Bd.setRead_hora();
-                            
+                            DataTable pacotes_buscados = Bd.setRead_buscarRegistroPac();
+                            dataGridView_registro_pac.DataSource = pacotes_buscados;
                         }
                         catch (Exception erro)
                         {
@@ -295,7 +294,7 @@ namespace WindowsFormsApp1.RegistrosPac
                             Bd.setBD_Close();
                         }
                     }
-                    else { MessageBox.Show("CPF Titular if dadosok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }                    
+                    else { MessageBox.Show("CPF Titular if dadosok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
                 }
                 else
                 { MessageBox.Show("CPF Titular vazio em opções do buscar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
@@ -316,7 +315,40 @@ namespace WindowsFormsApp1.RegistrosPac
                             Bd.setRead_entregador();
                             Bd.setRead_data();
                             Bd.setRead_hora();
-                            
+
+                            DataTable dataTable = new DataTable();
+                            DataRow newRow;
+                            //Crie as colunas do DataTable
+                            dataTable.Columns.Clear();
+                            dataTable.Columns.Add("Nota Fiscal");
+                            dataTable.Columns.Add("Funcionário");
+                            dataTable.Columns.Add("Situação");
+                            dataTable.Columns.Add("Titular");
+                            dataTable.Columns.Add("Telefone");
+                            dataTable.Columns.Add("Email");
+                            dataTable.Columns.Add("CPF Titular");
+                            dataTable.Columns.Add("Entregador");
+                            dataTable.Columns.Add("CPF Entregador");
+                            dataTable.Columns.Add("Data");
+                            dataTable.Columns.Add("Hora");
+
+                            //recebendo dados para enviar pro Datagridview
+                            dataTable.Rows.Clear();// da clear nas linhas do datatable
+                            newRow = dataTable.NewRow();//cria uma nova linha no datatable
+                            newRow["Nota Fiscal"] = Bd.getRetorna_nf();
+                            newRow["Funcionário"] = Bd.getRetorna_emailFuncionario();
+                            newRow["Situação"] = Bd.getRetorna_situacao();
+                            newRow["Titular"] = Bd.getNome_titular();
+                            newRow["Telefone"] = Bd.getTelefone_titular();
+                            newRow["Email"] = Bd.getEmail_titular();
+                            newRow["CPF Titular"] = Bd.getRetorna_cpf_titular();
+                            newRow["Entregador"] = Bd.getRetorna_nome_entregador();
+                            newRow["CPF Entregador"] = Bd.getRetorna_cpf_entregador();
+                            newRow["Data"] = Bd.getRetorna_chegada_data();
+                            newRow["Hora"] = Bd.getRetorna_chegada_hora();
+                            // add as linhas do datagridview
+                            dataTable.Rows.Add(newRow);
+                            dataGridView_registro_pac.DataSource = dataTable;
                         }
                         catch (Exception erro)
                         {
@@ -328,7 +360,7 @@ namespace WindowsFormsApp1.RegistrosPac
                         }
 
                     }
-                    else { MessageBox.Show("NF  if dadosok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }                    
+                    else { MessageBox.Show("NF  if dadosok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
                 }
                 else
                 { MessageBox.Show("Nota Fiscal vazio em opções do buscar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
@@ -346,39 +378,7 @@ namespace WindowsFormsApp1.RegistrosPac
             maskedTextBox_CPF.Text = Bd.getRetorna_cpf_titular();
             maskedTextBoxSituacao.Text = Bd.getRetorna_situacao();
             textBox_data.Text = Bd.getRetorna_chegada_data();
-            textBox_hora.Text = Bd.getRetorna_chegada_hora();//Bd.getRetorna_id_hora().ToString();//Bd.getRetorna_chegada_hora();
-
-            //Crie as colunas do DataTable
-            dataTable.Columns.Clear();
-            dataTable.Columns.Add("Nota Fiscal");
-            dataTable.Columns.Add("Funcionário");
-            dataTable.Columns.Add("Situação");
-            dataTable.Columns.Add("Titular");
-            dataTable.Columns.Add("Telefone");
-            dataTable.Columns.Add("Email");
-            dataTable.Columns.Add("CPF Titular");
-            dataTable.Columns.Add("Entregador");
-            dataTable.Columns.Add("CPF Entregador");
-            dataTable.Columns.Add("Data");
-            dataTable.Columns.Add("Hora");
-
-            //recebendo dados para enviar pro Datagridview
-            dataTable.Rows.Clear();// da clear nas linhas do datatable
-            newRow = dataTable.NewRow();//cria uma nova linha no datatable
-            newRow["Nota Fiscal"] =  Bd.getRetorna_nf();
-            newRow["Funcionário"] = Bd.getRetorna_emailFuncionario();
-            newRow["Situação"] = Bd.getRetorna_situacao();
-            newRow["Titular"] = Bd.getNome_titular();
-            newRow["Telefone"] = Bd.getTelefone_titular();
-            newRow["Email"] = Bd.getEmail_titular();
-            newRow["CPF Titular"] = Bd.getRetorna_cpf_titular();
-            newRow["Entregador"] = Bd.getRetorna_nome_entregador();
-            newRow["CPF Entregador"] = Bd.getRetorna_cpf_entregador();
-            newRow["Data"] = Bd.getRetorna_chegada_data();
-            newRow["Hora"] = Bd.getRetorna_chegada_hora();
-            // add as linhas do datagridview
-            dataTable.Rows.Add(newRow);
-            dataGridView_registro_pac.DataSource = dataTable;
+            textBox_hora.Text = Bd.getRetorna_chegada_hora();//Bd.getRetorna_id_hora().ToString();//Bd.getRetorna_chegada_hora(); 
         }
 
         private void button_Editar_Click(object sender, EventArgs e)
