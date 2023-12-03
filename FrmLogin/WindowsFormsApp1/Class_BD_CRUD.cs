@@ -166,6 +166,38 @@ namespace WindowsFormsApp1
 
             return true;
         }
+        public bool setReadBd_CountCpfTitular(string cpf)
+        {
+            MessageBox.Show("ENTROU TITULAR", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM titular WHERE cpf_titular = @cpfTitular", conn);
+            cmd.Parameters.AddWithValue("@cpfTitular", cpf);
+
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+            if (count > 0)
+            {
+                MessageBox.Show("box de teste cpf titular.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+        public bool setReadBd_CountCpfEntregador(string cpf)
+        {
+            MessageBox.Show("ENTROU ENTREGADOR", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM entregador WHERE cpf_entregador = @cpfEntregador", conn);
+            cmd.Parameters.AddWithValue("@cpfEntregador", cpf);
+
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+            if (count > 0)
+            {
+                MessageBox.Show("box de teste cpf entregador.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
 
         public DataTable setReadBd_Pacote_notaFiscal (string inputNotaFiscal)
         {
