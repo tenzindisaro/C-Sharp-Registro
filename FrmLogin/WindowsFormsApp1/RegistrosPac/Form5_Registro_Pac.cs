@@ -19,7 +19,7 @@ namespace WindowsFormsApp1.RegistrosPac
 {
     internal partial class Form5_Registro_Pac : Form
     {
-        private Class_loja loja;
+        private Class_loja loja = null;
         private Class_CadastroPac cadastroPacote = new Class_CadastroPac();
         private Class_BD_CRUD Bd = new Class_BD_CRUD();
         private DataTable dataTable = new DataTable();

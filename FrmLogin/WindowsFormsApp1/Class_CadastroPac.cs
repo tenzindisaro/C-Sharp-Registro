@@ -13,7 +13,6 @@ namespace WindowsFormsApp1
 {
     internal class Class_CadastroPac
     {
-        private MySqlConnection conn = new MySqlConnection("server=americanas.mysql.database.azure.com;port=3306;User Id=joao;database=teste_sql;password=Adriana1");
         string funcionario, titular, situacao, email, notaFiscal, telefone, CPF, cpf_entregador, nome_entregador, cpf_titular_buscar, nota_fiscal_buscar;
 
         public Class_CadastroPac()
