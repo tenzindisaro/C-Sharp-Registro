@@ -1,69 +1,122 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-using iText.Kernel.Pdf;
-using iText.Layout;
-using iText.Layout.Element;
-using iText.Layout.Properties;
-using iText.Kernel.Colors;
-using iText.Kernel.Font;
-using iText.IO.Font.Constants;
 using System.Linq;
 using System.Xml.Linq;
-
+using FastReport;
+using FastReport.Export.PdfSimple;
+using System.IO;
 
 namespace WindowsFormsApp1
 {
     public class PdfGenerator
     {
-        public void GerarRelatorioDadoSelecionado(DataGridViewRow linhaSelecionada, string caminhoArquivo)
+        public void RelatorioFinal(string caminhoRelatorioFrx, string caminhoPDF, string NF, string func, string sit, string tit, string tel, string email, string cpf, string dataC, string horaC, string dataR, string horaR)
         {
             try
             {
-                PdfDocument pdfDoc = new PdfDocument(new PdfWriter(caminhoArquivo));
-                Document doc = new Document(pdfDoc);
+                // Carrega o relatório do arquivo .frx
+                Report report = new Report();
+                report.Load(caminhoRelatorioFrx);
 
-                PdfFont fontTitulo = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
-                PdfFont fontDados = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
+                report.SetParameterValue("NF", NF);
+                report.SetParameterValue("Func", func);
+                report.SetParameterValue("Sit", sit);
+                report.SetParameterValue("Tit", tit);
+                report.SetParameterValue("Tel", tel);
+                report.SetParameterValue("Email", email);
+                report.SetParameterValue("CPF", cpf);
+                report.SetParameterValue("DataC", dataC);
+                report.SetParameterValue("HoraC", horaC);
+                report.SetParameterValue("DataR", dataR);
+                report.SetParameterValue("HoraR", horaR);
 
-                Paragraph titulo = new Paragraph("Relatório de Pacote").SetFont(fontTitulo).SetFontSize(20);
-                doc.Add(titulo);
+               
+                report.Prepare();
 
-                DataTable dataTable = new DataTable();
-                foreach (DataGridViewColumn column in linhaSelecionada.DataGridView.Columns)
+                // Exporta o relatório para PDF
+                PDFSimpleExport exportadorPDF = new PDFSimpleExport();
+                using (FileStream fileStream = new FileStream(caminhoPDF, FileMode.Create, FileAccess.Write))
                 {
-                    dataTable.Columns.Add(column.HeaderText);
+                    exportadorPDF.Export(report, fileStream);
                 }
 
-                DataRowView dataRow = (DataRowView)linhaSelecionada.DataBoundItem;
-                dataTable.LoadDataRow(dataRow.Row.ItemArray, true);
-
-                Table table = new Table(dataTable.Columns.Count, true);
-                table.UseAllAvailableWidth();
-
-                foreach (DataGridViewColumn column in linhaSelecionada.DataGridView.Columns)
-                {
-                    Cell headerCell = new Cell().Add(new Paragraph(column.HeaderText));
-                    headerCell.SetFont(fontDados).SetFontColor(DeviceRgb.BLACK).SetBackgroundColor(DeviceRgb.WHITE);
-                    table.AddHeaderCell(headerCell);
-                }
-
-                foreach (DataColumn dataColumn in dataTable.Columns)
-                {
-                    Cell dataCell = new Cell().Add(new Paragraph(dataRow[dataColumn.ColumnName].ToString()));
-                    dataCell.SetFont(fontDados).SetFontColor(DeviceRgb.BLACK).SetBackgroundColor(DeviceRgb.WHITE);
-                    table.AddCell(dataCell);
-                }
-
-                doc.Add(table);
-
-                doc.Close();
+                MessageBox.Show("Relatório exportado com sucesso para: " + caminhoPDF, "Exportação Concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ocorreu um erro ao gerar o PDF: {ex.Message}");
+                MessageBox.Show("Erro ao exportar o relatório para PDF: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-    }
 
-}
+
+        public void RelatorioChegada(string caminhoRelatorioFrx, string caminhoPDF, string NF, string func, string sit, string tit, string tel, string email, string cpf, string dataC, string horaC)
+        {
+            try
+            {
+                // Carrega o relatório do arquivo .frx
+                Report report = new Report();
+                report.Load(caminhoRelatorioFrx);
+
+                report.SetParameterValue("NF", NF);
+                report.SetParameterValue("Func", func);
+                report.SetParameterValue("Sit", sit);
+                report.SetParameterValue("Tit", tit);
+                report.SetParameterValue("Tel", tel);
+                report.SetParameterValue("Email", email);
+                report.SetParameterValue("CPF", cpf);
+                report.SetParameterValue("DataC", dataC);
+                report.SetParameterValue("HoraC", horaC);
+    
+                report.Prepare();
+  
+                PDFSimpleExport exportadorPDF = new PDFSimpleExport();
+                using (FileStream fileStream = new FileStream(caminhoPDF, FileMode.Create, FileAccess.Write))
+                {
+                    exportadorPDF.Export(report, fileStream);
+                }
+
+                MessageBox.Show("Relatório exportado com sucesso para: " + caminhoPDF, "Exportação Concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao exportar o relatório para PDF: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void RelatorioSaida(string caminhoRelatorioFrx, string caminhoPDF, string NF, string func, string sit, string tit, string tel, string email, string cpf, string dataR, string horaR)
+        {
+            try
+            {
+                // Carrega o relatório do arquivo .frx
+                Report report = new Report();
+                report.Load(caminhoRelatorioFrx);
+
+                report.SetParameterValue("NF", NF);
+                report.SetParameterValue("Func", func);
+                report.SetParameterValue("Sit", sit);
+                report.SetParameterValue("Tit", tit);
+                report.SetParameterValue("Tel", tel);
+                report.SetParameterValue("Email", email);
+                report.SetParameterValue("CPF", cpf);
+                report.SetParameterValue("DataR", dataR);
+                report.SetParameterValue("HoraR", horaR);
+
+                report.Prepare();
+
+                PDFSimpleExport exportadorPDF = new PDFSimpleExport();
+                using (FileStream fileStream = new FileStream(caminhoPDF, FileMode.Create, FileAccess.Write))
+                {
+                    exportadorPDF.Export(report, fileStream);
+                }
+
+                MessageBox.Show("Relatório exportado com sucesso para: " + caminhoPDF, "Exportação Concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao exportar o relatório para PDF: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+    }
+}   

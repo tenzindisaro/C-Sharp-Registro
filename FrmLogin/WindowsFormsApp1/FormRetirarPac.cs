@@ -292,20 +292,66 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //variáveis do pacote selecionado
-            string funcionario = comboBox_funcionario.Text;
-            string notaFiscal = textBox_NotaFiscal.Text;
-            string titular = textBox_Titular.Text;
-            string CPF = (maskedTextBox_CPF.Text).Replace("-", "").Replace(".", "");
-            string situacao = maskedTextBoxSituacao.Text;
-            string email = maskedTextBox_email.Text;
-            string telefone = maskedTextBox_telefone.Text.Replace("-", "").Replace("(", "").Replace(")", "").Replace(" ", "");
-            string cpf_entregador = txtbox_cpf_entregador.Text;
-            string nome_entregador = txtbox_nome_entregador.Text;
-            int id_data = Bd.getRetorna_id_data();
-            int id_hora = Bd.getRetorna_id_hora();
+            try
+            {
+                //variáveis do pacote selecionado
 
-            //gerar o relatório aqui
+                //gerar o relatório aqui
+
+                Dictionary<string, string> valoresLinhaSelecionada = ObterValoresDaLinhaSelecionada();
+
+                string caminhoRelatorioFrx = @".\WindowsFormsApp1\tempRelatorioFinal.frx";
+                // Diálogo para seleção do local de salvamento
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Arquivos PDF (*.pdf)|*.pdf";
+                saveFileDialog.Title = "Salvar Relatório PDF";
+                saveFileDialog.FileName = "Relatório"; // Nome padrão do arquivo
+                saveFileDialog.InitialDirectory = @"C:\"; // Diretório inicial
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string caminhoPDF = saveFileDialog.FileName;
+
+                    PdfGenerator pdfGenerator = new PdfGenerator();
+                    pdfGenerator.RelatorioSaida(
+                        caminhoRelatorioFrx,
+                        caminhoPDF,
+                        valoresLinhaSelecionada["Nota Fiscal"],
+                        valoresLinhaSelecionada["Funcionário"],
+                        valoresLinhaSelecionada["Situação"],
+                        valoresLinhaSelecionada["Titular"],
+                        valoresLinhaSelecionada["Telefone"],
+                        valoresLinhaSelecionada["Email"],
+                        valoresLinhaSelecionada["CPF Titular"],
+                        valoresLinhaSelecionada["Data de Retirada"],
+                        valoresLinhaSelecionada["Hora de Retirada"]
+                    );
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocorreu uma exceção: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private Dictionary<string, string> ObterValoresDaLinhaSelecionada()
+        {
+            Dictionary<string, string> valores = new Dictionary<string, string>();
+
+            if (dataGridView_retirada_pac.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView_retirada_pac.SelectedRows[0];
+
+                foreach (DataGridViewCell cell in selectedRow.Cells)
+                {
+                    string nomeDaColuna = dataGridView_retirada_pac.Columns[cell.ColumnIndex].Name;
+                    string valorDaCelula = cell.Value?.ToString() ?? string.Empty;
+
+                    valores[nomeDaColuna] = valorDaCelula;
+                }
+            }
+
+            return valores;
         }
 
         private void dataGridView_retirada_pac_CellClick(object sender, DataGridViewCellEventArgs e)

@@ -100,7 +100,7 @@
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(567, 54);
+            this.button1.Location = new System.Drawing.Point(575, 52);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(218, 23);
             this.button1.TabIndex = 6;
@@ -185,22 +185,6 @@
             this.radioButton3.Text = "Situação";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(575, 52);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(218, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Buscar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -239,7 +223,6 @@
             this.dataGridRelatorio.Location = new System.Drawing.Point(7, 19);
             this.dataGridRelatorio.Name = "dataGridRelatorio";
             this.dataGridRelatorio.Size = new System.Drawing.Size(763, 234);
-            this.dataGridRelatorio.TabIndex = 0;
             // 
             // button4
             // 

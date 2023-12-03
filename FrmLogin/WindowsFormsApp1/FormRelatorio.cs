@@ -1,7 +1,4 @@
-﻿using iText.Kernel.Pdf;
-using iText.Layout;
-using iText.Layout.Element;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using FastReport;
+using FastReport.Export.PdfSimple;
+using System.IO;
 
 namespace WindowsFormsApp1
 {
@@ -191,47 +191,61 @@ namespace WindowsFormsApp1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            string caminhoDoArquivo = @"C:\MidasProject\testeRelatorio.pdf";
 
-            try
+            Dictionary<string, string> valoresLinhaSelecionada = ObterValoresDaLinhaSelecionada();
+
+            // Use os valores obtidos conforme necessário, por exemplo, para gerar um relatório em PDF
+            string caminhoRelatorioFrx = @"C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\tempRelatorioFinal.frx";
+
+            // Diálogo para seleção do local de salvamento
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Arquivos PDF (*.pdf)|*.pdf";
+            saveFileDialog.Title = "Salvar Relatório PDF";
+            saveFileDialog.FileName = "Relatório"; // Nome padrão do arquivo
+            saveFileDialog.InitialDirectory = @"C:\"; // Diretório inicial
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                PdfWriter writer = new PdfWriter(caminhoDoArquivo);
-                PdfDocument pdf = new PdfDocument(writer);
-                Document document = new Document(pdf);
+                string caminhoPDF = saveFileDialog.FileName;
 
-                document.Add(new Paragraph("Olá, este é um documento PDF gerado usando o iText7."));
-
-                document.Close();
-
-                Console.WriteLine("Documento PDF criado com sucesso.");
+                PdfGenerator pdfGenerator = new PdfGenerator();
+                pdfGenerator.RelatorioFinal(
+                    caminhoRelatorioFrx,
+                    caminhoPDF,
+                    valoresLinhaSelecionada["Nota Fiscal"],
+                    valoresLinhaSelecionada["Funcionário"],
+                    valoresLinhaSelecionada["Situação"],
+                    valoresLinhaSelecionada["Titular"],
+                    valoresLinhaSelecionada["Telefone"],
+                    valoresLinhaSelecionada["Email"],
+                    valoresLinhaSelecionada["CPF Titular"],
+                    valoresLinhaSelecionada["Data de Chegada"],
+                    valoresLinhaSelecionada["Hora de Chegada"],
+                    valoresLinhaSelecionada["Data de Retirada"],
+                    valoresLinhaSelecionada["Hora de Retirada"]
+                );
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Ocorreu um erro ao gerar o PDF: {ex.Message}");
-            }
-
         }
 
-        private void GerarRelatorioPDF()
+        private Dictionary<string, string> ObterValoresDaLinhaSelecionada()
         {
+            Dictionary<string, string> valores = new Dictionary<string, string>();
+
             if (dataGridRelatorio.SelectedRows.Count > 0)
             {
-                DataGridViewRow linhaSelecionada = dataGridRelatorio.SelectedRows[0];
-                string caminhoDoArquivo = @"C:\testeRelatorio.pdf";
+                DataGridViewRow selectedRow = dataGridRelatorio.SelectedRows[0];
 
-                PdfGenerator geradorPDF = new PdfGenerator();
-                geradorPDF.GerarRelatorioDadoSelecionado(linhaSelecionada, caminhoDoArquivo);
+                foreach (DataGridViewCell cell in selectedRow.Cells)
+                {
+                    string nomeDaColuna = dataGridRelatorio.Columns[cell.ColumnIndex].Name;
+                    string valorDaCelula = cell.Value?.ToString() ?? string.Empty;
 
-                Console.WriteLine("Relatório PDF gerado com os dados da linha selecionada!");
+                    valores[nomeDaColuna] = valorDaCelula;
+                }
             }
-            else
-            {
-                Console.WriteLine("Nenhuma linha selecionada no DataGridView.");
-            }
+
+            return valores;
         }
-
-
-
     }
 }
 

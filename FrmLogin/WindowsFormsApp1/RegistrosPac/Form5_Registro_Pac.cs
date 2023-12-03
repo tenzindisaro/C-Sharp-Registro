@@ -572,7 +572,7 @@ namespace WindowsFormsApp1.RegistrosPac
         private void button1_Click(object sender, EventArgs e)
         {
             //variáveis do pacote selecionado
-            string notaFiscal, funcionario, situacao, nomeTitular, telefoneTitular, emailTitular, nomeEntregador, cpfEntregador, dataChegada, horaChegada, dataRetirada, horaRetirada;
+            string notaFiscal, funcionario, situacao, nomeTitular, telefoneTitular, emailTitular, nomeEntregador, cpfTitular, dataChegada, horaChegada;
 
             notaFiscal = textBox_NotaFiscal.Text;
             funcionario = comboBox_funcionario.Text;
@@ -581,12 +581,27 @@ namespace WindowsFormsApp1.RegistrosPac
             telefoneTitular = maskedTextBox_telefone.Text;
             emailTitular = maskedTextBox_email.Text;
             nomeEntregador = txtbox_nome_entregador.Text;
-            cpfEntregador = txtbox_cpf_entregador.Text;
+            cpfTitular = maskedTextBox_CPF.Text;
             dataChegada = textBox_data.Text;
             horaChegada = textBox_hora.Text;
 
             //gerar o relatório aqui
 
+            string caminhoRelatorioFrx = @"C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\tempRelatorioChegada.frx";
+            // Diálogo para seleção do local de salvamento
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Arquivos PDF (*.pdf)|*.pdf";
+            saveFileDialog.Title = "Salvar Relatório PDF";
+            saveFileDialog.FileName = "Relatório"; // Nome padrão do arquivo
+            saveFileDialog.InitialDirectory = @"C:\"; // Diretório inicial
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string caminhoPDF = saveFileDialog.FileName;
+
+                PdfGenerator pdfGenerator = new PdfGenerator();
+                pdfGenerator.RelatorioChegada(caminhoRelatorioFrx, caminhoPDF, notaFiscal, funcionario, situacao,nomeTitular , telefoneTitular, emailTitular, cpfTitular, dataChegada, horaChegada);
+            }
         }
     }
 }
