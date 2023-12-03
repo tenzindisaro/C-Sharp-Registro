@@ -18,6 +18,8 @@ namespace WindowsFormsApp1
         {
             Bd = database;
             InitializeComponent();
+            txtEmail.Text = "";
+            txtEmail.Enabled = true;
         }
         public FormValidacaoLogin(Class_BD_CRUD database, string funcionario)
         {

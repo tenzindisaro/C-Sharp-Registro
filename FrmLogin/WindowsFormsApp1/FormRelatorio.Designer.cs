@@ -269,6 +269,7 @@
             this.Controls.Add(this.button3);
             this.Name = "FormRelatorio";
             this.Text = "FormRelatorio";
+//            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormRelatorio_FormClosed);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);

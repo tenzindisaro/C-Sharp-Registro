@@ -186,16 +186,12 @@ namespace WindowsFormsApp1
 
         private void btnRelatorios_Click(object sender, EventArgs e)
         {
-            this.Close();
-            t2 = new Thread(abrirRelatorios);
-            t2.SetApartmentState(ApartmentState.STA);
-            t2.Start();
+            this.Hide();
+            FormRelatorio form = new FormRelatorio();
+            form.ShowDialog();
+            this.Show();
         }
 
-        private void abrirRelatorios(object obj)
-        {
-            Application.Run(new FormRelatorio());
-        }
 
         private void btnRetiradaPac_Click(object sender, EventArgs e)
         {

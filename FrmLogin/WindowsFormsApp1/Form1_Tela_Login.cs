@@ -54,8 +54,6 @@ namespace WindowsFormsApp1
             {
                 label1.Visible = false;
                 
-
-
                 this.Close();
                 t1 = new Thread(abrirMenu);
                 t1.SetApartmentState(ApartmentState.MTA);

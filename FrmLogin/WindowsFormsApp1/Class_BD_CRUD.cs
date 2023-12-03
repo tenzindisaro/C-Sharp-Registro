@@ -160,7 +160,39 @@ namespace WindowsFormsApp1
 
             if (count == 0)
             {
-                MessageBox.Show("Email não existente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Funcionario email não existente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+        public bool setReadBd_CountCpfTitular(string cpf)
+        {
+            MessageBox.Show("ENTROU TITULAR", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM titular WHERE cpf_titular = @cpfTitular", conn);
+            cmd.Parameters.AddWithValue("@cpfTitular", cpf);
+
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+            if (count > 0)
+            {
+                MessageBox.Show("box de teste cpf titular.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+        public bool setReadBd_CountCpfEntregador(string cpf)
+        {
+            MessageBox.Show("ENTROU ENTREGADOR", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM entregador WHERE cpf_entregador = @cpfEntregador", conn);
+            cmd.Parameters.AddWithValue("@cpfEntregador", cpf);
+
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+            if (count > 0)
+            {
+                MessageBox.Show("box de teste cpf entregador.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -326,8 +358,70 @@ namespace WindowsFormsApp1
 
             return datatable;
         }
+        public DataTable setRead_buscarRegistroPac()
+        {
+            DataTable dataTable = new DataTable();
+            DataRow newRow;
+            try
+            {
+                //Crie as colunas do DataTable
+                dataTable.Columns.Clear();
+                dataTable.Columns.Add("Nota Fiscal");
+                dataTable.Columns.Add("Funcionário");
+                dataTable.Columns.Add("Situação");
+                dataTable.Columns.Add("Titular");
+                dataTable.Columns.Add("Telefone");
+                dataTable.Columns.Add("Email");
+                dataTable.Columns.Add("CPF Titular");
+                dataTable.Columns.Add("Entregador");
+                dataTable.Columns.Add("CPF Entregador");
+                dataTable.Columns.Add("Data");
+                dataTable.Columns.Add("Hora");
 
-         public void setRead_pacote_cpf(string cpf)
+                string query = "SELECT p.nota_fiscal_pacote, p.email_americanas_funcionario, p.situacao_pacote, t.nome, t.telefone, t.email, t.cpf_titular, e.nome_entregador, e.cpf_entregador, d.chegada_data, h.chegada_hora " +
+                                "FROM pacote p " +
+                                "INNER JOIN titular t ON p.cpf_titular = t.cpf_titular " +
+                                "INNER JOIN entregador e ON p.cpf_entregador = e.cpf_entregador " +
+                                "INNER JOIN tbl_data d ON p.id_data = d.id_data " +
+                                "INNER JOIN hora h ON p.id_hora = h.id_hora " +
+                                "WHERE t.cpf_titular = @cpf_titular";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = retorna_cpf_titular;
+
+                MySqlDataReader select = cmd.ExecuteReader();
+
+                while (select.Read())
+                {
+                    //recebendo dados para enviar pro Datagridview
+
+                    newRow = dataTable.NewRow();//cria uma nova linha no datatable
+                    newRow["Nota Fiscal"] = select.GetString(0);
+                    newRow["Funcionário"] = select.GetString(1);
+                    newRow["Situação"] = select.GetString(2);
+                    newRow["Titular"] = select.GetString(3);
+                    newRow["Telefone"] = select.GetString(4);
+                    newRow["Email"] = select.GetString(5);
+                    newRow["CPF Titular"] = select.GetString(6);
+                    newRow["Entregador"] = select.GetString(7);
+                    newRow["CPF Entregador"] = select.GetString(8);
+                    newRow["Data"] = select.GetString(9);
+                    newRow["Hora"] = select.GetString(10);
+                    dataTable.Rows.Add(newRow);
+                }
+
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                // Lidar com exceções de banco de dados ou conexão aqui
+                // Pode ser útil logar o erro ou tomar outras ações apropriadas.
+                MessageBox.Show("Erro: " + ex.Message);
+                return null;
+            }
+        }
+
+        public void setRead_pacote_cpf(string cpf)
         {
             MySqlCommand cmd = new MySqlCommand("SELECT pacote.nota_fiscal_pacote, pacote.situacao_pacote, titular.cpf_titular, entregador.cpf_entregador, tbl_data.id_data, hora.id_hora, funcionario.email_americanas_funcionario " +
                                        "FROM pacote " +
