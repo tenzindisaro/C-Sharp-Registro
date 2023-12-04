@@ -91,6 +91,19 @@ namespace WindowsFormsApp1.RegistrosPac
             bool validCpf_titular = false;
             bool validCpf_entregador = false;
             bool emailTitular_check = false;
+            // Exibe a MessageBox com dois botões (OK e Cancelar)
+            DialogResult result = MessageBox.Show("Deseja continuar com a operação?", "Confirmação",
+                                                  MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            // Verifica a resposta do usuário
+            if (result != DialogResult.Yes)
+            {
+
+                MessageBox.Show("Operação cancelada.");
+                // Coloque aqui o código que deve ser executado se o usuário escolher "Cancelar".
+                return;
+            }
+
             try
             {
                 Bd.setBD_Open();
@@ -210,7 +223,18 @@ namespace WindowsFormsApp1.RegistrosPac
             int id_data = Bd.getRetorna_id_data();
             int id_hora = Bd.getRetorna_id_hora();
 
+            // Exibe a MessageBox com dois botões (OK e Cancelar)
+            DialogResult result = MessageBox.Show("Deseja continuar com a operação?", "Confirmação",
+                                                  MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+            // Verifica a resposta do usuário
+            if (result != DialogResult.Yes)
+            {
+
+                MessageBox.Show("Operação cancelada.");
+                // Coloque aqui o código que deve ser executado se o usuário escolher "Cancelar".
+                return;
+            }
 
             if (funcionario != "" && notaFiscal != "" && titular != "" & CPF != "" && situacao != ""
                 && email != "" && telefone != "" && cpf_entregador != "" && nome_entregador != "")
@@ -393,6 +417,19 @@ namespace WindowsFormsApp1.RegistrosPac
             string cpf_entregador = txtbox_cpf_entregador.Text;
             string nome_entregador = txtbox_nome_entregador.Text;
 
+            // Exibe a MessageBox com dois botões (OK e Cancelar)
+            DialogResult result = MessageBox.Show("Deseja continuar com a operação?", "Confirmação",
+                                                  MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            // Verifica a resposta do usuário
+            if (result != DialogResult.Yes)
+            {
+
+                MessageBox.Show("Operação cancelada.");
+                // Coloque aqui o código que deve ser executado se o usuário escolher "Cancelar".
+                return;
+            }
+
 
             if (funcionario != "" && notaFiscal != "" && titular != "" & CPF != "" && situacao != ""
                 && email != "" && telefone != "" && cpf_entregador != "" && nome_entregador != "")
@@ -427,7 +464,8 @@ namespace WindowsFormsApp1.RegistrosPac
 
                             if (pesquisaTitular != null)
                             {
-                                Bd.setEdit_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
+                                MessageBox.Show(dadosValidos_CPF);
+                                Bd.setEdit_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone, dadosValidos_notaFiscal);
                             }
                             else
                             {
@@ -436,7 +474,7 @@ namespace WindowsFormsApp1.RegistrosPac
 
                             if (pesquisaEntregador != null)
                             {
-                                Bd.setEdit_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
+                                Bd.setEdit_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador, dadosValidos_notaFiscal);
                             }
                             else
                             {
