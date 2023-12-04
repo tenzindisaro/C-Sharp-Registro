@@ -189,7 +189,7 @@ namespace WindowsFormsApp1
                             
                             if (pesquisaTitular != null)
                             {
-                                Bd.setEdit_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
+                                Bd.setEdit_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone, dadosValidos_notaFiscal);
                             }
                             else
                             {
@@ -198,7 +198,7 @@ namespace WindowsFormsApp1
 
                             if (pesquisaEntregador != null)
                             {
-                                Bd.setEdit_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
+                                Bd.setEdit_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador, dadosValidos_notaFiscal);
                             }
                             else
                             {
