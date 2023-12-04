@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace WindowsFormsApp1
 {
@@ -189,7 +191,7 @@ namespace WindowsFormsApp1
                             
                             if (pesquisaTitular != null)
                             {
-                                Bd.setEdit_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
+                                Bd.setEdit_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone, dadosValidos_notaFiscal);
                             }
                             else
                             {
@@ -198,7 +200,7 @@ namespace WindowsFormsApp1
 
                             if (pesquisaEntregador != null)
                             {
-                                Bd.setEdit_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
+                                Bd.setEdit_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador, dadosValidos_notaFiscal);
                             }
                             else
                             {
@@ -294,26 +296,23 @@ namespace WindowsFormsApp1
         {
             try
             {
-                //variáveis do pacote selecionado
-
-                //gerar o relatório aqui
-
                 Dictionary<string, string> valoresLinhaSelecionada = ObterValoresDaLinhaSelecionada();
 
-                string caminhoRelatorioFrx = @".\WindowsFormsApp1\tempRelatorioFinal.frx";
+                // Use os valores obtidos conforme necessário, por exemplo, para gerar um relatório em PDF
+                string caminhoRelatorioFrx = @"C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\tempRelatorioFinal.frx";
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
                 // Diálogo para seleção do local de salvamento
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = "Arquivos PDF (*.pdf)|*.pdf";
-                saveFileDialog.Title = "Salvar Relatório PDF";
-                saveFileDialog.FileName = "Relatório"; // Nome padrão do arquivo
-                saveFileDialog.InitialDirectory = @"C:\"; // Diretório inicial
+                saveFileDialog1.Filter = "Arquivos PDF (*.pdf)|*.pdf";
+                saveFileDialog1.Title = "Salvar Relatório PDF";
+                saveFileDialog1.FileName = "Relatório"; // Nome padrão do arquivo
+                saveFileDialog1.InitialDirectory = @"C:\"; // Diretório inicial
 
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    string caminhoPDF = saveFileDialog.FileName;
+                    string caminhoPDF = saveFileDialog1.FileName;
 
                     PdfGenerator pdfGenerator = new PdfGenerator();
-                    pdfGenerator.RelatorioSaida(
+                    pdfGenerator.RelatorioFinal(
                         caminhoRelatorioFrx,
                         caminhoPDF,
                         valoresLinhaSelecionada["Nota Fiscal"],
@@ -323,10 +322,13 @@ namespace WindowsFormsApp1
                         valoresLinhaSelecionada["Telefone"],
                         valoresLinhaSelecionada["Email"],
                         valoresLinhaSelecionada["CPF Titular"],
+                        valoresLinhaSelecionada["Data de Chegada"],
+                        valoresLinhaSelecionada["Hora de Chegada"],
                         valoresLinhaSelecionada["Data de Retirada"],
                         valoresLinhaSelecionada["Hora de Retirada"]
                     );
                 }
+
             }
             catch (Exception ex)
             {
@@ -581,6 +583,7 @@ namespace WindowsFormsApp1
             txtBox_buscar.Visible = false;
             txtBox_buscar_cpf.Visible = true;
         }
+
     }
 }
 

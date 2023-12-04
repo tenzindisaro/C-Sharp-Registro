@@ -357,6 +357,17 @@ C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsAp
 C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormValidacaoLogin.resources
 C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormValidacaoLogin.resources
+C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\itext.barcodes.dll
+C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\itext.bouncy-castle-connector.dll
+C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\itext.commons.dll
+C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\itext.forms.dll
+C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\itext.io.dll
+C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\itext.kernel.dll
+C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\itext.layout.dll
+C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\itext.pdfa.dll
+C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\itext.sign.dll
+C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\itext.styledxmlparser.dll
+C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\itext.svg.dll
 C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
@@ -365,6 +376,17 @@ C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsAp
 C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.Primitives.dll
 C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.dll
 C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\System.ValueTuple.dll
+C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\itext.barcodes.xml
+C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\itext.bouncy-castle-connector.xml
+C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\itext.commons.xml
+C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\itext.forms.xml
+C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\itext.io.xml
+C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\itext.kernel.xml
+C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\itext.layout.xml
+C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\itext.pdfa.xml
+C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\itext.sign.xml
+C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\itext.styledxmlparser.xml
+C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\itext.svg.xml
 C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
 C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
 C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.Logging.xml
@@ -374,17 +396,6 @@ C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsAp
 C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.xml
 C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\System.ValueTuple.xml
 C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\System.Text.Encoding.CodePages.dll
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\itext.barcodes.dll
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\itext.bouncy-castle-connector.dll
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\itext.commons.dll
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\itext.forms.dll
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\itext.io.dll
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\itext.kernel.dll
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\itext.layout.dll
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\itext.pdfa.dll
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\itext.sign.dll
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\itext.styledxmlparser.dll
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\itext.svg.dll
 C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
@@ -394,17 +405,6 @@ C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug
 C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.dll
 C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\System.Text.Encoding.CodePages.dll
 C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\System.ValueTuple.dll
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\itext.barcodes.xml
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\itext.bouncy-castle-connector.xml
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\itext.commons.xml
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\itext.forms.xml
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\itext.io.xml
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\itext.kernel.xml
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\itext.layout.xml
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\itext.pdfa.xml
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\itext.sign.xml
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\itext.styledxmlparser.xml
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\itext.svg.xml
 C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
 C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
 C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.Logging.xml
@@ -705,69 +705,68 @@ C:\Users\Tenzin\Desktop\projetoxxx\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFo
 C:\Users\Tenzin\Desktop\projetoxxx\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
 C:\Users\Tenzin\Desktop\projetoxxx\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\Tenzin\Desktop\projetoxxx\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\BouncyCastle.Cryptography.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\FastReport.Compat.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\FastReport.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\FastReport.OpenSource.Export.PdfSimple.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.CodeAnalysis.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.ReportViewer.Common.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.DLL
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.ReportViewer.WebForms.DLL
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\SimpleReports.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\System.Collections.Immutable.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\System.Reflection.Metadata.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\BouncyCastle.Cryptography.xml
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\FastReport.xml
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.CodeAnalysis.pdb
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.CodeAnalysis.xml
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.CodeAnalysis.CSharp.pdb
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.CodeAnalysis.CSharp.xml
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.CodeAnalysis.VisualBasic.pdb
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.CodeAnalysis.VisualBasic.xml
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\MySql.Data.xml
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\System.Collections.Immutable.xml
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\System.Configuration.ConfigurationManager.xml
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\System.Reflection.Metadata.xml
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\System.Text.Encoding.CodePages.xml
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\cs\Microsoft.CodeAnalysis.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\de\Microsoft.CodeAnalysis.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\es\Microsoft.CodeAnalysis.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\fr\Microsoft.CodeAnalysis.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\it\Microsoft.CodeAnalysis.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\ja\Microsoft.CodeAnalysis.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\ko\Microsoft.CodeAnalysis.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\pl\Microsoft.CodeAnalysis.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\pt-BR\Microsoft.CodeAnalysis.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\ru\Microsoft.CodeAnalysis.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\tr\Microsoft.CodeAnalysis.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\zh-Hans\Microsoft.CodeAnalysis.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\zh-Hant\Microsoft.CodeAnalysis.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\de\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\es\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\it\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\cs\Microsoft.CodeAnalysis.VisualBasic.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\de\Microsoft.CodeAnalysis.VisualBasic.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\es\Microsoft.CodeAnalysis.VisualBasic.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\fr\Microsoft.CodeAnalysis.VisualBasic.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\it\Microsoft.CodeAnalysis.VisualBasic.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\ja\Microsoft.CodeAnalysis.VisualBasic.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\ko\Microsoft.CodeAnalysis.VisualBasic.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\pl\Microsoft.CodeAnalysis.VisualBasic.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\pt-BR\Microsoft.CodeAnalysis.VisualBasic.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\ru\Microsoft.CodeAnalysis.VisualBasic.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\tr\Microsoft.CodeAnalysis.VisualBasic.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\zh-Hans\Microsoft.CodeAnalysis.VisualBasic.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\zh-Hant\Microsoft.CodeAnalysis.VisualBasic.resources.dll
-C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormRetirarPac.resources
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\FastReport.Compat.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\FastReport.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\FastReport.OpenSource.Export.PdfSimple.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.CodeAnalysis.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.ReportViewer.Common.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.ReportViewer.WebForms.DLL
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\SimpleReports.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\System.Collections.Immutable.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\System.Reflection.Metadata.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\FastReport.xml
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.CodeAnalysis.pdb
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.CodeAnalysis.xml
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.CodeAnalysis.CSharp.pdb
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.CodeAnalysis.CSharp.xml
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.CodeAnalysis.VisualBasic.pdb
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.CodeAnalysis.VisualBasic.xml
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\MySql.Data.xml
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\System.Collections.Immutable.xml
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\System.Reflection.Metadata.xml
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\System.Text.Encoding.CodePages.xml
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\cs\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\de\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\es\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\fr\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\it\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\ja\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\ko\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\pl\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\pt-BR\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\ru\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\tr\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\zh-Hans\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\zh-Hant\Microsoft.CodeAnalysis.VisualBasic.resources.dll

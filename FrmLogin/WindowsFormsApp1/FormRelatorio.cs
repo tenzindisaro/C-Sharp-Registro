@@ -7,14 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using FastReport;
 using FastReport.Export.PdfSimple;
 using System.IO;
+using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
+using Microsoft.Win32;
+using System.Threading;
 
 namespace WindowsFormsApp1
 {
-    public partial class FormRelatorio : Form
+    internal partial class FormRelatorio : Form
     {
 
         private User usuario;
@@ -22,21 +24,34 @@ namespace WindowsFormsApp1
         Class_BD_CRUD Bd = new Class_BD_CRUD();
         private DataTable dataTable = new DataTable();
         DataRow newRow;
-        public FormRelatorio()
+        Class_loja loja;
+        public FormRelatorio(Class_loja lojaAtual)
         {
+            loja = lojaAtual;
             InitializeComponent();
             InitializeDataGridView();
         }
 
         private void InitializeDataGridView()
         {
-            string date = DateTime.Now.Date.ToString("yyyy-MM-dd");
-            Bd.setBD_Open();
-            DataTable datatable_dos_pacotes_registrados_no_dia = Bd.setDataTable_pacotesDoDia(date);
+            try
+            {
+                Bd.setBD_Open();
+                DataTable datatable_dos_pacotes_registrados_no_dia = Bd.setDataTable_pacotesRetirados();
 
 
-            dataGridRelatorio.DataSource = datatable_dos_pacotes_registrados_no_dia;
-            Bd.setBD_Close();
+                dataGridRelatorio.DataSource = datatable_dos_pacotes_registrados_no_dia;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Bd.setBD_Close();
+
+            }
+
         }
 
         private void SearchDateGrid()
@@ -189,57 +204,7 @@ namespace WindowsFormsApp1
             dataGridRelatorio.DataSource = dataTable;
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
 
-            try
-            {
-                Dictionary<string, string> valoresLinhaSelecionada = ObterValoresDaLinhaSelecionada();
-
-                if (valoresLinhaSelecionada.Count == 0)
-                {
-                    MessageBox.Show("Por favor, selecione uma linha para gerar o relatório.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                string caminhoRelatorioFrx = @"C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\tempRelatorioFinal.frx";
-
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = "Arquivos PDF (*.pdf)|*.pdf";
-                saveFileDialog.Title = "Salvar Relatório PDF";
-                saveFileDialog.FileName = "Relatório.pdf"; // Nome padrão do arquivo
-                saveFileDialog.InitialDirectory = @"C:\"; // Diretório inicial
-                saveFileDialog.ShowDialog();
-
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string caminhoPDF = saveFileDialog.FileName;
-
-                    PdfGenerator pdfGenerator = new PdfGenerator();
-                    pdfGenerator.RelatorioFinal(
-                        caminhoRelatorioFrx,
-                        caminhoPDF,
-                        valoresLinhaSelecionada["Nota Fiscal"],
-                        valoresLinhaSelecionada["Funcionário"],
-                        valoresLinhaSelecionada["Situação"],
-                        valoresLinhaSelecionada["Titular"],
-                        valoresLinhaSelecionada["Telefone"],
-                        valoresLinhaSelecionada["Email"],
-                        valoresLinhaSelecionada["CPF Titular"],
-                        valoresLinhaSelecionada["Data de Chegada"],
-                        valoresLinhaSelecionada["Hora de Chegada"],
-                        valoresLinhaSelecionada["Data de Retirada"],
-                        valoresLinhaSelecionada["Hora de Retirada"]
-                    );
-
-                    MessageBox.Show("Relatório gerado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ocorreu um erro ao gerar o relatório: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private Dictionary<string, string> ObterValoresDaLinhaSelecionada()
         {
@@ -259,6 +224,67 @@ namespace WindowsFormsApp1
             }
 
             return valores;
+        }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+            //retorna o caminho
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+            Dictionary<string, string> valoresLinhaSelecionada = ObterValoresDaLinhaSelecionada();
+
+            // Use os valores obtidos conforme necessário, por exemplo, para gerar um relatório em PDF
+            string caminhoRelatorioFrx = @"C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\tempRelatorioFinal.frx";
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog(); 
+            // Diálogo para seleção do local de salvamento
+            saveFileDialog1.Filter = "Arquivos PDF (*.pdf)|*.pdf";
+            saveFileDialog1.Title = "Salvar Relatório PDF";
+            saveFileDialog1.FileName = "Relatório"; // Nome padrão do arquivo
+            saveFileDialog1.InitialDirectory = @"C:\"; // Diretório inicial
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string caminhoPDF = saveFileDialog1.FileName;
+
+                PdfGenerator pdfGenerator = new PdfGenerator();
+                pdfGenerator.RelatorioFinal(
+                    caminhoRelatorioFrx,
+                    caminhoPDF,
+                    valoresLinhaSelecionada["Nota Fiscal"],
+                    valoresLinhaSelecionada["Funcionário"],
+                    valoresLinhaSelecionada["Situação"],
+                    valoresLinhaSelecionada["Titular"],
+                    valoresLinhaSelecionada["Telefone"],
+                    valoresLinhaSelecionada["Email"],
+                    valoresLinhaSelecionada["CPF Titular"],
+                    valoresLinhaSelecionada["Data de Chegada"],
+                    valoresLinhaSelecionada["Hora de Chegada"],
+                    valoresLinhaSelecionada["Data de Retirada"],
+                    valoresLinhaSelecionada["Hora de Retirada"]
+                );
+            }
+
+        
+        }
+
+        private void FormRelatorio_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormRelatorio_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Thread t = new Thread(abrirMenu);
+            t.SetApartmentState(ApartmentState.STA);
+            t.Start();
+        }
+
+        private void abrirMenu()
+        {
+            Application.Run(new Form3_Tela_Menu(loja));
         }
     }
 }

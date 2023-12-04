@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtBox_buscar = new System.Windows.Forms.TextBox();
             this.txtBox_buscar_cpf = new System.Windows.Forms.MaskedTextBox();
@@ -51,15 +50,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRelatorio)).BeginInit();
             this.SuspendLayout();
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(313, 416);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(210, 13);
-            this.label3.TabIndex = 128;
-            this.label3.Text = "vão redirecionar para a tela registroPac>>>";
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Red;
@@ -77,7 +67,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(802, 81);
             this.panel1.TabIndex = 129;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // txtBox_buscar
             // 
@@ -111,17 +100,14 @@
             // rdb_Titular_cpf
             // 
             this.rdb_Titular_cpf.AutoSize = true;
-            this.rdb_Titular_cpf.Checked = true;
             this.rdb_Titular_cpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdb_Titular_cpf.ForeColor = System.Drawing.Color.White;
             this.rdb_Titular_cpf.Location = new System.Drawing.Point(681, 7);
             this.rdb_Titular_cpf.Name = "rdb_Titular_cpf";
             this.rdb_Titular_cpf.Size = new System.Drawing.Size(96, 19);
             this.rdb_Titular_cpf.TabIndex = 10;
-            this.rdb_Titular_cpf.TabStop = true;
             this.rdb_Titular_cpf.Text = "CPF Titular";
             this.rdb_Titular_cpf.UseVisualStyleBackColor = true;
-            this.rdb_Titular_cpf.CheckedChanged += new System.EventHandler(this.rdb_Titular_cpf_CheckedChanged);
             // 
             // rdb_NotaFiscal
             // 
@@ -149,6 +135,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
             this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton1.ForeColor = System.Drawing.Color.White;
             this.radioButton1.Location = new System.Drawing.Point(435, 7);
@@ -195,7 +182,6 @@
             this.label2.Size = new System.Drawing.Size(64, 18);
             this.label2.TabIndex = 1;
             this.label2.Text = "Ordem:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // button2
             // 
@@ -223,6 +209,7 @@
             this.dataGridRelatorio.Location = new System.Drawing.Point(7, 19);
             this.dataGridRelatorio.Name = "dataGridRelatorio";
             this.dataGridRelatorio.Size = new System.Drawing.Size(763, 234);
+            this.dataGridRelatorio.TabIndex = 0;
             // 
             // button4
             // 
@@ -260,7 +247,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox1);
@@ -269,19 +255,17 @@
             this.Controls.Add(this.button3);
             this.Name = "FormRelatorio";
             this.Text = "FormRelatorio";
-//            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormRelatorio_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormRelatorio_FormClosing);
+            this.Load += new System.EventHandler(this.FormRelatorio_Load_1);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRelatorio)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RadioButton radioButton1;
