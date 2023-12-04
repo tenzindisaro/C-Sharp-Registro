@@ -28,6 +28,7 @@ namespace WindowsFormsApp1
 
         private void btnContinuar_Click(object sender, EventArgs e)
         {
+
             inputId = txtEmail.Text;
             inputPassword = txtSenha.Text;
 
@@ -56,7 +57,7 @@ namespace WindowsFormsApp1
                 
                 this.Close();
                 t1 = new Thread(abrirMenu);
-                t1.SetApartmentState(ApartmentState.MTA);
+                t1.SetApartmentState(ApartmentState.STA);
                 t1.Start();
             }
             else

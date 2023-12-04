@@ -1190,6 +1190,87 @@ namespace WindowsFormsApp1
             return dt_pacsDia;
         }
 
+        public DataTable setDataTable_pacotesRetirados()
+        {
+            DataTable dt_pacsDia = new DataTable();
+            DataRow newRow;
+
+            // Crie as colunas do DataTable
+            dt_pacsDia.Columns.Add("Nota Fiscal");
+            dt_pacsDia.Columns.Add("Funcionário");
+            dt_pacsDia.Columns.Add("Situação");
+            dt_pacsDia.Columns.Add("Titular");
+            dt_pacsDia.Columns.Add("Telefone");
+            dt_pacsDia.Columns.Add("Email");
+            dt_pacsDia.Columns.Add("CPF Titular");
+            dt_pacsDia.Columns.Add("Entregador");
+            dt_pacsDia.Columns.Add("CPF Entregador");
+            dt_pacsDia.Columns.Add("Data de Chegada");
+            dt_pacsDia.Columns.Add("Hora de Chegada");
+            dt_pacsDia.Columns.Add("Data de Retirada");
+            dt_pacsDia.Columns.Add("Hora de Retirada");
+
+            string query = "SELECT p.nota_fiscal_pacote, p.email_americanas_funcionario, p.situacao_pacote, t.nome, t.telefone, t.email, p.cpf_titular, e.nome_entregador," +
+                " p.cpf_entregador, d.chegada_data, h.chegada_hora, d.retirada_data, h.retirada_hora FROM pacote p " +
+                "INNER JOIN funcionario f ON p.email_americanas_funcionario = f.email_americanas_funcionario " +
+                "INNER JOIN titular t ON p.cpf_titular = t.cpf_titular " +
+                "INNER JOIN entregador e ON p.cpf_entregador = e.cpf_entregador " +
+                "INNER JOIN tbl_data d ON p.id_data = d.id_data " +
+                "INNER JOIN hora h ON p.id_hora = h.id_hora " +
+                "WHERE p.situacao_pacote = \"Retirado\" " +
+                "ORDER BY d.retirada_data ASC, t.nome";
+
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+
+            cmd.Parameters.Clear();
+
+            cmd.CommandType = CommandType.Text;
+            try // caso não tenha pacotes ele inicializa pelo try sem pacotes
+            {
+                //recebe conteudo do banco
+                MySqlDataReader select = cmd.ExecuteReader();
+
+                while (select.Read())
+                {
+                    //recebendo dados para enviar pro Datagridview
+
+                    newRow = dt_pacsDia.NewRow();//cria uma nova linha no datatable
+                    newRow["Nota Fiscal"] = select.GetString(0);
+                    newRow["Funcionário"] = select.GetString(1);
+                    newRow["Situação"] = select.GetString(2);
+                    newRow["Titular"] = select.GetString(3);
+                    newRow["Telefone"] = select.GetString(4);
+                    newRow["Email"] = select.GetString(5);
+                    newRow["CPF Titular"] = select.GetString(6);
+                    newRow["Entregador"] = select.GetString(7);
+                    newRow["CPF Entregador"] = select.GetString(8);
+                    newRow["Data de Chegada"] = select.GetDateTime(9).ToString("dd/MM/yyyy");
+                    newRow["Hora de Chegada"] = select.GetTimeSpan(10).ToString(@"hh\:mm\:ss");
+                    if (!select.IsDBNull(11))
+                    {
+                        newRow["Data de Retirada"] = select.GetDateTime(11).ToString("dd/MM/yyyy");
+                        newRow["Hora de Retirada"] = select.GetTimeSpan(12).ToString(@"hh\:mm\:ss");
+                    }
+                    else
+                    {
+                        newRow["Data de Retirada"] = "";
+                        newRow["Hora de Retirada"] = "";
+                    }
+                    // add as linhas do datagridview
+                    dt_pacsDia.Rows.Add(newRow);
+                }
+                select.Close();
+
+            }
+            catch (Exception ex)
+            {
+                // Captura e trata a exceção
+                MessageBox.Show("Nenhum pacote cadastrado:\n\n" + ex);
+            }
+
+            return dt_pacsDia;
+        }
+
         public DataTable setDataTable_pacotesPorOrdem(string data, string order)
         {
             DataTable dt_pacsDia = new DataTable();

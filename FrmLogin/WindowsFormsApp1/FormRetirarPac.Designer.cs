@@ -483,6 +483,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormRetirarPac";
             this.Text = "Americanas Rastreio";
+//            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormRetirarPac_FormClosing);
             this.Load += new System.EventHandler(this.FormRetirarPac_Load);
             this.groupBox_hora.ResumeLayout(false);
             this.groupBox_hora.PerformLayout();

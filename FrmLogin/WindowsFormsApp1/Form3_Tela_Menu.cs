@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.Threading;
 using MySql.Data.MySqlClient;
 using WindowsFormsApp1.RegistrosPac;
+using System.Management;
 
 namespace WindowsFormsApp1
 {
@@ -29,7 +30,7 @@ namespace WindowsFormsApp1
         {
             this.Close();
             t2 = new Thread(abrirLogin);
-            t2.SetApartmentState(ApartmentState.MTA);
+            t2.SetApartmentState(ApartmentState.STA);
             t2.Start();
         }
 
@@ -136,7 +137,7 @@ namespace WindowsFormsApp1
         {
             this.Close();
             t2 = new Thread(abrirLogin);
-            t2.SetApartmentState(ApartmentState.MTA);
+            t2.SetApartmentState(ApartmentState.STA);
             t2.Start();
         }
 
@@ -186,17 +187,38 @@ namespace WindowsFormsApp1
 
         private void btnRelatorios_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            FormRelatorio form = new FormRelatorio();
-            form.ShowDialog();
-            this.Show();
+            this.Close();
+            t2 = new Thread(abrirRelatorio);
+            t2.SetApartmentState(ApartmentState.STA);
+            t2.Start();
+        }
+
+        private void abrirRelatorio()
+        {
+            Application.Run(new FormRelatorio(loja));
         }
 
 
         private void btnRetiradaPac_Click(object sender, EventArgs e)
         {
-            FormRetirarPac form = new FormRetirarPac(loja);
-            form.ShowDialog();
+            t2 = new Thread(abrirRetirada);
+            t2.SetApartmentState(ApartmentState.STA);
+            t2.Start(); // Iniciar a thread
+
+            while (t2.IsAlive) // Aguardar até que a thread finalize
+            {
+                Application.DoEvents(); // Permite a atualização da interface do usuário
+
+                this.Enabled = false;
+            }
+
+            this.Enabled = true;
+            this.Focus();
+        }
+
+        private void abrirRetirada()
+        {
+            Application.Run(new FormRetirarPac(loja));
         }
 
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
