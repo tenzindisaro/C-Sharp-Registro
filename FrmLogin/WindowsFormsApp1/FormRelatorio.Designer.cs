@@ -223,7 +223,6 @@
             this.dataGridRelatorio.Location = new System.Drawing.Point(7, 19);
             this.dataGridRelatorio.Name = "dataGridRelatorio";
             this.dataGridRelatorio.Size = new System.Drawing.Size(763, 234);
-            this.dataGridRelatorio.TabIndex = 0;
             // 
             // button4
             // 
