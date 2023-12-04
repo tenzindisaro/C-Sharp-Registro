@@ -891,7 +891,7 @@ namespace WindowsFormsApp1
 
         public void setEdit_pacote(string nota_fiscal_antiga, string nota_fiscal, string situacao, string funcionario, string cpf_titular, string cpf_entregador)
         {
-            MySqlCommand objEdit = new MySqlCommand("UPDATE pacote SET nota_fiscal_pacote = @nova_nota_fiscal_pacote, situacao_pacote = @situacao_pacote, email_americanas_funcionario = @email_americanas_funcionario, cpf_titular = @email_americanas_funcionario, cpf_entregador = @cpf_entregador WHERE nota_fiscal_pacote = @nota_fiscal_pacote", conn);
+            MySqlCommand objEdit = new MySqlCommand("UPDATE pacote SET nota_fiscal_pacote = @nova_nota_fiscal_pacote, situacao_pacote = @situacao_pacote, email_americanas_funcionario = @email_americanas_funcionario, cpf_titular = @cpf_titular, cpf_entregador = @cpf_entregador WHERE nota_fiscal_pacote = @nota_fiscal_pacote", conn);
             objEdit.Parameters.Clear();
             objEdit.Parameters.Add("@nova_nota_fiscal_pacote", MySqlDbType.VarChar, 75).Value = nota_fiscal;
             objEdit.Parameters.Add("@situacao_pacote", MySqlDbType.VarChar, 20).Value = situacao;
