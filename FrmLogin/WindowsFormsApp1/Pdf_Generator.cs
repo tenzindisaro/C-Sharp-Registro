@@ -6,6 +6,7 @@ using System.Xml.Linq;
 using FastReport;
 using FastReport.Export.PdfSimple;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
@@ -117,6 +118,8 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Erro ao exportar o relatório para PDF: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        
 
     }
 }   

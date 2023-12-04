@@ -192,38 +192,52 @@ namespace WindowsFormsApp1
         private void button5_Click(object sender, EventArgs e)
         {
 
-            Dictionary<string, string> valoresLinhaSelecionada = ObterValoresDaLinhaSelecionada();
-
-            // Use os valores obtidos conforme necessário, por exemplo, para gerar um relatório em PDF
-            string caminhoRelatorioFrx = @"C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\tempRelatorioFinal.frx";
-
-            // Diálogo para seleção do local de salvamento
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Arquivos PDF (*.pdf)|*.pdf";
-            saveFileDialog.Title = "Salvar Relatório PDF";
-            saveFileDialog.FileName = "Relatório"; // Nome padrão do arquivo
-            saveFileDialog.InitialDirectory = @"C:\"; // Diretório inicial
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                string caminhoPDF = saveFileDialog.FileName;
+                Dictionary<string, string> valoresLinhaSelecionada = ObterValoresDaLinhaSelecionada();
 
-                PdfGenerator pdfGenerator = new PdfGenerator();
-                pdfGenerator.RelatorioFinal(
-                    caminhoRelatorioFrx,
-                    caminhoPDF,
-                    valoresLinhaSelecionada["Nota Fiscal"],
-                    valoresLinhaSelecionada["Funcionário"],
-                    valoresLinhaSelecionada["Situação"],
-                    valoresLinhaSelecionada["Titular"],
-                    valoresLinhaSelecionada["Telefone"],
-                    valoresLinhaSelecionada["Email"],
-                    valoresLinhaSelecionada["CPF Titular"],
-                    valoresLinhaSelecionada["Data de Chegada"],
-                    valoresLinhaSelecionada["Hora de Chegada"],
-                    valoresLinhaSelecionada["Data de Retirada"],
-                    valoresLinhaSelecionada["Hora de Retirada"]
-                );
+                if (valoresLinhaSelecionada.Count == 0)
+                {
+                    MessageBox.Show("Por favor, selecione uma linha para gerar o relatório.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                string caminhoRelatorioFrx = @"C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\tempRelatorioFinal.frx";
+
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Arquivos PDF (*.pdf)|*.pdf";
+                saveFileDialog.Title = "Salvar Relatório PDF";
+                saveFileDialog.FileName = "Relatório.pdf"; // Nome padrão do arquivo
+                saveFileDialog.InitialDirectory = @"C:\"; // Diretório inicial
+                saveFileDialog.ShowDialog();
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string caminhoPDF = saveFileDialog.FileName;
+
+                    PdfGenerator pdfGenerator = new PdfGenerator();
+                    pdfGenerator.RelatorioFinal(
+                        caminhoRelatorioFrx,
+                        caminhoPDF,
+                        valoresLinhaSelecionada["Nota Fiscal"],
+                        valoresLinhaSelecionada["Funcionário"],
+                        valoresLinhaSelecionada["Situação"],
+                        valoresLinhaSelecionada["Titular"],
+                        valoresLinhaSelecionada["Telefone"],
+                        valoresLinhaSelecionada["Email"],
+                        valoresLinhaSelecionada["CPF Titular"],
+                        valoresLinhaSelecionada["Data de Chegada"],
+                        valoresLinhaSelecionada["Hora de Chegada"],
+                        valoresLinhaSelecionada["Data de Retirada"],
+                        valoresLinhaSelecionada["Hora de Retirada"]
+                    );
+
+                    MessageBox.Show("Relatório gerado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocorreu um erro ao gerar o relatório: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
