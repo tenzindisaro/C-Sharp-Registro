@@ -19,11 +19,9 @@ namespace WindowsFormsApp1.RegistrosPac
 {
     internal partial class Form5_Registro_Pac : Form
     {
-        private Class_loja loja;
+        private Class_loja loja = null;
         private Class_CadastroPac cadastroPacote = new Class_CadastroPac();
         private Class_BD_CRUD Bd = new Class_BD_CRUD();
-        private DataTable dataTable = new DataTable();
-        private DataRow newRow;
         private string notaFiscalAntiga = "";
 
         public Form5_Registro_Pac(Class_loja lojaAtual)
@@ -86,17 +84,52 @@ namespace WindowsFormsApp1.RegistrosPac
             string cpf_entregador = txtbox_cpf_entregador.Text;
             string nome_entregador = txtbox_nome_entregador.Text;
 
-            //validação nota fiscal caso já exista
+            //validações
             bool nf_existente = false;
+            bool EmailFuncionario_check = false;
+            bool validTelefone = false;
+            bool validCpf_titular = false;
+            bool validCpf_entregador = false;
+            bool emailTitular_check = false;
+            // Exibe a MessageBox com dois botões (OK e Cancelar)
+            DialogResult result = MessageBox.Show("Deseja continuar com a operação?", "Confirmação",
+                                                  MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            // Verifica a resposta do usuário
+            if (result != DialogResult.Yes)
+            {
+
+                MessageBox.Show("Operação cancelada.");
+                // Coloque aqui o código que deve ser executado se o usuário escolher "Cancelar".
+                return;
+            }
+
             try
             {
                 Bd.setBD_Open();
                 nf_existente = Bd.setReadBd_CountPacote(notaFiscal);
+                EmailFuncionario_check = Bd.setReadBd_CountEmailFuncionario(funcionario);
+                validTelefone = cadastroPacote.validarTelefone(telefone);
+                validCpf_titular = cadastroPacote.validCPF(CPF);
+                validCpf_entregador = cadastroPacote.validCPF(cpf_entregador);
+                if(validCpf_titular == false)
+                {
+                    MessageBox.Show("Insira CPF titular correto.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                if(validCpf_entregador == false)
+                {
+                    MessageBox.Show("Insira CPF entregador correto.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                emailTitular_check = cadastroPacote.IsValidEmailTitular(email);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao verificar nota fiscal: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro nas validações de dados: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 nf_existente = false;
+                EmailFuncionario_check = false;
+                validTelefone = false;
+                validCpf_titular = false;
+                validCpf_entregador = false;
             }
             finally
             {
@@ -107,10 +140,10 @@ namespace WindowsFormsApp1.RegistrosPac
             if (funcionario != "" && notaFiscal != "" && titular != "" & CPF != "" && situacao != ""
                 && email != "" && telefone != "" && cpf_entregador != "" && nome_entregador != "")
             {
-
+                
                 bool dadosOk = cadastroPacote.setValid_dados(funcionario, titular, situacao, email, notaFiscal, telefone, CPF, cpf_entregador, nome_entregador);
 
-                if (dadosOk == true && nf_existente == true)
+                if (dadosOk == true && nf_existente == true && EmailFuncionario_check == true && validTelefone == true && validCpf_titular == true && validCpf_entregador == true && emailTitular_check == true)
                 {
                     
                     string dadosValidos_funcionario = cadastroPacote.getCad_Funcionario();
@@ -124,14 +157,35 @@ namespace WindowsFormsApp1.RegistrosPac
                     string dadosValidos_nome_entregador = cadastroPacote.getNome_entregador();
 
 
+                    FormValidacaoLogin formValidacaoLogin = new FormValidacaoLogin(Bd, dadosValidos_funcionario);
+
                     try
                     {
                         Bd.setBD_Open();
-                        Bd.setInputBd_hora(hour);
-                        Bd.setInputBd_data(date);
-                        Bd.setInputBd_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
-                        Bd.setInputBd_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
-                        Bd.setInputBd_pacote(dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_funcionario, dadosValidos_CPF, dadosValidos_cpf_entregador);
+                        formValidacaoLogin.ShowDialog();
+                        if (formValidacaoLogin.getValidacaoCredenciais())
+                        {
+                            formValidacaoLogin.Close();
+
+                            Bd.setInputBd_hora(hour);
+                            Bd.setInputBd_data(date);
+                            //caso tenha o cpf titular já cadastrado:
+                            if (Bd.setReadBd_CountCpfTitular(dadosValidos_CPF) == true)
+                            {
+                                Bd.setInputBd_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
+                            }
+                            //caso tenha o cpf entregador já cadastrado:
+                            if (Bd.setReadBd_CountCpfEntregador(dadosValidos_cpf_entregador) == true)
+                            {
+                                Bd.setInputBd_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
+                            }
+                            Bd.setInputBd_pacote(dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_funcionario, dadosValidos_CPF, dadosValidos_cpf_entregador);
+                            MessageBox.Show("Pacote cadastrado com sucesso!", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Credenciais inválidas! Operação de cadastro não foi realizada.", "Operação interrompida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                     catch (Exception erro)
                     {
@@ -169,16 +223,39 @@ namespace WindowsFormsApp1.RegistrosPac
             int id_data = Bd.getRetorna_id_data();
             int id_hora = Bd.getRetorna_id_hora();
 
+            // Exibe a MessageBox com dois botões (OK e Cancelar)
+            DialogResult result = MessageBox.Show("Deseja continuar com a operação?", "Confirmação",
+                                                  MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+            // Verifica a resposta do usuário
+            if (result != DialogResult.Yes)
+            {
+
+                MessageBox.Show("Operação cancelada.");
+                // Coloque aqui o código que deve ser executado se o usuário escolher "Cancelar".
+                return;
+            }
 
             if (funcionario != "" && notaFiscal != "" && titular != "" & CPF != "" && situacao != ""
                 && email != "" && telefone != "" && cpf_entregador != "" && nome_entregador != "")
             {
+                FormValidacaoLogin formValidacaoLogin = new FormValidacaoLogin(Bd, funcionario);
+
                 try
                 {
                     Bd.setBD_Open();
-                    Bd.setDelet_pacote(notaFiscal);
-                    
+                    formValidacaoLogin.ShowDialog();
+                    if (formValidacaoLogin.getValidacaoCredenciais())
+                    {
+                        formValidacaoLogin.Close();
+
+                        Bd.setDelet_pacote(notaFiscal);
+                        MessageBox.Show("Pacote excluído com sucesso!", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Credenciais inválidas! Operação de remoção não foi realizada.", "Operação interrompida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 catch (Exception erro)
                 {
@@ -229,7 +306,8 @@ namespace WindowsFormsApp1.RegistrosPac
                             Bd.setRead_entregador();
                             Bd.setRead_data();
                             Bd.setRead_hora();
-                            
+                            DataTable pacotes_buscados = Bd.setRead_buscarRegistroPac();
+                            dataGridView_registro_pac.DataSource = pacotes_buscados;
                         }
                         catch (Exception erro)
                         {
@@ -240,7 +318,7 @@ namespace WindowsFormsApp1.RegistrosPac
                             Bd.setBD_Close();
                         }
                     }
-                    else { MessageBox.Show("CPF Titular if dadosok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }                    
+                    else { MessageBox.Show("CPF Titular if dadosok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
                 }
                 else
                 { MessageBox.Show("CPF Titular vazio em opções do buscar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
@@ -261,7 +339,40 @@ namespace WindowsFormsApp1.RegistrosPac
                             Bd.setRead_entregador();
                             Bd.setRead_data();
                             Bd.setRead_hora();
-                            
+
+                            DataTable dataTable = new DataTable();
+                            DataRow newRow;
+                            //Crie as colunas do DataTable
+                            dataTable.Columns.Clear();
+                            dataTable.Columns.Add("Nota Fiscal");
+                            dataTable.Columns.Add("Funcionário");
+                            dataTable.Columns.Add("Situação");
+                            dataTable.Columns.Add("Titular");
+                            dataTable.Columns.Add("Telefone");
+                            dataTable.Columns.Add("Email");
+                            dataTable.Columns.Add("CPF Titular");
+                            dataTable.Columns.Add("Entregador");
+                            dataTable.Columns.Add("CPF Entregador");
+                            dataTable.Columns.Add("Data");
+                            dataTable.Columns.Add("Hora");
+
+                            //recebendo dados para enviar pro Datagridview
+                            dataTable.Rows.Clear();// da clear nas linhas do datatable
+                            newRow = dataTable.NewRow();//cria uma nova linha no datatable
+                            newRow["Nota Fiscal"] = Bd.getRetorna_nf();
+                            newRow["Funcionário"] = Bd.getRetorna_emailFuncionario();
+                            newRow["Situação"] = Bd.getRetorna_situacao();
+                            newRow["Titular"] = Bd.getNome_titular();
+                            newRow["Telefone"] = Bd.getTelefone_titular();
+                            newRow["Email"] = Bd.getEmail_titular();
+                            newRow["CPF Titular"] = Bd.getRetorna_cpf_titular();
+                            newRow["Entregador"] = Bd.getRetorna_nome_entregador();
+                            newRow["CPF Entregador"] = Bd.getRetorna_cpf_entregador();
+                            newRow["Data"] = Bd.getRetorna_chegada_data();
+                            newRow["Hora"] = Bd.getRetorna_chegada_hora();
+                            // add as linhas do datagridview
+                            dataTable.Rows.Add(newRow);
+                            dataGridView_registro_pac.DataSource = dataTable;
                         }
                         catch (Exception erro)
                         {
@@ -273,7 +384,7 @@ namespace WindowsFormsApp1.RegistrosPac
                         }
 
                     }
-                    else { MessageBox.Show("NF  if dadosok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }                    
+                    else { MessageBox.Show("NF  if dadosok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
                 }
                 else
                 { MessageBox.Show("Nota Fiscal vazio em opções do buscar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
@@ -291,39 +402,7 @@ namespace WindowsFormsApp1.RegistrosPac
             maskedTextBox_CPF.Text = Bd.getRetorna_cpf_titular();
             maskedTextBoxSituacao.Text = Bd.getRetorna_situacao();
             textBox_data.Text = Bd.getRetorna_chegada_data();
-            textBox_hora.Text = Bd.getRetorna_chegada_hora();//Bd.getRetorna_id_hora().ToString();//Bd.getRetorna_chegada_hora();
-
-            //Crie as colunas do DataTable
-            dataTable.Columns.Clear();
-            dataTable.Columns.Add("Nota Fiscal");
-            dataTable.Columns.Add("Funcionário");
-            dataTable.Columns.Add("Situação");
-            dataTable.Columns.Add("Titular");
-            dataTable.Columns.Add("Telefone");
-            dataTable.Columns.Add("Email");
-            dataTable.Columns.Add("CPF Titular");
-            dataTable.Columns.Add("Entregador");
-            dataTable.Columns.Add("CPF Entregador");
-            dataTable.Columns.Add("Data");
-            dataTable.Columns.Add("Hora");
-
-            //recebendo dados para enviar pro Datagridview
-            dataTable.Rows.Clear();// da clear nas linhas do datatable
-            newRow = dataTable.NewRow();//cria uma nova linha no datatable
-            newRow["Nota Fiscal"] =  Bd.getRetorna_nf();
-            newRow["Funcionário"] = Bd.getRetorna_emailFuncionario();
-            newRow["Situação"] = Bd.getRetorna_situacao();
-            newRow["Titular"] = Bd.getNome_titular();
-            newRow["Telefone"] = Bd.getTelefone_titular();
-            newRow["Email"] = Bd.getEmail_titular();
-            newRow["CPF Titular"] = Bd.getRetorna_cpf_titular();
-            newRow["Entregador"] = Bd.getRetorna_nome_entregador();
-            newRow["CPF Entregador"] = Bd.getRetorna_cpf_entregador();
-            newRow["Data"] = Bd.getRetorna_chegada_data();
-            newRow["Hora"] = Bd.getRetorna_chegada_hora();
-            // add as linhas do datagridview
-            dataTable.Rows.Add(newRow);
-            dataGridView_registro_pac.DataSource = dataTable;
+            textBox_hora.Text = Bd.getRetorna_chegada_hora();//Bd.getRetorna_id_hora().ToString();//Bd.getRetorna_chegada_hora(); 
         }
 
         private void button_Editar_Click(object sender, EventArgs e)
@@ -337,6 +416,19 @@ namespace WindowsFormsApp1.RegistrosPac
             string telefone = maskedTextBox_telefone.Text;
             string cpf_entregador = txtbox_cpf_entregador.Text;
             string nome_entregador = txtbox_nome_entregador.Text;
+
+            // Exibe a MessageBox com dois botões (OK e Cancelar)
+            DialogResult result = MessageBox.Show("Deseja continuar com a operação?", "Confirmação",
+                                                  MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            // Verifica a resposta do usuário
+            if (result != DialogResult.Yes)
+            {
+
+                MessageBox.Show("Operação cancelada.");
+                // Coloque aqui o código que deve ser executado se o usuário escolher "Cancelar".
+                return;
+            }
 
 
             if (funcionario != "" && notaFiscal != "" && titular != "" & CPF != "" && situacao != ""
@@ -357,32 +449,45 @@ namespace WindowsFormsApp1.RegistrosPac
                     string dadosValidos_cpf_entregador = cadastroPacote.getCpf_entregador();
                     string dadosValidos_nome_entregador = cadastroPacote.getNome_entregador();
 
+                    FormValidacaoLogin formValidacaoLogin = new FormValidacaoLogin(Bd, dadosValidos_funcionario);
+
                     try
                     {
                         Bd.setBD_Open();
-                        string pesquisaTitular = Bd.setRead_titular_ByCpf(dadosValidos_CPF);
-                        string pesquisaEntregador = Bd.setRead_entregador_ByCpf(dadosValidos_cpf_entregador);
-
-                        if (pesquisaTitular != null)
+                        formValidacaoLogin.ShowDialog();
+                        if (formValidacaoLogin.getValidacaoCredenciais())
                         {
-                            Bd.setEdit_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
+                            formValidacaoLogin.Close();
+
+                            string pesquisaTitular = Bd.setRead_titular_ByCpf(dadosValidos_CPF);
+                            string pesquisaEntregador = Bd.setRead_entregador_ByCpf(dadosValidos_cpf_entregador);
+
+                            if (pesquisaTitular != null)
+                            {
+                                MessageBox.Show(dadosValidos_CPF);
+                                Bd.setEdit_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone, dadosValidos_notaFiscal);
+                            }
+                            else
+                            {
+                                Bd.setInputBd_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
+                            }
+
+                            if (pesquisaEntregador != null)
+                            {
+                                Bd.setEdit_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador, dadosValidos_notaFiscal);
+                            }
+                            else
+                            {
+                                Bd.setInputBd_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
+                            }
+
+                            Bd.setEdit_pacote(notaFiscalAntiga, dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_funcionario, dadosValidos_CPF, dadosValidos_cpf_entregador);
+                            MessageBox.Show("Informações do Pacote alteradas com sucesso!", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                         else
                         {
-                            Bd.setInputBd_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);                        
+                            MessageBox.Show("Credenciais inválidas! Operação de edição não foi realizada.", "Operação interrompida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-
-                        if (pesquisaEntregador != null)
-                        {
-                            Bd.setEdit_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
-                        }
-                        else
-                        {
-                            Bd.setInputBd_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
-                        }
-
-                        Bd.setEdit_pacote(notaFiscalAntiga, dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_funcionario, dadosValidos_CPF, dadosValidos_cpf_entregador);
-
                     }
                     catch (Exception erro)
                     {
@@ -535,7 +640,7 @@ namespace WindowsFormsApp1.RegistrosPac
         private void button1_Click(object sender, EventArgs e)
         {
             //variáveis do pacote selecionado
-            string notaFiscal, funcionario, situacao, nomeTitular, telefoneTitular, emailTitular, nomeEntregador, cpfEntregador, dataChegada, horaChegada, dataRetirada, horaRetirada;
+            string notaFiscal, funcionario, situacao, nomeTitular, telefoneTitular, emailTitular, nomeEntregador, cpfTitular, dataChegada, horaChegada;
 
             notaFiscal = textBox_NotaFiscal.Text;
             funcionario = comboBox_funcionario.Text;
@@ -544,12 +649,27 @@ namespace WindowsFormsApp1.RegistrosPac
             telefoneTitular = maskedTextBox_telefone.Text;
             emailTitular = maskedTextBox_email.Text;
             nomeEntregador = txtbox_nome_entregador.Text;
-            cpfEntregador = txtbox_cpf_entregador.Text;
+            cpfTitular = maskedTextBox_CPF.Text;
             dataChegada = textBox_data.Text;
             horaChegada = textBox_hora.Text;
 
             //gerar o relatório aqui
 
+            string caminhoRelatorioFrx = @"C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\tempRelatorioChegada.frx";
+            // Diálogo para seleção do local de salvamento
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Arquivos PDF (*.pdf)|*.pdf";
+            saveFileDialog.Title = "Salvar Relatório PDF";
+            saveFileDialog.FileName = "Relatório"; // Nome padrão do arquivo
+            saveFileDialog.InitialDirectory = @"C:\"; // Diretório inicial
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string caminhoPDF = saveFileDialog.FileName;
+
+                PdfGenerator pdfGenerator = new PdfGenerator();
+                pdfGenerator.RelatorioChegada(caminhoRelatorioFrx, caminhoPDF, notaFiscal, funcionario, situacao,nomeTitular , telefoneTitular, emailTitular, cpfTitular, dataChegada, horaChegada);
+            }
         }
     }
 }

@@ -15,15 +15,18 @@ namespace WindowsFormsApp1
         private Class_BD_CRUD Bd = new Class_BD_CRUD();
         private Class_CadastroPac cadastroPacote = new Class_CadastroPac();
         private string notaFiscalAntiga = "";
-        public FormRetirarPac()
+        private Class_loja loja;
+        public FormRetirarPac(Class_loja lojaAtual)
         {
+            loja = lojaAtual;
             InitializeComponent();
         }
         
-        public FormRetirarPac(string notaFiscal, string funcionario, string nome_entregador, string nome_titular, string telefone, string cpf_entregador, string email_titular, string cpf_titular, string situacao, string chegada_data, string chegada_hora)
+        public FormRetirarPac(Class_loja lojaAtual, string notaFiscal, string funcionario, string nome_entregador, string nome_titular, string telefone, string cpf_entregador, string email_titular, string cpf_titular, string situacao, string chegada_data, string chegada_hora)
         {
             InitializeComponent();
 
+            loja = lojaAtual;
             textBox_NotaFiscal.Text = notaFiscal;
             comboBox_funcionario.Text = funcionario;
             txtbox_nome_entregador.Text = nome_entregador;
@@ -69,7 +72,7 @@ namespace WindowsFormsApp1
                         formValidacaoLogin.Close();
 
                         Bd.setEdit_Retirada(notaFiscal, dataRetirada, horaRetirada);
-                        MessageBox.Show("Pacote Retirado com sucesso!", "Operação de Retirada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Pacote Retirado com sucesso!", "Operação Concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -113,6 +116,31 @@ namespace WindowsFormsApp1
         private void FormRetirarPac_Load(object sender, EventArgs e)
         {
             InitializeDataGridView();
+            string id = loja.getIdLoja();
+            List<string> emails;
+
+            try
+            {
+                Bd.setBD_Open();
+                emails = Bd.setRead_email_funcionarios_id(id);
+
+                comboBox_funcionario.Items.Clear();
+
+                foreach (string email in emails)
+                {
+                    comboBox_funcionario.Items.Add(email);
+                }
+            }
+            catch (Exception er)
+            {
+                //MessageBox.Show("Houve um erro durante o carregamento de fucionários", "Erro de conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(er.Message);
+            }
+            finally
+            {
+                Bd.setBD_Close();
+
+            }
         }
 
         private void button_Editar_Click(object sender, EventArgs e)
@@ -146,31 +174,44 @@ namespace WindowsFormsApp1
                     string dadosValidos_cpf_entregador = cadastroPacote.getCpf_entregador();
                     string dadosValidos_nome_entregador = cadastroPacote.getNome_entregador();
 
+                    FormValidacaoLogin formValidacaoLogin = new FormValidacaoLogin(Bd);
+
                     try
                     {
                         Bd.setBD_Open();
-                        string pesquisaTitular = Bd.setRead_titular_ByCpf(dadosValidos_CPF);
-                        string pesquisaEntregador = Bd.setRead_entregador_ByCpf(dadosValidos_cpf_entregador);
-
-                        if (pesquisaTitular != null)
+                        formValidacaoLogin.ShowDialog();
+                        if (formValidacaoLogin.getValidacaoCredenciais())
                         {
-                            Bd.setEdit_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
+                            formValidacaoLogin.Close();
+
+                            string pesquisaTitular = Bd.setRead_titular_ByCpf(dadosValidos_CPF);
+                            string pesquisaEntregador = Bd.setRead_entregador_ByCpf(dadosValidos_cpf_entregador);
+                            
+                            if (pesquisaTitular != null)
+                            {
+                                Bd.setEdit_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone, dadosValidos_notaFiscal);
+                            }
+                            else
+                            {
+                                Bd.setInputBd_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
+                            }
+
+                            if (pesquisaEntregador != null)
+                            {
+                                Bd.setEdit_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador, dadosValidos_notaFiscal);
+                            }
+                            else
+                            {
+                                Bd.setInputBd_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
+                            }
+
+                            Bd.setEdit_pacote(notaFiscalAntiga, dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_funcionario, dadosValidos_CPF, dadosValidos_cpf_entregador);
+                            MessageBox.Show("Pacote Editado com sucesso!", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
-                            Bd.setInputBd_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone);
+                            MessageBox.Show("Credenciais inválidas! Operação de edição não realizada", "Operação interrompida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-
-                        if (pesquisaEntregador != null)
-                        {
-                            Bd.setEdit_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
-                        }
-                        else
-                        {
-                            Bd.setInputBd_entregador(dadosValidos_cpf_entregador, dadosValidos_nome_entregador);
-                        }
-
-                        Bd.setEdit_pacote(notaFiscalAntiga, dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_funcionario, dadosValidos_CPF, dadosValidos_cpf_entregador);
                     }
                     catch (Exception erro)
                     {
@@ -182,8 +223,6 @@ namespace WindowsFormsApp1
                         InitializeDataGridView();
                     }
                 }
-                else { return; }
-
             }
             else
             {
@@ -210,15 +249,28 @@ namespace WindowsFormsApp1
             if (funcionario != "" && notaFiscal != "" && titular != "" & CPF != "" && situacao != ""
                 && email != "" && telefone != "" && cpf_entregador != "" && nome_entregador != "")
             {
+                FormValidacaoLogin formValidacaoLogin = new FormValidacaoLogin(Bd);
+
                 try
                 {
                     Bd.setBD_Open();
-                    Bd.setDelet_pacote(notaFiscal);
-                    Bd.setDelet_data(id_data);
-                    Bd.setDelet_hora(id_hora);
-                    Bd.setDelet_entregador(cpf_entregador);
-                    Bd.setDelet_titular(CPF);
+                    formValidacaoLogin.ShowDialog();
+                    if (formValidacaoLogin.getValidacaoCredenciais())
+                    {
+                        formValidacaoLogin.Close();
 
+                        Bd.setDelet_pacote(notaFiscal);
+                        Bd.setDelet_data(id_data);
+                        Bd.setDelet_hora(id_hora);
+                        Bd.setDelet_entregador(cpf_entregador);
+                        Bd.setDelet_titular(CPF);
+
+                        MessageBox.Show("Pacote excluído com sucesso!", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Credenciais inválidas! Operação de remoção não realizada", "Operação interrompida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
 
                 }
                 catch (Exception erro)
@@ -240,20 +292,66 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //variáveis do pacote selecionado
-            string funcionario = comboBox_funcionario.Text;
-            string notaFiscal = textBox_NotaFiscal.Text;
-            string titular = textBox_Titular.Text;
-            string CPF = (maskedTextBox_CPF.Text).Replace("-", "").Replace(".", "");
-            string situacao = maskedTextBoxSituacao.Text;
-            string email = maskedTextBox_email.Text;
-            string telefone = maskedTextBox_telefone.Text.Replace("-", "").Replace("(", "").Replace(")", "").Replace(" ", "");
-            string cpf_entregador = txtbox_cpf_entregador.Text;
-            string nome_entregador = txtbox_nome_entregador.Text;
-            int id_data = Bd.getRetorna_id_data();
-            int id_hora = Bd.getRetorna_id_hora();
+            try
+            {
+                //variáveis do pacote selecionado
 
-            //gerar o relatório aqui
+                //gerar o relatório aqui
+
+                Dictionary<string, string> valoresLinhaSelecionada = ObterValoresDaLinhaSelecionada();
+
+                string caminhoRelatorioFrx = @".\WindowsFormsApp1\tempRelatorioFinal.frx";
+                // Diálogo para seleção do local de salvamento
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Arquivos PDF (*.pdf)|*.pdf";
+                saveFileDialog.Title = "Salvar Relatório PDF";
+                saveFileDialog.FileName = "Relatório"; // Nome padrão do arquivo
+                saveFileDialog.InitialDirectory = @"C:\"; // Diretório inicial
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string caminhoPDF = saveFileDialog.FileName;
+
+                    PdfGenerator pdfGenerator = new PdfGenerator();
+                    pdfGenerator.RelatorioSaida(
+                        caminhoRelatorioFrx,
+                        caminhoPDF,
+                        valoresLinhaSelecionada["Nota Fiscal"],
+                        valoresLinhaSelecionada["Funcionário"],
+                        valoresLinhaSelecionada["Situação"],
+                        valoresLinhaSelecionada["Titular"],
+                        valoresLinhaSelecionada["Telefone"],
+                        valoresLinhaSelecionada["Email"],
+                        valoresLinhaSelecionada["CPF Titular"],
+                        valoresLinhaSelecionada["Data de Retirada"],
+                        valoresLinhaSelecionada["Hora de Retirada"]
+                    );
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocorreu uma exceção: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private Dictionary<string, string> ObterValoresDaLinhaSelecionada()
+        {
+            Dictionary<string, string> valores = new Dictionary<string, string>();
+
+            if (dataGridView_retirada_pac.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView_retirada_pac.SelectedRows[0];
+
+                foreach (DataGridViewCell cell in selectedRow.Cells)
+                {
+                    string nomeDaColuna = dataGridView_retirada_pac.Columns[cell.ColumnIndex].Name;
+                    string valorDaCelula = cell.Value?.ToString() ?? string.Empty;
+
+                    valores[nomeDaColuna] = valorDaCelula;
+                }
+            }
+
+            return valores;
         }
 
         private void dataGridView_retirada_pac_CellClick(object sender, DataGridViewCellEventArgs e)

@@ -57,7 +57,6 @@ namespace WindowsFormsApp1
             objcmd_titular.Parameters.Add("@telefone", MySqlDbType.VarChar, 15).Value = telefone;
             // executando querys            
             objcmd_titular.ExecuteNonQuery();
-            MessageBox.Show("envio de dados titular ok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
         public void setInputBd_data(string chegada_data)
@@ -67,11 +66,9 @@ namespace WindowsFormsApp1
             objcmd_data.Parameters.Add("@chegada_data", MySqlDbType.VarChar, 10).Value = chegada_data;
             // executando query                       
             objcmd_data.ExecuteNonQuery();
-            MessageBox.Show("envio de dados data ok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             MySqlCommand last_id_data = new MySqlCommand("SELECT LAST_INSERT_ID();", conn);
 
             id_data = Convert.ToInt32(last_id_data.ExecuteScalar());
-            MessageBox.Show("valor id data = " + id_data.ToString(), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
         public void setInputBd_hora(string chegada_hora)
@@ -81,12 +78,10 @@ namespace WindowsFormsApp1
             objcmd_hora.Parameters.Add("@chegada_hora", MySqlDbType.VarChar, 10).Value = chegada_hora;
             // executando query                       
             objcmd_hora.ExecuteNonQuery();
-            MessageBox.Show("envio de dados hora ok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             MySqlCommand last_id_hora = new MySqlCommand("SELECT LAST_INSERT_ID();", conn);
 
 
             id_hora = Convert.ToInt32(last_id_hora.ExecuteScalar());
-            MessageBox.Show("valor id hora = " + id_hora.ToString(), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
         public void setInputBd_funcionario(string email_funcionario, string cpf_funcionario, string nome_funcionario, string telefone_funcionario, string senha_funcionario, string id_americanas)
@@ -112,7 +107,6 @@ namespace WindowsFormsApp1
             objcmd_entregador.Parameters.Add("@nome_entregador", MySqlDbType.VarChar, 75).Value = nome_entregador;
             // executando query 
             objcmd_entregador.ExecuteNonQuery();
-            MessageBox.Show("envio de dados entregador ok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
 
@@ -120,7 +114,6 @@ namespace WindowsFormsApp1
         {
             MySqlCommand objcmd_pacote = new MySqlCommand("INSERT INTO pacote (nota_fiscal_pacote, situacao_pacote, email_americanas_funcionario, cpf_titular, cpf_entregador, id_data, id_hora) VALUES (?, ?, ?, ?, ?, ?, ?);", conn);
             
-            MessageBox.Show("entrou teste.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             objcmd_pacote.Parameters.Add("@nota_fiscal_pacote", MySqlDbType.VarChar, 45).Value = nota_fiscal;
             objcmd_pacote.Parameters.Add("@situacao_pacote", MySqlDbType.VarChar, 20).Value = situacao_pacote;
             objcmd_pacote.Parameters.Add("@email_americanas_funcionario", MySqlDbType.VarChar, 75).Value = email_americanas_funcionario;
@@ -131,7 +124,6 @@ namespace WindowsFormsApp1
 
             // Executar a consulta de inserção e recuperar o ID gerado automaticamente
             objcmd_pacote.ExecuteNonQuery();
-            MessageBox.Show("Envio de dados pacote ok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
         // A BAIXO ESTÃO OS MÉTODOS PARA BUSCAR OS DADOS DO BD**************************************************************************************
@@ -146,6 +138,52 @@ namespace WindowsFormsApp1
             if (count > 0)
             {
                 MessageBox.Show("Nota Fiscal já existente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool setReadBd_CountEmailFuncionario(string emailFuncionario)
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM funcionario WHERE email_americanas_funcionario = @emailFuncionario", conn);
+            cmd.Parameters.AddWithValue("@emailFuncionario", emailFuncionario);
+
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+            if (count == 0)
+            {
+                MessageBox.Show("Funcionario email não existente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+        public bool setReadBd_CountCpfTitular(string cpf)
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM titular WHERE cpf_titular = @cpfTitular", conn);
+            cmd.Parameters.AddWithValue("@cpfTitular", cpf);
+
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+            if (count > 0)
+            {
+                MessageBox.Show("box de teste cpf titular.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+        public bool setReadBd_CountCpfEntregador(string cpf)
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM entregador WHERE cpf_entregador = @cpfEntregador", conn);
+            cmd.Parameters.AddWithValue("@cpfEntregador", cpf);
+
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+            if (count > 0)
+            {
+                MessageBox.Show("box de teste cpf entregador.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -288,7 +326,7 @@ namespace WindowsFormsApp1
             datatable.Columns.Add("Bairro da Loja");
             datatable.Columns.Add("Número da Loja");
 
-            string query = "SELECT f.email_americanas_funcionario, f.cpf_funcionario, f.nome_funcionario, f.telefone_funcionario, f.id_americanas, a.cep_americanas, a.rua_americanas, a.bairro_americanas, a.numero_americanas FROM funcionario f INNER JOIN americanas a ON f.id_americanas = a.id_americanas WHERE f.id_americanas = @id_americanas";
+            string query = "SELECT f.email_americanas_funcionario, f.cpf_funcionario, f.nome_funcionario, f.telefone_funcionario, f.id_americanas, a.cep_americanas, a.rua_americanas, a.bairro_americanas, a.numero_americanas FROM funcionario f INNER JOIN americanas a ON f.id_americanas = a.id_americanas WHERE f.id_americanas = @id_americanas AND f.email_americanas_funcionario <> \"administrador@americanas.com.br\"";
             MySqlCommand cmd = new MySqlCommand(query, conn);
             cmd.Parameters.Add("@id_americanas", MySqlDbType.VarChar, 36).Value = id_americanas;
 
@@ -311,8 +349,70 @@ namespace WindowsFormsApp1
 
             return datatable;
         }
+        public DataTable setRead_buscarRegistroPac()
+        {
+            DataTable dataTable = new DataTable();
+            DataRow newRow;
+            try
+            {
+                //Crie as colunas do DataTable
+                dataTable.Columns.Clear();
+                dataTable.Columns.Add("Nota Fiscal");
+                dataTable.Columns.Add("Funcionário");
+                dataTable.Columns.Add("Situação");
+                dataTable.Columns.Add("Titular");
+                dataTable.Columns.Add("Telefone");
+                dataTable.Columns.Add("Email");
+                dataTable.Columns.Add("CPF Titular");
+                dataTable.Columns.Add("Entregador");
+                dataTable.Columns.Add("CPF Entregador");
+                dataTable.Columns.Add("Data");
+                dataTable.Columns.Add("Hora");
 
-         public void setRead_pacote_cpf(string cpf)
+                string query = "SELECT p.nota_fiscal_pacote, p.email_americanas_funcionario, p.situacao_pacote, t.nome, t.telefone, t.email, t.cpf_titular, e.nome_entregador, e.cpf_entregador, d.chegada_data, h.chegada_hora " +
+                                "FROM pacote p " +
+                                "INNER JOIN titular t ON p.cpf_titular = t.cpf_titular " +
+                                "INNER JOIN entregador e ON p.cpf_entregador = e.cpf_entregador " +
+                                "INNER JOIN tbl_data d ON p.id_data = d.id_data " +
+                                "INNER JOIN hora h ON p.id_hora = h.id_hora " +
+                                "WHERE t.cpf_titular = @cpf_titular";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = retorna_cpf_titular;
+
+                MySqlDataReader select = cmd.ExecuteReader();
+
+                while (select.Read())
+                {
+                    //recebendo dados para enviar pro Datagridview
+
+                    newRow = dataTable.NewRow();//cria uma nova linha no datatable
+                    newRow["Nota Fiscal"] = select.GetString(0);
+                    newRow["Funcionário"] = select.GetString(1);
+                    newRow["Situação"] = select.GetString(2);
+                    newRow["Titular"] = select.GetString(3);
+                    newRow["Telefone"] = select.GetString(4);
+                    newRow["Email"] = select.GetString(5);
+                    newRow["CPF Titular"] = select.GetString(6);
+                    newRow["Entregador"] = select.GetString(7);
+                    newRow["CPF Entregador"] = select.GetString(8);
+                    newRow["Data"] = select.GetString(9);
+                    newRow["Hora"] = select.GetString(10);
+                    dataTable.Rows.Add(newRow);
+                }
+
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                // Lidar com exceções de banco de dados ou conexão aqui
+                // Pode ser útil logar o erro ou tomar outras ações apropriadas.
+                MessageBox.Show("Erro: " + ex.Message);
+                return null;
+            }
+        }
+
+        public void setRead_pacote_cpf(string cpf)
         {
             MySqlCommand cmd = new MySqlCommand("SELECT pacote.nota_fiscal_pacote, pacote.situacao_pacote, titular.cpf_titular, entregador.cpf_entregador, tbl_data.id_data, hora.id_hora, funcionario.email_americanas_funcionario " +
                                        "FROM pacote " +
@@ -570,7 +670,7 @@ namespace WindowsFormsApp1
         {
             List<string> emails = new List<string>();
 
-            MySqlCommand cmd = new MySqlCommand("SELECT email_americanas_funcionario FROM funcionario WHERE funcionario.id_americanas = @id_americanas", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT email_americanas_funcionario FROM funcionario WHERE funcionario.id_americanas = @id_americanas AND funcionario.email_americanas_funcionario <> \"administrador@americanas.com.br\"", conn);
             cmd.Parameters.Clear();
             cmd.Parameters.Add("@id_americanas", MySqlDbType.VarChar, 36).Value = id_americanas;
 
@@ -844,7 +944,7 @@ namespace WindowsFormsApp1
 
         public void setEdit_pacote(string nota_fiscal_antiga, string nota_fiscal, string situacao, string funcionario, string cpf_titular, string cpf_entregador)
         {
-            MySqlCommand objEdit = new MySqlCommand("UPDATE pacote SET nota_fiscal_pacote = @nova_nota_fiscal_pacote, situacao_pacote = @situacao_pacote, email_americanas_funcionario = @email_americanas_funcionario, cpf_titular = @email_americanas_funcionario, cpf_entregador = @cpf_entregador WHERE nota_fiscal_pacote = @nota_fiscal_pacote", conn);
+            MySqlCommand objEdit = new MySqlCommand("UPDATE pacote SET nota_fiscal_pacote = @nova_nota_fiscal_pacote, situacao_pacote = @situacao_pacote, email_americanas_funcionario = @email_americanas_funcionario, cpf_titular = @cpf_titular, cpf_entregador = @cpf_entregador WHERE nota_fiscal_pacote = @nota_fiscal_pacote", conn);
             objEdit.Parameters.Clear();
             objEdit.Parameters.Add("@nova_nota_fiscal_pacote", MySqlDbType.VarChar, 75).Value = nota_fiscal;
             objEdit.Parameters.Add("@situacao_pacote", MySqlDbType.VarChar, 20).Value = situacao;
@@ -852,15 +952,16 @@ namespace WindowsFormsApp1
             objEdit.Parameters.Add("@cpf_titular", MySqlDbType.VarChar, 15).Value = cpf_titular;
             objEdit.Parameters.Add("@cpf_entregador", MySqlDbType.VarChar, 15).Value = cpf_entregador;
             objEdit.Parameters.Add("@nota_fiscal_pacote", MySqlDbType.VarChar, 75).Value = nota_fiscal_antiga; // nota fiscal antiga
-            MessageBox.Show(nota_fiscal_antiga);
 
             objEdit.CommandType = CommandType.Text;
             objEdit.ExecuteNonQuery();
         }
 
-        public void setEdit_titular(string cpf, string nome, string email, string telefone)
+        public void setEdit_titular(string cpf, string nome, string email, string telefone, string notaFiscal)
         {
-            string query = "UPDATE titular t SET t.nome = @nome, t.email = @email, t.telefone = @telefone WHERE t.cpf_titular = @cpf_titular;";
+            string query = "UPDATE titular t " +
+                "INNER JOIN pacote p ON t.cpf_titular = p.cpf_titular " +
+                " SET t.nome = @nome, t.email = @email, t.telefone = @telefone WHERE p.nota_fiscal_pacote = @nota_fiscal_pacote;";
 
             MySqlCommand objEdit = new MySqlCommand(query, conn);
 
@@ -870,20 +971,23 @@ namespace WindowsFormsApp1
             objEdit.Parameters.Add("@nome", MySqlDbType.VarChar, 75).Value = nome;
             objEdit.Parameters.Add("@email", MySqlDbType.VarChar, 30).Value = email;
             objEdit.Parameters.Add("@telefone", MySqlDbType.VarChar, 15).Value = telefone;
+            objEdit.Parameters.Add("@nota_fiscal_pacote", MySqlDbType.VarChar, 75).Value = notaFiscal;
 
             objEdit.CommandType = CommandType.Text;
             objEdit.ExecuteNonQuery();
         }
 
-        public void setEdit_entregador(string cpf, string nome)
+        public void setEdit_entregador(string cpf, string nome, string notaFiscal)
         {
-            string query = "UPDATE entregador e SET e.nome_entregador = @nome_entregador WHERE e.cpf_entregador = @cpf_entregador;";
+            string query = "UPDATE entregador e " +
+                "INNER JOIN pacote p ON e.cpf_entregador = p.cpf_entregador  " +
+                "SET e.nome_entregador = @nome_entregador, e.cpf_entregador = @cpf_entregador WHERE p.nota_fiscal_pacote = @nota_fiscal_pacote;";
 
             MySqlCommand objEdit = new MySqlCommand(query, conn);
             objEdit.Parameters.Clear();
             objEdit.Parameters.Add("@cpf_entregador", MySqlDbType.VarChar, 15).Value = cpf;
             objEdit.Parameters.Add("@nome_entregador", MySqlDbType.VarChar, 75).Value = nome;
-
+            objEdit.Parameters.Add("@nota_fiscal_pacote", MySqlDbType.VarChar, 75).Value = notaFiscal;
 
             objEdit.CommandType = CommandType.Text;
             objEdit.ExecuteNonQuery();

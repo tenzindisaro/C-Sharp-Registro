@@ -271,7 +271,7 @@
             // 
             this.maskedTextBox_telefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.maskedTextBox_telefone.Location = new System.Drawing.Point(159, 175);
-            this.maskedTextBox_telefone.Mask = "(00)0 0000-0000";
+            this.maskedTextBox_telefone.Mask = "(00) 00000-0000";
             this.maskedTextBox_telefone.Name = "maskedTextBox_telefone";
             this.maskedTextBox_telefone.Size = new System.Drawing.Size(134, 23);
             this.maskedTextBox_telefone.TabIndex = 4;

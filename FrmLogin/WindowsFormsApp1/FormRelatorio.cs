@@ -1,6 +1,4 @@
-﻿    using Syncfusion.Pdf.Graphics;
-    using Syncfusion.Pdf;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using FastReport;
+using FastReport.Export.PdfSimple;
 using System.IO;
 
 namespace WindowsFormsApp1
@@ -191,50 +191,61 @@ namespace WindowsFormsApp1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            string caminhoDoArquivo = "C:/Projetos-Midas/testeRelatorio.pdf";
 
-            // Cria um novo documento PDF
-            PdfDocument document = new PdfDocument();
+            Dictionary<string, string> valoresLinhaSelecionada = ObterValoresDaLinhaSelecionada();
 
-            // Adiciona uma página ao documento
-            PdfPage page = document.Pages.Add();
+            // Use os valores obtidos conforme necessário, por exemplo, para gerar um relatório em PDF
+            string caminhoRelatorioFrx = @"C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\tempRelatorioFinal.frx";
 
-            // Obtém o objeto de gráficos da página
-            PdfGraphics graphics = page.Graphics;
+            // Diálogo para seleção do local de salvamento
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Arquivos PDF (*.pdf)|*.pdf";
+            saveFileDialog.Title = "Salvar Relatório PDF";
+            saveFileDialog.FileName = "Relatório"; // Nome padrão do arquivo
+            saveFileDialog.InitialDirectory = @"C:\"; // Diretório inicial
 
-            // Desenha texto na página
-            graphics.DrawString("Olá, mundo! Este é um documento PDF gerado com Syncfusion.", new PdfStandardFont(PdfFontFamily.Helvetica, 12), PdfBrushes.Black, new Syncfusion.Drawing.PointF(10, 10));
-
-            // Cria um fluxo de arquivo para salvar o documento
-            using (FileStream fileStream = new FileStream(caminhoDoArquivo, FileMode.Create, FileAccess.Write))
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                // Salva o documento no fluxo de arquivo
-                document.Save(fileStream);
-            }
+                string caminhoPDF = saveFileDialog.FileName;
 
-            // Fecha o documento
-            document.Close();
+                PdfGenerator pdfGenerator = new PdfGenerator();
+                pdfGenerator.RelatorioFinal(
+                    caminhoRelatorioFrx,
+                    caminhoPDF,
+                    valoresLinhaSelecionada["Nota Fiscal"],
+                    valoresLinhaSelecionada["Funcionário"],
+                    valoresLinhaSelecionada["Situação"],
+                    valoresLinhaSelecionada["Titular"],
+                    valoresLinhaSelecionada["Telefone"],
+                    valoresLinhaSelecionada["Email"],
+                    valoresLinhaSelecionada["CPF Titular"],
+                    valoresLinhaSelecionada["Data de Chegada"],
+                    valoresLinhaSelecionada["Hora de Chegada"],
+                    valoresLinhaSelecionada["Data de Retirada"],
+                    valoresLinhaSelecionada["Hora de Retirada"]
+                );
+            }
         }
 
-        private void GerarRelatorioPDF()
+        private Dictionary<string, string> ObterValoresDaLinhaSelecionada()
         {
+            Dictionary<string, string> valores = new Dictionary<string, string>();
+
             if (dataGridRelatorio.SelectedRows.Count > 0)
             {
-                DataGridViewRow linhaSelecionada = dataGridRelatorio.SelectedRows[0];
-                string caminhoDoArquivo = "C:/testeRelatorio.pdf";
+                DataGridViewRow selectedRow = dataGridRelatorio.SelectedRows[0];
 
-                PdfGenerator geradorPDF = new PdfGenerator();
-                
+                foreach (DataGridViewCell cell in selectedRow.Cells)
+                {
+                    string nomeDaColuna = dataGridRelatorio.Columns[cell.ColumnIndex].Name;
+                    string valorDaCelula = cell.Value?.ToString() ?? string.Empty;
 
+                    valores[nomeDaColuna] = valorDaCelula;
+                }
             }
-            else
-            {
 
-            }
+            return valores;
         }
-
-
-
     }
 }
 
