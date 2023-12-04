@@ -1,69 +1,46 @@
 ﻿using System;
 using System.Data;
-using System.Windows.Forms;
-using iText.Kernel.Pdf;
-using iText.Layout;
-using iText.Layout.Element;
-using iText.Layout.Properties;
-using iText.Kernel.Colors;
-using iText.Kernel.Font;
-using iText.IO.Font.Constants;
 using System.Linq;
 using System.Xml.Linq;
+using Syncfusion.Licensing;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
+using Syncfusion.Pdf;
+using Syncfusion.Pdf.Graphics;
+using Syncfusion.Pdf.Grid;
 
 
 namespace WindowsFormsApp1
 {
     public class PdfGenerator
     {
-        public void GerarRelatorioDadoSelecionado(DataGridViewRow linhaSelecionada, string caminhoArquivo)
+        public void GeneratePDF(DataGridViewRow selectedRow, string filePath)
         {
-            try
+            PdfDocument document = new PdfDocument();
+            PdfPage page = document.Pages.Add();
+            PdfGraphics graphics = page.Graphics;
+
+            // Posições iniciais para desenhar texto
+            float xPosition = 10;
+            float yPosition = 10;
+            float lineHeight = 20;
+
+            // Configuração da fonte
+            PdfFont font = new PdfStandardFont(PdfFontFamily.Helvetica, 12, PdfFontStyle.Regular);
+
+            // Adiciona os dados da linha selecionada ao PDF
+            foreach (DataGridViewCell cell in selectedRow.Cells)
             {
-                PdfDocument pdfDoc = new PdfDocument(new PdfWriter(caminhoArquivo));
-                Document doc = new Document(pdfDoc);
-
-                PdfFont fontTitulo = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
-                PdfFont fontDados = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
-
-                Paragraph titulo = new Paragraph("Relatório de Pacote").SetFont(fontTitulo).SetFontSize(20);
-                doc.Add(titulo);
-
-                DataTable dataTable = new DataTable();
-                foreach (DataGridViewColumn column in linhaSelecionada.DataGridView.Columns)
-                {
-                    dataTable.Columns.Add(column.HeaderText);
-                }
-
-                DataRowView dataRow = (DataRowView)linhaSelecionada.DataBoundItem;
-                dataTable.LoadDataRow(dataRow.Row.ItemArray, true);
-
-                Table table = new Table(dataTable.Columns.Count, true);
-                table.UseAllAvailableWidth();
-
-                foreach (DataGridViewColumn column in linhaSelecionada.DataGridView.Columns)
-                {
-                    Cell headerCell = new Cell().Add(new Paragraph(column.HeaderText));
-                    headerCell.SetFont(fontDados).SetFontColor(DeviceRgb.BLACK).SetBackgroundColor(DeviceRgb.WHITE);
-                    table.AddHeaderCell(headerCell);
-                }
-
-                foreach (DataColumn dataColumn in dataTable.Columns)
-                {
-                    Cell dataCell = new Cell().Add(new Paragraph(dataRow[dataColumn.ColumnName].ToString()));
-                    dataCell.SetFont(fontDados).SetFontColor(DeviceRgb.BLACK).SetBackgroundColor(DeviceRgb.WHITE);
-                    table.AddCell(dataCell);
-                }
-
-                doc.Add(table);
-
-                doc.Close();
+                graphics.DrawString($"{cell.OwningColumn.HeaderText}: {cell.Value}", font, PdfBrushes.Black, new PointF(xPosition, yPosition));
+                yPosition += lineHeight; // Move para a próxima linha
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Ocorreu um erro ao gerar o PDF: {ex.Message}");
-            }
+
+            // Salva o documento PDF
+            document.Save(filePath);
+            document.Close(true);
         }
     }
-
+    
 }
+

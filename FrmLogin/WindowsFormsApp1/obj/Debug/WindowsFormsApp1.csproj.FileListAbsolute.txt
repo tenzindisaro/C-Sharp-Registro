@@ -528,3 +528,27 @@ C:\Users\Tenzin\Desktop\projeto\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsForms
 C:\Users\Tenzin\Desktop\projeto\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
 C:\Users\Tenzin\Desktop\projeto\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\Tenzin\Desktop\projeto\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.Options.dll
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\bin\Debug\System.Text.Encoding.CodePages.dll
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\bin\Debug\System.ValueTuple.dll
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.Options.xml
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\bin\Debug\System.ValueTuple.xml
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormRetirarPac.resources
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormValidacaoLogin.resources
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Syncfusion.Compression.Portable.dll
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Syncfusion.Licensing.dll
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Syncfusion.Pdf.Portable.dll
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Syncfusion.Compression.Portable.xml
+C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\bin\Debug\Syncfusion.Pdf.Portable.xml

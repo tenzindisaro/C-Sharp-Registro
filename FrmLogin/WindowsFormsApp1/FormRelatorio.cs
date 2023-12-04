@@ -1,6 +1,5 @@
-﻿using iText.Kernel.Pdf;
-using iText.Layout;
-using iText.Layout.Element;
+﻿    using Syncfusion.Pdf.Graphics;
+    using Syncfusion.Pdf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.IO;
 
 namespace WindowsFormsApp1
 {
@@ -191,28 +191,29 @@ namespace WindowsFormsApp1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            string caminhoDoArquivo = @"C:\MidasProject\testeRelatorio.pdf";
+            string caminhoDoArquivo = "C:/Projetos-Midas/testeRelatorio.pdf";
 
-            try
+            // Cria um novo documento PDF
+            PdfDocument document = new PdfDocument();
+
+            // Adiciona uma página ao documento
+            PdfPage page = document.Pages.Add();
+
+            // Obtém o objeto de gráficos da página
+            PdfGraphics graphics = page.Graphics;
+
+            // Desenha texto na página
+            graphics.DrawString("Olá, mundo! Este é um documento PDF gerado com Syncfusion.", new PdfStandardFont(PdfFontFamily.Helvetica, 12), PdfBrushes.Black, new Syncfusion.Drawing.PointF(10, 10));
+
+            // Cria um fluxo de arquivo para salvar o documento
+            using (FileStream fileStream = new FileStream(caminhoDoArquivo, FileMode.Create, FileAccess.Write))
             {
-                using (PdfWriter writer = new PdfWriter(caminhoDoArquivo))
-                {
-                    using (PdfDocument pdf = new PdfDocument(writer))
-                    {
-                        Document document = new Document(pdf);
-
-                        document.Add(new Paragraph("Olá, este é um documento PDF gerado usando o iText7."));
-
-                        document.Close();
-                    }
-                }
-
-                Console.WriteLine("Documento PDF criado com sucesso.");
+                // Salva o documento no fluxo de arquivo
+                document.Save(fileStream);
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Ocorreu um erro ao gerar o PDF: {ex.Message}");
-            }
+
+            // Fecha o documento
+            document.Close();
         }
 
         private void GerarRelatorioPDF()
@@ -220,16 +221,15 @@ namespace WindowsFormsApp1
             if (dataGridRelatorio.SelectedRows.Count > 0)
             {
                 DataGridViewRow linhaSelecionada = dataGridRelatorio.SelectedRows[0];
-                string caminhoDoArquivo = @"C:\testeRelatorio.pdf";
+                string caminhoDoArquivo = "C:/testeRelatorio.pdf";
 
                 PdfGenerator geradorPDF = new PdfGenerator();
-                geradorPDF.GerarRelatorioDadoSelecionado(linhaSelecionada, caminhoDoArquivo);
+                
 
-                Console.WriteLine("Relatório PDF gerado com os dados da linha selecionada!");
             }
             else
             {
-                Console.WriteLine("Nenhuma linha selecionada no DataGridView.");
+
             }
         }
 
