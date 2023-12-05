@@ -28,10 +28,7 @@ namespace WindowsFormsApp1
         
         private void trocarUsuárioToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            this.Close();
-            t2 = new Thread(abrirLogin);
-            t2.SetApartmentState(ApartmentState.STA);
-            t2.Start();
+            
         }
 
         private void abrirLogin(object obj)
@@ -244,6 +241,14 @@ namespace WindowsFormsApp1
         {
             this.Close();
             t2 = new Thread(abrirRelatorio);
+            t2.SetApartmentState(ApartmentState.STA);
+            t2.Start();
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            t2 = new Thread(abrirLogin);
             t2.SetApartmentState(ApartmentState.STA);
             t2.Start();
         }

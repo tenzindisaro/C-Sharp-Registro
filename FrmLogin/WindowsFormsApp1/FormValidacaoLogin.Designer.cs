@@ -35,7 +35,6 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnContinuar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // panel5
@@ -112,24 +111,12 @@
             this.btnContinuar.UseVisualStyleBackColor = false;
             this.btnContinuar.Click += new System.EventHandler(this.btnContinuar_Click);
             // 
-            // label1
-            // 
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(107, 265);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(144, 18);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Email ou senha inválidos";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Visible = false;
-            // 
             // FormValidacaoLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(355, 303);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(355, 268);
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtEmail);
@@ -153,6 +140,5 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnContinuar;
-        private System.Windows.Forms.Label label1;
     }
 }

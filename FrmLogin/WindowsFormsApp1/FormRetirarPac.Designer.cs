@@ -329,7 +329,7 @@
             // 
             this.maskedTextBox_telefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.maskedTextBox_telefone.Location = new System.Drawing.Point(158, 174);
-            this.maskedTextBox_telefone.Mask = "(00)0 0000-0000";
+            this.maskedTextBox_telefone.Mask = "(00) 00000-0000";
             this.maskedTextBox_telefone.Name = "maskedTextBox_telefone";
             this.maskedTextBox_telefone.Size = new System.Drawing.Size(134, 23);
             this.maskedTextBox_telefone.TabIndex = 130;
@@ -435,8 +435,10 @@
             this.dataGridView_retirada_pac.AllowUserToDeleteRows = false;
             this.dataGridView_retirada_pac.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_retirada_pac.Location = new System.Drawing.Point(6, 19);
+            this.dataGridView_retirada_pac.MultiSelect = false;
             this.dataGridView_retirada_pac.Name = "dataGridView_retirada_pac";
             this.dataGridView_retirada_pac.ReadOnly = true;
+            this.dataGridView_retirada_pac.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView_retirada_pac.Size = new System.Drawing.Size(564, 148);
             this.dataGridView_retirada_pac.TabIndex = 14;
             this.dataGridView_retirada_pac.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_retirada_pac_CellClick);

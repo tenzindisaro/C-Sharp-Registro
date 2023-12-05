@@ -46,10 +46,6 @@ namespace WindowsFormsApp1
             {
                 this.Hide();
             }
-            else
-            {
-                label1.Show();
-            }
         }
 
         public string getInputEmail ()

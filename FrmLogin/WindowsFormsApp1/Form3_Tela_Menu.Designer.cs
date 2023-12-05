@@ -38,8 +38,6 @@
             this.listaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatórioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.trocarUsuárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sairToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnRelatorios = new System.Windows.Forms.Button();
@@ -146,27 +144,12 @@
             // 
             // sairToolStripMenuItem
             // 
-            this.sairToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.trocarUsuárioToolStripMenuItem,
-            this.sairToolStripMenuItem1});
             this.sairToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sairToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
             this.sairToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
             this.sairToolStripMenuItem.Text = "Sair";
-            // 
-            // trocarUsuárioToolStripMenuItem
-            // 
-            this.trocarUsuárioToolStripMenuItem.Name = "trocarUsuárioToolStripMenuItem";
-            this.trocarUsuárioToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.trocarUsuárioToolStripMenuItem.Text = "Trocar Usuário";
-            this.trocarUsuárioToolStripMenuItem.Click += new System.EventHandler(this.trocarUsuárioToolStripMenuItem_Click_1);
-            // 
-            // sairToolStripMenuItem1
-            // 
-            this.sairToolStripMenuItem1.Name = "sairToolStripMenuItem1";
-            this.sairToolStripMenuItem1.Size = new System.Drawing.Size(154, 22);
-            this.sairToolStripMenuItem1.Text = "Sair";
+            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -183,7 +166,7 @@
             // 
             // btnLogout
             // 
-            this.btnLogout.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLogout.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnLogout.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold);
             this.btnLogout.Location = new System.Drawing.Point(12, 361);
             this.btnLogout.Name = "btnLogout";
@@ -195,7 +178,7 @@
             // 
             // btnRelatorios
             // 
-            this.btnRelatorios.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRelatorios.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnRelatorios.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold);
             this.btnRelatorios.Location = new System.Drawing.Point(12, 274);
             this.btnRelatorios.Name = "btnRelatorios";
@@ -207,7 +190,7 @@
             // 
             // btnRetiradaPac
             // 
-            this.btnRetiradaPac.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRetiradaPac.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnRetiradaPac.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold);
             this.btnRetiradaPac.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnRetiradaPac.Location = new System.Drawing.Point(12, 187);
@@ -220,7 +203,7 @@
             // 
             // btnListaPac
             // 
-            this.btnListaPac.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnListaPac.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnListaPac.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold);
             this.btnListaPac.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnListaPac.Location = new System.Drawing.Point(12, 98);
@@ -233,7 +216,7 @@
             // 
             // btnCadastroPacMenu
             // 
-            this.btnCadastroPacMenu.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCadastroPacMenu.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnCadastroPacMenu.Font = new System.Drawing.Font("Microsoft PhagsPa", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCadastroPacMenu.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnCadastroPacMenu.Location = new System.Drawing.Point(12, 9);
@@ -448,8 +431,6 @@
         private System.Windows.Forms.ToolStripMenuItem registroToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adicionarToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem trocarUsuárioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem1;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;

@@ -73,6 +73,9 @@ namespace WindowsFormsApp1
 
                         Bd.setEdit_Retirada(notaFiscal, dataRetirada, horaRetirada);
                         MessageBox.Show("Pacote Retirado com sucesso!", "Operação Concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        maskedTextBoxSituacao.Text = "Retirado";
+                        textBox_data.Text = dataRetirada;
+                        textBox_hora.Text = horaRetirada;
                     }
                     else
                     {

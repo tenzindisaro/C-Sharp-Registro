@@ -100,9 +100,9 @@
             this.groupBox2.Controls.Add(this.radioButton1);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox2.Location = new System.Drawing.Point(410, 1);
+            this.groupBox2.Location = new System.Drawing.Point(393, 1);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(136, 88);
+            this.groupBox2.Size = new System.Drawing.Size(153, 88);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ordem de Busca";
@@ -240,6 +240,7 @@
             this.dataGridRelatorio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridRelatorio.Location = new System.Drawing.Point(7, 19);
             this.dataGridRelatorio.Name = "dataGridRelatorio";
+            this.dataGridRelatorio.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridRelatorio.Size = new System.Drawing.Size(763, 234);
             this.dataGridRelatorio.TabIndex = 0;
             // 

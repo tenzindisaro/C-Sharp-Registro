@@ -149,6 +149,7 @@
             this.dataGridView_registro_pac.Location = new System.Drawing.Point(6, 19);
             this.dataGridView_registro_pac.Name = "dataGridView_registro_pac";
             this.dataGridView_registro_pac.ReadOnly = true;
+            this.dataGridView_registro_pac.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView_registro_pac.Size = new System.Drawing.Size(564, 148);
             this.dataGridView_registro_pac.TabIndex = 14;
             this.dataGridView_registro_pac.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_registro_pac_CellClick);
