@@ -119,6 +119,18 @@ namespace WindowsFormsApp1
         private void FormRetirarPac_Load(object sender, EventArgs e)
         {
             InitializeDataGridView();
+            dataGridView_retirada_pac.ClearSelection();
+
+            comboBox_funcionario.Text = "";
+            textBox_NotaFiscal.Text = "";
+            textBox_Titular.Text = "";
+            maskedTextBox_CPF.Text = "";
+            maskedTextBoxSituacao.Text = "";
+            maskedTextBox_email.Text = "";
+            maskedTextBox_telefone.Text = "";
+            txtbox_cpf_entregador.Text = "";
+            txtbox_nome_entregador.Text = "";
+
             string id = loja.getIdLoja();
             List<string> emails;
 

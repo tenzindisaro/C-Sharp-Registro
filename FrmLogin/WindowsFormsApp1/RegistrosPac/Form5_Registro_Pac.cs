@@ -29,7 +29,6 @@ namespace WindowsFormsApp1.RegistrosPac
         {
             loja = lojaAtual;
             InitializeComponent();
-            InitializeDataGridView();
         }
 
         public Form5_Registro_Pac(Class_loja lojaAtual, string notaFiscal, string funcionario, string nome_entregador, string nome_titular, string telefone, string cpf_entregador, string email_titular, string cpf_titular, string situacao, string chegada_data, string chegada_hora)
@@ -508,6 +507,20 @@ namespace WindowsFormsApp1.RegistrosPac
        
         private void Form5_Registro_Pac_Load(object sender, EventArgs e)
         {
+            InitializeDataGridView();
+            InitializeDataGridView();
+            dataGridView_registro_pac.ClearSelection();
+
+            comboBox_funcionario.Text = "";
+            textBox_NotaFiscal.Text = "";
+            textBox_Titular.Text = "";
+            maskedTextBox_CPF.Text = "";
+            maskedTextBoxSituacao.Text = "";
+            maskedTextBox_email.Text = "";
+            maskedTextBox_telefone.Text = "";
+            txtbox_cpf_entregador.Text = "";
+            txtbox_nome_entregador.Text = "";
+
             string id = loja.getIdLoja();
             List<string> emails;
             
