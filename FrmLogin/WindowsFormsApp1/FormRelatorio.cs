@@ -237,7 +237,9 @@ namespace WindowsFormsApp1
             Dictionary<string, string> valoresLinhaSelecionada = ObterValoresDaLinhaSelecionada();
 
             // Use os valores obtidos conforme necessário, por exemplo, para gerar um relatório em PDF
-            string caminhoRelatorioFrx = @"C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\tempRelatorioFinal.frx";
+            string pastaDeSaida = Application.StartupPath;
+            string caminhoRelatorioFrx = Path.Combine(pastaDeSaida, "tempRelatorioFinal.frx");
+            
             SaveFileDialog saveFileDialog1 = new SaveFileDialog(); 
             // Diálogo para seleção do local de salvamento
             saveFileDialog1.Filter = "Arquivos PDF (*.pdf)|*.pdf";
@@ -286,6 +288,80 @@ namespace WindowsFormsApp1
         {
             Application.Run(new Form3_Tela_Menu(loja));
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            List<Dictionary<string, string>> valoresLinhasSelecionadas = ObterValoresDasLinhasMultiplas();
+
+            if (valoresLinhasSelecionadas.Count > 0)
+            {
+                string pastaDeSaida = Application.StartupPath;
+                string caminhoRelatorioFrx = Path.Combine(pastaDeSaida, "tempRelatorioFinal.frx");
+
+                // Para cada linha selecionada, gera um relatório em PDF
+                foreach (Dictionary<string, string> valoresLinhaSelecionada in valoresLinhasSelecionadas)
+                {
+                    SaveFileDialog saveFileDialog = new SaveFileDialog();
+                    saveFileDialog.Filter = "Arquivos PDF (*.pdf)|*.pdf";
+                    saveFileDialog.Title = "Salvar Relatório PDF";
+                    saveFileDialog.FileName = "Relatório"; // Nome padrão do arquivo
+                    saveFileDialog.InitialDirectory = @"C:\"; // Diretório inicial
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string caminhoPDF = saveFileDialog.FileName;
+
+                        PdfGenerator pdfGenerator = new PdfGenerator();
+                        pdfGenerator.RelatorioFinal(
+                            caminhoRelatorioFrx,
+                            caminhoPDF,
+                            valoresLinhaSelecionada["Nota Fiscal"],
+                            valoresLinhaSelecionada["Funcionário"],
+                            valoresLinhaSelecionada["Situação"],
+                            valoresLinhaSelecionada["Titular"],
+                            valoresLinhaSelecionada["Telefone"],
+                            valoresLinhaSelecionada["Email"],
+                            valoresLinhaSelecionada["CPF Titular"],
+                            valoresLinhaSelecionada["Data de Chegada"],
+                            valoresLinhaSelecionada["Hora de Chegada"],
+                            valoresLinhaSelecionada["Data de Retirada"],
+                            valoresLinhaSelecionada["Hora de Retirada"]
+                        );
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecione uma ou mais linhas para gerar o relatório.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private List<Dictionary<string, string>> ObterValoresDasLinhasMultiplas()
+        {
+            List<Dictionary<string, string>> valoresMultiplasLinhas = new List<Dictionary<string, string>>();
+
+            if (dataGridRelatorio.SelectedRows.Count > 0)
+            {
+                foreach (DataGridViewRow selectedRow in dataGridRelatorio.SelectedRows)
+                {
+                    Dictionary<string, string> valores = new Dictionary<string, string>();
+
+                    foreach (DataGridViewCell cell in selectedRow.Cells)
+                    {
+                        string nomeDaColuna = dataGridRelatorio.Columns[cell.ColumnIndex].Name;
+                        string valorDaCelula = cell.Value?.ToString() ?? string.Empty;
+
+                        valores[nomeDaColuna] = valorDaCelula;
+                    }
+
+                    valoresMultiplasLinhas.Add(valores);
+                }
+            }
+
+            return valoresMultiplasLinhas;
+        }
+
+
     }
 }
 

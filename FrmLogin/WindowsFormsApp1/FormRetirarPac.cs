@@ -299,7 +299,8 @@ namespace WindowsFormsApp1
                 Dictionary<string, string> valoresLinhaSelecionada = ObterValoresDaLinhaSelecionada();
 
                 // Use os valores obtidos conforme necessário, por exemplo, para gerar um relatório em PDF
-                string caminhoRelatorioFrx = @"C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\tempRelatorioFinal.frx";
+                string pastaDeSaida = Application.StartupPath;
+                string caminhoRelatorioFrx = Path.Combine(pastaDeSaida, "tempRelatorioRetirada.frx");
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
                 // Diálogo para seleção do local de salvamento
                 saveFileDialog1.Filter = "Arquivos PDF (*.pdf)|*.pdf";

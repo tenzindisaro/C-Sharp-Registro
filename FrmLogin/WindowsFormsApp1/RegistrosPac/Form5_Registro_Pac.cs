@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -655,7 +656,8 @@ namespace WindowsFormsApp1.RegistrosPac
 
             //gerar o relatório aqui
 
-            string caminhoRelatorioFrx = @"C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\tempRelatorioChegada.frx";
+            string pastaDeSaida = Application.StartupPath;
+            string caminhoRelatorioFrx = Path.Combine(pastaDeSaida, "tempRelatorioChegada.frx");
             // Diálogo para seleção do local de salvamento
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Arquivos PDF (*.pdf)|*.pdf";

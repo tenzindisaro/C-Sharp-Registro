@@ -42,7 +42,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridRelatorio = new System.Windows.Forms.DataGridView();
-            this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -186,9 +185,9 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(585, 367);
+            this.button2.Location = new System.Drawing.Point(542, 367);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(173, 46);
+            this.button2.Size = new System.Drawing.Size(243, 46);
             this.button2.TabIndex = 124;
             this.button2.Text = "Voltar";
             this.button2.UseVisualStyleBackColor = false;
@@ -211,36 +210,27 @@
             this.dataGridRelatorio.Size = new System.Drawing.Size(763, 234);
             this.dataGridRelatorio.TabIndex = 0;
             // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(406, 367);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(173, 46);
-            this.button4.TabIndex = 127;
-            this.button4.Text = "Semanal";
-            this.button4.UseVisualStyleBackColor = false;
-            // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(47, 367);
+            this.button5.Location = new System.Drawing.Point(22, 367);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(173, 46);
+            this.button5.Size = new System.Drawing.Size(243, 46);
             this.button5.TabIndex = 125;
-            this.button5.Text = "Gerar Relatório";
+            this.button5.Text = "Gerar Relatório Único";
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(227, 367);
+            this.button3.Location = new System.Drawing.Point(281, 367);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(173, 46);
+            this.button3.Size = new System.Drawing.Size(243, 46);
             this.button3.TabIndex = 126;
-            this.button3.Text = "Diário";
+            this.button3.Text = "Gerar Relatório Multiplo";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // FormRelatorio
             // 
@@ -250,7 +240,6 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button3);
             this.Name = "FormRelatorio";
@@ -275,7 +264,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridRelatorio;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.MaskedTextBox txtBox_buscar_cpf;

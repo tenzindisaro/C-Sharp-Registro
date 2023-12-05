@@ -36,22 +36,12 @@
             this.registroToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.geralToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.recebidosNoDiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.retiradosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.recebidosNoDiaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.retiradosNoDiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatórioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.entregaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.recebimentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listaGeralToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reclamaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trocarUsuárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.btnFiltrarMenu = new System.Windows.Forms.Button();
             this.btnRelatorios = new System.Windows.Forms.Button();
             this.btnRetiradaPac = new System.Windows.Forms.Button();
             this.btnListaPac = new System.Windows.Forms.Button();
@@ -138,85 +128,21 @@
             // 
             // listaToolStripMenuItem
             // 
-            this.listaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.geralToolStripMenuItem,
-            this.recebidosNoDiaToolStripMenuItem,
-            this.retiradosToolStripMenuItem,
-            this.recebidosNoDiaToolStripMenuItem1,
-            this.retiradosNoDiaToolStripMenuItem});
             this.listaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listaToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.listaToolStripMenuItem.Name = "listaToolStripMenuItem";
             this.listaToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.listaToolStripMenuItem.Text = "Lista";
-            // 
-            // geralToolStripMenuItem
-            // 
-            this.geralToolStripMenuItem.Name = "geralToolStripMenuItem";
-            this.geralToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.geralToolStripMenuItem.Text = "Geral";
-            this.geralToolStripMenuItem.Click += new System.EventHandler(this.geralToolStripMenuItem_Click_1);
-            // 
-            // recebidosNoDiaToolStripMenuItem
-            // 
-            this.recebidosNoDiaToolStripMenuItem.Name = "recebidosNoDiaToolStripMenuItem";
-            this.recebidosNoDiaToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.recebidosNoDiaToolStripMenuItem.Text = "Presentes";
-            // 
-            // retiradosToolStripMenuItem
-            // 
-            this.retiradosToolStripMenuItem.Name = "retiradosToolStripMenuItem";
-            this.retiradosToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.retiradosToolStripMenuItem.Text = "Retirados";
-            // 
-            // recebidosNoDiaToolStripMenuItem1
-            // 
-            this.recebidosNoDiaToolStripMenuItem1.Name = "recebidosNoDiaToolStripMenuItem1";
-            this.recebidosNoDiaToolStripMenuItem1.Size = new System.Drawing.Size(167, 22);
-            this.recebidosNoDiaToolStripMenuItem1.Text = "Recebidos no dia";
-            // 
-            // retiradosNoDiaToolStripMenuItem
-            // 
-            this.retiradosNoDiaToolStripMenuItem.Name = "retiradosNoDiaToolStripMenuItem";
-            this.retiradosNoDiaToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.retiradosNoDiaToolStripMenuItem.Text = "Retirados no dia";
+            this.listaToolStripMenuItem.Click += new System.EventHandler(this.listaToolStripMenuItem_Click);
             // 
             // relatórioToolStripMenuItem
             // 
-            this.relatórioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.entregaToolStripMenuItem,
-            this.recebimentoToolStripMenuItem,
-            this.listaGeralToolStripMenuItem,
-            this.reclamaçõesToolStripMenuItem});
             this.relatórioToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.relatórioToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.relatórioToolStripMenuItem.Name = "relatórioToolStripMenuItem";
             this.relatórioToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
             this.relatórioToolStripMenuItem.Text = "Relatório";
-            // 
-            // entregaToolStripMenuItem
-            // 
-            this.entregaToolStripMenuItem.Name = "entregaToolStripMenuItem";
-            this.entregaToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.entregaToolStripMenuItem.Text = "Entrega";
-            // 
-            // recebimentoToolStripMenuItem
-            // 
-            this.recebimentoToolStripMenuItem.Name = "recebimentoToolStripMenuItem";
-            this.recebimentoToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.recebimentoToolStripMenuItem.Text = "Recebimento";
-            // 
-            // listaGeralToolStripMenuItem
-            // 
-            this.listaGeralToolStripMenuItem.Name = "listaGeralToolStripMenuItem";
-            this.listaGeralToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.listaGeralToolStripMenuItem.Text = "Lista Geral";
-            // 
-            // reclamaçõesToolStripMenuItem
-            // 
-            this.reclamaçõesToolStripMenuItem.Name = "reclamaçõesToolStripMenuItem";
-            this.reclamaçõesToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.reclamaçõesToolStripMenuItem.Text = "Reclamações";
+            this.relatórioToolStripMenuItem.Click += new System.EventHandler(this.relatórioToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
@@ -246,7 +172,6 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Red;
             this.panel1.Controls.Add(this.btnLogout);
-            this.panel1.Controls.Add(this.btnFiltrarMenu);
             this.panel1.Controls.Add(this.btnRelatorios);
             this.panel1.Controls.Add(this.btnRetiradaPac);
             this.panel1.Controls.Add(this.btnListaPac);
@@ -260,32 +185,21 @@
             // 
             this.btnLogout.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnLogout.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold);
-            this.btnLogout.Location = new System.Drawing.Point(12, 374);
+            this.btnLogout.Location = new System.Drawing.Point(12, 361);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(231, 65);
+            this.btnLogout.Size = new System.Drawing.Size(231, 85);
             this.btnLogout.TabIndex = 5;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
-            // btnFiltrarMenu
-            // 
-            this.btnFiltrarMenu.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnFiltrarMenu.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold);
-            this.btnFiltrarMenu.Location = new System.Drawing.Point(12, 230);
-            this.btnFiltrarMenu.Name = "btnFiltrarMenu";
-            this.btnFiltrarMenu.Size = new System.Drawing.Size(231, 65);
-            this.btnFiltrarMenu.TabIndex = 3;
-            this.btnFiltrarMenu.Text = "Filtrar";
-            this.btnFiltrarMenu.UseVisualStyleBackColor = false;
-            // 
             // btnRelatorios
             // 
             this.btnRelatorios.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnRelatorios.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold);
-            this.btnRelatorios.Location = new System.Drawing.Point(12, 302);
+            this.btnRelatorios.Location = new System.Drawing.Point(12, 274);
             this.btnRelatorios.Name = "btnRelatorios";
-            this.btnRelatorios.Size = new System.Drawing.Size(231, 65);
+            this.btnRelatorios.Size = new System.Drawing.Size(231, 82);
             this.btnRelatorios.TabIndex = 4;
             this.btnRelatorios.Text = "Relatórios";
             this.btnRelatorios.UseVisualStyleBackColor = false;
@@ -296,9 +210,9 @@
             this.btnRetiradaPac.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnRetiradaPac.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold);
             this.btnRetiradaPac.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnRetiradaPac.Location = new System.Drawing.Point(12, 159);
+            this.btnRetiradaPac.Location = new System.Drawing.Point(12, 187);
             this.btnRetiradaPac.Name = "btnRetiradaPac";
-            this.btnRetiradaPac.Size = new System.Drawing.Size(231, 65);
+            this.btnRetiradaPac.Size = new System.Drawing.Size(231, 82);
             this.btnRetiradaPac.TabIndex = 2;
             this.btnRetiradaPac.Text = "Retirar pacote";
             this.btnRetiradaPac.UseVisualStyleBackColor = false;
@@ -309,9 +223,9 @@
             this.btnListaPac.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnListaPac.Font = new System.Drawing.Font("Microsoft PhagsPa", 16.2F, System.Drawing.FontStyle.Bold);
             this.btnListaPac.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnListaPac.Location = new System.Drawing.Point(12, 88);
+            this.btnListaPac.Location = new System.Drawing.Point(12, 98);
             this.btnListaPac.Name = "btnListaPac";
-            this.btnListaPac.Size = new System.Drawing.Size(231, 65);
+            this.btnListaPac.Size = new System.Drawing.Size(231, 84);
             this.btnListaPac.TabIndex = 1;
             this.btnListaPac.Text = "Lista de pacotes";
             this.btnListaPac.UseVisualStyleBackColor = false;
@@ -322,9 +236,9 @@
             this.btnCadastroPacMenu.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnCadastroPacMenu.Font = new System.Drawing.Font("Microsoft PhagsPa", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCadastroPacMenu.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnCadastroPacMenu.Location = new System.Drawing.Point(12, 16);
+            this.btnCadastroPacMenu.Location = new System.Drawing.Point(12, 9);
             this.btnCadastroPacMenu.Name = "btnCadastroPacMenu";
-            this.btnCadastroPacMenu.Size = new System.Drawing.Size(231, 65);
+            this.btnCadastroPacMenu.Size = new System.Drawing.Size(231, 84);
             this.btnCadastroPacMenu.TabIndex = 0;
             this.btnCadastroPacMenu.Text = "Registro de Pacotes";
             this.btnCadastroPacMenu.UseVisualStyleBackColor = false;
@@ -528,22 +442,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Button btnRelatorios;
-        private System.Windows.Forms.Button btnFiltrarMenu;
         private System.Windows.Forms.Button btnRetiradaPac;
         private System.Windows.Forms.Button btnListaPac;
         private System.Windows.Forms.Button btnCadastroPacMenu;
         private System.Windows.Forms.ToolStripMenuItem registroToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem geralToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem recebidosNoDiaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem retiradosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem recebidosNoDiaToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem retiradosNoDiaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adicionarToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem entregaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem recebimentoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reclamaçõesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem listaGeralToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem trocarUsuárioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem1;
         private System.Windows.Forms.Panel panel5;

@@ -226,5 +226,26 @@ namespace WindowsFormsApp1
             FormRetirarPac form = new FormRetirarPac(loja);
             form.ShowDialog();
         }
+
+        private void reclamaçõesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            lista.Geral.Form6_Lista_Geral form = new lista.Geral.Form6_Lista_Geral(loja);
+            form.ShowDialog();
+            this.Show();
+        }
+
+        private void relatórioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            t2 = new Thread(abrirRelatorio);
+            t2.SetApartmentState(ApartmentState.STA);
+            t2.Start();
+        }
     }
 }
