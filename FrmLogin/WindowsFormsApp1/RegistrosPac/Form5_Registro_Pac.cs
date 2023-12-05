@@ -113,6 +113,7 @@ namespace WindowsFormsApp1.RegistrosPac
                 validTelefone = cadastroPacote.validarTelefone(telefone);
                 validCpf_titular = cadastroPacote.validCPF(CPF);
                 validCpf_entregador = cadastroPacote.validCPF(cpf_entregador);
+
                 if(validCpf_titular == false)
                 {
                     MessageBox.Show("Insira CPF titular correto.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -319,10 +320,7 @@ namespace WindowsFormsApp1.RegistrosPac
                             Bd.setBD_Close();
                         }
                     }
-                    else { MessageBox.Show("CPF Titular if dadosok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
                 }
-                else
-                { MessageBox.Show("CPF Titular vazio em opções do buscar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
             }
             else if (rdb_nf_checked)
             {
@@ -385,7 +383,7 @@ namespace WindowsFormsApp1.RegistrosPac
                         }
 
                     }
-                    else { MessageBox.Show("NF  if dadosok.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
+                    
                 }
                 else
                 { MessageBox.Show("Nota Fiscal vazio em opções do buscar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
@@ -465,7 +463,6 @@ namespace WindowsFormsApp1.RegistrosPac
 
                             if (pesquisaTitular != null)
                             {
-                                MessageBox.Show(dadosValidos_CPF);
                                 Bd.setEdit_titular(dadosValidos_CPF, dadosValidos_nomeTitular, dadosValidos_email, dadosValidos_telefone, dadosValidos_notaFiscal);
                             }
                             else
@@ -483,7 +480,7 @@ namespace WindowsFormsApp1.RegistrosPac
                             }
 
                             Bd.setEdit_pacote(notaFiscalAntiga, dadosValidos_notaFiscal, dadosValidos_situacao, dadosValidos_funcionario, dadosValidos_CPF, dadosValidos_cpf_entregador);
-                            MessageBox.Show("Informações do Pacote alteradas com sucesso!", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("Informações do Pacote alteradas com sucesso!", "Operação concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
@@ -526,10 +523,9 @@ namespace WindowsFormsApp1.RegistrosPac
                     comboBox_funcionario.Items.Add(email);
                 }
             }
-            catch (Exception er)
+            catch
             {
-                //MessageBox.Show("Houve um erro durante o carregamento de fucionários", "Erro de conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                MessageBox.Show(er.Message);
+                MessageBox.Show("Houve um erro durante o carregamento de fucionários", "Erro de conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

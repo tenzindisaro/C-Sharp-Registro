@@ -169,7 +169,6 @@ namespace WindowsFormsApp1
 
             if (count > 0)
             {
-                MessageBox.Show("box de teste cpf titular.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -184,7 +183,6 @@ namespace WindowsFormsApp1
 
             if (count > 0)
             {
-                MessageBox.Show("box de teste cpf entregador.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -408,7 +406,7 @@ namespace WindowsFormsApp1
             {
                 // Lidar com exceções de banco de dados ou conexão aqui
                 // Pode ser útil logar o erro ou tomar outras ações apropriadas.
-                MessageBox.Show("Erro: " + ex.Message);
+                MessageBox.Show("Houve um problema ao carregar os pacotes! Verifique sua conexão com a internete e tente novamente.");
                 return null;
             }
         }

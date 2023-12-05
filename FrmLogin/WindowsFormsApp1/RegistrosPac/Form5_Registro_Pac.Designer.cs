@@ -438,7 +438,7 @@
             // 
             // txtbox_nome_entregador
             // 
-            this.txtbox_nome_entregador.Location = new System.Drawing.Point(302, 115);
+            this.txtbox_nome_entregador.Location = new System.Drawing.Point(302, 117);
             this.txtbox_nome_entregador.Mask = "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL";
             this.txtbox_nome_entregador.Name = "txtbox_nome_entregador";
             this.txtbox_nome_entregador.Size = new System.Drawing.Size(134, 20);
