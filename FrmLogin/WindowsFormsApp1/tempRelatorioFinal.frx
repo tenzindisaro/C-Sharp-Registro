@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ScriptLanguage="CSharp" ReportInfo.Created="12/01/2023 18:21:12" ReportInfo.Modified="12/02/2023 16:34:53" ReportInfo.CreatorVersion="2024.1.0.0">
+<Report ScriptLanguage="CSharp" ReportInfo.Created="12/01/2023 18:21:12" ReportInfo.Modified="12/05/2023 15:03:38" ReportInfo.CreatorVersion="2024.1.0.0">
   <Dictionary>
     <Parameter Name="NF" DataType="System.String" AsString=""/>
     <Parameter Name="Func" DataType="System.String" AsString=""/>
@@ -21,7 +21,7 @@
     <PageHeaderBand Name="PageHeader1" Top="79.6" Width="718.2" Height="18.9">
       <LineObject Name="Line1" Left="9.45" Top="9.45" Width="699.3"/>
     </PageHeaderBand>
-    <DataBand Name="Data1" Top="102.5" Width="718.2" Height="623.7" Border.ShadowColor="Transparent" Border.Color="Transparent">
+    <DataBand Name="Data1" Top="102.5" Width="718.2" Height="481.95" Border.ShadowColor="Transparent" Border.Color="Transparent">
       <TextObject Name="Text2" Left="28.35" Top="37.8" Width="132.3" Height="28.35" Border.Lines="All" Border.Color="Transparent" Text="Nota Fiscal:" VertAlign="Center" Font="Arial, 14pt, style=Bold"/>
       <TextObject Name="Text3" Left="28.35" Top="103.95" Width="132.3" Height="28.35" Border.Lines="All" Border.Color="Transparent" Text="Funcionário:" VertAlign="Center" Font="Arial, 14pt, style=Bold"/>
       <TextObject Name="Text4" Left="28.35" Top="160.65" Width="132.3" Height="28.35" Border.Lines="All" Border.Color="Transparent" Text="Situação:" VertAlign="Center" Font="Arial, 14pt, style=Bold"/>
@@ -45,6 +45,8 @@
       <TextObject Name="Text23" Left="614.25" Top="217.35" Width="113.4" Height="28.35" Border.Lines="All" Border.Color="Transparent" Text="[DataR]" VertAlign="Center" Font="Arial, 11pt"/>
       <TextObject Name="Text24" Left="614.25" Top="283.5" Width="113.4" Height="28.35" Border.Lines="All" Border.Color="Transparent" Text="[HoraR]" VertAlign="Center" Font="Arial, 11pt"/>
     </DataBand>
-    <PageFooterBand Name="PageFooter1" Top="730.2" Width="718.2" Height="66.15"/>
+    <PageFooterBand Name="PageFooter1" Top="588.45" Width="718.2" Height="66.15">
+      <TextObject Name="Text25" Left="567" Top="37.8" Width="94.5" Height="18.9" Text="[Date]" Font="Arial, 10pt"/>
+    </PageFooterBand>
   </ReportPage>
 </Report>
