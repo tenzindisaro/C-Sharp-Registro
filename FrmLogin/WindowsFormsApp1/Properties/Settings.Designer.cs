@@ -70,5 +70,16 @@ namespace WindowsFormsApp1.Properties {
                 this["CadFuncionarios"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=americanas.mysql.database.azure.com;port=3306;User Id=joao;database=teste_" +
+            "sql;password=Adriana1")]
+        public string stringConnection {
+            get {
+                return ((string)(this["stringConnection"]));
+            }
+        }
     }
 }
