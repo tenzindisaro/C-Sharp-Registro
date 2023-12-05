@@ -49,9 +49,6 @@ C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\Wi
 C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 C:\Users\020551631\Desktop\Americanas PE2\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormRelatorio.resources
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
 C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\BouncyCastle.Crypto.dll
 C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\Google.Protobuf.dll
 C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\K4os.Compression.LZ4.dll
@@ -98,8 +95,6 @@ C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug
 C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
 C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
-C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 C:\Users\Tenzin\Desktop\15-11\FrmLogin\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
 C:\Users\Tenzin\Desktop\15-11\FrmLogin\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
 C:\Users\Tenzin\Desktop\15-11\FrmLogin\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
@@ -820,3 +815,8 @@ C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsAp
 C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\tempRelatorioChegada.frx
 C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\tempRelatorioFinal.frx
 C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\tempRelatorioRetirada.frx
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\Americanas Registro.exe.config
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\Americanas Registro.exe
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\Americanas Registro.pdb
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug\Americanas Registro.exe
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\obj\Debug\Americanas Registro.pdb
