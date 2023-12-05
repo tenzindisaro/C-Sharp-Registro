@@ -171,7 +171,7 @@ namespace WindowsFormsApp1
             }
             else { MessageBox.Show("Selecione uma das opções do buscar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); return; }
 
-
+            dataTable.Columns.Clear();
             //Crie as colunas do DataTable
             dataTable.Columns.Add("Nota Fiscal");
             dataTable.Columns.Add("Funcionário");
@@ -361,7 +361,23 @@ namespace WindowsFormsApp1
             return valoresMultiplasLinhas;
         }
 
+        private void rdb_NotaFiscal_CheckedChanged(object sender, EventArgs e)
+        {
+            txtBox_buscar.Show();
+            txtBox_buscar_cpf.Hide();
+        }
 
+        private void rdb_Titular_cpf_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+            txtBox_buscar.Hide();
+            txtBox_buscar_cpf.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            InitializeDataGridView();
+        }
     }
 }
 

@@ -817,3 +817,6 @@ C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsAp
 C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\tempRelatorioChegada.frx
 C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\tempRelatorioFinal.frx
 C:\Users\joao_\OneDrive\Área de Trabalho\americanas-PE2\FrmLogin\WindowsFormsApp1\bin\Debug\tempRelatorioRetirada.frx
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\tempRelatorioChegada.frx
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\tempRelatorioFinal.frx
+C:\Users\drjap\source\repos\C-Sharp-Registro\FrmLogin\WindowsFormsApp1\bin\Debug\tempRelatorioRetirada.frx
