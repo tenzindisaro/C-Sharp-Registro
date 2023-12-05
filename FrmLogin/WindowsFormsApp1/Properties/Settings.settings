@@ -14,5 +14,12 @@
     <Setting Name="CadFuncionarios" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">5</Value>
     </Setting>
+    <Setting Name="stringConnection" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;server=americanas.mysql.database.azure.com;port=3306;User Id=joao;database=teste_sql;password=Adriana1&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">server=americanas.mysql.database.azure.com;port=3306;User Id=joao;database=teste_sql;password=Adriana1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

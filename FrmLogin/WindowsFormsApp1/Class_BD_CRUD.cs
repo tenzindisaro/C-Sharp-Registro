@@ -1,27 +1,28 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
+using Microsoft.Win32;
+using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI.Common;
 using Org.BouncyCastle.Asn1.X509;
 using Org.BouncyCastle.Utilities.Collections;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
-
 namespace WindowsFormsApp1
 {
-
     internal class Class_BD_CRUD
-    {   //"server=localhost;port=3307;User Id=root;database=projeto_registro_sql;password=usbw"
-        //'server=americanas.mysql.database.azure.com;port=3307;User Id=joao;database=teste_sql;password=Adriana1
-        //"server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ"
-        //private MySqlConnection conn = new MySqlConnection("server=containers-us-west-156.railway.app;port=6863;User Id=root;database=railway;password=uoNk5WCFgcxKJ1AjalxJ");
-        private MySqlConnection conn = new MySqlConnection("server=americanas.mysql.database.azure.com;port=3306;User Id=joao;database=teste_sql;password=Adriana1");
+    {
+        private static string connString = ConfigurationManager.ConnectionStrings["WindowsFormsApp1.Properties.Settings.stringConnection"].ConnectionString;
+
+        private MySqlConnection conn = new MySqlConnection(connString);
 
         private int id_hora, id_data;
         // váriaveis a baixo para busca dados
