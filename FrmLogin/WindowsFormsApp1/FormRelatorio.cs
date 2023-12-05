@@ -378,6 +378,11 @@ namespace WindowsFormsApp1
         {
             InitializeDataGridView();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
 

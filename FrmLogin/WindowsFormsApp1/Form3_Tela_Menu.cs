@@ -213,7 +213,7 @@ namespace WindowsFormsApp1
             }
 
             this.Enabled = true;
-            this.Focus();
+            this.CenterToScreen();
         }
 
         private void abrirRetirada()

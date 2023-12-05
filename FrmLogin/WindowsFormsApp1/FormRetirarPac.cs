@@ -55,8 +55,6 @@ namespace WindowsFormsApp1
             emailTitular = maskedTextBox_email.Text;
             nomeEntregador = txtbox_nome_entregador.Text;
             cpfEntregador = txtbox_cpf_entregador.Text;
-            dataChegada = textBox_data.Text;
-            horaChegada = textBox_hora.Text;
             
             if (situacao != "Retirado")
             {
@@ -362,7 +360,7 @@ namespace WindowsFormsApp1
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 DataGridViewRow selectedRow = dataGridView_retirada_pac.Rows[e.RowIndex];
-                string notaFiscal, funcionario, situacao, nomeTitular, telefoneTitular, emailTitular, cpfTitular, nomeEntregador, cpfEntregador, dataChegada, horaChegada;
+                string notaFiscal, funcionario, situacao, nomeTitular, telefoneTitular, emailTitular, cpfTitular, nomeEntregador, cpfEntregador, dataChegada, horaChegada, dataRetirada, horaRetirada;
 
                 if (selectedRow != null)
                 {
@@ -378,6 +376,8 @@ namespace WindowsFormsApp1
                     cpfEntregador = selectedRow.Cells["CPF Entregador"].Value.ToString();
                     dataChegada = selectedRow.Cells["Data de Chegada"].Value.ToString();
                     horaChegada = selectedRow.Cells["Hora de Chegada"].Value.ToString();
+                    dataRetirada = selectedRow.Cells["Data de Retirada"].Value.ToString();
+                    horaRetirada = selectedRow.Cells["Hora de Retirada"].Value.ToString();
 
                     textBox_NotaFiscal.Text = notaFiscal;
                     comboBox_funcionario.Text = funcionario;
@@ -388,8 +388,8 @@ namespace WindowsFormsApp1
                     maskedTextBox_CPF.Text = cpfTitular;
                     txtbox_nome_entregador.Text = nomeEntregador;
                     txtbox_cpf_entregador.Text = cpfEntregador;
-                    textBox_data.Text = dataChegada;
-                    textBox_hora.Text = horaChegada;
+                    textBox_data.Text = dataRetirada;
+                    textBox_hora.Text = horaRetirada;
 
                 }
                 else
@@ -404,7 +404,7 @@ namespace WindowsFormsApp1
             if (dataGridView_retirada_pac.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dataGridView_retirada_pac.SelectedRows[0];
-                string notaFiscal, funcionario, situacao, nomeTitular, telefoneTitular, emailTitular, cpfTitular, nomeEntregador, cpfEntregador, dataChegada, horaChegada;
+                string notaFiscal, funcionario, situacao, nomeTitular, telefoneTitular, emailTitular, cpfTitular, nomeEntregador, cpfEntregador, dataChegada, horaChegada, dataRetirada, horaRetirada;
 
 
                 if (selectedRow != null)
@@ -421,6 +421,8 @@ namespace WindowsFormsApp1
                     cpfEntregador = selectedRow.Cells["CPF Entregador"].Value.ToString();
                     dataChegada = selectedRow.Cells["Data de Chegada"].Value.ToString();
                     horaChegada = selectedRow.Cells["Hora de Chegada"].Value.ToString();
+                    dataRetirada = selectedRow.Cells["Data de Retirada"].Value.ToString();
+                    horaRetirada = selectedRow.Cells["Hora de Retirada"].Value.ToString();
 
                     textBox_NotaFiscal.Text = notaFiscal;
                     comboBox_funcionario.Text = funcionario;
@@ -431,8 +433,8 @@ namespace WindowsFormsApp1
                     maskedTextBox_CPF.Text = cpfTitular;
                     txtbox_nome_entregador.Text = nomeEntregador;
                     txtbox_cpf_entregador.Text = cpfEntregador;
-                    textBox_data.Text = dataChegada;
-                    textBox_hora.Text = horaChegada;
+                    textBox_data.Text = dataRetirada;
+                    textBox_hora.Text = horaRetirada;
 
                 }
                 else

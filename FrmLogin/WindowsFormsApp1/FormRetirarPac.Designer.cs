@@ -92,7 +92,7 @@
             this.groupBox_hora.Size = new System.Drawing.Size(140, 57);
             this.groupBox_hora.TabIndex = 148;
             this.groupBox_hora.TabStop = false;
-            this.groupBox_hora.Text = "Hora de Chegada";
+            this.groupBox_hora.Text = "Hora de Retirada";
             // 
             // textBox_hora
             // 
@@ -111,7 +111,7 @@
             this.groupBox_Data.Size = new System.Drawing.Size(140, 57);
             this.groupBox_Data.TabIndex = 147;
             this.groupBox_Data.TabStop = false;
-            this.groupBox_Data.Text = "Data de Chegada";
+            this.groupBox_Data.Text = "Data de Retirada";
             // 
             // textBox_data
             // 
@@ -483,7 +483,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormRetirarPac";
             this.Text = "Americanas Rastreio";
-//            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormRetirarPac_FormClosing);
             this.Load += new System.EventHandler(this.FormRetirarPac_Load);
             this.groupBox_hora.ResumeLayout(false);
             this.groupBox_hora.PerformLayout();

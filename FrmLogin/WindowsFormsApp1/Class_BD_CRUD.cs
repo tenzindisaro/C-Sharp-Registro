@@ -1355,6 +1355,7 @@ namespace WindowsFormsApp1
 
         public DataTable setDataTable_pacotes_presentes()
         {
+            string dataAtual = DateTime.Now.ToString("yyyy-MM-dd");
             DataTable dt_pacsDia = new DataTable();
             DataRow newRow;
 
@@ -1380,10 +1381,11 @@ namespace WindowsFormsApp1
                 "INNER JOIN entregador e ON p.cpf_entregador = e.cpf_entregador " +
                 "INNER JOIN tbl_data d ON p.id_data = d.id_data " +
                 "INNER JOIN hora h ON p.id_hora = h.id_hora " +
-                "WHERE p.situacao_pacote = \"Presente\"" +
+                "WHERE p.situacao_pacote = \"Presente\" OR d.retirada_data = @dataAtual " +
                 "ORDER BY h.chegada_hora ASC, t.nome", conn);
 
             cmd.Parameters.Clear();
+            cmd.Parameters.Add("@dataAtual", MySqlDbType.VarChar, 9).Value = dataAtual;
 
             cmd.CommandType = CommandType.Text;
             try 
